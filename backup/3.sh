@@ -1,0 +1,1 @@
+python3 /data/data/com.termux/files/home/flyosbin/softwareinstall/install.py
