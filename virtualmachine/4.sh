@@ -7,7 +7,9 @@ if [ ! -f "helen.7z" ]; then
 	wget https://assets.huoyinetwork.cn/Flyos/VM/helenos.7z
 fi
 7z x  -aos helenos.7z
-qemu-system-i386 -hda arm.qcow2 -m 256 -vnc :0 &
+echo "镜像来自镜连"
+echo "虚拟机启动"
+qemu-system-i386 -hda arm.qcow2 -m 256 -vnc :0
 if [ $? -ne 0 ]; then
 	echo “错误请检查”
 fi

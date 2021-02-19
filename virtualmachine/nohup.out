@@ -1253,3 +1253,747 @@ nginx: [emerg] still could not bind()
   http://127.0.0.1:[32m8086[39m
   http://10.77.156.125:[32m8086[39m
 Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8082[39m
+  http://10.184.79.109:[32m8082[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8082[39m
+  http://10.184.79.109:[32m8082[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+______________________________________
+FlyOS Panel
+启动中
+    sockets = bind_sockets(port, address=address)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8082[39m
+  http://10.184.79.109:[32m8082[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8002)
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8083[39m
+  http://10.184.79.109:[32m8083[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8085[39m
+  http://10.184.79.109:[32m8085[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8086[39m
+  http://10.184.79.109:[32m8086[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8087[39m
+  http://10.184.79.109:[32m8087[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8088[39m
+  http://10.184.79.109:[32m8088[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8089[39m
+  http://10.184.79.109:[32m8089[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+    start_server(main, debug=True, port=8888)
+OSError: [Errno 98] Address already in use
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8090[39m
+  http://10.184.79.109:[32m8090[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+    start_server(main, debug=True, port=8887)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8091[39m
+  http://10.184.79.109:[32m8091[39m
+Hit CTRL-C to stop the server
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/shell.py", line 41, in <module>
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 43, in <module>
+    start_server(main, debug=True, port=8887)
+    start_server(main, debug=True, port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 44, in <module>
+    start_server(main, debug=True, port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+[33mStarting up http-server, serving [39m[36m./[39m[33m[39m
+[33mAvailable on:[39m
+  http://127.0.0.1:[32m8092[39m
+  http://10.184.79.109:[32m8092[39m
+Hit CTRL-C to stop the server
