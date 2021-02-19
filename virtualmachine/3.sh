@@ -19,6 +19,7 @@ else
 	wget https://assets.huoyinetwork.cn/Flyos/VM/solaris2.4.7z
 	fi
 	7z x -aos solaris2.4.7z
+    echo "虚拟机启动"
 	qemu-system-i386 -hda sol.vmdk -vnc :0 -m 256
 fi
 if [ $? -ne 0 ]
