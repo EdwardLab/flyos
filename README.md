@@ -14,7 +14,7 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 1.下载<a href=http://f-droid.org/en/packages/com.termux/>Termux</a>安装并打开
 <br>
 <<<<<<< HEAD
-2.在Termux中输入:wget https://assets.huoyinetwork.cn/Flyos/3.0/setup.sh && sh setup.sh
+2.在Termux中输入:pkg update && pkg install wget && wget https://github.com/xingyujie/flyos/blob/master/gosetup.sh && sh gosetup.sh
 =======
 2.在Termux中输入:wget https://assets.huoyinetwork.cn/Flyos/2.8/setup.sh && sh setup.sh
 >>>>>>> 5611d4a (Create README.md)
