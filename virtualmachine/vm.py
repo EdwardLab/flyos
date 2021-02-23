@@ -80,6 +80,7 @@ if num == '1' :
         sh = "bash $conf.conf"
         os.system(sh)
 if num == '2':
+    vm = "cd /data/data/com.termux/files/us    r/etc/flyos/virtualmachine "
     print("模板VNC端口都为:5900，没有图形将从串口输出，内存分配视Guest机系统而定，请确保有500MB左右的剩余储存空间")
     se = input("1.Windows 2.SunOS 3.HelenOS 4.退出")
     if se == '1':
