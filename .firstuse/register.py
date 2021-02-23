@@ -6,6 +6,7 @@ from pywebio import *
 import logging
 import string
 import os
+from hashlib import md5
 from pywebio.session import set_env
 #下面的import是表单
 from functools import partial
@@ -22,13 +23,19 @@ def main():
     put_text('欢迎使用FlyOS!开始初始化您的FlyOS吧！', sep=' ', inline=False, scope=- 1, position=- 1)
     output.popup('Hi,There！欢迎使用FlyOS！让我们来初始化FlyOS吧！')
     name = pywebio.input.input("请输入您的个人姓名/团队或公司名称来注册FlyOS:")
-    password = pywebio.input.input("设置您的系统开机密码(如果您的设备被root，密码将不安全):")
+    password = pywebio.input.input("设置您的系统开机密码(如果您的设备被root，密码将不安全):", type="password")
     put_text('初始化完成！请进入termuxAPP开始体验FlyOS吧！', sep=' ', inline=False, scope=- 1, position=- 1)
     f = open('/data/data/com.termux/files/usr/etc/flyos/database/name.db', 'w')
     f.write(name)
     f.close()
+    pggg = str(password)
+    pggg = pggg
+    md5_obj = md5()
+    md5_obj.update(pggg.encode())
+    pggg = md5_obj.hexdigest()
+    print(pggg)
     f = open('/data/data/com.termux/files/usr/etc/flyos/database/password.db', 'w')
-    f.write(password)
+    f.write(pggg)
     f.close()
     os.system("touch $FLYOS/.firstuse/lock")
     os.system("flyos")
