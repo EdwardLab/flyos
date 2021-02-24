@@ -175,7 +175,10 @@ while 1:
     elif num == '21':
         os.system("python $FLYOS/.firstuse/register.py")
     elif num == '22':
-        os.system('~/.termux/shell')
+        if os.path.exists('~/.termux/shell'):
+            os.system('~/.termux/shell')
+        else:
+            os.system('bash')
     elif num == '00':
         print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com\n当前版本:bilndv2.7")
     elif num == '01':
