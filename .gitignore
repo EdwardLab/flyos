@@ -1,0 +1,4 @@
+nohub.out
+database/*
+.firstuse/lock
+.venv/

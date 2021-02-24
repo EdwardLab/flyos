@@ -1,24 +1,21 @@
-import os
-from hashlib import md5
-#try:
-#    f =open('/sdcard/.FlyOS/Keys/fpro.fk')
-#    f.close()
-#except FileNotFoundError:
-#    os.system("python3 $FLYOS/.firstuse/firstrun.py")
+from os.path import exists
+from os import getenv, system
+from getpass import getpass
 
-if os.path.exists('/data/data/com.termux/files/usr/etc/flyos/.firstuse/lock') == False:
-    os.system("python3 $FLYOS/.firstuse/register.py")
+import termux_auth
 
-p = open('/data/data/com.termux/files/usr/etc/flyos/database/password.db','r')
-password = p.read()
-inputpass = input("请输入开机密码:")
-inputpass = str(inputpass)
-md5_obj = md5()
-md5_obj.update(inputpass.encode())
-inputpass = md5_obj.hexdigest()
-print(inputpass)
-print(inputpass)
-if inputpass == password:
-  os.system("sh $FLYOS/start.sh")
+FLYOS_ROOT = getenv('FLYOS')
+
+if exists(f'{FLYOS_ROOT}/.firstuse/lock'): # 检查是否已经注册
+    with open(f'{FLYOS_ROOT}/database/password.db','r') as f: # 打开密码存放文件
+        password = f.readline() # 读取密码
+
+    inputpass = getpass("请输入开机密码: ") # 读取输入的密码
+
+    if termux_auth.auth(inputpass): # 验证密码是否正确
+        system(f"python {FLYOS_ROOT}/console.py")
+    else:
+        print("密码错误")
+        exit()
 else:
-  os.system("python $FLYOS/logout.py")
+    system("python3 $FLYOS/.firstuse/register.py")
