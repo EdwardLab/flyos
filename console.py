@@ -181,4 +181,4 @@ while 1:
     elif num == '01':
         print("有BUG请反馈到:xingyujie50@gmail.com")
     else:
-        print("正在进入终端...")
+        print("无效编号")
