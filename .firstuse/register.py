@@ -1,15 +1,17 @@
 #FlyOS Panel By:XingYuJie
 #Use Under License GPL - V3
+import os
+
 import pywebio.input
 from pywebio.output import *
 from pywebio import *
-import logging
-import string
-import os
-from hashlib import md5
 from pywebio.session import set_env
 #下面的import是表单
 from functools import partial
+import termux_auth
+
+FLYOS_ROOT = os.getenv('FLYOS')
+
 #Tips
 print("______________________________________")
 print("欢迎使用FlyOS!")
@@ -25,18 +27,10 @@ def main():
     name = pywebio.input.input("请输入您的个人姓名/团队或公司名称来注册FlyOS:")
     password = pywebio.input.input("设置您的系统开机密码(如果您的设备被root，密码将不安全):", type="password")
     put_text('初始化完成！请进入termuxAPP开始体验FlyOS吧！', sep=' ', inline=False, scope=- 1, position=- 1)
-    f = open('/data/data/com.termux/files/usr/etc/flyos/database/name.db', 'w')
+    f = open(f'{FLYOS_ROOT}/database/name.db', 'w')
     f.write(name)
     f.close()
-    pggg = str(password)
-    pggg = pggg
-    md5_obj = md5()
-    md5_obj.update(pggg.encode())
-    pggg = md5_obj.hexdigest()
-    print(pggg)
-    f = open('/data/data/com.termux/files/usr/etc/flyos/database/password.db', 'w')
-    f.write(pggg)
-    f.close()
+    termux_auth.change_passwd(password)
     os.system("touch $FLYOS/.firstuse/lock")
     os.system("flyos")
     
