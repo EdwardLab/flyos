@@ -122,62 +122,63 @@ print("18.文件管理器")
 print("19.虚拟机WEB管理面板(已自动启动，再次启动会出问题)")
 print("20.启动nginx WEB Server")
 print("21.初始化FlyOS")
-print("按下回车进入终端")
+print("22.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
 print("####FlyOS Panel已经启动，浏览器访问http://IP:8888，WebShell请浏览器访问http://IP:4200，WEB虚拟机请访问http://IP:8002，Apache服务请访问http://IP:8080，Nginx在http://IP:8088，HTTP文件管理器在http://IP:8081，FlyOS AM调用在http://IP:5000，Termux:API调用在http://IP:5002。注意，本地访问请浏览器访问http://127.0.0.1:端口号####")
-num = input("请输入要启动的编号，例如:1 :")
-print("正在启动项目" + num)
-time.sleep(0.2)
-if num == '1':
-   os.system("python3 $FLYOS/deploylinux/deploy.py")
-elif num == '2':
-   os.system("tmoe")
-elif num == '3':
-   os.system("python3 $FLYOS/softwareinstall/install.py")
-elif num == '4':
-   os.system("debian")
-elif num == '5':
-   os.system("python3 $FLYOS/chat/chat.py")
-elif num == '6':
-   os.system("python3 $FLYOS/console.py")
-elif num == '7':
-   os.system("apt update")
-elif num == '8':
-   os.system("pkg update")
-elif num == '9':
-   os.system("screenfetch")
-elif num == '10':
-   os.system("chsh")
-elif num == '11':
-   print("您可以更改FlyOS的默认User密码")
-   os.system("passwd")
-elif num == '12':
-   website = input("欢迎使用FlyOS Browser浏览器，例如:http://www.bing.com --必应 输入网址开始浏览网页:")
-   os.system("w3m " + website)
-elif num == '13':
-   os.system("python3 $FLYOS/webserver/main.py")
-elif num == '14':
-   os.system("sh $FLYOS/panel/server.py")
-elif num == '15':
-   os.system("aria2c --enable-rpc --rpc-listen-all")
-elif num == '16':
-   print("由于系统限制，请手动执行cd /data/data/com.termux/files/home/webui-aria2")
-   print("和node node-server.js")
-elif num == '17':
-   os.system("python $FLYOS/virtualmachine/vm.py")
-elif num == '18':
-   os.system("mc")
-elif num == '19':
-   os.system("python $FLYOS/virtualmachine/web.py")
-elif num == '20':
-   os.system("nginx")
-elif num == '21':
-   os.system("python $FLYOS/.firstuse/register.py")
-elif num == '00':
-   print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com\n当前版本:bilndv2.7")
-elif num == '01':
-   print("有BUG请反馈到:xingyujie50@gmail.com")
-else:
-   print("正在进入终端...")
-   
-f.close()
+while 1:
+    num = input("请输入要启动的编号，例如:1 :")
+    print("正在启动项目" + num)
+    time.sleep(0.2)
+    if num == '1':
+        os.system("python3 $FLYOS/deploylinux/deploy.py")
+    elif num == '2':
+        os.system("tmoe")
+    elif num == '3':
+        os.system("python3 $FLYOS/softwareinstall/install.py")
+    elif num == '4':
+        os.system("debian")
+    elif num == '5':
+        os.system("python3 $FLYOS/chat/chat.py")
+    elif num == '6':
+        os.system("python3 $FLYOS/console.py")
+    elif num == '7':
+        os.system("apt update")
+    elif num == '8':
+        os.system("pkg update")
+    elif num == '9':
+        os.system("screenfetch")
+    elif num == '10':
+        os.system("chsh")
+    elif num == '11':
+        print("您可以更改FlyOS的默认User密码")
+        os.system("passwd")
+    elif num == '12':
+        website = input("欢迎使用FlyOS Browser浏览器，例如:http://www.bing.com --必应 输入网址开始浏览网页:")
+        os.system("w3m " + website)
+    elif num == '13':
+        os.system("python3 $FLYOS/webserver/main.py")
+    elif num == '14':
+        os.system("sh $FLYOS/panel/server.py")
+    elif num == '15':
+        os.system("aria2c --enable-rpc --rpc-listen-all")
+    elif num == '16':
+        os.chdir('/data/data/com.termux/files/home/webui-aria2')
+        os.system('node node-server.js')
+    elif num == '17':
+        os.system("python $FLYOS/virtualmachine/vm.py")
+    elif num == '18':
+        os.system("mc")
+    elif num == '19':
+        os.system("python $FLYOS/virtualmachine/web.py")
+    elif num == '20':
+        os.system("nginx")
+    elif num == '21':
+        os.system("python $FLYOS/.firstuse/register.py")
+    elif num == '22':
+        os.system('~/.termux/shell')
+    elif num == '00':
+        print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com\n当前版本:bilndv2.7")
+    elif num == '01':
+        print("有BUG请反馈到:xingyujie50@gmail.com")
+    else:
+        print("正在进入终端...")
