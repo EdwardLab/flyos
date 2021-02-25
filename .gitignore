@@ -1,3 +1,4 @@
+nohup.out
 database/*
 .firstuse/lock
 .venv/
