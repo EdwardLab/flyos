@@ -15,9 +15,8 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 <br>
 <<<<<<< HEAD
 2.在Termux中输入:pkg update && pkg install wget && wget https://github.com/xingyujie/flyos/blob/master/gosetup.sh && sh gosetup.sh
-=======
-2.在Termux中输入:wget https://assets.huoyinetwork.cn/Flyos/2.8/setup.sh && sh setup.sh
->>>>>>> 5611d4a (Create README.md)
+
+2.在Termux中输入:pkg install wget && wget http://flyosgeek.com/gosetup.sh && sh setup.sh
 <br>
 3.开始安装
 <h1>关于</h1>
