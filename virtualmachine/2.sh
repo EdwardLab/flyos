@@ -15,6 +15,7 @@ else
 	fi
 	cd xp
 	if [ ! -f "xp.zip" ];then
+		wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/xp.7z
 		wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/xp.zip
 	fi
 	echo "镜像来自ixcm工作室的阳光XP第八版"

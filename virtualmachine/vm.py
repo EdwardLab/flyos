@@ -84,20 +84,22 @@ if num == '2':
     print("模板VNC端口都为:5900，没有图形将从串口输出，内存分配视Guest机系统而定，请确保有500MB左右的剩余储存空间")
     se = input("1.Windows 2.SunOS 3.HelenOS 4.退出")
     if se == '1':
+        vm = "cd $FLYOS/virtualmachine "
         w = input("1.Windows95 2.WindowsXP")
         os.environ['w']=str(w)
         n = "2"
-        os.system(vm + 'sh ' +n + '.sh' )
+        os.system(vm + '&& sh ' +n + '.sh' )
+        # cd $FLYOS/virtualmachine && sh 2.sh
     elif se == '2':
         sp = input("1.SunOS4.13 2. SunOS4.14 3.Solaris2.4")
         os.environ['sp']=str(sp)
         n = "3"
-        os.system(vm + 'sh ' + n + '.sh')
+        os.system(vm + '&& sh ' +n + '.sh' )
     elif se == '3' :
         archi = input("1.i386 2.arm")
         n = '4'
         os.environ['h']=str(archi)
-        os.system(vm + 'sh ' + n + '.sh')
+        os.system(vm + '&& sh ' +n + '.sh' )
     elif se == '4' :
         exit()
 elif num == '3' :

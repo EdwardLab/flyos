@@ -42,11 +42,6 @@ print("""
 print("By:FlyOS Boot")
 time.sleep(1)
 print("FlyOS Console")
-try:
-    f =open('/sdcard/.FlyOS/Keys/fpro.fk')
-    f.close()
-except FileNotFoundError:
-    os.system("python $FLYOS/.firstuse/firstrun.py")
 #Starting Services
 os.system("sh $FLYOS/services.sh")
 #info print
@@ -60,22 +55,22 @@ print("系统检查")
 print("___________")
 print("CPU信息")
 os.system("lscpu")
-time.sleep(0.1)
+
 print("CPU负载")
 os.system("uptime")
-time.sleep(0.1)
+
 print("内核信息:")
 os.system("uname -a")
-time.sleep(0.1)
+
 print("磁盘信息:")
 os.system("df -h")
-time.sleep(0.1)
+
 print("内存信息:")
 os.system("free -m")
-time.sleep(0.1)
+
 print("网络信息:wlan0")
 os.system("ifconfig wlan0")
-time.sleep(0.1)
+
 print("系统信息:")
 os.system("screenfetch")
 #注册读取
@@ -122,13 +117,14 @@ print("18.文件管理器")
 print("19.虚拟机WEB管理面板(已自动启动，再次启动会出问题)")
 print("20.启动nginx WEB Server")
 print("21.初始化FlyOS")
-print("22.进入终端")
+print("22.启动Xfce4图形化(端口5902)")
+print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
 print("####FlyOS Panel已经启动，浏览器访问http://IP:8888，WebShell请浏览器访问http://IP:4200，WEB虚拟机请访问http://IP:8002，Apache服务请访问http://IP:8080，Nginx在http://IP:8088，HTTP文件管理器在http://IP:8081，FlyOS AM调用在http://IP:5000，Termux:API调用在http://IP:5002。注意，本地访问请浏览器访问http://127.0.0.1:端口号####")
 while 1:
     num = input("请输入要启动的编号，例如:1 :")
     print("正在启动项目" + num)
-    time.sleep(0.2)
+    
     if num == '1':
         os.system("python3 $FLYOS/deploylinux/deploy.py")
     elif num == '2':
@@ -175,13 +171,13 @@ while 1:
     elif num == '21':
         os.system("python $FLYOS/.firstuse/register.py")
     elif num == '22':
-        if os.path.exists('~/.termux/shell'):
-            os.system('~/.termux/shell')
-        else:
-            os.system('bash')
+        print("Xfce4图形化界面启动在IP:5902，本地连接请输入IP:127.0.0.1:5902") 
+        os.system("nohup flyosvnc &")
+    elif num == '0':
+        os.system('~/.termux/shell')
     elif num == '00':
         print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com\n当前版本:bilndv2.7")
     elif num == '01':
         print("有BUG请反馈到:xingyujie50@gmail.com")
     else:
-        print("无效编号")
+        print("请输入选项")

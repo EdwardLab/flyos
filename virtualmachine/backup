@@ -1,7 +1,0 @@
-os.system("cd list")
-  name = name + '.sh'
-  os.system("cd list")
-  os.system("touch " + name)
-  file_handle=open(name,mode='w')
-  file_handle.write(qemu)
-  os.system(qemu)
