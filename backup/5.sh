@@ -1,1 +1,0 @@
-python3 chat/chat.py

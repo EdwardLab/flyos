@@ -16,23 +16,23 @@ print("10.远程登录数据库方法")
 print("回车退出")
 num = input("请输入编号:")
 if num == '1':
-  os.system("apachectl start")
+    os.system("apachectl start")
 elif num == '2':
-  os.system("apachectl stop")
+    os.system("apachectl stop")
 elif num == '3':
-  os.system("apachectl restart")
+    os.system("apachectl restart")
 elif num == '4':
-  print("默认路径在:/data/data/com.termux/files/usr/share/apache2/default-site/")
+    print("默认路径在:/data/data/com.termux/files/usr/share/apache2/default-site/")
 elif num == '5':
-  os.system("nohup mysqld &")
+    os.system("nohup mysqld &")
 elif num == '6':
-  os.system("ps aux|grep mysql")
+    os.system("ps aux|grep mysql")
 elif num == '7':
-  os.system("kill -9 `pgrep mysql`")
+    os.system("kill -9 `pgrep mysql`")
 elif num == '8':
-  print("默认mysql用户名为Termux，密码为空，使用mysql -u $(whoami)来登录")
-  print("修改Root密码步奏:")
-  print("""
+    print("默认mysql用户名为Termux，密码为空，使用mysql -u $(whoami)来登录")
+    print("修改Root密码步奏:")
+    print("""
   # 登录 Termux 用户
 mysql -u $(whoami)
 
@@ -45,12 +45,12 @@ flush privileges;
 quit; 
 """)
 elif num == '9':
-  print("""
+    print("""
 mysql -u root -p
 Enter password: xxxxx（这里输入你的密码)
   """)
 elif num == '10':
-  print("""
+    print("""
 登录到root mysql账户
 执行:
 grant all on *.* to root@'%' identified by 'P@ssw0rd' with grant option;
@@ -58,5 +58,4 @@ flush privileges;
 即可
   """)
 else:
-   print("退出")
-  
+    print("退出")

@@ -1,5 +1,5 @@
 import os
-import time
+
 print("FlyOS虚拟机面板")
 print("__________________")
 print("欢迎使用FlyOS虚拟机")
@@ -11,63 +11,70 @@ print("回车退出")
 print("其他功能施工中...")
 num = input("请选择功能|输入编号:")
 def create():
-        print("开始创建虚拟机")
-        cpu = input("请输入架构，例如i386架构:")
-        cdrom = input("安装光盘路径，没有回车:")
-        fd = input("安装软盘路径，没有留空:")
-        path = input("请输入虚拟机磁盘镜像1完整绝对路径:")
-        pp =  input("请输入磁盘二绝对路径，没有回车:")
-        ppp = input("请输入磁盘三绝对路径，没有回车:")
-
-        memory = input("请输入虚拟机内存(不建议太大),Windows 95/98建议512以下，NT/XP建议768，Windows7/8建议1G左右 :")
-        network = input("请输入网卡型号(建议rtl8139):")
-        vnc = input("输入VNC端口号(建议0):")
-        vga = input("显卡型号，NT系建议vmware，Windowz95/98建议cirrus:")
-        extra = input("额外参数，没有留空:")
-        print("确认配置: 架构:" + cpu + "路径:" + path + ";" + pp + ";" + ppp + "内存:" + memory + "网络:" + network + "显卡:" + vga + "VNC端口号:" + vnc + "额外参数" + extra)
-        if not fd:
-            fd = ""
-        else:
-            fd = " -fda " + fd
-        if not cdrom:
-            cdrom = ""
-        else:
-            cdrom = " -cdrom " + cdrom
-        if not pp:
-            pp = ""
-        else:
-            pp = " -hdb " + pp
-        if not ppp:
-            ppp = ""
-        else:
-            ppp = " -hdc " + ppp
-        if not extra:
-            extra = ""
-        else:
-            extra = " " + extra
-        if not path :
-            print("正准备启动测试用镜像")
-            path = ""
-            fd = " -fda test.img"
-        else:
-            path = " -hda "+ path
-        if not cpu:
-            cpu = "i386"
-        if not network:
-            network = "rtl8139"
-        if not memory:
-            memory = "128"
-        if not vga:
-            vga = "vmware"
-        if not vnc:
-            vnc = "0"
-        cpu = "qemu-system-" + cpu
-        memory = " -m " + memory
-        network = " -net user -net nic,model=" + network
-        vga = " -vga " + vga
-        vnc = " -vnc :" + vnc
-        q = cpu +  fd  + cdrom + path +pp + ppp + memory + network + vga + vnc + extra
-        return q
+    print("开始创建虚拟机")
+    cpu = input("请输入架构，例如i386架构:")
+    cdrom = input("安装光盘路径，没有回车:")
+    fd = input("安装软盘路径，没有留空:")
+    path = input("请输入虚拟机磁盘镜像1完整绝对路径:")
+    pp =  input("请输入磁盘二绝对路径，没有回车:")
+    ppp = input("请输入磁盘三绝对路径，没有回车:")
+    memory = input("请输入虚拟机内存(不建议太大),Windows 95/98建议512以下，NT/XP建议768，Windows7/8建议1G左右 :")
+    network = input("请输入网卡型号(建议rtl8139):")
+    vnc = input("输入VNC端口号(建议0):")
+    vga = input("显卡型号，NT系建议vmware，Windowz95/98建议cirrus:")
+    extra = input("额外参数，没有留空:")
+    print("确认配置: "
+            f"架构:{cpu}"
+            f"路径:{path};{pp};{ppp}"
+            f"内存:{memory}"
+            f"网络:{network}"
+            f"显卡:{vga}"
+            f"VNC端口号:{vnc}"
+            f"额外参数{extra}"
+        )
+    if not fd:
+        fd = ""
+    else:
+        fd = " -fda " + fd
+    if not cdrom:
+        cdrom = ""
+    else:
+        cdrom = " -cdrom " + cdrom
+    if not pp:
+        pp = ""
+    else:
+        pp = " -hdb " + pp
+    if not ppp:
+        ppp = ""
+    else:
+        ppp = " -hdc " + ppp
+    if not extra:
+        extra = ""
+    else:
+        extra = " " + extra
+    if not path :
+        print("正准备启动测试用镜像")
+        path = ""
+        fd = " -fda test.img"
+    else:
+        path = " -hda "+ path
+    if not cpu:
+        cpu = "i386"
+    if not network:
+        network = "rtl8139"
+    if not memory:
+        memory = "128"
+    if not vga:
+        vga = "vmware"
+    if not vnc:
+        vnc = "0"
+    cpu = "qemu-system-" + cpu
+    memory = " -m " + memory
+    network = " -net user -net nic,model=" + network
+    vga = " -vga " + vga
+    vnc = " -vnc :" + vnc
+    q = cpu +  fd  + cdrom + path +pp + ppp + memory + network + vga + vnc + extra
+    return q
 if num == '1' :
     nw = input("1.新建临时 2.运行已保存的配置文件")
     if nw == '1' :

@@ -23,12 +23,15 @@ def main():
         while 1:
             api = pywebio.input.input("输入api调用接口:")
             if re.search('[;&|<>$]', api):
-                popup('检测到非法字符', content="请检查命令中是否包含;&|等特殊字符")
+                popup('检测到非法字符',
+                        content="请检查命令中是否包含;&|等特殊字符"
+                    )
                 continue
             os.system(f'termux-{api}')
+            popup('命令已执行')
     else:
         put_text("密码错误, 请刷新页面重试")
-        return 
+
 #Server Port 关于服务器的配置信息
 if __name__ == '__main__':
     start_server(main, debug=True, port=5002)
