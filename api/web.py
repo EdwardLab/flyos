@@ -1,7 +1,7 @@
 #FlyOS Panel By:XingYuJie
 #Use Under License GPL - V3
-import os
 import re
+import subprocess
 
 import pywebio.input
 from pywebio import start_server
@@ -27,8 +27,11 @@ def main():
                         content="请检查命令中是否包含;&|等特殊字符"
                     )
                 continue
-            os.system(f'termux-{api}')
-            popup('命令已执行')
+            status, output = subprocess.getstatusoutput(f'termux-{api}')
+            if status==0:
+                popup('命令已执行', output)
+            else:
+                popup('执行时出现错误', output)
     else:
         put_text("密码错误, 请刷新页面重试")
 
