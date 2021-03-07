@@ -7,3 +7,4 @@ echo "[*] 解压文件"
 cd $PREFIX/../
 tar -zxvf $PREFIX/tmp/flyos_3.3.tar.gz --recursive-unlink --preserve-permissions
 echo "[+] 安装完成, 请重启termux"
+fi
