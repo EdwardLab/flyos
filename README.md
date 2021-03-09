@@ -7,7 +7,7 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 *部分功能尚未开发完毕*  
 # 安装
 1.下载[termux](http://f-droid.org/en/packages/com.termux/)安装并打开  
-2.在Termux中输入:curl https://raw.githubusercontent.com/xingyujie/flyos/master/gosetup.sh | bash
+2.在Termux中输入:curl https://raw.githubusercontent.com/xingyujie/flyos/master/gosetup.sh | bash  
 3.开始安装
 # 关于
 开发者:邢宇杰(XingYuJie)
@@ -15,3 +15,4 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 软件受地区法律保护
 # 更多
 Telegram交流群:t.me/flyospro(@flyospro)
+QQ交流群:[440406148](https://jq.qq.com/?_wv=1027&k=Gd5z9j7v)
