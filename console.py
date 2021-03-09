@@ -112,7 +112,7 @@ while 1:
         print("Xfce4图形化界面启动在IP:5902，本地连接请输入IP:127.0.0.1:5902")
         os.system("nohup flyosvnc &")
     elif num == '0':
-        os.system('~/.termux/shell')
+        os.system('zsh')
     elif num == '00':
         print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com\n当前版本:bilndv2.7")
     elif num == '01':
