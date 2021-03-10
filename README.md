@@ -14,5 +14,7 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 软件通过GPL-V3.0协议发布，请遵守此协议
 软件受地区法律保护
 # 更多
+QQ交流群:[440406148](https://jq.qq.com/?_wv=1027&k=Gd5z9j7v)  
 Telegram交流群:t.me/flyospro(@flyospro)
-QQ交流群:[440406148](https://jq.qq.com/?_wv=1027&k=Gd5z9j7v)
+# 捐赠
+![](donate/1e1d71b89e5b2aa7.png)
