@@ -1,1 +1,0 @@
-print("Hello World 欢迎使用FlyOS中文版！")
