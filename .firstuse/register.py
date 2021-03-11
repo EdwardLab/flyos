@@ -22,6 +22,10 @@ def main():
     put_text('欢迎使用FlyOS!开始初始化您的FlyOS吧！')
     popup('Hi,There！欢迎使用FlyOS！让我们来初始化FlyOS吧！')
     password = pywebio.input.input("设置您的系统开机密码:", type="password")
+    vpwd = pywebio.input.input("请再次输入密码验证:", type="password")
+    if password != vpwd:
+        popup('错误', "两次输入密码不一致，请刷新页面重试")
+        return
     put_text('初始化完成！请进入termuxAPP开始体验FlyOS吧！')
     termux_auth.change_passwd(password)
     os.system("touch $FLYOS/.firstuse/lock")
