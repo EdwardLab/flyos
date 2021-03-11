@@ -2,10 +2,9 @@
 #请根据协议发布，严禁违反
 import os
 import time
+import getpass
 import datetime
 
-n = open('/data/data/com.termux/files/usr/etc/flyos/database/name.db','r')
-name = n.read()
 print("_____ _        ___  ____")
 print("|  ___| |_   _ / _ \\/ ___|")
 print("| |_  | | | | | | | \\___ \\.")
@@ -20,7 +19,7 @@ print("现在时间:" + date)
 i = datetime.datetime.now()
 PREFIX='''\n日　期：{}年{}月{}日 时　间：{} \n'''.format(i.year,i.month,i.day,time.strftime('%p %X'))
 print(PREFIX)
-print(name + "欢迎使用FlyOS!")
+print(f"{getpass.getuser()}欢迎使用FlyOS!")
 print("欢迎使用FlyOS开源面板！")
 print("By:XingYuJie Rainbow")
 print("FlyOS由Microtech开发")
