@@ -134,6 +134,6 @@ while 1:
             print("切换时出现错误")
         else:
             print("切换成功")
-        os.chdir(os.getenv('FLYOS'))
+        os.chdir(os.getenv('HOME'))
     else:
         print("请输入选项")
