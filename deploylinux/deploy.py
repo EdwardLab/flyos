@@ -11,29 +11,24 @@ print("6.CentOS")
 print("7.Arch Linux(安装完请手动运行:chmod 755 additional.sh && ./afdtitonal.sh(只需首次运行前输入))")
 print("8.Alpine")
 print("---------------------------------------")
-print("如果嫌速度太慢，可以选择使用国光码云脚本，也可以梯子，输入00即可安装国光脚本")
 print("安装完成后，请输入./start-系统名.sh启动。输入0退出")
 num = input("请输入编码来安装系统:")
 if num == '1':
-   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh")
+   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh")
 if num == '2':
-   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Debian/debian.sh && bash debian.sh")
+   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Debian/debian.sh && bash debian.sh")
 if num == '3':
-   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Kali/kali.sh && bash kali.sh")
+   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Kali/kali.sh && bash kali.sh")
 if num == '4':
-   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Nethunter/nethunter.sh && bash nethunter.sh")
+   os.system("pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Nethunter/nethunter.sh && bash nethunter.sh")
 if num == '5':
-   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Fedora/fedora.sh && bash fedora.sh")
+   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Fedora/fedora.sh && bash fedora.sh")
 if num == '6':
-   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/CentOS/centos.sh && bash centos.sh")
+   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/CentOS/centos.sh && bash centos.sh")
 if num == '7':
-   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Arch/armhf/arch.sh && bash arch.sh")
+   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Arch/armhf/arch.sh && bash arch.sh")
 if num == '8':
-   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Alpine/alpine.sh && bash alpine.sh")
-if num == '00':
-   os.system("git clone https://github.com/sqlsec/termux-install-linux && cd termux-install-linux && python termux-linux-install.py")
-if num == '66':
-   os.system("wget https://gitee.com/mo2/linux/raw/2/2 && sh 2")
+   os.system("pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Alpine/alpine.sh && bash alpine.sh")
 if num == '0':
    exit(())
 else:
