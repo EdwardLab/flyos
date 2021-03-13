@@ -129,7 +129,7 @@ while 1:
         os.chdir(os.getenv('HOME'))
     elif num == '03':
         os.chdir(os.getenv('FLYOS'))
-        status = os.system('git checkout dev')
+        status = os.system('git checkout master')
         if status:
             print("切换时出现错误")
         else:
