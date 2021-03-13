@@ -5,7 +5,7 @@ import time
 import getpass
 import datetime
 
-os.system('bash $FLYOS/servixce.sh')
+os.system('bash $FLYOS/service.sh')
 print("_____ _        ___  ____")
 print("|  ___| |_   _ / _ \\/ ___|")
 print("| |_  | | | | | | | \\___ \\.")
