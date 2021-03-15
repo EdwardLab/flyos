@@ -26,6 +26,7 @@ print(f"{getpass.getuser()}欢迎使用FlyOS!")
 try:
     res = urllib.request.urlopen("http://flyos.free.idcfengye.com/notices.php")
     data = json.load(res)
+    res.close()
 except urllib.error.HTTPError:
     pass
 else:
