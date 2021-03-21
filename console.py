@@ -6,7 +6,7 @@ import getpass
 import datetime
 import urllib.request
 
-os.system('bash $FLYOS/service.sh')
+os.system('bash $FLYOS/services.sh')
 print("_____ _        ___  ____")
 print("|  ___| |_   _ / _ \\/ ___|")
 print("| |_  | | | | | | | \\___ \\.")
