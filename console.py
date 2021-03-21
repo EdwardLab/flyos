@@ -2,7 +2,6 @@
 #请根据协议发布，严禁违反
 import os
 import time
-import json
 import getpass
 import datetime
 import urllib.request
@@ -23,16 +22,17 @@ i = datetime.datetime.now()
 PREFIX='''\n日　期：{}年{}月{}日 时　间：{} \n'''.format(i.year,i.month,i.day,time.strftime('%p %X'))
 print(PREFIX)
 print(f"{getpass.getuser()}欢迎使用FlyOS!")
+
+res = ''
 try:
-    res = urllib.request.urlopen("http://flyos.free.idcfengye.com/notices.php")
-    data = json.load(res)
-    res.close()
-except urllib.error.HTTPError:
-    pass
+    res = urllib.request.urlopen("http://flyosgeek.com/notices.txt")
+except:
+    print("获取公告失败")
 else:
-    print()
-    print("公告:")
-    print(data['data'][0])
+    print("\n公告:")
+    print(res.read().decode('utf-8'), '\n')
+    res.close()
+
 print("欢迎使用FlyOS开源面板！")
 print("By:XingYuJie Rainbow")
 print("FlyOS由Microtech开发")
