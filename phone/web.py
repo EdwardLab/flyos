@@ -41,5 +41,5 @@ def main():
 
 #Server Port 关于服务器的配置信息
 if __name__ == '__main__':
-    start_server(main, debug=True, port=5000)
+    start_server(main, debug=True, host='127.0.0.1', port=5000)
     pywebio.session.hold()
