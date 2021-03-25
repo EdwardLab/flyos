@@ -39,7 +39,7 @@ print("FlyOS由Microtech开发")
 print("输入00查看关于")
 print("输入01反馈问题")
 print("输入02更新flyos")
-print("输入03切换至稳定版")
+print("输入03切换至测试版")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -141,7 +141,7 @@ while 1:
         os.chdir(os.getenv('HOME'))
     elif num == '03':
         os.chdir(os.getenv('FLYOS'))
-        status = os.system('git checkout master')
+        status = os.system('git checkout dev')
         if status:
             print("切换时出现错误")
         else:
