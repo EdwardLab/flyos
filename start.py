@@ -65,10 +65,19 @@ def main(stdscr):
     tasks_len = len(data["boot"])
     quantity = (curses.COLS-12)//tasks_len
     for i in enumerate(data["boot"]):
-        subprocess.getoutput(i[1])
+        subprocess.Popen(i[1],
+                stderr=-1,
+                stdout=-1,
+                shell=True
+                )
         printMsg(curses.LINES-2,
                 12,
                 "="*(quantity*(i[0]+1)),
+                stdscr
+                )
+        printMsg(i[0]+2,
+                0,
+                i[1],
                 stdscr
                 )
     time.sleep(0.1)
