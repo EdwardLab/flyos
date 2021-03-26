@@ -54,36 +54,30 @@ def main(stdscr):
         pass
     stdscr.clear()
     printMsg(0, 0, "flyos启动中...", stdscr)
-    try:
-        f = open(HOME+"/.flyos/boot.json", "r")
-    except:
-        printMsg(1, 0, "运行flyos配置程序...", stdscr)
-        printMsg(2, 0, "在127.0.0.1:5005配置你的flyos", stdscr)
-        os.system(f"python {FLYOS}/.firstuse/register.py >/dev/null 2>&1")
-        printMsg(3, 0, "配置完成, 请重启你的termux", stdscr)
-        return
-    else:
-        printMsg(1, 0, "运行自启动服务...", stdscr)
+    printMsg(1, 0, "运行自启动服务...", stdscr)
+    printMsg(curses.LINES-2,
+            0,
+            "启动进度: ["+" "*(curses.COLS-12)+"]",
+            stdscr
+            )
+    with open(HOME+"/.flyos/boot.json") as f:
+        data = json.load(f)
+    tasks_len = len(data["boot"])
+    quantity = (curses.COLS-12)//tasks_len
+    for i in enumerate(data["boot"]):
+        subprocess.getoutput(i[1])
         printMsg(curses.LINES-2,
-                0,
-                "启动进度: ["+" "*(curses.COLS-12)+"]",
+                12,
+                "="*(quantity*(i[0]+1)),
                 stdscr
                 )
-        data = json.load(f)
-        f.close()
-        tasks_len = len(data["boot"])
-        quantity = (curses.COLS-12)//tasks_len
-        for i in enumerate(data["boot"]):
-            subprocess.getoutput(i[1])
-            printMsg(curses.LINES-2,
-                    12,
-                    "="*(quantity*(i[0]+1)),
-                    stdscr
-                    )
-        time.sleep(0.1)
-        with open(HOME+"/.flyos/ppid", "w") as f:
-            f.write(str(os.getppid()))
-        curses.endwin()
+    time.sleep(0.1)
+    with open(HOME+"/.flyos/ppid", "w") as f:
+        f.write(str(os.getppid()))
+    curses.endwin()
+
+if not os.path.exists(HOME+"/.flyos/"):
+    os.system(f"python {FLYOS}/.firstuse/register.py")
 
 try:
     with open(HOME+"/.flyos/ppid", "r") as f:
