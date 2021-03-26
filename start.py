@@ -1,20 +1,108 @@
-import sys
-from os.path import exists
-from os import getenv, system
-from getpass import getpass
+import os
+import time
+import json
+import curses
+import subprocess
 
-import termux_auth
+HOME = os.getenv("HOME")
+FLYOS = os.getenv("FLYOS")
 
-FLYOS_ROOT = getenv('FLYOS')
+recovery_mode = 0
 
-if exists(f'{FLYOS_ROOT}/.firstuse/lock'): # 检查是否已经注册
-    while 1:
-        inputpass = getpass("请输入开机密码: ") # 读取输入的密码
+def printMsg(y, x, msg, scr):
+    scr.addstr(y, x, msg)
+    scr.refresh()
+    time.sleep(0.1)
 
-        if termux_auth.auth(inputpass): # 验证密码是否正确
-            system(f"python {FLYOS_ROOT}/console.py")
-            sys.exit()
-        else:
-            print("密码错误")
+def main(stdscr):
+    global recovery_mode
+    curses.halfdelay(30)
+    curses.curs_set(0)
+    front_white = (curses.COLS-17)//2
+    behind_white = curses.COLS-front_white-17
+    stdscr.addstr(0,
+            0,
+            " "*front_white+"flyos启动引导程序"+" "*behind_white,
+            curses.A_REVERSE
+            )
+    printMsg(1,
+            (curses.COLS-19)//2,
+            "将在3秒钟后启动flyos\n",
+            stdscr
+            )
+    printMsg(2,
+            (curses.COLS-19)//2,
+            "按下任意键启动flyos\n",
+            stdscr
+            )
+    printMsg(3,
+            (curses.COLS-19)//2,
+            "按下r键启动恢复模式\n",
+            stdscr
+            )
+    try:
+        key = stdscr.getkey()
+        if key == 'r':
+            stdscr.clear()
+            printMsg(0, 0, "正在启动恢复模式...", stdscr)
+            recovery_mode=1
+            time.sleep(1)
+            curses.endwin()
+            return
+
+    except curses.error:
+        pass
+    stdscr.clear()
+    printMsg(0, 0, "flyos启动中...", stdscr)
+    try:
+        f = open(HOME+"/.flyos/boot.json", "r")
+    except:
+        printMsg(1, 0, "运行flyos配置程序...", stdscr)
+        printMsg(2, 0, "在127.0.0.1:5005配置你的flyos", stdscr)
+        os.system(f"python {FLYOS}/.firstuse/register.py >/dev/null 2>&1")
+        printMsg(3, 0, "配置完成, 请重启你的termux", stdscr)
+        return
+    else:
+        printMsg(1, 0, "运行自启动服务...", stdscr)
+        printMsg(curses.LINES-2,
+                0,
+                "启动进度: ["+" "*(curses.COLS-12)+"]",
+                stdscr
+                )
+        data = json.load(f)
+        f.close()
+        tasks_len = len(data["boot"])
+        quantity = (curses.COLS-12)//tasks_len
+        for i in enumerate(data["boot"]):
+            subprocess.getoutput(i[1])
+            printMsg(curses.LINES-2,
+                    12,
+                    "="*(quantity*(i[0]+1)),
+                    stdscr
+                    )
+        time.sleep(0.1)
+        with open(HOME+"/.flyos/ppid", "w") as f:
+            f.write(str(os.getppid()))
+        curses.endwin()
+
+try:
+    with open(HOME+"/.flyos/ppid", "r") as f:
+        flyos_ppid = f.read(10)
+except:
+    with open(HOME+"/.flyos/ppid", "w") as f:
+        f.write("0")
+        flyos_ppid = 0
+if str(os.getppid()) == flyos_ppid:
+    os.system(f"python {FLYOS}/console.py")
 else:
-    system("python3 $FLYOS/.firstuse/register.py")
+    curses.wrapper(main)
+    if recovery_mode:
+        os.system("clear")
+        os.chdir(HOME)
+        print("这是什么?")
+        print("这是flyos的恢复模式,"
+                "当您的flyos无法正常启动的时候,"
+                "您可以尝试使用此模式恢复")
+        os.system("bash")
+        exit()
+    os.system(f"python {FLYOS}/console.py")

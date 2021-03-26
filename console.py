@@ -6,7 +6,19 @@ import getpass
 import datetime
 import urllib.request
 
-os.system('bash $FLYOS/services.sh')
+import termux_auth
+
+os.system("clear")
+
+while 1:
+    inputpass=getpass.getpass("请输入密码:")
+    if termux_auth.auth(inputpass):
+        break
+    else:
+        print("密码错误")
+
+os.system("clear")
+
 print("_____ _        ___  ____")
 print("|  ___| |_   _ / _ \\/ ___|")
 print("| |_  | | | | | | | \\___ \\.")

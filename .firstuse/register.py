@@ -1,6 +1,7 @@
 #FlyOS Panel By:XingYuJie
 #Use Under License GPL - V3
 import os
+import json
 
 import pywebio.input
 from pywebio.output import put_html, popup, put_text
@@ -10,7 +11,7 @@ from pywebio.session import set_env
 import termux_auth
 
 FLYOS_ROOT = os.getenv('FLYOS')
-
+HOME = os.getenv("HOME")
 #Tips
 print("______________________________________")
 print("欢迎使用FlyOS!")
@@ -28,10 +29,33 @@ def main():
         return
     put_text('初始化完成！请进入termuxAPP开始体验FlyOS吧！')
     termux_auth.change_passwd(password)
-    os.system("touch $FLYOS/.firstuse/lock")
-    os.system("flyos")
+    try:
+        os.mkdir(f"{HOME}/.flyos")
+    except:
+        pass
+    with open(f"{HOME}/.flyos/boot.json", "w") as f:
+        json.dump({
+                "boot":[
+                    "shellinaboxd --disable-ssl --background",
+                    "nohup python $FLYOS/panel/server.py &",
+                    "nohup python $FLYOS/panel/shell.py &",
+                    "apachectl start",
+                    "nohup python $FLYOS/virtualmachine/web.py &",
+                    "nohup nginx &",
+                    "nohup php-fpm &",
+                    "nohup http-server &",
+                    "nohup python $FLYOS/phone/web.py &",
+                    "nohup python $FLYOS/api/web.py &",
+                    "sshd"
+                    ],
+                "login":[
+                    ]
+            
+                },
+                f
+            )
+    os.kill(os.getpid(), 9)
 
 #Server Port 关于服务器的配置信息
 if __name__ == '__main__':
     start_server(main, debug=True, host='127.0.0.1', port=5005)
-    pywebio.session.hold()
