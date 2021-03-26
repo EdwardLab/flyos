@@ -1,12 +1,15 @@
 #作者:邢宇杰 Xingyujie GPL-V3
 #请根据协议发布，严禁违反
 import os
+import json
 import time
 import getpass
 import datetime
 import urllib.request
 
 import termux_auth
+
+HOME = os.getenv("HOME")
 
 os.system("clear")
 
@@ -44,6 +47,14 @@ else:
     print("\n公告:")
     print(res.read().decode('utf-8'), '\n')
     res.close()
+
+print("运行登录自动运行项目")
+with open(HOME+"/.flyos/boot.json") as f:
+    data=json.load(f)
+
+for i in data["login"]:
+    os.system(i)
+print("完成\n")
 
 print("欢迎使用FlyOS开源面板！")
 print("By:XingYuJie Rainbow")
