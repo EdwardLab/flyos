@@ -14,7 +14,25 @@ def printMsg(y, x, msg, scr):
     scr.refresh()
     time.sleep(0.1)
 
+def bsod(stdscr, error):
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
+    stdscr.bkgd(' ', curses.color_pair(1) | curses.A_BOLD)
+    stdscr.clear()
+    stdscr.addstr(0, 0, "flyos启动时出现了一些错误")
+    stdscr.addstr(1, 0, "将会在5秒后重新启动flyos")
+    stdscr.addstr(2, 0, "启动flyos时请不要乱动您的设备")
+    stdscr.addstr(3, 0, "如果此问题重复出现, 请反馈至交流群")
+    stdscr.addstr(4, 0, "你也可以尝试通过恢复模式修复问题")
+    stdscr.addstr(6, 0, f"有关问题的详细信息: {error}")
+    stdscr.refresh()
+    time.sleep(5)
+
 def main(stdscr):
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    stdscr.bkgd(' ', curses.color_pair(1))
+    os.system("clear")
+    print("启动flyos...")
+    time.sleep(1)
     global recovery_mode
     curses.halfdelay(30)
     curses.curs_set(0)
@@ -32,7 +50,7 @@ def main(stdscr):
             )
     printMsg(2,
             (curses.COLS-19)//2,
-            "按下任意键启动flyos\n",
+            "按下回车键启动flyos\n",
             stdscr
             )
     printMsg(3,
@@ -41,14 +59,17 @@ def main(stdscr):
             stdscr
             )
     try:
-        key = stdscr.getkey()
-        if key == 'r':
-            stdscr.clear()
-            printMsg(0, 0, "正在启动恢复模式...", stdscr)
-            recovery_mode=1
-            time.sleep(1)
-            curses.endwin()
-            return
+        while 1:
+            key = stdscr.getkey()
+            if key == 'r':
+                stdscr.clear()
+                printMsg(0, 0, "正在启动恢复模式...", stdscr)
+                recovery_mode=1
+                time.sleep(1)
+                curses.endwin()
+                return
+            elif key == '\n':
+                break
 
     except curses.error:
         pass
@@ -98,14 +119,20 @@ except:
 if str(os.getppid()) == flyos_ppid:
     os.system(f"python {FLYOS}/console.py")
 else:
-    curses.wrapper(main)
-    if recovery_mode:
-        os.system("clear")
-        os.chdir(HOME)
-        print("这是什么?")
-        print("这是flyos的恢复模式,"
-                "当您的flyos无法正常启动的时候,"
-                "您可以尝试使用此模式恢复")
-        os.system("bash")
-        exit()
+    while 1:
+        try:
+            curses.wrapper(main)
+        except Exception as e:
+            curses.wrapper(lambda scr: bsod(scr, e))
+        else:
+            break
+        if recovery_mode:
+            os.system("clear")
+            os.chdir(HOME)
+            print("这是什么?")
+            print("这是flyos的恢复模式,"
+                    "当您的flyos无法正常启动的时候,"
+                    "您可以尝试使用此模式恢复")
+            os.system("bash")
+            exit()
     os.system(f"python {FLYOS}/console.py")
