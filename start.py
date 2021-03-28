@@ -122,17 +122,17 @@ else:
     while 1:
         try:
             curses.wrapper(main)
+            if recovery_mode:
+                os.system("clear")
+                os.chdir(HOME)
+                print("这是什么?")
+                print("这是flyos的恢复模式,"
+                        "当您的flyos无法正常启动的时候,"
+                        "您可以尝试使用此模式恢复")
+                os.system("bash")
+                exit()
         except Exception as e:
             curses.wrapper(lambda scr: bsod(scr, e))
         else:
             break
-        if recovery_mode:
-            os.system("clear")
-            os.chdir(HOME)
-            print("这是什么?")
-            print("这是flyos的恢复模式,"
-                    "当您的flyos无法正常启动的时候,"
-                    "您可以尝试使用此模式恢复")
-            os.system("bash")
-            exit()
     os.system(f"python {FLYOS}/console.py")
