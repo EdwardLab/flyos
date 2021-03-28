@@ -71,6 +71,7 @@ print("FlyOS由Microtech开发")
 print("输入00查看关于")
 print("输入01反馈问题")
 print("输入02更新flyos")
+print("输入03切换更新通道")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -168,7 +169,33 @@ while 1:
         if status:
             print("更新出现问题, 请稍候重试")
         else:
-            print("更新完成")
+            status = os.system('pip install -r requirements.py')
+            if status:
+                print("更新出现问题, 请稍候重试")
+            else:
+                print("更新完成")
         os.chdir(os.getenv('HOME'))
+    elif num == '03':
+        os.chdir(os.getenv('FLYOS'))
+        print("输入1切换到稳定版")
+        print("输入2切换到preview版")
+        print("输入3切换到beta版")
+        print("输入4切换到dev版(不稳定, 更新最快)")
+        print("输入q返回主菜单")
+        while 1:
+            input_ = input(">>> ")
+            if input_ == '1':
+                os.system('git checkout master')
+            elif input_ == '2':
+                os.system('git checkout preview')
+            elif input_ == '3':
+                os.system('git checkout beta')
+            elif input_ == '4':
+                os.system('git checkout dev')
+            elif input_ == 'q':
+                break
+            else:
+                print("无效输入")
+
     else:
         print("请输入选项")
