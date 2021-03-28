@@ -1,7 +1,8 @@
 #FlyOS Panel By:XingYuJie
 #Use Under License GPL - V3
+"""flyos用户注册程序"""
 import os
-import json
+import sqlite3
 
 import pywebio.input
 from pywebio.output import put_html, popup, put_text
@@ -18,6 +19,7 @@ print("欢迎使用FlyOS!")
 print("请使用本机浏览器访问:http://127.0.0.1:5005 来初始化FlyOS")
 #FlyOS 激活main
 def main():
+    """主方法"""
     set_env(title="欢迎使用FlyOS", auto_scroll_bottom=True)
     put_html("<h1>欢迎使用！ -- FlyOS 初始化向导</h1>")
     put_text('欢迎使用FlyOS!开始初始化您的FlyOS吧！')
@@ -31,29 +33,56 @@ def main():
     termux_auth.change_passwd(password)
     try:
         os.mkdir(f"{HOME}/.flyos")
-    except:
+    except FileExistsError:
         pass
-    with open(f"{HOME}/.flyos/boot.json", "w") as f:
-        json.dump({
-                "boot":[
-                    "shellinaboxd --disable-ssl --background",
-                    "nohup python $FLYOS/panel/server.py &",
-                    "nohup python $FLYOS/panel/shell.py &",
-                    "apachectl start",
-                    "nohup python $FLYOS/virtualmachine/web.py &",
-                    "nohup nginx &",
-                    "nohup php-fpm &",
-                    "nohup http-server &",
-                    "nohup python $FLYOS/phone/web.py &",
-                    "nohup python $FLYOS/api/web.py &",
-                    "sshd"
-                    ],
-                "login":[
-                    ]
-            
-                },
-                f
-            )
+    conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
+    cur = conn.cursor()
+    cur.execute('''CREATE TABLE boot (
+        ID INTEGER PRIMARY KEY NOT NULL,
+        command           TEXT    NOT NULL,
+        status            INT     NOT NULL
+        );''')
+    cur.execute('''CREATE TABLE login (
+        ID INTEGER PRIMARY KEY NOT NULL,
+        command           TEXT    NOT NULL,
+        status            INT     NOT NULL
+        );''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "shellinaboxd --disable-ssl --background", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup python $FLYOS/panel/server.py &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup python $FLYOS/panel/shell.py &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "apachectl start", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup python $FLYOS/virtualmachine/web.py &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup nginx &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup php-fpm &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup http-server &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup python $FLYOS/phone/web.py &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "nohup python $FLYOS/api/web.py &", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES (
+        "sshd", 1
+    )''')
+    conn.commit()
+    conn.close()
+
     os.kill(os.getpid(), 9)
 
 #Server Port 关于服务器的配置信息

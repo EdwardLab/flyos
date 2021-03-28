@@ -1,10 +1,12 @@
 #作者:邢宇杰 Xingyujie GPL-V3
 #请根据协议发布，严禁违反
+"""flyos主程序"""
 import os
-import json
 import time
+import sqlite3
 import getpass
 import datetime
+import subprocess
 import urllib.request
 
 import termux_auth
@@ -13,12 +15,12 @@ HOME = os.getenv("HOME")
 
 os.system("clear")
 
-while 1:
+while 1: # 判断输入密码是否正确
     inputpass=getpass.getpass("请输入密码:")
-    if termux_auth.auth(inputpass):
-        break
-    else:
+    if not termux_auth.auth(inputpass):
         print("密码错误")
+    else:
+        break
 
 os.system("clear")
 
@@ -38,22 +40,29 @@ PREFIX='''\n日　期：{}年{}月{}日 时　间：{} \n'''.format(i.year,i.mon
 print(PREFIX)
 print(f"{getpass.getuser()}欢迎使用FlyOS!")
 
-res = ''
+RES = ''
 try:
-    res = urllib.request.urlopen("http://flyosgeek.com/notices.txt")
-except:
+    RES = urllib.request.urlopen("http://flyosgeek.com/notices.txt") # 获取公告
+except urllib.error.URLError:
     print("获取公告失败")
 else:
     print("\n公告:")
-    print(res.read().decode('utf-8'), '\n')
-    res.close()
+    print(RES.read().decode('utf-8'), '\n')
+    RES.close()
 
-print("运行登录自动运行项目")
-with open(HOME+"/.flyos/boot.json") as f:
-    data=json.load(f)
-
-for i in data["login"]:
-    os.system(i)
+print("运行登录自动运行项目") # 获取登录自动启动项
+conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
+cur = conn.cursor()
+data = cur.execute("SELECT * from login;")
+tasks = [x for x in data if x[2] == 1]
+for i in tasks: # 运行自启动项目
+    print(i[1])
+    subprocess.Popen(i[1],
+            stderr=-1,
+            stdout=-1,
+            shell=True
+        )
+conn.close()
 print("完成\n")
 
 print("欢迎使用FlyOS开源面板！")
