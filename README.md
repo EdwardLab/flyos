@@ -17,4 +17,6 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 QQ交流群:[440406148](https://jq.qq.com/?_wv=1027&k=Gd5z9j7v)  
 Telegram交流群:t.me/flyospro(@flyospro)
 # 截图
-![](img/screenshot.jpg)
+![](img/screenshot.jpg)  
+# 捐献
+![](img/donate.jpg)
