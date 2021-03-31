@@ -14,11 +14,7 @@ os.system("clear")
 if not os.path.exists(HOME+"/.flyos/"): # 检测是否已经初始化
     os.system(f"python {FLYOS}/.firstuse/register.py")
 
-print("\x1b[47m "*(WIDTH-17),
-    "flyos启动选项",
-    "\x1b[47m"
-)
-print("\x1b[49m")
+print("flyos启动选项")
 print("1. 启动flyos")
 print("2. 启动恢复模式")
 
