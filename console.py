@@ -197,13 +197,13 @@ while 1:
                 break
             else:
                 print("无效输入")
-        elif num == '04':
-            print("注意:")
-            print("完整更新将会删除所有用户数据")
-            if input("真的要继续吗? [y/N] ") == 'y':
-                os.system("curl flyosgeek.com/gosetup.sh|bash")
-            else:
-                print("取消操作")
+    elif num == '04':
+        print("注意:")
+        print("完整更新将会删除所有用户数据")
+        if input("真的要继续吗? [y/N] ") == 'y':
+            os.system("curl flyosgeek.com/gosetup.sh|bash")
+        else:
+            print("取消操作")
 
     else:
         print("请输入选项")
