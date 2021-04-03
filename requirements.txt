@@ -1,5 +1,6 @@
-pywebio==1.1.0
-termux-auth @ file://./termux_auth/termux_auth-1.0.0.tar.gz
-tornado==6.1
-ua-parser==0.10.0
-user-agents==2.2.0
+pywebio
+#termux-auth @ file://./termux_auth/termux_auth-1.0.0.tar.gz
+tornado
+ua-parser
+user-agents
+func_timeout

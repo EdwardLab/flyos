@@ -21,7 +21,7 @@ print("请使用本机浏览器访问:http://127.0.0.1:5005 来初始化FlyOS")
 #FlyOS 激活main
 def main():
     """主方法"""
-    if not os.path.exists(FLSOS_ROOT+"/.firstuse/lock"):
+    if not os.path.exists(FLYOS_ROOT+"/.firstuse/lock"):
         set_env(title="欢迎使用FlyOS", auto_scroll_bottom=True)
         put_html("<h1>欢迎使用！ -- FlyOS 初始化向导</h1>")
         put_text('欢迎使用FlyOS!开始初始化您的FlyOS吧！')
@@ -89,4 +89,4 @@ def main():
 
 #Server Port 关于服务器的配置信息
 if __name__ == '__main__':
-    start_server(main, debug=True, host='0 0.0.0', port=5005)
+    start_server(main, debug=True, host='0.0.0.0', port=5005)

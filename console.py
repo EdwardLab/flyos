@@ -72,6 +72,7 @@ print("输入00查看关于")
 print("输入01反馈问题")
 print("输入02更新flyos")
 print("输入03切换更新通道")
+print("输入04完整更新")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -169,7 +170,7 @@ while 1:
         if status:
             print("更新出现问题, 请稍候重试")
         else:
-            status = os.system('pip install -r requirements.py')
+            status = os.system('pip install -r requirements.txt')
             if status:
                 print("更新出现问题, 请稍候重试")
             else:
@@ -196,6 +197,13 @@ while 1:
                 break
             else:
                 print("无效输入")
+    elif num == '04':
+        print("注意:")
+        print("完整更新将会删除所有用户数据")
+        if input("真的要继续吗? [y/N] ") == 'y':
+            os.system("curl flyosgeek.com/gosetup.sh|bash")
+        else:
+            print("取消操作")
 
     else:
         print("请输入选项")
