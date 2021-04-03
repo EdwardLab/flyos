@@ -21,7 +21,7 @@ print("请使用本机浏览器访问:http://127.0.0.1:5005 来初始化FlyOS")
 #FlyOS 激活main
 def main():
     """主方法"""
-    if not os.path.exists(FLSOS_ROOT+"/.firstuse/lock"):
+    if not os.path.exists(FLYOS_ROOT+"/.firstuse/lock"):
         set_env(title="欢迎使用FlyOS", auto_scroll_bottom=True)
         put_html("<h1>欢迎使用！ -- FlyOS 初始化向导</h1>")
         put_text('欢迎使用FlyOS!开始初始化您的FlyOS吧！')

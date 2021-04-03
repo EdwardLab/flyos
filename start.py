@@ -4,6 +4,13 @@ import time
 import sqlite3
 import subprocess
 
+try:
+    import func_timeout
+except:
+    os.chdir(os.getenv("FLYOS"))
+    os.system("pip install -r $FLYOS/requirements.txt")
+    os.chdir(os.getenv("HOME"))
+
 HOME = os.getenv("HOME")
 FLYOS = os.getenv("FLYOS")
 WIDTH = os.get_terminal_size().columns
@@ -17,8 +24,18 @@ if not os.path.exists(HOME+"/.flyos/"): # 检测是否已经初始化
 print("flyos启动选项")
 print("1. 启动flyos")
 print("2. 启动恢复模式")
+print("3秒后自动启动flyos")
 
-input_ = input(">>> ")
+@func_timeout.func_set_timeout(3)
+def get_input():
+    """获取用户输入"""
+    return input(">>> ")
+
+try:
+    input_ = get_input()
+except func_timeout.exceptions.FunctionTimedOut:
+    input_ = '1'
+
 
 if input_ == '1':
     os.system('clear')
