@@ -50,9 +50,6 @@ def main():
         status            INT     NOT NULL
         );''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "shellinaboxd --disable-ssl --background", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
         "nohup python $FLYOS/panel/server.py &", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (

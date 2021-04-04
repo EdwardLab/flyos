@@ -23,12 +23,6 @@ def main():
             '请务必提交到邮箱:xingyujie50@gmail.com谢谢！'
             '程序由MicroTech Projects -- FlyOS强力驱动'
         )
-    put_link("本地WEB终端",
-            url='http://127.0.0.1:4200'
-        )
-    put_text('_______________________',
-            sep=' '
-        )
     put_link("VM虚拟机",
             url='http://127.0.0.1:8002'
         )
