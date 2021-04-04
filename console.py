@@ -98,7 +98,7 @@ print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
 print("####FlyOS Panel已经启动，"
         "浏览器访问http://IP:8888，"
-        "WebShell请浏览器访问http://IP:4200，"
+        "web终端请访问http://IP:7681，"
         "WEB虚拟机请访问http://IP:8002，"
         "Apache服务请访问http://IP:8080，"
         "Nginx在http://IP:8088，"
