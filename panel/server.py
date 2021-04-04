@@ -56,6 +56,9 @@ def main():
     put_link("FlyOS RunShell Tool",
             url='http://127.0.0.1:8887'
         )
+    put_text('_______________________',
+            sep=' '
+        )
     put_link("jupyter notebook",
             url='http://127.0.0.1:2000'
         )
