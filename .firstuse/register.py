@@ -82,6 +82,9 @@ def main():
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "sshd", 1
     )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES(
+        "jupyter notebook --ip='0.0.0.0' --port=2000 --NotebookApp.token='' --no-browser", 1
+    )''')
     conn.commit()
     conn.close()
 

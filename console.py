@@ -105,7 +105,8 @@ print("####FlyOS Panel已经启动，"
         "Nginx在http://IP:8088，"
         "HTTP文件管理器在http://IP:8081，"
         "FlyOS AM调用在http://IP:5000，"
-        "Termux:API调用在http://IP:5002。"
+        "Termux:API调用在http://IP:5002，"
+        "jupyter notebook在http://IP:2000。"
         "注意，本地访问请浏览器访问http://127.0.0.1:端口号####")
 while 1:
     num = input("请输入要启动的编号，例如:1 :")
@@ -161,7 +162,7 @@ while 1:
     elif num == '0':
         os.system('zsh')
     elif num == '00':
-        print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com\n当前版本:bilndv2.7")
+        print("关于:\n开发者创始人:Rainbow邢宇杰\n邮箱:xingyujie50@gmail.com")
     elif num == '01':
         print("有BUG请反馈到:xingyujie50@gmail.com")
     elif num == '02':
