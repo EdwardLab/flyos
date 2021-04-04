@@ -28,17 +28,26 @@ def main():
     ])
 
     def create():
-        cpu = pywebio.input.select(options=[
-            ('Intel 32', 'i386'),
-            ('AMD 64', 'x86_64'),
-            ('ARM 32', 'arm'),
-            ('ARM 64', 'aarch64')
+        command = pywebio.input.select(label='请选择qemu的命令', options=[
+            ('qemu-system-i386 （x86）', 'qemu-system-i386 '),
+            ('qemu-system-x86_64 （amd64）', 'qemu-system-x86_64 '),
+            ('qemu-system-arm （arm32）', 'qemu-system-arm'),
+            ('qemu-system-aarch64 （arm64）', 'qemu-system-aarch64 ')
         ])
         cdrom = pywebio.input.input("安装光盘路径，没有留空:")
         fd = pywebio.input.input("安装软盘路径，没有留空:")
-        path = pywebio.input.input("请输入虚拟机磁盘镜像1完整绝对路径:")
-        pp = pywebio.input.input("请输入磁盘二绝对路径，没有留空:")
-        ppp = pywebio.input.input("请输入磁盘三绝对路径，没有留空:")
+        disk_num = pywebio.input.input('请输入虚拟磁盘的个数', type=pywebio.input.NUMBER)
+        disks = ''
+        for i in range(disk_num):
+            info_group = pywebio.input.input_group('虚拟磁盘{}信息'.format(i), [
+                pywebio.input.input("虚拟机磁盘镜像的绝对路径", name='disk_path'), pywebio.input.select('虚拟磁盘镜像格式', [('RAW(IMG, ISO)', 'raw'), ('QCOW', 'qcow'), ('VHD（Windows）', 'vhd')], name='disk_format')])
+            if not info_group['disk_path']:
+                popup("磁盘路径为空！")
+                pass
+            else:
+                disks += ' -drive file={},if=virtio,format={},id=drive-virtio-disk{} '.format(
+                    info_group['disk_path'], info_group['disk_format'], i)
+
         memory = pywebio.input.input(
             "请输入虚拟机内存(不建议太大),Windows 95/98建议512以下，NT/XP建议768，Windows7/8建议1G左右 :"
         )
@@ -47,15 +56,8 @@ def main():
         vga = pywebio.input.input("显卡型号，NT系建议vmware，Windowz95/98建议cirrus:")
         extra = pywebio.input.input("额外参数，没有留空:")
         uefi = pywebio.input.radio(label='是否使用UEFI引导', options=[
-                                   ('是', ' --boot uefi '), ('否', '')])
-        popup("确认配置: "
-              f"架构:{cpu}"
-              f"路径:{path};{pp};{ppp}"
-              f"内存:{memory}"
-              f"网络:{network}"
-              f"显卡型号:{vga}"
-              f"VNC端口号:{vnc}"
-              f"额外参数{extra}")
+                                   ('是', ' --boot uefi ', True), ('否', '')])
+
         if not fd:
             fd = ""
         else:
@@ -64,26 +66,10 @@ def main():
             cdrom = ""
         else:
             cdrom = " -cdrom " + cdrom
-        if not pp:
-            pp = ""
-        else:
-            pp = " -hdb " + pp
-        if not ppp:
-            ppp = ""
-        else:
-            ppp = " -hdc " + ppp
         if not extra:
             extra = ""
         else:
             extra = " " + extra
-        if not path:
-            popup("正准备启动测试用镜像")
-            path = ""
-            fd = " -fda test.img"
-        else:
-            path = " -hda " + path
-        if not cpu:
-            cpu = "i386"
         if not network:
             network = "rtl8139"
         if not memory:
@@ -92,15 +78,17 @@ def main():
             vga = "vmware"
         if not vnc:
             vnc = "0"
-        cpu = "qemu-system-" + cpu
         memory = " -m " + memory
         network = " -net user -net nic,model=" + network
         vga = " -vga " + vga
         vnc = " -vnc :" + vnc
-        q = (cpu + uefi + fd + cdrom + path + pp +
-             ppp + memory + network + vga + vnc + extra)
+        q = (command + uefi + fd + cdrom + disks +
+             memory + network + vga + vnc + extra)
+        popup("确认配置: "
+              "要执行的命令"
+              f"{q}")
         return q
-
+# qemu-system-i386 -m 1024M -net user -net nic,model=e1000 -cpu max,level=0xd,vendor=GenuineIntel -machine accel=kvm:tcg,usb=on -device usb-tablet -smp 8,cores=4,threads=1,sockets=2 -device intel-hda -vnc :0 -device vmware-svga,vgamem_mb=512 -device virtio-gpu-pci -soundhw ac97
     if num == 1:
         nw = pywebio.input.radio(options=[("新建临时", '1'), ("运行已保存的配置文件", '2')])
         if nw == '1':
