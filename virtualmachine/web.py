@@ -15,8 +15,9 @@ print("启动中")
 
 
 class Main:
-    __path = os.path.abspath(os.getenv('FlyOS') + '/virtualmachine')
     """FlyOS WEB Panel main"""
+    __path = os.path.abspath(str(os.getenv('FLYOS')) + '/virtualmachine')
+
     def __init__(self):
         set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
         put_html("<h1>FlyOS WEB Virtual Machine</h1>")
@@ -104,8 +105,7 @@ class Main:
             name = pywebio.input.input("虚拟机名称:")
             os.environ["qemu"] = str(qemu)
             os.environ["vm"] = str(name)
-            save = "echo $qemu; echo $vm; echo $qemu > {}/vms/${vm}.conf ".format(
-                self.__path)
+            save = "echo $qemu; echo $vm; echo $qemu > %s/vms/${vm}.conf " % self.__path
             self.__get_result(save)
 
     @staticmethod
