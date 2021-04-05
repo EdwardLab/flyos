@@ -112,7 +112,7 @@ class Main():
         cdroms = ""
         for i in range(cdrom_num):
             cdrom_info = dict(
-                pywebio.input.input_group("光盘{}信息".format(i), [
+                pywebio.input.input_group("光盘{}信息".format(i + 1), [
                     pywebio.input.input("虚拟机光盘镜像的绝对路径", name="cdrom_path"),
                 ]))
             try:
@@ -134,7 +134,7 @@ class Main():
         for i in range(disk_num):
             disk_info = dict(
                 pywebio.input.input_group(
-                    "虚拟磁盘{}信息".format(i),
+                    "虚拟磁盘{}信息".format(i + 1),
                     [
                         pywebio.input.input("虚拟机磁盘镜像的绝对路径", name="disk_path"),
                         pywebio.input.select(
@@ -159,6 +159,7 @@ class Main():
                     )
             except KeyError:
                 popup("输入出错！")
+        return disks
 
     def __create(self):
         command = pywebio.input.select(
@@ -171,7 +172,7 @@ class Main():
             ],
         )
         cdrom = self.__get_cdrom()
-        disks = self.__get_disk()
+        disk = self.__get_disk()
 
         memory = pywebio.input.input(
             "请输入虚拟机内存(不建议太大),Windows 95/98建议512以下，NT/XP建议768，Windows7/8建议1G左右 :"
@@ -180,18 +181,6 @@ class Main():
         vnc = pywebio.input.input("输入VNC端口号(建议0):")
         vga = pywebio.input.input("显卡型号，NT系建议vmware，Windowz95/98建议cirrus:")
         extra = pywebio.input.input("额外参数，没有留空:")
-
-        # 判断软盘路径是否为空，否则添加软盘参数
-        if not fd_path:
-            fd_path = ""
-        else:
-            fd_path = " -fda " + fd_path
-
-        # 判断光盘路径是否为空，否则添加光盘参数
-        if not cdrom:
-            cdrom = ""
-        else:
-            cdrom = " -cdrom " + cdrom
 
         # 判断是否有额外参数，否则添加
         if not extra:
@@ -219,8 +208,8 @@ class Main():
         network = " -net user -net nic,model=" + network
         vga = " -vga " + vga
         vnc = " -vnc :" + vnc
-        result = (command + fd_path + cdrom + disks + memory + network + vga +
-                  vnc + extra)
+        result = (command + cdrom + disk + memory + network + vga + vnc +
+                  extra)
         popup("确认配置: " "要执行的命令" f"{result}")
         print(result)
         return result
