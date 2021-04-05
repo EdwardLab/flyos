@@ -16,9 +16,13 @@ print("启动中")
 
 class Main:
     """FlyOS WEB Panel main"""
-    __path = os.path.abspath(str(os.getenv('FLYOS')) + '/virtualmachine')
-
     def __init__(self):
+        env = os.getenv('FLYOS')
+        if env is None:
+            env = '.'
+        self.__path = os.path.abspath(env + '/virtualmachine')
+        if not os.path.exists(os.path.abspath(self.__path + "/vms")):
+            os.mkdir(os.path.abspath(self.__path + "/vms"))
         set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
         put_html("<h1>FlyOS WEB Virtual Machine</h1>")
         put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
@@ -36,6 +40,7 @@ class Main:
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE,
                                shell=True)
+        popup("恭喜，命令成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
         while True:
             text = cmd.stdout.readline().decode() + cmd.stderr.readline(
             ).decode()
@@ -216,6 +221,7 @@ class Main:
                   extra)
         popup("确认配置: " "要执行的命令" f"{result}")
         print(result)
+
         return result
 
 
