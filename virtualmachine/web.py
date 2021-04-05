@@ -14,7 +14,8 @@ print("FlyOS Virtual Machine")
 print("启动中")
 
 
-class Main():
+class Main:
+    __path = os.path.abspath(os.getenv('FlyOS') + '/virtualmachine')
     """FlyOS WEB Panel main"""
     def __init__(self):
         set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
@@ -57,12 +58,12 @@ class Main():
                 self.__get_result(qemu)
             elif run_type == "2":
                 options = []
-                dirs = os.listdir("vms")
+                dirs = os.listdir("{}/vms".format(self.__path))
                 for path in dirs:
                     options.append((path[:5], path[:5]))
                 conf = pywebio.input.select("选择创建的虚拟机名称", options=options)
                 os.environ["conf"] = str(conf)
-                run = "bash vms/$conf.conf"
+                run = "bash {}/vms/$conf.conf".format(self.__path)
                 self.__get_result(run)
         elif num == 2:
             print(
@@ -79,7 +80,8 @@ class Main():
 
                 os.environ["w"] = str(template_type)
                 sh_name = "Windows"
-                self.__get_result("sh templates/" + sh_name + ".sh")
+                self.__get_result("sh {}/templates/".format(self.__path) +
+                                  sh_name + ".sh")
                 # cd $FLYOS/virtualmachine && sh 2.sh
             elif template_num == "2":
                 template_type = pywebio.input.radio(
@@ -94,14 +96,16 @@ class Main():
                                                                      "2")])
                 sh_name = "4"
                 os.environ["h"] = str(archi)
-                self.__get_result("sh templates/" + sh_name + ".sh")
+                self.__get_result("sh {}/templates/".format(self.__path) +
+                                  sh_name + ".sh")
 
         elif num == 3:
             qemu = self.__create()
             name = pywebio.input.input("虚拟机名称:")
             os.environ["qemu"] = str(qemu)
             os.environ["vm"] = str(name)
-            save = "echo $qemu;echo $vm ;echo $qemu > ${vm}.conf "
+            save = "echo $qemu; echo $vm; echo $qemu > {}/vms/${vm}.conf ".format(
+                self.__path)
             self.__get_result(save)
 
     @staticmethod
