@@ -9,25 +9,27 @@ from pywebio.output import popup, put_text, put_html
 from pywebio import start_server
 from pywebio.session import set_env
 
-print("_____________________")
+print("___________________")
 print("FlyOS Virtual Machine")
-print("启动中……")
+print("启动中")
 
 
-def main():
+class Main():
     """FlyOS WEB Panel main"""
-    set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
-    put_html("<h1>FlyOS WEB Virtual Machine</h1>")
-    put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
-    popup(
-        "欢迎使用FlyOS FlyOS Virtual Machine！",
-        "欢迎使用FlyOS Virtual Machine。"
-        "开始创建您的虚拟机吧！"
-        "程序由MicroTech Projects -- FlyOS强力驱动",
-    )
-    run()
+    def __init__(self):
+        set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
+        put_html("<h1>FlyOS WEB Virtual Machine</h1>")
+        put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
+        popup(
+            "欢迎使用FlyOS FlyOS Virtual Machine！",
+            "欢迎使用FlyOS Virtual Machine。"
+            "开始创建您的虚拟机吧！"
+            "程序由MicroTech Projects -- FlyOS强力驱动",
+        )
+        self.__run()
 
-    def get_result(cmd):
+    @staticmethod
+    def __get_result(cmd):
         cmd = subprocess.Popen(cmd,
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE,
@@ -40,7 +42,7 @@ def main():
             if cmd.poll() == 0 or cmd.poll() == 5:
                 break
 
-    def run():
+    def __run(self):
         num = pywebio.input.select(options=[
             ("运行虚拟机", 1, True),
             ("运行模板", 2, False),
@@ -51,8 +53,8 @@ def main():
                                                      "1"), ("运行已保存的配置文件",
                                                             "2")])
             if run_type == "1":
-                qemu = create()
-                get_result(qemu)
+                qemu = self.__create()
+                self.__get_result(qemu)
             elif run_type == "2":
                 options = []
                 dirs = os.listdir("vms")
@@ -61,7 +63,7 @@ def main():
                 conf = pywebio.input.select("选择创建的虚拟机名称", options=options)
                 os.environ["conf"] = str(conf)
                 run = "bash vms/$conf.conf"
-                get_result(run)
+                self.__get_result(run)
         elif num == 2:
             print(
                 "模板VNC端口都为:5900，没有图形将从串口输出，内存分配视Guest机系统而定，请确保有500MB左右的剩余储存空间")
@@ -77,7 +79,7 @@ def main():
 
                 os.environ["w"] = str(template_type)
                 sh_name = "Windows"
-                get_result("sh templates/" + sh_name + ".sh")
+                self.__get_result("sh templates/" + sh_name + ".sh")
                 # cd $FLYOS/virtualmachine && sh 2.sh
             elif template_num == "2":
                 template_type = pywebio.input.radio(
@@ -85,26 +87,28 @@ def main():
                                                   "2"), ("Solaris2.4", "3")])
                 os.environ["sp"] = str(template_type)
                 sh_name = "3"
-                get_result("sh templates/" + sh_name + ".sh")
+                self.__get_result("sh templates/" + sh_name + ".sh")
 
             elif template_num == "3":
                 archi = pywebio.input.radio(options=[("i386", "1"), ("arm",
                                                                      "2")])
                 sh_name = "4"
                 os.environ["h"] = str(archi)
-                get_result("sh templates/" + sh_name + ".sh")
+                self.__get_result("sh templates/" + sh_name + ".sh")
 
         elif num == 3:
-            qemu = create()
+            qemu = self.__create()
             name = pywebio.input.input("虚拟机名称:")
             os.environ["qemu"] = str(qemu)
             os.environ["vm"] = str(name)
             save = "echo $qemu;echo $vm ;echo $qemu > ${vm}.conf "
-            get_result(save)
+            self.__get_result(save)
 
-    def get_cdrom():
-        cdrom_num = pywebio.input.input("请输入虚拟磁盘的个数",
-                                        type=pywebio.input.NUMBER)
+    @staticmethod
+    def __get_cdrom():
+        cdrom_num = pywebio.input.input("请输入虚拟光盘的个数",
+                                        type=pywebio.input.NUMBER,
+                                        value=1)
         cdroms = ""
         for i in range(cdrom_num):
             cdrom_info = dict(
@@ -121,8 +125,11 @@ def main():
                 popup("输入出错！")
         return cdroms
 
-    def get_disk():
-        disk_num = pywebio.input.input("请输入虚拟磁盘的个数", type=pywebio.input.NUMBER)
+    @staticmethod
+    def __get_disk():
+        disk_num = pywebio.input.input("请输入虚拟磁盘的个数",
+                                       type=pywebio.input.NUMBER,
+                                       value=1)
         disks = ""
         for i in range(disk_num):
             disk_info = dict(
@@ -152,9 +159,8 @@ def main():
                     )
             except KeyError:
                 popup("输入出错！")
-        return disks
 
-    def create():
+    def __create(self):
         command = pywebio.input.select(
             label="请选择qemu的命令",
             options=[
@@ -164,8 +170,8 @@ def main():
                 ("qemu-system-aarch64 （arm64）", "qemu-system-aarch64 "),
             ],
         )
-        cdrom = get_cdrom()
-        disks = get_disk()
+        cdrom = self.__get_cdrom()
+        disks = self.__get_disk()
 
         memory = pywebio.input.input(
             "请输入虚拟机内存(不建议太大),Windows 95/98建议512以下，NT/XP建议768，Windows7/8建议1G左右 :"
@@ -221,6 +227,6 @@ def main():
 
 
 # Server Port 关于服务器的配置信息
-if __name__ == "main":
-    start_server(main, debug=True, host="0.0.0.0", port=8002)
+if __name__ == "__main__":
+    start_server(Main, debug=True, host="0.0.0.0", port=8002)
     pywebio.session.hold()
