@@ -50,34 +50,34 @@ def main():
         status            INT     NOT NULL
         );''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "shellinaboxd --disable-ssl --background", 1
+        "ttyd pwlogin", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/panel/server.py &", 1
+        "python $FLYOS/panel/server.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/panel/shell.py &", 1
+        "python $FLYOS/panel/shell.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "apachectl start", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/virtualmachine/web.py &", 1
+        "python $FLYOS/virtualmachine/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup nginx &", 1
+        "nginx", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup php-fpm &", 1
+        "php-fpm", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup http-server &", 1
+        "http-server", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/phone/web.py &", 1
+        "python $FLYOS/phone/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/api/web.py &", 1
+        "python $FLYOS/api/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "sshd", 1
