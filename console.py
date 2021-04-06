@@ -69,7 +69,7 @@ print("By:XingYuJie Rainbow")
 print("FlyOS由Microtech开发")
 print("输入00查看关于")
 print("输入01反馈问题")
-print("输入02更新flyos")
+print("输入02快速更新")
 print("输入03切换更新通道")
 print("输入04完整更新")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
@@ -165,17 +165,17 @@ while 1:
     elif num == '01':
         print("有BUG请反馈到:xingyujie50@gmail.com")
     elif num == '02':
-        os.chdir(os.getenv('FLYOS'))
-        status = os.system('git pull')
-        if status:
-            print("更新出现问题, 请稍候重试")
+        print("将会进行快速更新")
+        print("快速更新有可能会出现问题，但不会删除用户数据")
+        input_ = input("继续吗 [y/N] ")
+        if input_ == 'y':
+            os.chdir(os.getenv('FLYOS'))
+            os.system('git pull')
+            os.system('pip install -r requirements.txt')
+            os.chdir(os.getenv('HOME'))
+            print("完成")
         else:
-            status = os.system('pip install -r requirements.txt')
-            if status:
-                print("更新出现问题, 请稍候重试")
-            else:
-                print("更新完成")
-        os.chdir(os.getenv('HOME'))
+            print("取消")
     elif num == '03':
         os.chdir(os.getenv('FLYOS'))
         print("输入1切换到稳定版")
