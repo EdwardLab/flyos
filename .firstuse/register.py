@@ -56,9 +56,6 @@ def main():
         "python $FLYOS/panel/server.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "python $FLYOS/panel/shell.py", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
         "apachectl start", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
