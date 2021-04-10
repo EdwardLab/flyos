@@ -85,6 +85,9 @@ def main():
     cur.execute('''INSERT INTO boot (command, status) VALUES(
         "termux-wake-lock", 1
     )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES(
+        "code-server --bind-addr 0.0.0.0:2001", 1
+    )''')
     conn.commit()
     conn.close()
 
