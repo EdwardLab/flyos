@@ -108,7 +108,7 @@ class Main:
         command = pywebio.input.radio('请选择要用的命令',
                                       [('proot(无root下使用)', 'proot ', True),
                                        ('chroot(有root建议使用)', 'chroot ')])
-        arch = subprocess.getoutput(['dpkg', '--print-architecture'])
+        arch = subprocess.getoutput('dpkg --print-architecture')
         if arch in ('aarch64', 'armel'):
             arch = 'arm64'
         elif arch in ('x86_64', 'x64', 'amd64'):
