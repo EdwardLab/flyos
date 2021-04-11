@@ -136,5 +136,5 @@ class Main:
 
 # Server Port 关于服务器的配置信息
 if __name__ == "__main__":
-    start_server(Main, debug=True, host="0.0.0.0", port=8002)
+    start_server(Main, debug=True, host="0.0.0.0", port=2002)
     pywebio.session.hold()
