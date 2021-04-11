@@ -59,7 +59,7 @@ if input_ == '1':
         data = cur.execute("SELECT * FROM boot WHERE status==1;")
         for i in data: # 运行开机自启动服务
             print(i[1])
-            subprocess.Popen(i[1],
+            subprocess.Popen(i[1].split(),
                     stderr=-1,
                     stdout=-1,
                     shell=True
