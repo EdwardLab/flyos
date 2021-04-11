@@ -4,6 +4,7 @@ Use Under License GPL - V3
 """
 import os
 import subprocess
+import asyncio
 import pywebio.input
 from pywebio.output import popup, put_text, put_html
 from pywebio import start_server
@@ -25,7 +26,7 @@ class Main:
             os.mkdir(os.path.abspath(self.__path + "/vms"))
         set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
         put_html("<h1>FlyOS WEB Virtual Machine</h1>")
-        put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
+        put_text("FlyOS Virtual Machine By:XingYuJie & nullptr", sep=" ")
         popup(
             "欢迎使用FlyOS FlyOS Virtual Machine！",
             "欢迎使用FlyOS Virtual Machine。"
@@ -35,18 +36,21 @@ class Main:
         self.__run()
 
     @staticmethod
-    def __get_result(cmd):
-        cmd = subprocess.Popen(cmd,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               shell=True)
-        popup("恭喜，命令成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
+    async def get_result(cmd):
+        """
+        params:
+            cmd - 要执行的命令
+        """
+        popen = subprocess.Popen(cmd,
+                                 shell=True,
+                                 stdout=subprocess.PIPE,
+                                 stderr=subprocess.STDOUT,
+                                 text=True)
         while True:
-            text = cmd.stdout.readline().decode() + cmd.stderr.readline(
-            ).decode()
-            if text != "":
-                put_text(text)
-            if cmd.poll() == 0 or cmd.poll() == 5:
+            buff = popen.stdout.readline()
+            if buff:
+                put_text(buff)
+            elif popen.poll() is not None:
                 break
 
     def __run(self):
@@ -60,8 +64,11 @@ class Main:
                                                      "1"), ("运行已保存的配置文件",
                                                             "2")])
             if run_type == "1":
-                qemu = self.__create()
-                self.__get_result(qemu)
+                qemu = self.create()
+                asyncio.run(self.get_result(qemu))
+                popup(
+                    "恭喜，虚拟机成功创建，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可"
+                )
             elif run_type == "2":
                 options = []
                 dirs = os.listdir("{}/vms".format(self.__path))
@@ -70,7 +77,10 @@ class Main:
                 conf = pywebio.input.select("选择创建的虚拟机名称", options=options)
                 os.environ["conf"] = str(conf)
                 run = "bash {}/vms/$conf.conf".format(self.__path)
-                self.__get_result(run)
+                asyncio.run(self.get_result(run))
+                popup(
+                    "恭喜，虚拟机成功创建，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可"
+                )
         elif num == 2:
             print(
                 "模板VNC端口都为:5900，没有图形将从串口输出，内存分配视Guest机系统而定，请确保有500MB左右的剩余储存空间")
@@ -86,32 +96,41 @@ class Main:
 
                 os.environ["w"] = str(template_type)
                 sh_name = "Windows"
-                self.__get_result("sh {}/templates/".format(self.__path) +
-                                  sh_name + ".sh")
+                asyncio.run(
+                    self.get_result("sh {}/templates/".format(self.__path) +
+                                    sh_name + ".sh"))
                 # cd $FLYOS/virtualmachine && sh 2.sh
+                popup(
+                    "恭喜，模板成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
             elif template_num == "2":
                 template_type = pywebio.input.radio(
                     options=[("SunOS4.13", "1"), ("SunOS4.14",
                                                   "2"), ("Solaris2.4", "3")])
                 os.environ["sp"] = str(template_type)
                 sh_name = "3"
-                self.__get_result("sh templates/" + sh_name + ".sh")
+                asyncio.run(self.get_result("sh templates/" + sh_name + ".sh"))
+                popup(
+                    "恭喜，模板成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
 
             elif template_num == "3":
                 archi = pywebio.input.radio(options=[("i386", "1"), ("arm",
                                                                      "2")])
                 sh_name = "4"
                 os.environ["h"] = str(archi)
-                self.__get_result("sh {}/templates/".format(self.__path) +
-                                  sh_name + ".sh")
+                asyncio.run(
+                    self.get_result("sh {}/templates/".format(self.__path) +
+                                    sh_name + ".sh"))
+                popup(
+                    "恭喜，模板成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
 
         elif num == 3:
-            qemu = self.__create()
+            qemu = self.create()
             name = pywebio.input.input("虚拟机名称:")
             os.environ["qemu"] = str(qemu)
             os.environ["vm"] = str(name)
             save = "echo $qemu; echo $vm; echo $qemu > %s/vms/${vm}.conf " % self.__path
-            self.__get_result(save)
+            asyncio.run(self.get_result(save))
+            popup("恭喜，虚拟机成功保存，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
 
     @staticmethod
     def __get_cdrom():
@@ -170,7 +189,10 @@ class Main:
                 popup("输入出错！")
         return disks
 
-    def __create(self):
+    def create(self):
+        """
+        创建虚拟机函数，返回虚拟机运行命令
+        """
         command = pywebio.input.select(
             label="请选择qemu的命令",
             options=[
