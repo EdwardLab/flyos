@@ -59,7 +59,7 @@ class Main:
                                    options=[
                                        ("Ubuntu", 1, True),
                                        ("CentOS", 2),
-                                       ("Arch", 3),
+                                       ("Kali", 3),
                                    ])
         if num == 1:
             asyncio.run(self.get_ubuntu())
@@ -67,7 +67,7 @@ class Main:
             asyncio.run(self.get_centos())
 
         elif num == 3:
-            self.get_arch()
+            self.get_kali()
 
     async def get_ubuntu(self):
         """获取ubuntu rootfs并写入运行文件"""
@@ -130,8 +130,33 @@ class Main:
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
                 cmd=(command + 'rootfs/{}'.format(name)), name=name))
 
-    def get_arch(self):
+    def get_kali(self):
         """获取arch rootfs并写入运行文件"""
+        name = pywebio.input.input('请输入该系统的名字')
+        command = pywebio.input.radio('请选择要用的命令',
+                                      [('proot(无root下使用)', 'proot ', True),
+                                       ('chroot(有root建议使用)', 'chroot ')])
+        arch = subprocess.getoutput('dpkg --print-architecture')
+        if arch in ('aarch64', 'armel'):
+            arch = 'arm64'
+        elif arch in ('x86_64', 'x64', 'amd64'):
+            arch = 'amd64'
+        elif arch in ('x86', 'i386'):
+            arch = 'i386'
+        rootfs_url = (
+            "https://gitee.com/xingyujie_pro/Anlinux-Resources/tree/master/Rootfs/"
+            "Kali/{arch}/kali-rootfs-{arch}.tar.xz").format(arch=arch)
+        popup('正在下载rootfs……')
+        await self.get_result('wget {} -O rootfs/{}.tar.xz'.format(
+            rootfs_url, name))
+        popup('正在解压rootfs……')
+        await self.get_result('tar xJvf rootfs/{}.tar.xz'.format(name))
+        popup('正在清理……')
+        await self.get_result('rm -f rootfs/{}.tar.xz'.format(name))
+        popup('正在创建配置……')
+        await self.get_result(
+            'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
+                cmd=(command + 'rootfs/{}'.format(name)), name=name))
 
 
 # Server Port 关于服务器的配置信息
