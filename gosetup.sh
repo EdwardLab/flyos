@@ -5,7 +5,7 @@ echo "[*] 安装依赖"
 pkg install wget -y
 echo "[*] 下载文件"
 rm -rf $PREFIX/tmp/flyos.tar.gz
-wget --show-progress -q "https://xingyujie-my.sharepoint.com/:u:/g/personal/xingyujie_xingyujie_onmicrosoft_com/EfqCU1iWEBtBloitHDxCTKcBYiMJ9bEiDVeAzEi6wPLSVA?e=nT1sa8&download=1" -O $PREFIX/tmp/flyos.tar.gz
+wget --show-progress -q "https://xingyujie-my.sharepoint.com/:u:/g/personal/xingyujie_xingyujie_onmicrosoft_com/EfqCU1iWEBtBloitHDxCTKcBYiMJ9bEiDVeAzEi6wPLSVA?e=2bwcBl&download=1" -O $PREFIX/tmp/flyos.tar.gz
 echo "[*] 解压文件"
 cd $PREFIX/../
 tar -zxvf $PREFIX/tmp/flyos.tar.gz --recursive-unlink --preserve-permissions
