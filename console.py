@@ -9,6 +9,8 @@ import datetime
 import subprocess
 import urllib.request
 
+import requests
+
 import termux_auth
 
 HOME = os.getenv("HOME")
@@ -72,6 +74,7 @@ print("输入01反馈问题")
 print("输入02快速更新")
 print("输入03切换更新通道")
 print("输入04完整更新")
+print("输入05重置启动项")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -204,6 +207,11 @@ while 1:
             os.system("curl flyosgeek.com/gosetup.sh|bash")
         else:
             print("取消操作")
-
+    elif num == '05':
+        print("将会重置您的启动项")
+        if input("继续吗[y/N] ") == 'y':
+            res = requests.get("http://api.flyosgeek.com/service.db")
+            with open(f"{HOME}/.flyos/service.db", "wb") as f:
+                f.write(res.content)
     else:
         print("请输入选项")
