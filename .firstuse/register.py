@@ -52,14 +52,14 @@ def main():
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "ttyd pwlogin", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "python $FLYOS/panel/server.py", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/panel/server.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "apachectl start", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "python $FLYOS/virtualmachine/web.py", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/virtualmachine/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "nginx", 1
@@ -70,11 +70,11 @@ def main():
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "http-server", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "python $FLYOS/phone/web.py", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/phone/web.py", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "python $FLYOS/api/web.py", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/api/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "sshd", 1
