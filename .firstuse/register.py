@@ -50,37 +50,43 @@ def main():
         status            INT     NOT NULL
         );''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "shellinaboxd --disable-ssl --background", 1
+        "ttyd pwlogin", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/panel/server.py &", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/panel/shell.py &", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/panel/server.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "apachectl start", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/virtualmachine/web.py &", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/virtualmachine/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup nginx &", 1
+        "nginx", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup php-fpm &", 1
+        "php-fpm", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup http-server &", 1
+        "http-server", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/phone/web.py &", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/phone/web.py", 1
     )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nohup python $FLYOS/api/web.py &", 1
+    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
+        "python {FLYOS}/api/web.py", 1
     )''')
     cur.execute('''INSERT INTO boot (command, status) VALUES (
         "sshd", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES(
+        "jupyter notebook --ip='0.0.0.0' --port=2000 --NotebookApp.token='' --no-browser", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES(
+        "termux-wake-lock", 1
+    )''')
+    cur.execute('''INSERT INTO boot (command, status) VALUES(
+        "code-server --bind-addr 0.0.0.0:2001", 1
     )''')
     conn.commit()
     conn.close()

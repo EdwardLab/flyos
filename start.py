@@ -56,11 +56,10 @@ if input_ == '1':
         print("运行自启动服务...")
         conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
         cur = conn.cursor()
-        data = cur.execute("SELECT * from boot;")
-        tasks = [x for x in data if x[2] == 1]
-        for i in tasks: # 运行开机自启动服务
+        data = cur.execute("SELECT * FROM boot WHERE status==1;")
+        for i in data: # 运行开机自启动服务
             print(i[1])
-            subprocess.Popen(i[1],
+            subprocess.Popen(i[1].split(),
                     stderr=-1,
                     stdout=-1,
                     shell=True
