@@ -4,3 +4,4 @@ tornado
 ua-parser
 user-agents
 func_timeout
+requests
