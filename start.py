@@ -2,6 +2,7 @@
 import os
 import time
 import sqlite3
+import threading
 import subprocess
 
 try:
@@ -59,11 +60,10 @@ if input_ == '1':
         data = cur.execute("SELECT * FROM boot WHERE status==1;")
         for i in data: # 运行开机自启动服务
             print(i[1])
-            subprocess.Popen(i[1].split(),
-                    stderr=-1,
-                    stdout=-1,
-                    shell=True
-                )
+            threading.Thread(target=lambda:subprocess.Popen(i[1],
+                stderr=-1,
+                stdout=-1,
+                shell=True)).start()
             time.sleep(0.1)
         conn.close()
         os.system(f"python {FLYOS}/console.py")
