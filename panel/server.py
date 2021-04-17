@@ -23,8 +23,8 @@ def main():
             '请务必提交到邮箱:xingyujie50@gmail.com谢谢！'
             '程序由MicroTech Projects -- FlyOS强力驱动'
         )
-    put_link("本地WEB终端",
-            url='http://127.0.0.1:4200'
+    put_link("web终端",
+            url='http://127.0.0.1:7681'
         )
     put_text('_______________________',
             sep=' '
@@ -53,8 +53,8 @@ def main():
     put_text('_______________________',
             sep=' '
         )
-    put_link("FlyOS RunShell Tool",
-            url='http://127.0.0.1:8887'
+    put_link("jupyter notebook",
+            url='http://127.0.0.1:2000'
         )
     put_text('_________系统工具__________',
             sep=' '
