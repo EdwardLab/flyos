@@ -139,7 +139,7 @@ while 1:
     elif num == '13':
         os.system("python3 $FLYOS/webserver/main.py")
     elif num == '14':
-        os.system("sh $FLYOS/panel/server.py")
+        os.system("python3 $FLYOS/panel/server.py")
     elif num == '15':
         os.system("aria2c --enable-rpc --rpc-listen-all")
     elif num == '16':
