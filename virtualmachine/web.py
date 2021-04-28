@@ -9,6 +9,7 @@ import pywebio.input
 from pywebio.output import popup, put_text, put_html
 from pywebio import start_server
 from pywebio.session import set_env
+import termux_auth
 
 print("___________________")
 print("FlyOS Virtual Machine")
@@ -33,7 +34,11 @@ class Main:
             "开始创建您的虚拟机吧！"
             "程序由MicroTech Projects -- FlyOS强力驱动",
         )
-        self.__run()
+        pwd = pywebio.input.input("输入flyos密码:")
+        if termux_auth.auth(pwd):
+            self.__run()
+        else:
+            popup("密码错误，请刷新页面重试")
 
     @staticmethod
     async def get_result(cmd):
