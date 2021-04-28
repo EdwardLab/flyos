@@ -20,3 +20,5 @@ Telegram交流群:t.me/flyospro(@flyospro)
 ![](img/screenshot.jpg)  
 # 捐献
 ![](img/donate.jpg)
+# 吐个槽
+[点我反馈吐槽](https://support.qq.com/product/323431)
