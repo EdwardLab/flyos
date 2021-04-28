@@ -79,7 +79,7 @@ class Main:
                 run = "bash {}/vms/$conf.conf".format(self.__path)
                 asyncio.run(self.get_result(run))
                 popup(
-                    "恭喜，虚拟机成功创建，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可"
+                    "恭喜，虚拟机成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可"
                 )
         elif num == 2:
             print(

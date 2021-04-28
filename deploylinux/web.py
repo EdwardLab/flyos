@@ -36,6 +36,15 @@ class Main:
         )
         self.__run()
 
+    async def delete(self):
+        """删除一个虚拟机"""
+        options = []
+        dirs = os.listdir("{}/cmd".format(self.__path))
+        for path in dirs:
+            options.append((path, path))
+        linux = pywebio.input.select("选择创建的虚拟机名称", options=options)
+        subprocess.call(['rm -rf {path}/rootfs/{}'.format(path=self.__path, linux)])
+
     @staticmethod
     async def get_result(cmd):
         """
@@ -55,19 +64,28 @@ class Main:
                 break
 
     def __run(self):
-        num = pywebio.input.select('请选择你要安装的系统',
+        n = pywebio.input.select('请选择你要执行的操作',
                                    options=[
-                                       ("Ubuntu", 1, True),
-                                       ("CentOS", 2),
-                                       ("Kali", 3),
+                                       ("安装Linux", 1, True),
+                                       ("进入Linux", 2),
                                    ])
-        if num == 1:
-            asyncio.run(self.get_ubuntu())
-        elif num == 2:
-            asyncio.run(self.get_centos())
-
-        elif num == 3:
-            self.get_kali()
+        if n == 1:
+            num = pywebio.input.select('请选择你要安装的系统',
+                                    options=[
+                                        ("Ubuntu", 1, True),
+                                        ("CentOS", 2),
+                                        ("Kali", 3),
+                                    ])
+            if num == 1:
+                asyncio.run(self.get_ubuntu())
+            elif num == 2:
+                asyncio.run(self.get_centos())
+            elif num == 3:
+                self.get_kali()
+        elif n == 2:
+            self.join()
+        elif n == 3:
+            self.delete()
 
     async def get_ubuntu(self):
         """获取ubuntu rootfs并写入运行文件"""
@@ -101,6 +119,8 @@ class Main:
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
                 cmd=(command + 'rootfs/{}'.format(name)), name=name))
+        popup('虚拟机创建完成！正在进行优化...')
+
 
     async def get_centos(self):
         """获取centos rootfs并写入运行文件"""
