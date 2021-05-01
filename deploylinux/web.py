@@ -35,7 +35,9 @@ class Main:
             "程序由MicroTech Projects -- FlyOS强力驱动",
         )
         self.__run()
-
+    async def join(self):
+        """进入虚拟机"""
+        pass
     async def delete(self):
         """删除一个虚拟机"""
         options = []
@@ -43,7 +45,7 @@ class Main:
         for path in dirs:
             options.append((path, path))
         linux = pywebio.input.select("选择创建的虚拟机名称", options=options)
-        subprocess.call(['rm -rf {path}/rootfs/{}'.format(path=self.__path, linux)])
+        subprocess.call(['rm -rf {path}/rootfs/{linux}'.format(path=self.__path, linux=linux)])
 
     @staticmethod
     async def get_result(cmd):
