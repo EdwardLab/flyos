@@ -35,6 +35,12 @@ def main():
     put_text('_______________________',
             sep=' '
         )
+    put_link("vscode",
+            url='http://127.0.0.1:2001'
+        )
+    put_text('_______________________',
+            sep=' '
+        )
     put_link("Apache主页",
             url='http://127.0.0.1:8080'
         )
