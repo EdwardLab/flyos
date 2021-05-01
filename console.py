@@ -75,6 +75,7 @@ print("输入02快速更新")
 print("输入03切换更新通道")
 print("输入04完整更新")
 print("输入05重置启动项")
+print("输入06操作启动日志")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -173,6 +174,7 @@ while 1:
         input_ = input("继续吗 [y/N] ")
         if input_ == 'y':
             os.chdir(os.getenv('FLYOS'))
+            os.system('git reset --hard origin')
             os.system('git pull')
             os.system('pip install -r requirements.txt')
             os.chdir(os.getenv('HOME'))
@@ -213,5 +215,27 @@ while 1:
             res = requests.get("http://api.flyosgeek.com/service.db")
             with open(f"{HOME}/.flyos/service.db", "wb") as f:
                 f.write(res.content)
+    elif num == '06':
+        print("输入1查看启动日志")
+        print("输入2清空启动日志")
+        print("输入q返回")
+        while 1:
+            input_ = input(">>> ")
+            if input_ == '1':
+                if os.path.getsize(f"{HOME}/.flyos/boot.log"):
+                    with open(f"{HOME}/.flyos/boot.log", "r") as f:
+                        for data in f:
+                            print(data.split("\n")[0])
+                    print("完成")
+                else:
+                    print("没有日志可查看")
+            elif input_ == '2':
+                with open(f"{HOME}/.flyos/boot.log", "w") as f:
+                    pass
+                print("完成")
+            elif input_ == 'q':
+                break
+            else:
+                print("无效输入")
     else:
         print("请输入选项")
