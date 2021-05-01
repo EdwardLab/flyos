@@ -25,6 +25,7 @@ class Main:
             os.mkdir(os.path.abspath(self.__path + "/rootfs"))
         if not os.path.exists(os.path.abspath(self.__path + "/cmd")):
             os.mkdir(os.path.abspath(self.__path + "/cmd"))
+        os.chdir(os.path.abspath(self.__path))
         set_env(title="Linux部署程序--中文版", auto_scroll_bottom=True)
         put_html("<h1>FlyOS WEB Virtual Machine</h1>")
         put_text("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
@@ -35,9 +36,11 @@ class Main:
             "程序由MicroTech Projects -- FlyOS强力驱动",
         )
         self.__run()
+
     async def join(self):
         """进入虚拟机"""
         pass
+
     async def delete(self):
         """删除一个虚拟机"""
         options = []
@@ -45,7 +48,10 @@ class Main:
         for path in dirs:
             options.append((path, path))
         linux = pywebio.input.select("选择创建的虚拟机名称", options=options)
-        subprocess.call(['rm -rf {path}/rootfs/{linux}'.format(path=self.__path, linux=linux)])
+        subprocess.call([
+            'rm -rf {path}/rootfs/{linux}'.format(path=self.__path,
+                                                  linux=linux)
+        ])
 
     @staticmethod
     async def get_result(cmd):
@@ -67,23 +73,23 @@ class Main:
 
     def __run(self):
         n = pywebio.input.select('请选择你要执行的操作',
-                                   options=[
-                                       ("安装Linux", 1, True),
-                                       ("进入Linux", 2),
-                                   ])
+                                 options=[
+                                     ("安装Linux", 1, True),
+                                     ("进入Linux", 2),
+                                 ])
         if n == 1:
             num = pywebio.input.select('请选择你要安装的系统',
-                                    options=[
-                                        ("Ubuntu", 1, True),
-                                        ("CentOS", 2),
-                                        ("Kali", 3),
-                                    ])
+                                       options=[
+                                           ("Ubuntu", 1, True),
+                                           ("CentOS", 2),
+                                           ("Kali", 3),
+                                       ])
             if num == 1:
                 asyncio.run(self.get_ubuntu())
             elif num == 2:
                 asyncio.run(self.get_centos())
             elif num == 3:
-                self.get_kali()
+                asyncio.run(self.kali())
         elif n == 2:
             self.join()
         elif n == 3:
@@ -106,23 +112,25 @@ class Main:
             arch = 'arm64'
         elif arch in ('x86_64', 'x64', 'amd64'):
             arch = 'amd64'
+        arch = 'amd64'
         rootfs_url = (
             "https://mirrors.bfsu.edu.cn/ubuntu-cdimage/ubuntu-base/releases/"
-            "{ver}/release/ubuntu-base-{ver}.2-base-{arch}.tar.gz").format(
+            "{ver}/release/ubuntu-base-{ver}-base-{arch}.tar.gz").format(
                 ver=version, arch=arch)
         popup('正在下载rootfs……')
         await self.get_result('wget {} -O rootfs/{}.tar.gz'.format(
             rootfs_url, name))
         popup('正在解压rootfs……')
-        await self.get_result('tar xzvf rootfs/{}.tar.gz'.format(name))
+        subprocess.call('mkdir rootfs/{}'.format(name), shell=True)
+        await self.get_result(
+            'tar xzvf rootfs/{name}.tar.gz -C rootfs/{name}'.format(name=name))
         popup('正在清理……')
         await self.get_result('rm -f rootfs/{}.tar.gz'.format(name))
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{}'.format(name)), name=name))
+                cmd=(command + 'rootfs/{} /bin/sh'.format(name)), name=name))
         popup('虚拟机创建完成！正在进行优化...')
-
 
     async def get_centos(self):
         """获取centos rootfs并写入运行文件"""
@@ -144,15 +152,16 @@ class Main:
         await self.get_result('wget {} -O rootfs/{}.tar.xz'.format(
             rootfs_url, name))
         popup('正在解压rootfs……')
-        await self.get_result('tar xJvf rootfs/{}.tar.xz'.format(name))
+        await self.get_result(
+            'tar xJvf rootfs/{name}.tar.xz -C rootfs/{name}'.format(name=name))
         popup('正在清理……')
         await self.get_result('rm -f rootfs/{}.tar.xz'.format(name))
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{}'.format(name)), name=name))
+                cmd=(command + 'rootfs/{} /bin/sh'.format(name)), name=name))
 
-    def get_kali(self):
+    async def get_kali(self):
         """获取arch rootfs并写入运行文件"""
         name = pywebio.input.input('请输入该系统的名字')
         command = pywebio.input.radio('请选择要用的命令',
@@ -172,13 +181,14 @@ class Main:
         await self.get_result('wget {} -O rootfs/{}.tar.xz'.format(
             rootfs_url, name))
         popup('正在解压rootfs……')
-        await self.get_result('tar xJvf rootfs/{}.tar.xz'.format(name))
+        await self.get_result(
+            'tar xJvf rootfs/{name}.tar.xz -C rootfs/{name}'.format(name=name))
         popup('正在清理……')
         await self.get_result('rm -f rootfs/{}.tar.xz'.format(name))
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{}'.format(name)), name=name))
+                cmd=(command + 'rootfs/{} /bin/sh'.format(name)), name=name))
 
 
 # Server Port 关于服务器的配置信息
