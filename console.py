@@ -174,7 +174,7 @@ while 1:
         input_ = input("继续吗 [y/N] ")
         if input_ == 'y':
             os.chdir(os.getenv('FLYOS'))
-            os.system('git reset --hard origin')
+            os.system('git reset --hard')
             os.system('git pull')
             os.system('pip install -r requirements.txt')
             os.chdir(os.getenv('HOME'))
