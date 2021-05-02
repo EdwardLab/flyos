@@ -129,14 +129,14 @@ class Main:
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{} /bin/sh'.format(name)), name=name))
+                cmd=(command + 'rootfs/{} /bin/sh/'.format(name)), name=name))
         popup('虚拟机创建完成！正在进行优化...')
 
     async def get_centos(self):
         """获取centos rootfs并写入运行文件"""
         name = pywebio.input.input('请输入该系统的名字')
         command = pywebio.input.radio('请选择要用的命令',
-                                      [('proot(无root下使用)', 'proot ', True),
+                                      [('proot(无root下使用)', 'proot -r ', True),
                                        ('chroot(有root建议使用)', 'chroot ')])
         arch = subprocess.getoutput('dpkg --print-architecture')
         if arch in ('aarch64', 'armel'):
@@ -159,7 +159,7 @@ class Main:
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{} /bin/sh'.format(name)), name=name))
+                cmd=(command + 'rootfs/{}/ /bin/sh'.format(name)), name=name))
 
     async def get_kali(self):
         """获取arch rootfs并写入运行文件"""
@@ -188,7 +188,7 @@ class Main:
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{} /bin/sh'.format(name)), name=name))
+                cmd=(command + 'rootfs/{} /bin/sh/'.format(name)), name=name))
 
 
 # Server Port 关于服务器的配置信息
