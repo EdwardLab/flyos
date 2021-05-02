@@ -129,7 +129,7 @@ class Main:
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{} /bin/sh/'.format(name)), name=name))
+                cmd=(command + 'rootfs/{}/ /bin/sh'.format(name)), name=name))
         popup('虚拟机创建完成！正在进行优化...')
 
     async def get_centos(self):
@@ -188,7 +188,7 @@ class Main:
         popup('正在创建配置……')
         await self.get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{} /bin/sh/'.format(name)), name=name))
+                cmd=(command + 'rootfs/{}/ /bin/sh'.format(name)), name=name))
 
 
 # Server Port 关于服务器的配置信息

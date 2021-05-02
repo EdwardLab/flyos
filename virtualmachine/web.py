@@ -46,6 +46,9 @@ class Main:
         params:
             cmd - 要执行的命令
         """
+        if re.search('[;&|<>$]', extra):
+            popup('检测到非法字符', content="请检查命令中是否包含;&|等特殊字符, 并刷新重试")
+            return
         popen = subprocess.Popen(cmd,
                                  shell=True,
                                  stdout=subprocess.PIPE,
@@ -216,17 +219,12 @@ class Main:
         network = pywebio.input.input("请输入网卡型号(建议rtl8139):")
         vnc = pywebio.input.input("输入VNC端口号(建议0):")
         vga = pywebio.input.input("显卡型号，NT系建议vmware，Windowz95/98建议cirrus:")
-        while True:
-            extra = pywebio.input.input("额外参数，没有留空:")
-            # 判断是否有额外参数，否则添加
-            if not extra:
-                extra = ""
-                break
-            elif re.search('[;&|<>$]', extra):
-                popup('检测到非法字符', content="请检查命令中是否包含;&|等特殊字符")
-            else:
-                extra = " " + extra
-                break
+        extra = pywebio.input.input("额外参数，没有留空:")
+        # 判断是否有额外参数，否则添加
+        if not extra:
+            extra = ""
+        else:
+            extra = " " + extra
 
         # 判断是否有网卡，否则提供默认
         if not network:
