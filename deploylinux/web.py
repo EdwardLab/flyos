@@ -25,9 +25,8 @@ class Main:
             os.mkdir(os.path.abspath(self.__path + "/rootfs"))
         if not os.path.exists(os.path.abspath(self.__path + "/cmd")):
             os.mkdir(os.path.abspath(self.__path + "/cmd"))
-        os.chdir(os.path.abspath(self.__path))
         set_env(title="Linux部署程序--中文版", auto_scroll_bottom=True)
-        put_html("<h1>FlyOS WEB Virtual Machine</h1>")
+        put_html("<h1>FlyOS Linux Deploy</h1>")
         put_text("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
         popup(
             "欢迎使用Linux部署程序--中文版",
@@ -51,10 +50,10 @@ class Main:
         subprocess.call([
             'rm -rf {path}/rootfs/{linux}'.format(path=self.__path,
                                                   linux=linux)
-        ])
+        ],
+                        cwd=self.__path)
 
-    @staticmethod
-    async def get_result(cmd):
+    async def get_result(self, cmd):
         """
         params:
             cmd - 要执行的命令
@@ -63,7 +62,8 @@ class Main:
                                  shell=True,
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT,
-                                 text=True)
+                                 text=True,
+                                 cwd=self.__path)
         while True:
             buff = popen.stdout.readline()
             if buff:
