@@ -46,7 +46,7 @@ class Main:
         params:
             cmd - 要执行的命令
         """
-        if re.search('[;&|<>$]', extra):
+        if re.search('[;&|<>$]', cmd):
             popup('检测到非法字符', content="请检查命令中是否包含;&|等特殊字符, 并刷新重试")
             return
         popen = subprocess.Popen(cmd,
