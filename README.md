@@ -30,3 +30,5 @@ Telegram交流群:t.me/flyospro(@flyospro)
 ![](img/donate.jpg)
 # 吐个槽
 [点我反馈吐槽](https://support.qq.com/product/323431)
+# 参与开发
+参与开发可以联系创始人
