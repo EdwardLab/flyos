@@ -1,4 +1,5 @@
 ![Github stars](https://img.shields.io/github/stars/xingyujie/flyos.svg)
+![Github forks](https://img.shields.io/github/forks/xingyujie/flyos.svg)
 # 介绍
 FlyOS是安卓手机的一款神器，极客的宝贝
 原汁原味的完整Linux系统
