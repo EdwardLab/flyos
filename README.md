@@ -7,7 +7,7 @@ Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署
 *部分功能尚未开发完毕*  
 # 安装
 1.下载[termux](http://f-droid.org/en/packages/com.termux/)安装并打开  
-2.在Termux中输入:curl http://flyosgeek.com/gosetup.sh | bash  并回车
+2.在Termux中输入:curl http://flyosgeek.com/gosetup.sh | bash 并回车  
 3.开始安装
 # 关于
 开发者:邢宇杰(XingYuJie) 和很多无私的奉献着。刚上初中的初中生一枚，计算机爱好者（幼儿园中班开始玩winxp），感谢广大开发者对flyos的支持！！！
