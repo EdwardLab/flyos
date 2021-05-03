@@ -29,6 +29,11 @@ QQ交流群:[440406148（貌似已满，点进去后引导加二群）](https://
 Telegram交流群:t.me/flyospro(@flyospro)
 # 截图
 ![](img/screenshot.jpg)  
+![](img/panel.jpg)  
+![](img/deploy.jpg)  
+![](img/vm1.jpg)  
+![](img/vm2.jpg)  
+更多功能欢迎安装体验！
 # 捐献
 ![](img/donate.jpg)
 # 吐个槽
