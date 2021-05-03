@@ -2,9 +2,8 @@
 FlyOS是安卓手机的一款神器，极客的宝贝
 原汁原味的完整Linux系统
 FlyOS Console:(主功能)
-Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署Android,Windows虚拟机，使用FlyChat聊天，可以使用web在线管理手机的功能，远程遥控，可以流畅跑Windows(EXE,MSI)应用程序，一键安装软件包，开发FlyOS(.fpk)程序，开发人工智能项目，部署GUI环境，网络安全测试...........
+Web面板(一键手机建站)，web部署原汁原味的GNU/Linux发行版，在线web友好创建虚拟机面板，支持小白一键部署各类系统。使用FlyChat聊天，可以使用web在线管理手机的功能，远程遥控，可以使用flyosx86wine或虚拟机跑Windows(EXE,MSI)应用程序，一键安装软件包，开发人工智能项目，部署GUI环境，网络安全测试...........
 还有几十种功能，等你安装发现!  
-*部分功能尚未开发完毕*  
 # 安装
 1.下载[termux](http://f-droid.org/en/packages/com.termux/)安装并打开  
 2.在Termux中输入:curl http://flyosgeek.com/gosetup.sh | bash 并回车  
