@@ -14,62 +14,63 @@ print("Linux部署程序--中文版")
 print("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3")
 
 
+async def get_result(cmd):
+    """
+    params:
+        cmd - 要执行的命令
+    """
+    popen = subprocess.Popen(cmd,
+                             shell=True,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT,
+                             text=True,
+                             cwd=path)
+    while True:
+        buff = popen.stdout.readline()
+        if buff:
+            put_text(buff)
+        elif popen.poll() is not None:
+            break
+def main():
+    set_env(title="Linux部署程序--中文版", auto_scroll_bottom=True)
+    put_html("<h1>FlyOS Linux Deploy</h1>")
+    put_text("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
+    popup(
+        "欢迎使用Linux部署程序--中文版",
+        "欢迎使用Linux部署程序--中文版。"
+        "开始部署你的Linux吧！"
+        "程序由MicroTech Projects -- FlyOS强力驱动",
+    )
+    Main()
+
 class Main:
     """FlyOS WEB Panel main"""
     def __init__(self):
-        env = os.getenv('FLYOS')
-        if env is None:
-            env = '.'
-        self.__path = os.path.abspath(env + '/deploylinux')
-        if not os.path.exists(os.path.abspath(self.__path + "/rootfs")):
-            os.mkdir(os.path.abspath(self.__path + "/rootfs"))
-        if not os.path.exists(os.path.abspath(self.__path + "/cmd")):
-            os.mkdir(os.path.abspath(self.__path + "/cmd"))
-        set_env(title="Linux部署程序--中文版", auto_scroll_bottom=True)
-        put_html("<h1>FlyOS Linux Deploy</h1>")
-        put_text("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
-        popup(
-            "欢迎使用Linux部署程序--中文版",
-            "欢迎使用Linux部署程序--中文版。"
-            "开始部署你的Linux吧！"
-            "程序由MicroTech Projects -- FlyOS强力驱动",
-        )
-        self.__run()
+        global path
+        self.path=path
 
     async def join(self):
-        """进入虚拟机"""
-        pass
+        """进入 Linux 系统"""
+        options = []
+        dirs = os.listdir("{}/cmd".format(self.path))
+        for vm_path in dirs:
+            options.append((vm_path, vm_path))
+        linux = pywebio.input.select("选择创建的Linux名称", options=options)
+        popup('打开Linux', '请在终端输入 `$FLYOS/deploylinux/cmd/{}` 打开 Linux'.format(linux))
+
 
     async def delete(self):
-        """删除一个虚拟机"""
+        """删除一个 Linux 系统"""
         options = []
-        dirs = os.listdir("{}/cmd".format(self.__path))
-        for path in dirs:
-            options.append((path, path))
-        linux = pywebio.input.select("选择创建的虚拟机名称", options=options)
+        dirs = os.listdir("{}/cmd".format(self.path))
+        for vm_path in dirs:
+            options.append((vm_path, vm_path))
+        linux = pywebio.input.select("选择创建的Linux名称", options=options)
         subprocess.call([
-            'rm -rf {path}/rootfs/{linux}'.format(path=self.__path,
+            'rm -rf {path}/rootfs/{linux}'.format(path=self.path,
                                                   linux=linux)
         ],
-                        cwd=self.__path)
-
-    async def get_result(self, cmd):
-        """
-        params:
-            cmd - 要执行的命令
-        """
-        popen = subprocess.Popen(cmd,
-                                 shell=True,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT,
-                                 text=True,
-                                 cwd=self.__path)
-        while True:
-            buff = popen.stdout.readline()
-            if buff:
-                put_text(buff)
-            elif popen.poll() is not None:
-                break
+                        cwd=self.path)
 
     def __run(self):
         n = pywebio.input.select('请选择你要执行的操作',
@@ -78,67 +79,53 @@ class Main:
                                      ("进入Linux", 2),
                                  ])
         if n == 1:
-            num = pywebio.input.select('请选择你要安装的系统',
-                                       options=[
-                                           ("Ubuntu", 1, True),
-                                           ("CentOS", 2),
-                                           ("Kali", 3),
-                                       ])
-            if num == 1:
-                asyncio.run(self.get_ubuntu())
-            elif num == 2:
-                asyncio.run(self.get_centos())
-            elif num == 3:
-                asyncio.run(self.kali())
+            GetLinux()
         elif n == 2:
-            self.join()
+            asyncio.run(self.join())
         elif n == 3:
-            self.delete()
-
-    async def get_ubuntu(self):
-        """获取ubuntu rootfs并写入运行文件"""
+            asyncio.run(self.delete())
+class GetLinux:
+    def __init__(self):
         name = pywebio.input.input('请输入该系统的名字')
         command = pywebio.input.radio('请选择要用的命令',
-                                      [('proot(无root下使用)', 'proot ', True),
+                                      [('PRoot(无root下使用)', 'proot -r ', True),
                                        ('chroot(有root建议使用)', 'chroot ')])
+        arch = subprocess.getoutput('dpkg --print-architecture')
+        num = pywebio.input.select('请选择你要安装的系统',
+                                   options=[
+                                       ("Ubuntu", 1, True),
+                                       ("CentOS", 2),
+                                       ("Kali", 3),
+                                   ])
+        if num == 1:
+            asyncio.run(self.get_ubuntu(name, command, arch))
+        elif num == 2:
+            asyncio.run(self.get_centos(name, command, arch))
+        elif num == 3:
+            asyncio.run(self.get_kali(name, command, arch))
+
+    @staticmethod
+    async def get_ubuntu( name, arch, command):
+        """获取ubuntu rootfs并写入运行文件"""
         version = pywebio.input.select('请选择版本号',
                                        options=[
                                            ("20.04", "20.04.2", True),
                                            ("20.10", "20.10"),
                                            ("21.04", "21.04"),
                                        ])
-        arch = subprocess.getoutput(['dpkg', '--print-architecture'])
         if arch in ('aarch64', 'armel'):
             arch = 'arm64'
         elif arch in ('x86_64', 'x64', 'amd64'):
             arch = 'amd64'
-        arch = 'amd64'
         rootfs_url = (
             "https://mirrors.bfsu.edu.cn/ubuntu-cdimage/ubuntu-base/releases/"
             "{ver}/release/ubuntu-base-{ver}-base-{arch}.tar.gz").format(
                 ver=version, arch=arch)
-        popup('正在下载rootfs……')
-        await self.get_result('wget {} -O rootfs/{}.tar.gz'.format(
-            rootfs_url, name))
-        popup('正在解压rootfs……')
-        subprocess.call('mkdir rootfs/{}'.format(name), shell=True)
-        await self.get_result(
-            'tar xzvf rootfs/{name}.tar.gz -C rootfs/{name}'.format(name=name))
-        popup('正在清理……')
-        await self.get_result('rm -f rootfs/{}.tar.gz'.format(name))
-        popup('正在创建配置……')
-        await self.get_result(
-            'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{}/ /bin/sh'.format(name)), name=name))
-        popup('虚拟机创建完成！正在进行优化...')
+        await GetLinux.get_rootfs(rootfs_url, name, 'gz', command)
 
-    async def get_centos(self):
+    @staticmethod
+    async def get_centos( name, arch, command):
         """获取centos rootfs并写入运行文件"""
-        name = pywebio.input.input('请输入该系统的名字')
-        command = pywebio.input.radio('请选择要用的命令',
-                                      [('proot(无root下使用)', 'proot -r ', True),
-                                       ('chroot(有root建议使用)', 'chroot ')])
-        arch = subprocess.getoutput('dpkg --print-architecture')
         if arch in ('aarch64', 'armel'):
             arch = 'arm64'
         elif arch in ('x86_64', 'x64', 'amd64'):
@@ -148,26 +135,11 @@ class Main:
         rootfs_url = (
             "https://gitee.com/xingyujie_pro/Anlinux-Resources/tree/master/Rootfs/"
             "CentOS/{arch}/centos-rootfs-{arch}.tar.xz").format(arch=arch)
-        popup('正在下载rootfs……')
-        await self.get_result('wget {} -O rootfs/{}.tar.xz'.format(
-            rootfs_url, name))
-        popup('正在解压rootfs……')
-        await self.get_result(
-            'tar xJvf rootfs/{name}.tar.xz -C rootfs/{name}'.format(name=name))
-        popup('正在清理……')
-        await self.get_result('rm -f rootfs/{}.tar.xz'.format(name))
-        popup('正在创建配置……')
-        await self.get_result(
-            'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{}/ /bin/sh'.format(name)), name=name))
+        await GetLinux.get_rootfs(rootfs_url, name, 'xz', command)
 
-    async def get_kali(self):
-        """获取arch rootfs并写入运行文件"""
-        name = pywebio.input.input('请输入该系统的名字')
-        command = pywebio.input.radio('请选择要用的命令',
-                                      [('proot(无root下使用)', 'proot ', True),
-                                       ('chroot(有root建议使用)', 'chroot ')])
-        arch = subprocess.getoutput('dpkg --print-architecture')
+    @staticmethod
+    async def get_kali( name, arch, command):
+        """获取kali rootfs并写入运行文件"""
         if arch in ('aarch64', 'armel'):
             arch = 'arm64'
         elif arch in ('x86_64', 'x64', 'amd64'):
@@ -177,21 +149,40 @@ class Main:
         rootfs_url = (
             "https://gitee.com/xingyujie_pro/Anlinux-Resources/tree/master/Rootfs/"
             "Kali/{arch}/kali-rootfs-{arch}.tar.xz").format(arch=arch)
+        await GetLinux.get_rootfs(rootfs_url, name, 'xz', command)
+
+    @staticmethod
+    async def get_rootfs(rootfs_url, name, ext, command):
         popup('正在下载rootfs……')
-        await self.get_result('wget {} -O rootfs/{}.tar.xz'.format(
-            rootfs_url, name))
+        await get_result('wget {} -O rootfs/{}.tar.{}'.format(
+            rootfs_url, name, ext))
         popup('正在解压rootfs……')
-        await self.get_result(
-            'tar xJvf rootfs/{name}.tar.xz -C rootfs/{name}'.format(name=name))
+        await get_result(
+            'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext=='xz' else 'gz'  ,name=name, ext=ext))
         popup('正在清理……')
-        await self.get_result('rm -f rootfs/{}.tar.xz'.format(name))
+        await get_result('rm -f rootfs/{}.tar.{}}'.format(name, ext))
         popup('正在创建配置……')
-        await self.get_result(
+        conf_template = '''
+        if [ -z $1 ]; then
+            {command} rootfs/{name}/ /bin/bash
+        else
+        {command} rootfs/{name}/ /bin/sh -c $1
+        fi
+        '''
+        await get_result(
             'echo {cmd} > cmd/{name} && chmod +x cmd/{name}'.format(
-                cmd=(command + 'rootfs/{}/ /bin/sh'.format(name)), name=name))
+                cmd=conf_template.format(command=command, name=name), name=name))
 
 
 # Server Port 关于服务器的配置信息
 if __name__ == "__main__":
-    start_server(Main, debug=True, host="0.0.0.0", port=2002)
+    env = os.getenv('FLYOS')
+    if env is None:
+        env = '.'
+    path = os.path.abspath(env + '/deploylinux')
+    if not os.path.exists(os.path.abspath(path + "/rootfs")):
+        os.mkdir(os.path.abspath(path + "/rootfs"))
+    if not os.path.exists(os.path.abspath(path + "/cmd")):
+        os.mkdir(os.path.abspath(path + "/cmd"))
+    start_server(main, debug=True, host="0.0.0.0", port=2002)
     pywebio.session.hold()
