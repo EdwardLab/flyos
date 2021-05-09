@@ -2,12 +2,13 @@
 FlyOS Panel By:XingYuJie
 Use Under License GPL - V3
 """
+import asyncio
 import os
 import subprocess
-import asyncio
+
 import pywebio.input
-from pywebio.output import popup, put_text, put_html
 from pywebio import start_server
+from pywebio.output import popup, put_text, put_html
 from pywebio.session import set_env
 
 print("Linux部署程序--中文版")
@@ -31,8 +32,10 @@ async def get_result(cmd):
             put_text(buff)
         elif popen.poll() is not None:
             break
+
+
 def main():
-    set_env(title="Linux部署程序--中文版", auto_scroll_bottom=True)
+    set_env(title="Linux  部署程序--中文版", auto_scroll_bottom=True)
     put_html("<h1>FlyOS Linux Deploy</h1>")
     put_text("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
     popup(
@@ -43,11 +46,14 @@ def main():
     )
     Main()
 
+
 class Main:
     """FlyOS WEB Panel main"""
+
     def __init__(self):
         global path
-        self.path=path
+        self.path = path
+        self.__run()
 
     async def join(self):
         """进入 Linux 系统"""
@@ -57,7 +63,6 @@ class Main:
             options.append((vm_path, vm_path))
         linux = pywebio.input.select("选择创建的Linux名称", options=options)
         popup('打开Linux', '请在终端输入 `$FLYOS/deploylinux/cmd/{}` 打开 Linux'.format(linux))
-
 
     async def delete(self):
         """删除一个 Linux 系统"""
@@ -70,7 +75,7 @@ class Main:
             'rm -rf {path}/rootfs/{linux}'.format(path=self.path,
                                                   linux=linux)
         ],
-                        cwd=self.path)
+            cwd=self.path)
 
     def __run(self):
         n = pywebio.input.select('请选择你要执行的操作',
@@ -84,6 +89,8 @@ class Main:
             asyncio.run(self.join())
         elif n == 3:
             asyncio.run(self.delete())
+
+
 class GetLinux:
     def __init__(self):
         name = pywebio.input.input('请输入该系统的名字')
@@ -105,7 +112,7 @@ class GetLinux:
             asyncio.run(self.get_kali(name, command, arch))
 
     @staticmethod
-    async def get_ubuntu( name, arch, command):
+    async def get_ubuntu(name, arch, command):
         """获取ubuntu rootfs并写入运行文件"""
         version = pywebio.input.select('请选择版本号',
                                        options=[
@@ -120,11 +127,11 @@ class GetLinux:
         rootfs_url = (
             "https://mirrors.bfsu.edu.cn/ubuntu-cdimage/ubuntu-base/releases/"
             "{ver}/release/ubuntu-base-{ver}-base-{arch}.tar.gz").format(
-                ver=version, arch=arch)
+            ver=version, arch=arch)
         await GetLinux.get_rootfs(rootfs_url, name, 'gz', command)
 
     @staticmethod
-    async def get_centos( name, arch, command):
+    async def get_centos(name, arch, command):
         """获取centos rootfs并写入运行文件"""
         if arch in ('aarch64', 'armel'):
             arch = 'arm64'
@@ -138,7 +145,7 @@ class GetLinux:
         await GetLinux.get_rootfs(rootfs_url, name, 'xz', command)
 
     @staticmethod
-    async def get_kali( name, arch, command):
+    async def get_kali(name, arch, command):
         """获取kali rootfs并写入运行文件"""
         if arch in ('aarch64', 'armel'):
             arch = 'arm64'
@@ -158,9 +165,10 @@ class GetLinux:
             rootfs_url, name, ext))
         popup('正在解压rootfs……')
         await get_result(
-            'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext=='xz' else 'gz'  ,name=name, ext=ext))
+            'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext == 'xz' else 'gz',
+                                                                            name=name, ext=ext))
         popup('正在清理……')
-        await get_result('rm -f rootfs/{}.tar.{}}'.format(name, ext))
+        await get_result('rm -f rootfs/{}.tar.{}'.format(name, ext))
         popup('正在创建配置……')
         conf_template = '''
         if [ -z $1 ]; then
