@@ -2,5 +2,4 @@ nohup.out
 .firstuse/lock
 notices.txt
 .vscode/
-venv/
 .idea/

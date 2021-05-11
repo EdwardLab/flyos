@@ -27,7 +27,7 @@ class Main:
             os.mkdir(os.path.abspath(self.__path + "/vms"))
         set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
         put_html("<h1>FlyOS WEB Virtual Machine</h1>")
-        put_text("FlyOS Virtual Machine By:XingYuJie & nullptr", sep=" ")
+        put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
         popup(
             "欢迎使用FlyOS FlyOS Virtual Machine！",
             "欢迎使用FlyOS Virtual Machine。"
