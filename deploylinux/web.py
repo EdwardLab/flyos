@@ -12,7 +12,7 @@ from pywebio.output import popup, put_text, put_html
 from pywebio.session import set_env
 
 print("Linux部署程序--中文版")
-print("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3")
+print("By:FlyOS MicroTech Xingyujie(严禁删除版权，不允许修改版权)GPL-V3")
 
 
 async def get_result(cmd):
@@ -37,7 +37,7 @@ async def get_result(cmd):
 def main():
     set_env(title="Linux  部署程序--中文版", auto_scroll_bottom=True)
     put_html("<h1>FlyOS Linux Deploy</h1>")
-    put_text("By:FlyOS MicroTech nullptr(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
+    put_text("By:FlyOS MicroTech Xingyujie(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
     popup(
         "欢迎使用Linux部署程序--中文版",
         "欢迎使用Linux部署程序--中文版。"
