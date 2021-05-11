@@ -3,3 +3,4 @@ nohup.out
 notices.txt
 .vscode/
 .idea/
+venv/
