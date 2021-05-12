@@ -27,7 +27,7 @@ class Main:
             os.mkdir(os.path.abspath(self.__path + "/vms"))
         set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
         put_html("<h1>FlyOS WEB Virtual Machine</h1>")
-        put_text("FlyOS Virtual Machine By:XingYuJie & nullptr", sep=" ")
+        put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
         popup(
             "欢迎使用FlyOS FlyOS Virtual Machine！",
             "欢迎使用FlyOS Virtual Machine。"
@@ -46,6 +46,9 @@ class Main:
         params:
             cmd - 要执行的命令
         """
+        if re.search('[;&|<>$]', cmd):
+            popup('检测到非法字符', content="请检查命令中是否包含;&|等特殊字符, 并刷新重试")
+            return
         popen = subprocess.Popen(cmd,
                                  shell=True,
                                  stdout=subprocess.PIPE,
@@ -84,7 +87,7 @@ class Main:
                 run = "bash {}/vms/$conf.conf".format(self.__path)
                 asyncio.run(self.get_result(run))
                 popup(
-                    "恭喜，虚拟机成功创建，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可"
+                    "恭喜，虚拟机成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可"
                 )
         elif num == 2:
             print(
@@ -217,7 +220,6 @@ class Main:
         vnc = pywebio.input.input("输入VNC端口号(建议0):")
         vga = pywebio.input.input("显卡型号，NT系建议vmware，Windowz95/98建议cirrus:")
         extra = pywebio.input.input("额外参数，没有留空:")
-
         # 判断是否有额外参数，否则添加
         if not extra:
             extra = ""
