@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head> 
-  <title>FlyOS official website</title> 
-  <meta charset="utf-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale  =1.0" /> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYsug1l9a" ="anonymous"="" /> 
-  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4336563652165904" crossorigin="anonymous"></script> 
-  <script data="" -ad-client="ca-pub-4336563652165904" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> 
-  <script async="" custom-element="amp-auto  -ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script> 
- </head>
- <body>
-  <amp-auto-ads type="adsense" data-ad-client="ca-pub-4336563652165904"></amp-auto-ads> 
-  <style> body {margin-left: 3%;} .screenshot img,.donate img {width: 100%;} </style>   
-  <h1>FlyOS official website</h1> 
-  <div> 
+
    <img src="https://img.shields.io/github/stars/xingyujie/flyos.svg" alt="Github stars" /> 
    <img src="https://img.shields.io/github/forks/xingyujie/flyos.svg" alt="Github forks" /> 
    <h2>Language</h2>
