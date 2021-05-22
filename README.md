@@ -9,13 +9,13 @@
    <div class="introduction"> 
     <h2>Introduction</h2> 
     <p>FlyOS is an artifact of Android phones, the baby of geeks</p> 
-    <p>The original and complete Linux system&lt; /p&gt; </p>
+    <p>The original and complete Linux system  </p>
     <p>FlyOS Console:(Main function)</p> 
     <ul> 
      <li>Web panel (one-click mobile station construction)</li> 
      <li>Web deployment of the original GNU/Linux distribution&lt; /li&gt; </li>
      <li>Online web-friendly creation of virtual machine panel</li> 
-     <li>Support Xiaobai one-click deployment of various systems</li> 
+     <li>Support Beginner one-click deployment of various systems</li> 
      <li>Use FlyChat to chat</li> 
      <li>Use web to manage mobile phone online Function, remote control</li> 
      <li>You can use flyosx86wine or a virtual machine to run Windows (EXE, MSI) applications</li> 
