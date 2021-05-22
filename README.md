@@ -67,7 +67,7 @@
     <img src="/img/deploy.jpg" alt="FlyOS Linux container deployment  " /> 
     <img src="/img/vm1.jpg" alt="FlyOS virtual machine" /> 
    </div> 
-   </script>
+  
   </div>
  </body>
 </html>
