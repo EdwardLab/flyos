@@ -4,7 +4,7 @@
 
     
    <h2>Document Language</h2>
-   <a href="http://flyosgeek.com/cn.html">简体中文(Chinese)</a>
+   <a href="http://flyosgeek.com/cn.html">简体中文</a>
   <br>
   <a href="http://flyosgeek.com/ru.html">русский</a>
    <div class="introduction"> 
