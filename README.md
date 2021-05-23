@@ -6,6 +6,7 @@
    <img src="https://img.shields.io/github/forks/xingyujie/flyos.svg" alt="Github forks" /> 
    <h2>Language</h2>
    <a href="http://flyosgeek.com/cn.html">简体中文(Chinese)</a>
+  <br>
   <a href="http://flyosgeek.com/ru.html">русский</a>
    <div class="introduction"> 
     <h2>Introduction</h2> 
