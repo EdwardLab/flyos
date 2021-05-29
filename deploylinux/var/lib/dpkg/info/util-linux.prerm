@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+	remove)
+		update-alternatives --remove pager /bin/more
+		;;
+
+	upgrade|failed-upgrade|deconfigure)
+		;;
+
+esac
+
+# Automatically added by dh_installsystemd/12.10ubuntu1
+if [ -d /run/systemd/system ] && [ "$1" = remove ]; then
+	deb-systemd-invoke stop 'fstrim.service' 'fstrim.timer' >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12.10ubuntu1
+if [ -d /run/systemd/system ] && [ "$1" = remove ]; then
+	deb-systemd-invoke stop 'fstrim.timer' >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12.10ubuntu1
+dpkg-maintscript-helper rm_conffile /etc/cron.weekly/fstrim 2.31.1-0.4ubuntu1\~ -- "$@"
+# End automatically added section
+

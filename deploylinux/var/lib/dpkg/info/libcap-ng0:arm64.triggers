@@ -1,0 +1,2 @@
+# Triggers added by dh_makeshlibs/12.7.3ubuntu1
+activate-noawait ldconfig

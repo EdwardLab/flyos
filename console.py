@@ -150,7 +150,7 @@ while 1:
         os.chdir('/data/data/com.termux/files/home/webui-aria2')
         os.system('node node-server.js')
     elif num == '17':
-        os.system("python $FLYOS/virtualmachine/vm.py")
+        os.system("python $FLYOS/virtualmachine/vm.sh")
     elif num == '18':
         os.system("mc")
     elif num == '19':

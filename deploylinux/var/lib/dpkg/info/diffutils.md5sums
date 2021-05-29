@@ -1,0 +1,12 @@
+35110a743fea7bcb586715ab455f479d  usr/bin/cmp
+c2214881aac8e22338e83fcea73c6dca  usr/bin/diff
+884add8906f6e4699d47a86c2a6f78cd  usr/bin/diff3
+a719538366695c582a499e01e4be78f1  usr/bin/sdiff
+a05f75f4048a1caf49ac375d0830aba0  usr/share/doc/diffutils/NEWS.gz
+72b8f9a8083e4fc5207d4c5d70739ed1  usr/share/doc/diffutils/changelog.Debian.gz
+6e081b3ba6b6513741a8e477ab2e2599  usr/share/doc/diffutils/copyright
+5b2437420e716b74b9477a9f7f58e72a  usr/share/info/diffutils.info.gz
+d09b688e11e5a419fec50116c4b6ae9c  usr/share/man/man1/cmp.1.gz
+80f31088273b38867d8f466de4e00ec7  usr/share/man/man1/diff.1.gz
+717afd5c5ff7ec50af0b1bc26d72c88c  usr/share/man/man1/diff3.1.gz
+559c35d1cd4051558a6985a6e4892927  usr/share/man/man1/sdiff.1.gz

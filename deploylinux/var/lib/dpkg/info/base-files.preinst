@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installdeb/12.10ubuntu1
+dpkg-maintscript-helper rm_conffile /etc/default/motd-news 11ubuntu5.2~ base-files -- "$@"
+# End automatically added section
