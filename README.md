@@ -1,20 +1,74 @@
-# 介绍
-FlyOS是安卓手机的一款神器，极客的宝贝
-原汁原味的完整Linux系统
-FlyOS Console:(主功能)
-Web面板(一键手机建站)，部署原汁原味的GNU/Linux发行版，部署Android,Windows虚拟机，使用FlyChat聊天，可以使用web在线管理手机的功能，远程遥控，可以流畅跑Windows(EXE,MSI)应用程序，一键安装软件包，开发FlyOS(.fpk)程序，开发人工智能项目，部署GUI环境，网络安全测试...........
-还有几十种功能，等你安装发现!  
-*部分功能尚未开发完毕*  
-# 安装
-1.下载[termux](http://f-droid.org/en/packages/com.termux/)安装并打开  
-2.在Termux中输入:curl http://flyosgeek.com/gosetup.sh | bash  
-3.开始安装
-# 关于
-开发者:邢宇杰(XingYuJie)
-软件通过GPL-V3.0协议发布，请遵守此协议
-软件受地区法律保护
-# 更多
-QQ交流群:[440406148](https://jq.qq.com/?_wv=1027&k=Gd5z9j7v)  
-Telegram交流群:t.me/flyospro(@flyospro)
-# 截图
-![](img/screenshot.jpg)
+<!DOCTYPE html>
+<html>
+ <head> 
+
+    
+   <h2>Document Language</h2>
+   <a href="http://flyosgeek.com/cn.html">简体中文</a>
+  <br>
+  <a href="http://flyosgeek.com/ru.html">русский</a>
+   <div class="introduction"> 
+    <h2>Introduction</h2> 
+    <p>FlyOS is an artifact of Android phones, the baby of geeks</p> 
+    <p>The original and complete Linux system  </p>
+    <p>FlyOS Console:(Main function)</p> 
+    <ul> 
+     <li>Web panel (one-click mobile station construction)</li> 
+     <li>Web deployment of the original GNU/Linux distribution&lt; /li&gt; </li>
+     <li>Online web-friendly creation of virtual machine panel</li> 
+     <li>Support Beginner one-click deployment of various systems</li> 
+     <li>Use FlyChat to chat</li> 
+     <li>Use web to manage mobile phone online Function, remote control</li> 
+     <li>You can use flyosx86wine or a virtual machine to run Windows (EXE, MSI) applications</li> 
+     <li>One-click installation of software packages</li> 
+     <li>Develop artificial intelligence projects&lt; /li&gt; </li>
+     <li>Deploying GUI environment</li> 
+     <li>Network security test</li> 
+    </ul> 
+   </div> 
+   <div class="install"> 
+    <h2>Installation</h2> 
+    <ol> 
+     <li>Install <a href="http://f-droid.org/en/packages/com.termux/">termux</a> and open</li> 
+     <li>Enter in Termux: <kbd>curl -L http://flyosgeek.com/gosetup.sh | bash</kbd> and press Enter</li> 
+    </ol> 
+   </div> 
+   <div class="quickstart"> 
+    <h2>Quick start</h2> <p>flyos runs in the termux advanced terminal, easy to use, so you don’t need much configuration</p> <p>After the installation is complete, enter exit, open it again, we will initialize, and the browser will visit the corresponding display address The configuration can be completed. After the configuration is successful, flyos will start automatically. After the configuration is complete, it is simple and easy to use, and can understand a little level (development for junior high school students, I believe your level is not bad)</p> </h2>
+   </div> 
+   <div> 
+    <div> 
+    </div> 
+    <div> 
+     <h2> Is FlyOS a system? Why is there an os? </h2> 
+     <p>Some people say that FlyOS is not os, but FlyOS can be said to be one of termux's linux distributions (referring to the rootfs transformation under data), so it is os. FlyOS is not like other scripts, but single The file, there is no dependency. And it is mentioned in the chapter on the origin of flyos that FlyOS was originally a rom, so we did not change the name, but it is also an os now. </p> 
+    </div> 
+   </div> 
+   <div class="about"> 
+    <h2>About</h2> 
+    <h3>List of contributors/internal developers</h3> Some developers hide information, so if If you don’t want to show your information here, please contact the person in charge or the founder 
+    <li>xkdr1234 (the main person in charge of FlyOS, the person who develops the overall high-level framework, the software is complete, and the code is optimized)</li> 
+    <li>Seafood (flyos virtual Contributor to machine pro version development, author of utqemu)</li> 
+    <li>Whatever Happens (debian is king, contributing the first flyos virtual machine deployment software)</li> 
+    <li>nullptr (contributing to the web enhanced version of the virtual machine software (Virtual machine web) and deploylinux web Linux deployment software)</li> 
+    <li>xinhan (Time, time is gone, contribute to flyos development support, utermux one-click installation of flyos)</li> 
+    <li>tmoe (contribute to flyos rootfs warehouse, script principle and support)</li> 
+    <li>xingyujie (founder of FlyOS, contributed to the basic framework, most of the function design and development, and later due to busy studies, the development was temporarily stopped, and the development is expected to continue during the long vacation)</li> &lt; p&gt;The software is released under the GPL-V3.0 agreement. Please abide by this agreement. The software is protected by regional laws.
+    <p></p>
+    <p>Telegram exchange group: t.me/flyospro(@flyospro)</p> 
+   </div> 
+   <div class="donate"> 
+    <h2>Donate</h2> 
+    Paypal:xingyujie50
+   </div> 
+   <div class="screenshot"> 
+    <h2>screenshots</h2> 
+    <img src="/img/screenshot.jpg" alt="FlyOS use screenshot" /> 
+    <img src="/img/panel.jpg" alt="FlyOS panel" /> 
+    <img src="/img/deploy.jpg" alt="FlyOS Linux container deployment  " /> 
+    <img src="/img/vm1.jpg" alt="FlyOS virtual machine" /> 
+   </div> 
+  
+  </div>
+ </body>
+</html>
