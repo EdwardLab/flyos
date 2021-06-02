@@ -24,10 +24,7 @@ os.system("clear")
 if not os.path.exists(HOME+"/.flyos/"): # 检测是否已经初始化
     os.system(f"python {FLYOS}/.firstuse/register.py")
 
-print("flyos启动选项")
-print("1. 启动flyos")
-print("2. 启动恢复模式")
-print("3秒后自动启动flyos")
+print("flyos启动选项\n 1. 启动flyos\n 2. 启动恢复模式\n 3秒后自动启动flyos")
 
 @func_timeout.func_set_timeout(3)
 def get_input():
@@ -38,7 +35,6 @@ try:
     input_ = get_input()
 except func_timeout.exceptions.FunctionTimedOut:
     input_ = '1'
-
 
 if input_ == '1':
     os.system('clear')
@@ -54,7 +50,6 @@ if input_ == '1':
         with open(HOME+"/.flyos/ppid", "w") as f: # 没有保存过
             f.write("0")
         FLYOS_PPID = 0
-
     if os.getppid() == FLYOS_PPID: # 如果这个进程的父进程pid与之前保存的一致, 就运行console.py
         logging.info("自启动项已经启动")
         logging.info("运行FlyOS主程序")
@@ -82,9 +77,7 @@ if input_ == '1':
 elif input_ == '2':
     logging.info("启动FlyOS恢复模式")
     print("这是什么?")
-    print("这是flyos的恢复模式,"
-            "当您的flyos无法正常启动的时候,"
-            "您可以尝试使用此模式恢复")
+    print("这是flyos的恢复模式,\n 当您的flyos无法正常启动的时候,\n 您可以尝试使用此模式恢复")
     os.system("bash")
 else:
     print("错误选项")
