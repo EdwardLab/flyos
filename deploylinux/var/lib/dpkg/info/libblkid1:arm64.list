@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/aarch64-linux-gnu
+/lib/aarch64-linux-gnu/libblkid.so.1.1.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libblkid1
+/usr/share/doc/libblkid1/changelog.Debian.gz
+/usr/share/doc/libblkid1/copyright
+/lib/aarch64-linux-gnu/libblkid.so.1

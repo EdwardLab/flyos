@@ -1,0 +1,15 @@
+/.
+/usr
+/usr/lib
+/usr/lib/aarch64-linux-gnu
+/usr/lib/aarch64-linux-gnu/libgcrypt.so.20.2.5
+/usr/share
+/usr/share/doc
+/usr/share/doc/libgcrypt20
+/usr/share/doc/libgcrypt20/AUTHORS.gz
+/usr/share/doc/libgcrypt20/NEWS.gz
+/usr/share/doc/libgcrypt20/README.gz
+/usr/share/doc/libgcrypt20/THANKS.gz
+/usr/share/doc/libgcrypt20/changelog.Debian.gz
+/usr/share/doc/libgcrypt20/copyright
+/usr/lib/aarch64-linux-gnu/libgcrypt.so.20

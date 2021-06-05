@@ -1,0 +1,26 @@
+update-alternatives 2021-02-01 11:02:42: run with --quiet --install /usr/bin/awk awk /usr/bin/mawk 5 --slave /usr/share/man/man1/awk.1.gz awk.1.gz /usr/share/man/man1/mawk.1.gz --slave /usr/bin/nawk nawk /usr/bin/mawk --slave /usr/share/man/man1/nawk.1.gz nawk.1.gz /usr/share/man/man1/mawk.1.gz
+update-alternatives 2021-02-01 11:02:42: link group awk updated to point to /usr/bin/mawk
+update-alternatives 2021-02-01 11:02:52: run with --quiet --install /usr/bin/awk awk /usr/bin/mawk 5 --slave /usr/share/man/man1/awk.1.gz awk.1.gz /usr/share/man/man1/mawk.1.gz --slave /usr/bin/nawk nawk /usr/bin/mawk --slave /usr/share/man/man1/nawk.1.gz nawk.1.gz /usr/share/man/man1/mawk.1.gz
+update-alternatives 2021-02-01 11:02:53: run with --install /usr/share/man/man7/builtins.7.gz builtins.7.gz /usr/share/man/man7/bash-builtins.7.gz 10
+update-alternatives 2021-02-01 11:02:53: link group builtins.7.gz updated to point to /usr/share/man/man7/bash-builtins.7.gz
+update-alternatives 2021-02-01 11:02:54: run with --install /usr/sbin/rmt rmt /usr/sbin/rmt-tar 50 --slave /usr/share/man/man8/rmt.8.gz rmt.8.gz /usr/share/man/man8/rmt-tar.8.gz
+update-alternatives 2021-02-01 11:02:54: link group rmt updated to point to /usr/sbin/rmt-tar
+update-alternatives 2021-02-01 11:02:54: run with --install /usr/bin/w w /usr/bin/w.procps 50 --slave /usr/share/man/man1/w.1.gz w.1.gz /usr/share/man/man1/w.procps.1.gz
+update-alternatives 2021-02-01 11:02:54: link group w updated to point to /usr/bin/w.procps
+update-alternatives 2021-02-01 11:02:56: run with --install /usr/bin/pager pager /bin/more 50 --slave /usr/share/man/man1/pager.1.gz pager.1.gz /usr/share/man/man1/more.1.gz
+update-alternatives 2021-02-01 11:02:56: link group pager updated to point to /bin/more
+update-alternatives 2021-02-01 11:02:56: run with --remove pager /usr/bin/pg
+update-alternatives 2021-02-01 11:04:14: run with --remove builtins.7.gz /usr/share/man/man7/bash-builtins.7.gz
+update-alternatives 2021-02-01 11:04:14: link group builtins.7.gz fully removed
+update-alternatives 2021-02-01 11:21:59: run with --quiet --install /usr/bin/awk awk /usr/bin/mawk 5 --slave /usr/share/man/man1/awk.1.gz awk.1.gz /usr/share/man/man1/mawk.1.gz --slave /usr/bin/nawk nawk /usr/bin/mawk --slave /usr/share/man/man1/nawk.1.gz nawk.1.gz /usr/share/man/man1/mawk.1.gz
+update-alternatives 2021-02-01 11:21:59: auto-repair link group awk
+update-alternatives 2021-02-01 11:23:25: run with --install /usr/bin/w w /usr/bin/w.procps 50 --slave /usr/share/man/man1/w.1.gz w.1.gz /usr/share/man/man1/w.procps.1.gz
+update-alternatives 2021-02-01 11:23:25: auto-repair link group w
+update-alternatives 2021-02-01 11:24:20: run with --install /usr/sbin/rmt rmt /usr/sbin/rmt-tar 50 --slave /usr/share/man/man8/rmt.8.gz rmt.8.gz /usr/share/man/man8/rmt-tar.8.gz
+update-alternatives 2021-02-01 11:24:20: auto-repair link group rmt
+update-alternatives 2021-02-01 11:24:49: run with --install /usr/bin/pager pager /bin/more 50 --slave /usr/share/man/man1/pager.1.gz pager.1.gz /usr/share/man/man1/more.1.gz
+update-alternatives 2021-02-01 11:24:49: auto-repair link group pager
+update-alternatives 2021-02-01 11:24:49: run with --remove pager /usr/bin/pg
+update-alternatives 2021-02-01 11:25:24: run with --install /usr/sbin/rmt rmt /usr/sbin/rmt-tar 50 --slave /usr/share/man/man8/rmt.8.gz rmt.8.gz /usr/share/man/man8/rmt-tar.8.gz
+update-alternatives 2021-02-01 11:25:25: run with --install /usr/bin/pager pager /bin/more 50 --slave /usr/share/man/man1/pager.1.gz pager.1.gz /usr/share/man/man1/more.1.gz
+update-alternatives 2021-02-01 11:25:25: run with --remove pager /usr/bin/pg

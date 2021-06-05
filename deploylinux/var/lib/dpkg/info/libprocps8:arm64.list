@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/aarch64-linux-gnu
+/lib/aarch64-linux-gnu/libprocps.so.8.0.2
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libprocps8
+/usr/share/doc/libprocps8/NEWS.Debian.gz
+/usr/share/doc/libprocps8/changelog.Debian.gz
+/usr/share/doc/libprocps8/copyright
+/lib/aarch64-linux-gnu/libprocps.so.8
