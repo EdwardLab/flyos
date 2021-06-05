@@ -1,3 +1,0 @@
-#!/bin/sh
-# see #728612 emulate gettext in LANG=C
-echo -n "$@"

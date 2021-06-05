@@ -1,2 +1,0 @@
-# we never want these unpacked at the same time, they break maintainer scripts
-conflicts-with-version safe-rm (<< 0.8)
