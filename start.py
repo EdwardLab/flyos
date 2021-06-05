@@ -55,25 +55,8 @@ if input_ == '1':
         logging.info("运行FlyOS主程序")
         os.system(f"python {FLYOS}/console.py")
     else:
-        with open(HOME+"/.flyos/ppid", "w") as f: # 如果不一样, 将父进程pid写入文件
-            f.write(str(os.getppid()))
-        print("运行自启动服务...")
-        logging.warning("自启动项未运行")
-        conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
-        cur = conn.cursor()
-        data = cur.execute("SELECT * FROM boot WHERE status==1;")
-        for i in data: # 运行开机自启动服务
-            print(i[1])
-            logging.debug(f"运行命令:{i[1]}")
-            threading.Thread(target=lambda:subprocess.Popen(i[1],
-                stderr=-1,
-                stdout=-1,
-                shell=True)).start()
-            time.sleep(0.1)
-        conn.close()
-        logging.info("自启动项已全部运行")
-        logging.info("运行FlyOS主程序")
-        os.system(f"python {FLYOS}/console.py")
+        
+        os.system("bash $FLYOS/services.sh")
 elif input_ == '2':
     logging.info("启动FlyOS恢复模式")
     print("这是什么?")

@@ -1,4 +1,4 @@
-#作者:邢宇杰 Xingyujie GPL-V3
+#作者:Xingyujie GPL-V3
 #请根据协议发布，严禁违反
 """flyos主程序"""
 import os
@@ -8,11 +8,13 @@ import getpass
 import datetime
 import subprocess
 import urllib.request
-
+import socket
 import requests
-
 import termux_auth
-
+#ip获取
+s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+s.connect(('8.8.8.8',80))
+ip=s.getsockname()[0]
 HOME = os.getenv("HOME")
 
 os.system("clear")
@@ -100,17 +102,7 @@ print("21.初始化FlyOS")
 print("22.启动Xfce4图形化(端口5902)")
 print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
-print("####FlyOS Panel已经启动，"
-        "浏览器访问http://IP:8888，"
-        "web终端请访问http://IP:7681，"
-        "WEB虚拟机请访问http://IP:8002，"
-        "Apache服务请访问http://IP:8080，"
-        "Nginx在http://IP:8088，"
-        "HTTP文件管理器在http://IP:8081，"
-        "FlyOS AM调用在http://IP:5000，"
-        "Termux:API调用在http://IP:5002，"
-        "jupyter notebook在http://IP:2000。"
-        "注意，本地访问请浏览器访问http://127.0.0.1:端口号####")
+print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888")
 while 1:
     num = input("请输入要启动的编号，例如:1 :")
     print("正在启动项目" + num)
