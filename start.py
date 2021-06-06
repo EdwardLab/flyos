@@ -18,7 +18,7 @@ FLYOS = os.getenv("FLYOS")
 WIDTH = os.get_terminal_size().columns
 try:
     logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
-except:
+except:#文件不存在
     file = open(f"{HOME}/.flyos/boot.log", "w+")
     file.close()
     logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
