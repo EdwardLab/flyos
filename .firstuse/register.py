@@ -12,7 +12,6 @@ from pywebio.session import set_env
 import termux_auth
 
 FLYOS_ROOT = os.getenv('FLYOS')
-HOME = os.getenv("HOME")
 
 #Tips
 print("______________________________________")
@@ -33,64 +32,7 @@ def main():
             return
         put_text('初始化完成！请进入termuxAPP开始体验FlyOS吧！')
         termux_auth.change_passwd(password)
-    try:
         os.mkdir(f"{HOME}/.flyos")
-    except FileExistsError:
-        pass
-    conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
-    cur = conn.cursor()
-    cur.execute('''CREATE TABLE boot (
-        ID INTEGER PRIMARY KEY NOT NULL,
-        command           TEXT    NOT NULL,
-        status            INT     NOT NULL
-        );''')
-    cur.execute('''CREATE TABLE login (
-        ID INTEGER PRIMARY KEY NOT NULL,
-        command           TEXT    NOT NULL,
-        status            INT     NOT NULL
-        );''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "ttyd pwlogin", 1
-    )''')
-    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
-        "python {FLYOS_ROOT}/panel/server.py", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "apachectl start", 1
-    )''')
-    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
-        "python {FLYOS_ROOT}/virtualmachine/web.py", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "nginx", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "php-fpm", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "http-server", 1
-    )''')
-    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
-        "python {FLYOS_ROOT}/phone/web.py", 1
-    )''')
-    cur.execute(f'''INSERT INTO boot (command, status) VALUES (
-        "python {FLYOS_ROOT}/api/web.py", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES (
-        "sshd", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES(
-        "jupyter notebook --ip='0.0.0.0' --port=2000 --NotebookApp.token='' --no-browser", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES(
-        "termux-wake-lock", 1
-    )''')
-    cur.execute('''INSERT INTO boot (command, status) VALUES(
-        "code-server --bind-addr 0.0.0.0:2001", 1
-    )''')
-    conn.commit()
-    conn.close()
-
     os.kill(os.getpid(), 9)
 
 #Server Port 关于服务器的配置信息

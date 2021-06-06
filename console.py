@@ -3,11 +3,9 @@
 """flyos主程序"""
 import os
 import time
-import sqlite3
 import getpass
 import datetime
 import subprocess
-import urllib.request
 import socket
 import requests
 import termux_auth
@@ -54,20 +52,6 @@ else:
     print(RES.read().decode('utf-8'), '\n')
     RES.close()
 
-print("运行登录自动运行项目") # 获取登录自动启动项
-conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
-cur = conn.cursor()
-data = cur.execute("SELECT * FROM login WHERE status==1;")
-for i in data: # 运行自启动项目
-    print(i[1])
-    subprocess.Popen(i[1],
-            stderr=-1,
-            stdout=-1,
-            shell=True
-        )
-conn.close()
-print("完成\n")
-
 print("欢迎使用FlyOS开源面板！")
 print("By:XingYuJie Rainbow")
 print("FlyOS由Microtech开发")
@@ -76,8 +60,6 @@ print("输入01反馈问题")
 print("输入02快速更新")
 print("输入03切换更新通道")
 print("输入04完整更新")
-print("输入05重置启动项")
-print("输入06操作启动日志")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -201,33 +183,5 @@ while 1:
             os.system("curl flyosgeek.com/gosetup.sh|bash")
         else:
             print("取消操作")
-    elif num == '05':
-        print("将会重置您的启动项")
-        if input("继续吗[y/N] ") == 'y':
-            res = requests.get("http://api.flyosgeek.com/service.db")
-            with open(f"{HOME}/.flyos/service.db", "wb") as f:
-                f.write(res.content)
-    elif num == '06':
-        print("输入1查看启动日志")
-        print("输入2清空启动日志")
-        print("输入q返回")
-        while 1:
-            input_ = input(">>> ")
-            if input_ == '1':
-                if os.path.getsize(f"{HOME}/.flyos/boot.log"):
-                    with open(f"{HOME}/.flyos/boot.log", "r") as f:
-                        for data in f:
-                            print(data.split("\n")[0])
-                    print("完成")
-                else:
-                    print("没有日志可查看")
-            elif input_ == '2':
-                with open(f"{HOME}/.flyos/boot.log", "w") as f:
-                    pass
-                print("完成")
-            elif input_ == 'q':
-                break
-            else:
-                print("无效输入")
     else:
         print("请输入选项")
