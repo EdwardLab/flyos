@@ -16,8 +16,13 @@ except:
 HOME = os.getenv("HOME")
 FLYOS = os.getenv("FLYOS")
 WIDTH = os.get_terminal_size().columns
-
-logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
+try:
+    logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
+except:
+    file = open(f"{HOME}/.flyos/boot.log", "w+")
+    file.close()
+    logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
+    
 
 os.system("clear")
 
