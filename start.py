@@ -16,13 +16,7 @@ except:
 HOME = os.getenv("HOME")
 FLYOS = os.getenv("FLYOS")
 WIDTH = os.get_terminal_size().columns
-try:
-    logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
-except:#文件不存在
-    file = open(f"{HOME}/.flyos/boot.log", "w+")
-    file.close()
-    logging.basicConfig(filename=f"{HOME}/.flyos/boot.log", level=logging.INFO, format="[%(levelname)s] %(asctime)s %(message)s", datefmt="%Y/%d/%m %I:%M:%S")
-    
+
 
 os.system("clear")
 
@@ -44,24 +38,7 @@ except func_timeout.exceptions.FunctionTimedOut:
 if input_ == '1':
     os.system('clear')
     logging.info("启动FlyOS")
-    # 下面的代码是为了防止重复启动服务
-    try:
-        logging.info("读取父进程pid")
-        with open(HOME+"/.flyos/ppid", "r") as f: # 读取之前保存的父进程的pid
-            FLYOS_PPID = int(f.read(16))
-            logging.info(f"成功读取到父进程pid:{FLYOS_PPID}")
-    except FileNotFoundError:
-        logging.warning("未能成功读取父进程pid")
-        with open(HOME+"/.flyos/ppid", "w") as f: # 没有保存过
-            f.write("0")
-        FLYOS_PPID = 0
-    if os.getppid() == FLYOS_PPID: # 如果这个进程的父进程pid与之前保存的一致, 就运行console.py
-        logging.info("自启动项已经启动")
-        logging.info("运行FlyOS主程序")
-        os.system(f"python {FLYOS}/console.py")
-    else:
-        
-        os.system("bash $FLYOS/services.sh")
+    os.system("bash $FLYOS/services.sh")
 elif input_ == '2':
     logging.info("启动FlyOS恢复模式")
     print("这是什么?")
