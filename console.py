@@ -42,15 +42,10 @@ PREFIX='''\n日　期：{}年{}月{}日 时　间：{} \n'''.format(i.year,i.mon
 print(PREFIX)
 print(f"{getpass.getuser()}欢迎使用FlyOS!")
 
-RES = ''
 try:
-    RES = urllib.request.urlopen("http://flyosgeek.com/notices.txt") # 获取公告
-except urllib.error.URLError:
+    print(request.urlopen("http://flyosgeek.com/notices.txt").decode("utf-8"))
+except Exception:
     print("获取公告失败")
-else:
-    print("\n公告:")
-    print(RES.read().decode('utf-8'), '\n')
-    RES.close()
 
 print("欢迎使用FlyOS开源面板！")
 print("By:XingYuJie Rainbow")
