@@ -1,18 +1,18 @@
-#作者:邢宇杰 Xingyujie GPL-V3
+#作者:Xingyujie GPL-V3
 #请根据协议发布，严禁违反
 """flyos主程序"""
 import os
 import time
-import sqlite3
 import getpass
 import datetime
 import subprocess
-import urllib.request
-
+import socket
 import requests
-
 import termux_auth
-
+#ip获取
+s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+s.connect(('8.8.8.8',80))
+ip=s.getsockname()[0]
 HOME = os.getenv("HOME")
 
 os.system("clear")
@@ -42,29 +42,10 @@ PREFIX='''\n日　期：{}年{}月{}日 时　间：{} \n'''.format(i.year,i.mon
 print(PREFIX)
 print(f"{getpass.getuser()}欢迎使用FlyOS!")
 
-RES = ''
 try:
-    RES = urllib.request.urlopen("http://flyosgeek.com/notices.txt") # 获取公告
-except urllib.error.URLError:
+    print(request.urlopen("http://flyosgeek.com/notices.txt").decode("utf-8"))
+except Exception:
     print("获取公告失败")
-else:
-    print("\n公告:")
-    print(RES.read().decode('utf-8'), '\n')
-    RES.close()
-
-print("运行登录自动运行项目") # 获取登录自动启动项
-conn = sqlite3.connect(f'{HOME}/.flyos/service.db')
-cur = conn.cursor()
-data = cur.execute("SELECT * FROM login WHERE status==1;")
-for i in data: # 运行自启动项目
-    print(i[1])
-    subprocess.Popen(i[1],
-            stderr=-1,
-            stdout=-1,
-            shell=True
-        )
-conn.close()
-print("完成\n")
 
 print("欢迎使用FlyOS开源面板！")
 print("By:XingYuJie Rainbow")
@@ -74,8 +55,6 @@ print("输入01反馈问题")
 print("输入02快速更新")
 print("输入03切换更新通道")
 print("输入04完整更新")
-print("输入05重置启动项")
-print("输入06操作启动日志")
 print("1.给FlyOS 安装GNU/发行版Linux(推荐|简洁)")
 print("2.Linux菜单高级部署菜单(推荐)")
 print("3.软件安装器(Termux软件包)")
@@ -100,17 +79,7 @@ print("21.初始化FlyOS")
 print("22.启动Xfce4图形化(端口5902)")
 print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
-print("####FlyOS Panel已经启动，"
-        "浏览器访问http://IP:8888，"
-        "web终端请访问http://IP:7681，"
-        "WEB虚拟机请访问http://IP:8002，"
-        "Apache服务请访问http://IP:8080，"
-        "Nginx在http://IP:8088，"
-        "HTTP文件管理器在http://IP:8081，"
-        "FlyOS AM调用在http://IP:5000，"
-        "Termux:API调用在http://IP:5002，"
-        "jupyter notebook在http://IP:2000。"
-        "注意，本地访问请浏览器访问http://127.0.0.1:端口号####")
+print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888")
 while 1:
     num = input("请输入要启动的编号，例如:1 :")
     print("正在启动项目" + num)
@@ -150,7 +119,7 @@ while 1:
         os.chdir('/data/data/com.termux/files/home/webui-aria2')
         os.system('node node-server.js')
     elif num == '17':
-        os.system("python $FLYOS/virtualmachine/vm.py")
+        os.system("bash $FLYOS/virtualmachine/vm.sh")
     elif num == '18':
         os.system("mc")
     elif num == '19':
@@ -209,33 +178,5 @@ while 1:
             os.system("curl flyosgeek.com/gosetup.sh|bash")
         else:
             print("取消操作")
-    elif num == '05':
-        print("将会重置您的启动项")
-        if input("继续吗[y/N] ") == 'y':
-            res = requests.get("http://api.flyosgeek.com/service.db")
-            with open(f"{HOME}/.flyos/service.db", "wb") as f:
-                f.write(res.content)
-    elif num == '06':
-        print("输入1查看启动日志")
-        print("输入2清空启动日志")
-        print("输入q返回")
-        while 1:
-            input_ = input(">>> ")
-            if input_ == '1':
-                if os.path.getsize(f"{HOME}/.flyos/boot.log"):
-                    with open(f"{HOME}/.flyos/boot.log", "r") as f:
-                        for data in f:
-                            print(data.split("\n")[0])
-                    print("完成")
-                else:
-                    print("没有日志可查看")
-            elif input_ == '2':
-                with open(f"{HOME}/.flyos/boot.log", "w") as f:
-                    pass
-                print("完成")
-            elif input_ == 'q':
-                break
-            else:
-                print("无效输入")
     else:
         print("请输入选项")

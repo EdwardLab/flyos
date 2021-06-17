@@ -105,11 +105,11 @@ class GetLinux:
                                        ("Kali", 3),
                                    ])
         if num == 1:
-            asyncio.run(self.get_ubuntu(name, command, arch))
+            asyncio.run(self.get_ubuntu(name, arch, command))
         elif num == 2:
-            asyncio.run(self.get_centos(name, command, arch))
+            asyncio.run(self.get_centos(name, arch, command))
         elif num == 3:
-            asyncio.run(self.get_kali(name, command, arch))
+            asyncio.run(self.get_kali(name, arch, command))
 
     @staticmethod
     async def get_ubuntu(name, arch, command):
