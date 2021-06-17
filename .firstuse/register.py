@@ -12,6 +12,7 @@ from pywebio.session import set_env
 import termux_auth
 
 FLYOS_ROOT = os.getenv('FLYOS')
+HOME = os.getenv('HOME')
 
 #Tips
 print("______________________________________")

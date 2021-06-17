@@ -192,5 +192,5 @@ if __name__ == "__main__":
         os.mkdir(os.path.abspath(path + "/rootfs"))
     if not os.path.exists(os.path.abspath(path + "/cmd")):
         os.mkdir(os.path.abspath(path + "/cmd"))
-    start_server(main, debug=True, host="0.0.0.0", port=2002)
+    start_server(main, debug=True, host="0.0.0.0", port=2004)
     pywebio.session.hold()
