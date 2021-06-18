@@ -162,7 +162,7 @@ def get_rootfs(rootfs_url, name, ext, command):
     {command} rootfs/{name}/ /bin/sh -c $1
     fi
     """
-    with open("cmd/{name}".format(name=name)) as f:
+    with open("cmd/{name}".format(name=name), "w") as f:
         f.write(conf_template.format(command=command, name=name))
     os.system("chmod +x cmd/{name}".format(name=name))
 
