@@ -75,12 +75,12 @@ def join():
 def delete():
     """删除一个 Linux 系统"""
     options = []
-    dirs = os.listdir("{}/cmd".format(self.path))
+    dirs = os.listdir("{}/cmd".format(path))
     for vm_path in dirs:
         options.append((vm_path, vm_path))
     linux = pywebio.input.select("选择创建的Linux名称", options=options)
     subprocess.call(
-        ["rm -rf {path}/rootfs/{linux}".format(path=self.path, linux=linux)],
+        ["rm -rf {path}/rootfs/{linux}".format(path=path, linux=linux)],
         cwd=path,
     )
 
