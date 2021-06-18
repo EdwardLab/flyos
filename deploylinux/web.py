@@ -10,7 +10,7 @@ import pywebio.input
 from pywebio import start_server
 from pywebio.output import popup, put_text, put_html
 from pywebio.session import set_env
-
+import tarfile
 print("Linux部署程序--中文版")
 print("By:FlyOS MicroTech XingYuJie(严禁删除版权，不允许修改版权)GPL-V3")
 
@@ -161,12 +161,16 @@ class GetLinux:
     @staticmethod
     async def get_rootfs(rootfs_url, name, ext, command):
         popup('正在下载rootfs……')
-        await get_result('wget {} -O rootfs/{}.tar.{}'.format(
+        await get_result('wget {} -O deploylinux/rootfs/{}.tar.{}'.format(
             rootfs_url, name, ext))
         popup('正在解压rootfs……')
-        await get_result(
-            'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext == 'xz' else 'gz',
-                                                                            name=name, ext=ext))
+        path = os.path.abspath('deploylinux/rootfs/{}/'.format(name))
+        os.makedirs(path)
+        fs = tarfile.open('deploylinux/rootfs/{name}.tar.{ext}'.format(name=name, ext=ext))
+        fs.extractall(path=path)
+        # await get_result(
+        #     'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext == 'xz' else 'gz',
+        #                                                                     )
         popup('正在清理……')
         await get_result('rm -f rootfs/{}.tar.{}'.format(name, ext))
         popup('正在创建配置……')
