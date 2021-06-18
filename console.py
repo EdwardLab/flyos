@@ -79,7 +79,7 @@ print("21.初始化FlyOS")
 print("22.启动Xfce4图形化(端口5902)")
 print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
-print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888")
+print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888，VNC桌面环境请使用VNC客户端连接到" + ip + ":5902")
 while 1:
     num = input("请输入要启动的编号，例如:1 :")
     print("正在启动项目" + num)
