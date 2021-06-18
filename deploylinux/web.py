@@ -161,9 +161,9 @@ def get_rootfs(rootfs_url, name, ext, command):
     {command} rootfs/{name}/ /bin/sh -c $1
     fi
     """
-    with open("cmd/{name}".format(name)) as f:
+    with open("cmd/{name}".format(name=name)) as f:
         f.write(conf_template.format(command=command, name=name))
-    os.system("chmod +x cmd/{name}")
+    os.system("chmod +x cmd/{name}".format(name=name))
 
 
 # Server Port 关于服务器的配置信息
