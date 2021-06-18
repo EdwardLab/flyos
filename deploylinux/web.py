@@ -172,7 +172,7 @@ class GetLinux:
         #     'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext == 'xz' else 'gz',
         #                                                                     )
         popup('正在清理……')
-        await get_result('rm -f rootfs/{}.tar.{}'.format(name, ext))
+        await get_result('rm -f deploylinux/rootfs/{}.tar.{}'.format(name, ext))
         popup('正在创建配置……')
         conf_template = '''
         if [ -z $1 ]; then
@@ -196,5 +196,5 @@ if __name__ == "__main__":
         os.mkdir(os.path.abspath(path + "/rootfs"))
     if not os.path.exists(os.path.abspath(path + "/cmd")):
         os.mkdir(os.path.abspath(path + "/cmd"))
-    start_server(main, debug=True, host="0.0.0.0", port=2004)
+    start_server(main, debug=True, host="0.0.0.0", port=2002)
     pywebio.session.hold()
