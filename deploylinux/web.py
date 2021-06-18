@@ -96,7 +96,7 @@ class GetLinux:
         name = pywebio.input.input('请输入该系统的名字')
         command = pywebio.input.radio('请选择要用的命令',
                                       [('PRoot(无root下使用)', 'proot -r ', True),
-                                       ('chroot(有root建议使用)', 'chroot ')])
+                                       ('chroot(有root建议使用)', 'sudo chroot ')])
         arch = subprocess.getoutput('dpkg --print-architecture')
         num = pywebio.input.select('请选择你要安装的系统',
                                    options=[
