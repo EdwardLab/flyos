@@ -147,7 +147,8 @@ def get_rootfs(rootfs_url, name, ext, command):
     fs = tarfile.open(
         "{path}/rootfs/{name}.tar.{ext}".format(path=path, name=name, ext=ext)
     )  # 打开压缩文件
-    fs.extractall(path=ta_path)  # 解压所有文件至rootfs目录
+    for i in fs.getmembers:
+        fs.extract(i, path=path)  # 解压所有文件至rootfs目录
     # get_result(
     #     'tar x{type}vf rootfs/{name}.tar.{ext} -C rootfs/{name}'.format(type='J' if ext == 'xz' else 'gz',
     #                                                                     )
