@@ -104,11 +104,11 @@ class Main:
                 ],
             )
             if num == 1:
-                asyncio.run(self.get_ubuntu(name, arch, command))
+                asyncio.run(get_ubuntu(name, arch, command))
             elif num == 2:
-                asyncio.run(self.get_centos(name, arch, command))
+                asyncio.run(get_centos(name, arch, command))
             elif num == 3:
-                asyncio.run(self.get_kali(name, arch, command))
+                asyncio.run(get_kali(name, arch, command))
         elif n == 2:
             asyncio.run(self.join())
         elif n == 3:
