@@ -73,6 +73,12 @@ def main():
     put_link("jupyter notebook",
             url=f'http://{get_host_ip()}:2000'
         )
+    put_text('_______________________',
+            sep=' '
+        )
+    put_link("FlyOS桌面环境",
+            url=f'http://{get_host_ip()}:6081/vnc.html'
+        )
     put_text('_________系统工具__________',
             sep=' '
         )
