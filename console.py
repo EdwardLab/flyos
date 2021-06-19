@@ -43,7 +43,7 @@ print(PREFIX)
 print(f"{getpass.getuser()}欢迎使用FlyOS!")
 
 try:
-    print(requests.urlopen("http://flyosgeek.com/notices.txt").decode("utf-8"))
+    print(requests.get("http://flyosgeek.com/notices.txt").content.decode("utf-8"))
 except Exception:
     print("获取公告失败")
 
