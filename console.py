@@ -77,6 +77,7 @@ print("19.虚拟机WEB管理面板(已自动启动，再次启动会出问题)")
 print("20.启动nginx WEB Server")
 print("21.初始化FlyOS")
 print("22.启动Xfce4图形化(端口5902)")
+print("23.启动pocketmine服务器")
 print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
 print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888，VNC桌面环境请使用VNC客户端连接到" + ip + ":5902")
@@ -131,6 +132,8 @@ while 1:
     elif num == '22':
         print("Xfce4图形化界面启动在IP:5902，本地连接请输入IP:127.0.0.1:5902")
         os.system("nohup flyosvnc &")
+    elif num == '23':
+        os.system("bash $FLYOS/mc/start.sh")
     elif num == '0':
         os.system('zsh')
     elif num == '00':
