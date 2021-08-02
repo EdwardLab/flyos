@@ -41,7 +41,7 @@ os.system("clear")
 #print("         |___/")
 os.system("toilet -f mono12 -F gay FlyOS")
 print("__________________________")
-print("________FlyOS v4.0________")
+print("________FlyOS v4.5________")
 #获取年月日格式的时间
 date = time.strftime("%Y-%m-%d %H:%M:%S")
 print("现在时间:" + date)
