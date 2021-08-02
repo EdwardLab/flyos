@@ -16,8 +16,15 @@ ip=s.getsockname()[0]
 HOME = os.getenv("HOME")
 
 os.system("clear")
-
 while 1: # 判断输入密码是否正确
+    print("_____ _        ___  ____")
+    print("|  ___| |_   _ / _ \\/ ___|")
+    print("| |_  | | | | | | | \\___ \\.")
+    print("|  _| | | |_| | |_| |___) |")
+    print("|_|   |_|\\__, |\\___/|____/")
+    print("         |___/")
+    print("__________________________")
+    print(f"{getpass.getuser()}登录到FlyOS")
     inputpass=getpass.getpass("请输入密码:")
     if not termux_auth.auth(inputpass):
         print("密码错误")
@@ -26,12 +33,13 @@ while 1: # 判断输入密码是否正确
 
 os.system("clear")
 
-print("_____ _        ___  ____")
-print("|  ___| |_   _ / _ \\/ ___|")
-print("| |_  | | | | | | | \\___ \\.")
-print("|  _| | | |_| | |_| |___) |")
-print("|_|   |_|\\__, |\\___/|____/")
-print("         |___/")
+#print("_____ _        ___  ____")
+#print("|  ___| |_   _ / _ \\/ ___|")
+#print("| |_  | | | | | | | \\___ \\.")
+#print("|  _| | | |_| | |_| |___) |")
+#print("|_|   |_|\\__, |\\___/|____/")
+#print("         |___/")
+os.system("toilet -f mono12 -F gay FlyOS")
 print("__________________________")
 print("________FlyOS v4.0________")
 #获取年月日格式的时间
