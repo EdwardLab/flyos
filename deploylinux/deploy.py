@@ -19,35 +19,35 @@ print("安装完成后，请输入./start-系统名.sh启动。输入0退出")
 num = input("请输入编码来安装系统:")
 if num == '1':
     os.system(
-        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh"
+        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh"
     )
 if num == '2':
     os.system(
-        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Debian/debian.sh && bash debian.sh"
+        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Debian/debian.sh && bash debian.sh"
     )
 if num == '3':
     os.system(
-        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Kali/kali.sh && bash kali.sh"
+        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Kali/kali.sh && bash kali.sh"
     )
 if num == '4':
     os.system(
-        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Nethunter/nethunter.sh && bash nethunter.sh"
+        "pkg install wget openssl-tool proot -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Nethunter/nethunter.sh && bash nethunter.sh"
     )
 if num == '5':
     os.system(
-        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Fedora/fedora.sh && bash fedora.sh"
+        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Fedora/fedora.sh && bash fedora.sh"
     )
 if num == '6':
     os.system(
-        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/CentOS/centos.sh && bash centos.sh"
+        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/CentOS/centos.sh && bash centos.sh"
     )
 if num == '7':
     os.system(
-        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Arch/armhf/arch.sh && bash arch.sh"
+        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Arch/armhf/arch.sh && bash arch.sh"
     )
 if num == '8':
     os.system(
-        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/EXALAB/AnLinux-Resources/master/Scripts/Installer/Alpine/alpine.sh && bash alpine.sh"
+        "pkg install wget openssl-tool proot tar -y && hash -r && wget https://raw.fastgit.org/ChenYifei21/Scripts/master/Scripts/Installer/Alpine/alpine.sh && bash alpine.sh"
     )
 if num == '0':
     exit(())
