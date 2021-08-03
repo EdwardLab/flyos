@@ -89,9 +89,16 @@ print("23.启动pocketmine服务器")
 print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
 print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888，VNC桌面环境请使用VNC客户端连接到" + ip + ":5902")
+print("!!序号使用帮助:请在下面🚀后输入要启动的编号，例如1")
 while 1:
-    num = input("请输入要启动的编号，例如:1 :")
-    print("正在启动项目" + num)
+    print(f"👉👉👉👉👉👉👉👉{getpass.getuser()}🌈")
+    os.system("pwd")
+    num = input("✈️ " + date + "🚀🚀🚀 >>> ")
+    #print("正在启动项目或命令" + num)
+    try:
+        int(num)
+    except:
+        os.system(num)
     if num == '1':
         os.system("python3 $FLYOS/deploylinux/deploy.py")
     elif num == '2':
@@ -190,4 +197,6 @@ while 1:
         else:
             print("取消操作")
     else:
-        print("请输入选项")
+        date = time.strftime("%Y-%m-%d %H:%M:%S")
+        print("")
+        #可以写每次运行完命令显示的内容
