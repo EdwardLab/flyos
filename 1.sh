@@ -1,0 +1,1 @@
+bash $FLYOS/booting.sh

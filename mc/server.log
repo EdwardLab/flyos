@@ -1,0 +1,1 @@
+2021-08-02 [08:54:35] [Server thread/WARNING]: Debugging assertions are enabled. This may degrade performance. To disable them, set `zend.assertions = -1` in php.ini.
