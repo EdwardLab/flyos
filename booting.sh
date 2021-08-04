@@ -7,4 +7,4 @@ nohup bash $FLYOS/.services.sh &
         echo $i
     done
 } | whiptail --gauge "FlyOS正在启动" 6 60 0
-python $FLYOS/console.py
+bash $FLYOS/services.sh
