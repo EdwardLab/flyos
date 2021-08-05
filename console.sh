@@ -4,7 +4,7 @@ while true; do
         whiptail \
             --backtitle "FlyOS GUI Console" \
             --title "FlyOS 开源面板" \
-            --menu "请使用触摸屏或方向键+回车键进行操作" 0 50 20 \
+            --menu "请使用触摸屏或方向键+回车键进行操作" 0 50 0 \
             00 "查看关于" \
             01 "反馈问题" \
             02 "快速更新" \
@@ -76,7 +76,7 @@ while true; do
     00)
         whiptail --msgbox "关于:
 开发者创始人:Rainbow邢宇杰
-邮箱:xingyujie50@gmail.com" 0 50
+邮箱:xingyujie50@gmail.com" 0 0
         ;;
     01) whiptail --msgbox "有BUG请反馈到:xingyujie50@gmail.com" 0 50 ;;
 
@@ -110,6 +110,7 @@ while true; do
             3) git checkout beta ;;
             4) git checkout dev ;;
             5) break ;;
+            *) break ;;
             esac
         done
         ;;
@@ -125,5 +126,6 @@ while true; do
     24)
         break
         ;;
+    *) break ;;
     esac
 done
