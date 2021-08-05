@@ -1,5 +1,5 @@
 import os
-os.system("bash $FLYOS/kernel/reboot/rbootservices.sh")
+os.system("bash $FLYOS/kernel/rboot/rbootservices.sh")
 for i in range(99):
    print("")
 print("FlyOS RBOOT MODE")
