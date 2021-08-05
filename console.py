@@ -14,26 +14,20 @@ s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.connect(('8.8.8.8',80))
 ip=s.getsockname()[0]
 HOME = os.getenv("HOME")
+username=getpass.getuser()
+
 
 os.system("clear")
 
-while 1: # 判断输入密码是否正确
-    inputpass=getpass.getpass("请输入密码:")
-    if not termux_auth.auth(inputpass):
-        print("密码错误")
-    else:
-        break
-
-os.system("clear")
-
-print("_____ _        ___  ____")
-print("|  ___| |_   _ / _ \\/ ___|")
-print("| |_  | | | | | | | \\___ \\.")
-print("|  _| | | |_| | |_| |___) |")
-print("|_|   |_|\\__, |\\___/|____/")
-print("         |___/")
+#print("_____ _        ___  ____")
+#print("|  ___| |_   _ / _ \\/ ___|")
+#print("| |_  | | | | | | | \\___ \\.")
+#print("|  _| | | |_| | |_| |___) |")
+#print("|_|   |_|\\__, |\\___/|____/")
+#print("         |___/")
+os.system("toilet -f mono12 -F gay FlyOS")
 print("__________________________")
-print("________FlyOS v4.0________")
+print("________FlyOS v4.8________")
 #获取年月日格式的时间
 date = time.strftime("%Y-%m-%d %H:%M:%S")
 print("现在时间:" + date)
@@ -77,14 +71,24 @@ print("19.虚拟机WEB管理面板(已自动启动，再次启动会出问题)")
 print("20.启动nginx WEB Server")
 print("21.初始化FlyOS")
 print("22.启动Xfce4图形化(端口5902)")
+<<<<<<< HEAD
 print("23.启动pocketmine Minecraft基岩服务器")
 print("24.启动Nukkitx Minecraft基岩服务器")
+=======
+>>>>>>> 47c035af1218a82b8207f2b13bc754f11d972975
 print("0.进入终端")
 print("如需再次打开FlyOS Console，进入终端输入flyos即可")
 print("####FlyOS Panel已经启动，请使用手机网络浏览器或者其他设备访问http://" + ip + ":8888，VNC桌面环境请使用VNC客户端连接到" + ip + ":5902")
+print("!!序号使用帮助:请在下面🚀后输入要启动的编号，例如1")
 while 1:
-    num = input("请输入要启动的编号，例如:1 :")
-    print("正在启动项目" + num)
+    print(f"👉👉👉👉👉👉👉👉{getpass.getuser()}🌈")
+    os.system("pwd")
+    num = input("✈️ " + date + "🚀🚀🚀 >>> ")
+    #print("正在启动项目或命令" + num)
+    try:
+        int(num)
+    except:
+        os.system(num)
     if num == '1':
         os.system("python3 $FLYOS/deploylinux/deploy.py")
     elif num == '2':
@@ -185,4 +189,6 @@ while 1:
         else:
             print("取消操作")
     else:
-        print("请输入选项")
+        date = time.strftime("%Y-%m-%d %H:%M:%S")
+        print("")
+        #可以写每次运行完命令显示的内容
