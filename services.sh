@@ -16,4 +16,4 @@ nohup python $FLYOS/panel/FlyOSPanel/manage.py runserver 0.0.0.0:8000 > /dev/nul
 nohup flyosvnc > /dev/null 2>&1 &
 nohup $FLYOS/webvnc/utils/novnc_proxy --listen 6081 --vnc localhost:5902 > /dev/null 2>&1 &
 #下面是FlyOS Console启动
-python $FLYOS/console.py
+bash $FLYOS/chooseconsole.sh

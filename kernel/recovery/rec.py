@@ -13,7 +13,7 @@ print("|  _| | | |_| | |_| |___) |")
 print("|_|   |_|\\__, |\\___/|____/")
 print("         |___/")
 print("__________________________")
-print("FlyOS Recovery")
+print("FlyOS Recovery恢复/工程模式")
 print("VER 1.1 KERNEL VERSION")
 print("中文版VER_RELEASES")
 print("1.重新安装FlyOS")
@@ -27,6 +27,7 @@ num = input("请输入编号来启动项目:")
 if num == '1':
     os.system("curl http://flyosgeek.com/gosetup.sh | bash")
 if num == '2':
+    os.system("python $FLYOS/kernel/recovery/reccheck.py")
     os.system("bash")
 elif num == '3':
     os.system("python $FLYOS/kernel/rboot/rboot.py")
