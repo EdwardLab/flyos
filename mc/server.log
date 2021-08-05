@@ -1,1 +1,23 @@
-2021-08-02 [08:54:35] [Server thread/WARNING]: Debugging assertions are enabled. This may degrade performance. To disable them, set `zend.assertions = -1` in php.ini.
+2021-08-05 [19:05:26] [Server thread/WARNING]: Debugging assertions are enabled. This may degrade performance. To disable them, set `zend.assertions = -1` in php.ini.
+2021-08-05 [19:07:24] [Server thread/INFO]: Loading pocketmine.yml...
+2021-08-05 [19:07:24] [Server thread/INFO]: Loading server properties...
+2021-08-05 [19:07:24] [Server thread/INFO]: 已选择 中文 (简体) (chs) 作为基础语言
+2021-08-05 [19:07:24] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-08-05 [19:07:24] [Server thread/INFO]: Starting remote control listener
+2021-08-05 [19:07:24] [Server thread/INFO]: RCON running on 0.0.0.0:19132
+2021-08-05 [19:07:24] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-08-05 [19:07:24] [Server thread/INFO]: Opening server on 0.0.0.0:19132
+2021-08-05 [19:07:24] [Server thread/INFO]: This server is running PocketMine-MP version 3.19.3
+2021-08-05 [19:07:24] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-08-05 [19:07:25] [Server thread/INFO]: Loading resource packs...
+2021-08-05 [19:07:25] [Server thread/NOTICE]: World "world" not found
+2021-08-05 [19:07:25] [Server thread/INFO]: Preparing world "world"
+2021-08-05 [19:07:25] [Server thread/NOTICE]: Spawn terrain for world "world" is being generated in the background
+2021-08-05 [19:07:25] [Server thread/INFO]: Default game type: 创造模式
+2021-08-05 [19:07:25] [Server thread/INFO]: 如果你发现这个项目非常有用，请考虑捐赠，以支持发展：https://patreon.com/pocketminemp
+2021-08-05 [19:07:25] [Server thread/INFO]: Done (1.275s)! For help, type "help" or "?"
+2021-08-05 [19:15:07] [Server thread/INFO]: [/127.0.0.1:44115] logged out due to Incompatible protocol version (421)
+2021-08-05 [19:15:21] [Server thread/INFO]: [/127.0.0.1:44115] logged out due to Incompatible protocol version (421)
+2021-08-05 [19:39:53] [Server thread/INFO]: [/127.0.0.1:39991] logged out due to Incompatible protocol version (429)
+2021-08-05 [19:40:50] [Server thread/INFO]: Unloading world "world"
+2021-08-05 [19:40:50] [Server thread/INFO]: Stopping other threads
