@@ -135,7 +135,7 @@ while 1:
         print("Xfce4图形化界面启动在IP:5902，本地连接请输入IP:127.0.0.1:5902")
         os.system("nohup flyosvnc &")
     elif num == '23':
-        os.system("bash $FLYOS/mc/php/start.sh")
+        os.system("bash $FLYOS/mc/PHP/start.sh")
     elif num == '24':
         os.system("python $FLYOS/mc/JAVAPE/cr.py")
     elif num == '0':
