@@ -44,17 +44,7 @@
      <p>Some people say that FlyOS is not os, but FlyOS can be said to be one of termux's linux distributions (referring to the rootfs transformation under data), so it is os. FlyOS is not like other scripts, but single The file, there is no dependency. And it is mentioned in the chapter on the origin of flyos that FlyOS was originally a rom, so we did not change the name, but it is also an os now. </p> 
     </div> 
    </div> 
-   <div class="about"> 
-    <h2>About</h2> 
-    <h3>List of contributors/internal developers</h3> Some developers hide information, so if If you don’t want to show your information here, please contact the person in charge or the founder 
-    <li>xkdr1234 (the main person in charge of FlyOS, the person who develops the overall high-level framework, the software is complete, and the code is optimized)</li> 
-    <li>Seafood (flyos virtual Contributor to machine pro version development, author of utqemu)</li> 
-    <li>Whatever Happens (debian is king, contributing the first flyos virtual machine deployment software)</li> 
-    <li>nullptr (contributing to the web enhanced version of the virtual machine software (Virtual machine web) and deploylinux web Linux deployment software)</li> 
-    <li>xinhan (Time, time is gone, contribute to flyos development support, utermux one-click installation of flyos)</li> 
-    <li>tmoe (contribute to flyos rootfs warehouse, script principle and support)</li> 
-    <li>xingyujie (founder of FlyOS, contributed to the basic framework, most of the function design and development, and later due to busy studies, the development was temporarily stopped, and the development is expected to continue during the long vacation)</li> &lt; p&gt;The software is released under the GPL-V3.0 agreement. Please abide by this agreement. The software is protected by regional laws.
-    <p></p>
+  
     <p>Telegram exchange group: t.me/flyospro(@flyospro)</p> 
    </div> 
    <div class="donate"> 
