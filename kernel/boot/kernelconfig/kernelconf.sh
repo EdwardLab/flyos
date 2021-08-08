@@ -97,4 +97,5 @@
 
 
 
-python $FLYOS/kernel/boot/active/active.py
+#python $FLYOS/kernel/boot/active/active.py
+bash $FLYOS/munu.sh

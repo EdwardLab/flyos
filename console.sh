@@ -48,18 +48,18 @@ while true; do
     9) screenfetch ;;
     10) chsh ;;
     11)
-        whiptail --msgbox '您可以更改FlyOS的默认User密码' 0 50
+        whiptail --msgbox '您可以更改FlyOS的默认User密码' 0 0
         passwd
         ;;
     12)
-        website=$(whiptail --inputbox '欢迎使用FlyOS Browser浏览器，例如:http://www.bing.com --必应 输入网址开始浏览网页:' 0 50)
+        website=$(whiptail --inputbox '欢迎使用FlyOS Browser浏览器，例如:http://www.bing.com --必应 输入网址开始浏览网页:' 0 0)
         w3m "$website"
         ;;
     13) python3 "$FLYOS"/webserver/main.py ;;
     14) python3 "$FLYOS"/panel/server.py ;;
     15) aria2c --enable-rpc --rpc-listen-all ;;
     16)
-        cd /data/data/com.termux/files/home/webui-aria2 || whiptail --msgbox "cd出现了问题" 0 50
+        cd /data/data/com.termux/files/home/webui-aria2 || whiptail --msgbox "cd出现了问题" 0 0
         node node-server.js
         ;;
     17) bash "$FLYOS"/virtualmachine/vm.sh ;;
@@ -68,7 +68,7 @@ while true; do
     20) nginx ;;
     21) python "$FLYOS"/.firstuse/register.py ;;
     22)
-        whiptail --msgbox 'Xfce4图形化界面启动在IP:5902，本地连接请输入IP:127.0.0.1:5902' 0 50
+        whiptail --msgbox 'Xfce4图形化界面启动在IP:5902，本地连接请输入IP:127.0.0.1:5902' 0 0
         nohup flyosvnc &
         ;;
     23) bash "$FLYOS"/mc/start.sh ;;
@@ -78,22 +78,22 @@ while true; do
 开发者创始人:Rainbow邢宇杰
 邮箱:xingyujie50@gmail.com" 0 0
         ;;
-    01) whiptail --msgbox "有BUG请反馈到:xingyujie50@gmail.com" 0 50 ;;
+    01) whiptail --msgbox "有BUG请反馈到:xingyujie50@gmail.com" 0 0 ;;
 
     02)
         if (whiptail --yesno '将会进行快速更新
-快速更新有可能会出现问题，但不会删除用户数据' 0 50); then
-            cd "$FLYOS" || whiptail --msgbox "cd出现了问题" 0 50
+快速更新有可能会出现问题，但不会删除用户数据' 0 0); then
+            cd "$FLYOS" || whiptail --msgbox "cd出现了问题" 0 0
             git reset --hard
             git pull
             pip install -r requirements.txt
-            cd "$HOME" || whiptail --msgbox "cd出现了问题" 0 50
+            cd "$HOME" || whiptail --msgbox "cd出现了问题" 0 0
         else
-            whiptail --msgbox "取消" 0 50
+            whiptail --msgbox "取消" 0 0
         fi
         ;;
     03)
-        cd "$FLYOS" || whiptail --msgbox "cd出现了问题" 0 50
+        cd "$FLYOS" || whiptail --msgbox "cd出现了问题" 0 0
         while true; do
             case $(
                 whiptail \
@@ -117,10 +117,10 @@ while true; do
     04)
         if (whiptail --yesno '注意：
 完整更新将会删除所有用户数据
-真的要继续吗' 0 50); then
+真的要继续吗' 0 0); then
             curl flyosgeek.com/gosetup.sh | bash
         else
-            whiptail --msgbox "取消" 0 50
+            whiptail --msgbox "取消" 0 0
         fi
         ;;
     24)
