@@ -68,7 +68,12 @@
     <img src="/img/deploy.jpg" alt="FlyOS Linux container deployment  " /> 
     <img src="/img/vm1.jpg" alt="FlyOS virtual machine" /> 
    </div> 
-  
+  Open Source Project Reference License
+ <br>
+ Django- Django Software Foundation
+ Pywebio -Mit License
+ win10-ui -Mit License
+
   </div>
  </body>
 </html>
