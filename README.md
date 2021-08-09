@@ -12,8 +12,8 @@
   <a href="https://github.com/FuckOS/FlyOSDoc_Purified/blob/master/RU.md">русский</a>
    <div class="introduction"> 
     <h2>Introduction</h2> 
-    <p>FlyOS is an artifact of Android phones, the baby of geeks</p> 
-    <p>The original and complete Linux system  </p>
+    <p>FlyOS is a powerful software. </p> 
+    <p>It is still under construction. </p>
     <p>FlyOS Console:(Main function)</p> 
     <ul> 
      <li>Web panel (one-click mobile station construction)</li> 
@@ -44,7 +44,7 @@
     </div> 
     <div> 
      <h2> Is FlyOS a system? Why is there an os? </h2> 
-     <p>Some people say that FlyOS is not os, but FlyOS can be said to be one of termux's linux distributions (referring to the rootfs transformation under data), so it is os. FlyOS is not like other scripts, but single The file, there is no dependency. And it is mentioned in the chapter on the origin of flyos that FlyOS was originally a rom, so we did not change the name, but it is also an os now. </p> 
+     <p>Some people say that FlyOS is not a kind of operating system. Here, I'm gonna say: Yes! It isn't an operating system! You are right! How clever you are! Why not consider joining our organization to develop it since you are so clever! </p> 
     </div> 
    </div> 
   
