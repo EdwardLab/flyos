@@ -1,18 +1,3 @@
-<!--
-您可以fork flyos项目
-您可以对flyos增加任何解释性文本
-为flyos项目进行任何个人修改
-因为flyos是完全开源的项目
-
-但请不要将flyos增加任何个人标签
-不要进行任何的私人性发布并宣称flyos是您独自开发的项目
-
-这不是您私有的东西
-
-我已向对flyos开发的贡献者们发送了邮箱
-奉劝阁下好自为之
--->
-
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b51bf8e7f61450f8bc37c3609c188da)](https://app.codacy.com/gh/NaturalSelect/flyos?utm_source=github.com&utm_medium=referral&utm_content=NaturalSelect/flyos&utm_campaign=Badge_Grade_Settings)
 
 <!DOCTYPE html>
