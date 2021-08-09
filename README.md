@@ -1,11 +1,11 @@
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b51bf8e7f61450f8bc37c3609c188da)](https://app.codacy.com/gh/NaturalSelect/flyos?utm_source=github.com&utm_medium=referral&utm_content=NaturalSelect/flyos&utm_campaign=Badge_Grade_Settings)
+<div align="center">
+   <img width="300" src="img/flyos.png" alt="logo"></br>
+   <div>FlyOS</div>
+</div>
 
 <!DOCTYPE html>
 <html>
  <head> 
-
-    
    <h2>Document Language</h2>
    <a href="http://flyosgeek.com/cn.html">简体中文</a>
   <br>
