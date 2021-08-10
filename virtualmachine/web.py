@@ -10,6 +10,7 @@ from pywebio.output import popup, put_text, put_html
 from pywebio import start_server
 from pywebio.session import set_env
 import termux_auth
+import re
 
 print("___________________")
 print("FlyOS Virtual Machine")

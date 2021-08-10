@@ -1,7 +1,7 @@
 import os
 #快速更新补全依赖
 
-  
+
 try:
     f = open("/data/data/com.termux/files/home/.flyos/active/key.fk")
     f.close()
