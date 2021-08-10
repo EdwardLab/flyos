@@ -8,7 +8,7 @@ Description: 狗屎4
 '''
 import os
 try:
-    f = open("/data/data/com.termux/files/home/.飞屎OS/admin.飞屎OS")
+    f = open("/data/data/com.termux/files/home/.飞屎OS-bate/admin.飞屎OS-bate")
     f.close()
 except FileNotFoundError:
     input("ERROR!RBOOT is not authorized, please authorize and try again")
@@ -16,12 +16,12 @@ except FileNotFoundError:
     os.system("pkill bash")
     os.system("pkill sh")
     os.system("pkill zsh")
-os.system("bash $飞屎OS/kernel/rboot/rbootservices.sh")
+os.system("bash $飞屎OS-bate/kernel/rboot/rbootservices.sh")
 # 拉的什么狗屎
 # for i in range(99):
 #    print("")
 print()
-print("飞屎OS RBOOT MODE")
+print("飞屎OS-bate RBOOT MODE")
 print("webshell:HTTP:7681--SSH:8022")
 input("Enter to exit!!")
 print("exit!!")

@@ -7,8 +7,8 @@ LastEditTime: 2021-08-10 21:00:51
 Description: 屎山2
 '''
 import os
-print("飞屎OS网站服务器管理中心")
-print("By:飞屎OS Group GPL-V3")
+print("飞屎OS-bate网站服务器管理中心")
+print("By:飞屎OS-bate Group GPL-V3")
 print("默认使用:Apache WEB服务器 默认支持PHP+Apache+Mysql")
 print("面板功能列表:")
 print("1.启动Apache服务")

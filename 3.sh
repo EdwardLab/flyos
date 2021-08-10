@@ -1,1 +1,1 @@
-python $飞屎OS/console.py
+python $飞屎OS-bate/console.py

@@ -1,5 +1,5 @@
 sleep 4
-#飞屎OS Boot设置，修改启动倒计时请更改第一行sleep后面的数字即可
+#飞屎OS-bate Boot设置，修改启动倒计时请更改第一行sleep后面的数字即可
 ##############################
 
 
@@ -12,4 +12,4 @@ sleep 4
 
 #请不要更改以下代码，否则无法运行!
 pkill whiptail
-python $飞屎OS/console.py
+python $飞屎OS-bate/console.py
