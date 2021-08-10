@@ -12,17 +12,17 @@
   <a href="http://flyosgeek.com/ru.html">русский</a>
    <div class="introduction"> 
     <h2>Introduction</h2> 
-    <p>FlyOS is an artifact of Android phones, the baby of geeks</p> 
+    <p>FlyOS is an legacy of Android phones, the son of geeks</p> 
     <p>The original and complete Linux system  </p>
     <p>FlyOS Console:(Main function)</p> 
     <ul> 
-     <li>Web panel (one-click mobile station construction)</li> 
+     <li>Web panel (once-click mobile station construction)</li> 
      <li>Web deployment of the original GNU/Linux distribution&lt; /li&gt; </li>
      <li>Online web-friendly creation of virtual machine panel</li> 
-     <li>Support Beginner one-click deployment of various systems</li> 
+     <li>Support Beginner once-click deployment of various systems</li> 
      <li>Use FlyChat to chat</li> 
      <li>Use web to manage mobile phone online Function, remote control</li> 
-     <li>You can use flyosx86wine or a virtual machine to run Windows (EXE, MSI) applications</li> 
+     <li>You can use flyosx86wine or a virtual machine to run Windows (*.EXE, *.MSI) applications</li> 
      <li>One-click installation of software packages</li> 
      <li>Develop artificial intelligence projects&lt; /li&gt; </li>
      <li>Deploying GUI environment</li> 
@@ -37,13 +37,13 @@
     </ol> 
    </div> 
    <div class="quickstart"> 
-    <h2>Quick start</h2> <p>flyos runs in the termux advanced terminal, easy to use, so you don’t need much configuration</p> <p>After the installation is complete, enter exit, open it again, we will initialize, and the browser will visit the corresponding display address The configuration can be completed. After the configuration is successful, flyos will start automatically. After the configuration is complete, it is simple and easy to use, and can understand a little level (development for junior high school students, I believe your level is not bad)</p> </h2>
+    <h2>Quick start</h2> <p>flyos runs in the termux advanced terminal, it was easy to use that you don’t need much configuring</p> <p>After the installation is complete, enter exit, open it again, we will initialize, and the browser will visit the corresponding display address The configuration can be completed. After the configuring is successful that flyos will start as automatically. With the configuration is complete, it is simple and much easyier to use, and can understood a little level (development for junior high school students, I believe your level is not bad)</p> </h2>
    </div> 
    <div> 
     <div> 
     </div> 
     <div> 
-     <h2> Is FlyOS a system? Why is there an os? </h2> 
+     <h2> Is FlyOS a OS? Why is there an OS? </h2> 
      <p>Some people say that FlyOS is not os, but FlyOS can be said to be one of termux's linux distributions (referring to the rootfs transformation under data), so it is os. FlyOS is not like other scripts, but single The file, there is no dependency. And it is mentioned in the chapter on the origin of flyos that FlyOS was originally a rom, so we did not change the name, but it is also an os now. </p> 
     </div> 
    </div> 
