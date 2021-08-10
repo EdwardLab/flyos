@@ -41,7 +41,7 @@ echo -e "\e[32m$(qemu-system-x86_64 --version | head -n 1)\e[0m"
 ###################
 ABOUT_UTQEMU(){
 	clear
-	printf "${YELLOW}关于FlyOSVirtualMachinePro脚本${RES}
+	printf "${YELLOW}关于飞屎OSVirtualMachinePro脚本${RES}
 	最初是为utermux写下的qemu-system-x86脚本，目的是增加utermux可选功能，给使用者提供简易快捷的启动，我是业余爱好者，给使用者提供简易快捷的启动。非专业人士，所以内容比较乱，请勿吐槽。为适配常用镜像格式，脚本的参数选用是比较常用。业余的我，专业的参数配置并不懂，脚本参数都是来自官方网站、百度与群友。qemu5.0以上的版本较旧版本变化比较大，所以5.0后的参数选项比较丰富，欢迎群友体验使用。\n"
 	CONFIRM
 	QEMU_SYSTEM	
@@ -97,9 +97,9 @@ IP=`ip -4 -br a | awk '{print $3}' | cut -d '/' -f 1 | sed -n 2p`
 ####################
 sudo_() {
 	date_t=`date +"%D"`
-	if ! grep -q $date_t ".FlyOSVirtualMachinePro_log" 2>/dev/null; then
+	if ! grep -q $date_t ".飞屎OSVirtualMachinePro_log" 2>/dev/null; then
         $sudo apt update
-	echo $date_t >>.FlyOSVirtualMachinePro_log 2>&1
+	echo $date_t >>.飞屎OSVirtualMachinePro_log 2>&1
 	fi
 }
 	if [ `whoami` != "root" ];then
@@ -154,8 +154,8 @@ ARCH_CHECK() {
 		arm*|aarch64) DIRECT="/sdcard"
 			ARCH=tablet ;;
 		i*86|x86*|amd64)
-	if grep -E -q 'tablet|computer' ${HOME}/.FlyOSVirtualMachinePro_ 2>/dev/null; then
-	case $(egrep 'tablet|computer' ${HOME}/.FlyOSVirtualMachinePro_) in
+	if grep -E -q 'tablet|computer' ${HOME}/.飞屎OSVirtualMachinePro_ 2>/dev/null; then
+	case $(egrep 'tablet|computer' ${HOME}/.飞屎OSVirtualMachinePro_) in
 		tablet) DIRECT="/sdcard"
 			ARCH=tablet ;;
 		computer) DIRECT="${HOME}"
@@ -165,12 +165,12 @@ ARCH_CHECK() {
 	grep -E -q 'Z3560|Z5800|Z2580' "/proc/cpuinfo" 2>/dev/null; then
 	read -r -p "请确认你使用的是否手机平板 1)是 2)否 " input
 	case $input in
-		1) echo "tablet" >>${HOME}/.FlyOSVirtualMachinePro_
+		1) echo "tablet" >>${HOME}/.飞屎OSVirtualMachinePro_
 			DIRECT="/sdcard"
 			ARCH=tablet
 			echo -e "${GREEN}已配置设备识别参数，请重新打开脚本，如发现选错，请在相关应用维护选项中修改${RES}"
         CONFIRM ;;
-		2) echo "computer" >>${HOME}/.FlyOSVirtualMachinePro_
+		2) echo "computer" >>${HOME}/.飞屎OSVirtualMachinePro_
 			DIRECT="${HOME}"
 			ARCH=computer
 			echo -e "${GREEN}已配置设备识别参数，请重新打开脚本，如发现选错，请在相关应用维护选项中修改${RES}"
@@ -184,8 +184,8 @@ ARCH_CHECK() {
 			fi ;;
 		*) echo -e "${RED}不支持你设备的架构${RES}" ;;
 	esac
-	if grep -q 'STORAGE' ${HOME}/.FlyOSVirtualMachinePro_ 2>/dev/null ; then
-	source ${HOME}/.FlyOSVirtualMachinePro_ 2>/dev/null
+	if grep -q 'STORAGE' ${HOME}/.飞屎OSVirtualMachinePro_ 2>/dev/null ; then
+	source ${HOME}/.飞屎OSVirtualMachinePro_ 2>/dev/null
 	else
 		STORAGE=/xinhao/windows/
 	fi
@@ -246,7 +246,7 @@ FILE="No such file"
 SHARE_="516.06"
 PORT="Address already"
 echo -e "\n\n"
-case $(cat ${HOME}/.FlyOSVirtualMachinePro_log | tail -n 1) in
+case $(cat ${HOME}/.飞屎OSVirtualMachinePro_log | tail -n 1) in
 	*$FILE*) echo -e "${YELLOW}错误：没有匹配的目录或文件名${RES}" ;;
 	*$SHARE_*) echo -e "${YELLOW}错误：共享文件超过516.06 MB${RES}" ;;
 	*$PORT*) echo -e "${YELLOW}\n错误：视频输出端口占用${RES}" ;;
@@ -258,17 +258,17 @@ LOGIN() {
 	if [ ! -e $DEBIAN-qemu/dev/hugepages ]; then
 		mkdir -p $DEBIAN-qemu/dev/hugepages
 	fi
-	if [[ ! -e "$DEBIAN-qemu/root/.FlyOSVirtualMachinePro_" ]]; then
-	echo $UPDATE >>$DEBIAN-qemu/root/.FlyOSVirtualMachinePro_
-	elif ! grep -q $UPDATE "$DEBIAN-qemu/root/.FlyOSVirtualMachinePro_" ; then
+	if [[ ! -e "$DEBIAN-qemu/root/.飞屎OSVirtualMachinePro_" ]]; then
+	echo $UPDATE >>$DEBIAN-qemu/root/.飞屎OSVirtualMachinePro_
+	elif ! grep -q $UPDATE "$DEBIAN-qemu/root/.飞屎OSVirtualMachinePro_" ; then
 	echo -e "\n${GREEN}检测到脚本有更新，更新日期$UPDATE${RES}"
 	read -r -p "1)更新 0)忽略并不再提示此版本 " input
 	case $input in
-		1|"") rm $DEBIAN-qemu/root/FlyOSVirtualMachinePro.sh 2>/dev/null
-			curl https://cdn.jsdelivr.net/gh/chungyuhoi/script/FlyOSVirtualMachinePro.sh -o $DEBIAN-qemu/root/FlyOSVirtualMachinePro.sh ;;
+		1|"") rm $DEBIAN-qemu/root/飞屎OSVirtualMachinePro.sh 2>/dev/null
+			curl https://cdn.jsdelivr.net/gh/chungyuhoi/script/飞屎OSVirtualMachinePro.sh -o $DEBIAN-qemu/root/飞屎OSVirtualMachinePro.sh ;;
 		*) ;;
 	esac
-	sed -i "/$(date +"%Y")/d" $DEBIAN-qemu/root/.FlyOSVirtualMachinePro_ && echo "$UPDATE" >>$DEBIAN-qemu/root/.FlyOSVirtualMachinePro_
+	sed -i "/$(date +"%Y")/d" $DEBIAN-qemu/root/.飞屎OSVirtualMachinePro_ && echo "$UPDATE" >>$DEBIAN-qemu/root/.飞屎OSVirtualMachinePro_
 	fi
 pulseaudio --start & 2>/dev/null
 echo "" &
@@ -347,13 +347,13 @@ ${BF_URL}/ bullseye-updates ${DEB}
 ${BF_URL}/ bullseye-backports ${DEB}
 ${BF_URL}-security bullseye-security ${DEB}" >$sys_name/etc/apt/sources.list
 EOF
-	if [ ! -f $(pwd)/FlyOSVirtualMachinePro.sh ]; then
-	curl https://cdn.jsdelivr.net/gh/chungyuhoi/script/FlyOSVirtualMachinePro.sh -o $sys_name/root/FlyOSVirtualMachinePro.sh 2>/dev/null
+	if [ ! -f $(pwd)/飞屎OSVirtualMachinePro.sh ]; then
+	curl https://cdn.jsdelivr.net/gh/chungyuhoi/script/飞屎OSVirtualMachinePro.sh -o $sys_name/root/飞屎OSVirtualMachinePro.sh 2>/dev/null
 	else
-		cp FlyOSVirtualMachinePro.sh $sys_name/root/
+		cp 飞屎OSVirtualMachinePro.sh $sys_name/root/
 	fi
-	echo "bash FlyOSVirtualMachinePro.sh" >>$sys_name/root/.bashrc
-	echo "$UPDATE" >>$sys_name/root/.FlyOSVirtualMachinePro_
+	echo "bash 飞屎OSVirtualMachinePro.sh" >>$sys_name/root/.bashrc
+	echo "$UPDATE" >>$sys_name/root/.飞屎OSVirtualMachinePro_
 	echo -e "${YELLOW}系统已下载，请登录系统继续完成qemu的安装${RES}"
 	sleep 2
 }
@@ -367,7 +367,7 @@ SYSTEM_CHECK() {
 	if [ ! -e ${HOME}/storage ]; then
 		termux-setup-storage
 	fi
-	grep '^[^#]' ${PREFIX}/etc/apt/sources.list | grep -E -q 'bfsu|tsinghua|ustc|tencent|FlyOSVirtualMachineProcheck'
+	grep '^[^#]' ${PREFIX}/etc/apt/sources.list | grep -E -q 'bfsu|tsinghua|ustc|tencent|飞屎OSVirtualMachineProcheck'
 	if [ $? != 0 ]; then  
 		echo -e "${YELLOW}检测到你使用的可能为非国内源，为保证正常使用，建议切换为国内源(0.73版termux勿更换)${RES}\n  
 		1) 换国内源    
@@ -378,7 +378,7 @@ SYSTEM_CHECK() {
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list 
 	sed -i 's@^\(deb.*games stable\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/game-packages-24 games stable@' $PREFIX/etc/apt/sources.list.d/game.list 
 	sed -i 's@^\(deb.*science stable\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/science-packages-24 science stable@' $PREFIX/etc/apt/sources.list.d/science.list && pkg update ;;
-		*) echo "#FlyOSVirtualMachineProcheck" >>${PREFIX}/etc/apt/sources.list ;;  
+		*) echo "#飞屎OSVirtualMachineProcheck" >>${PREFIX}/etc/apt/sources.list ;;  
 	esac                                                    
 		fi
 	if [ ! $(command -v curl) ]; then
@@ -526,11 +526,11 @@ echo -e "\n1) 创建空磁盘(目前支持qcow2,vmdk)
 		sleep 1 ;;
 	3) read -r -p "1)手机平板 2)电脑 " input
 	case $input in
-		1) sed -i '/computer/d' ${HOME}/.FlyOSVirtualMachinePro_
-		echo "tablet" >>${HOME}/.FlyOSVirtualMachinePro_
+		1) sed -i '/computer/d' ${HOME}/.飞屎OSVirtualMachinePro_
+		echo "tablet" >>${HOME}/.飞屎OSVirtualMachinePro_
 	      	echo -e "${GREEN}已修改，请重新登录脚本${RES}" ;;
-		2) sed -i '/tablet/d' ${HOME}/.FlyOSVirtualMachinePro_
-		echo "computer" >>${HOME}/.FlyOSVirtualMachinePro_
+		2) sed -i '/tablet/d' ${HOME}/.飞屎OSVirtualMachinePro_
+		echo "computer" >>${HOME}/.飞屎OSVirtualMachinePro_
 	       	echo -e "${GREEN}已修改，请重新登录脚本${RES}" ;;
 		*) INVALID_INPUT
 		sleep 2
@@ -654,16 +654,16 @@ SPI_URL_=`curl --connect-timeout 5 -m 8 https://github.com$SPI_URL | grep SPICE 
 		*) ;;
 	esac
 	QEMU_ETC ;;
-	8) echo -e "\n目前仅支持镜像目录，共享目录暂不支持，此操作并不能修改本脚本参数，会创建一个名为${YELLOW}.FlyOSVirtualMachinePro_${RES}的文件，如删除文件则指定目录将失效\n"
+	8) echo -e "\n目前仅支持镜像目录，共享目录暂不支持，此操作并不能修改本脚本参数，会创建一个名为${YELLOW}.飞屎OSVirtualMachinePro_${RES}的文件，如删除文件则指定目录将失效\n"
 	CONFIRM
 	echo -n -e "请输入目录路径(例如/xinhao注意'/') " 
 	read path_
-	sed -i "/STORAGE/d" ${HOME}/.FlyOSVirtualMachinePro_
-	echo "STORAGE=$path_" >>${HOME}/.FlyOSVirtualMachinePro_
+	sed -i "/STORAGE/d" ${HOME}/.飞屎OSVirtualMachinePro_
+	echo "STORAGE=$path_" >>${HOME}/.飞屎OSVirtualMachinePro_
 	if [ ! -e "${DIRECT}${path_}" ]; then
 		mkdir -p ${DIRECT}${path_} 2>/dev/null
 	fi
-	if ! grep -q 'STORAGE' ${HOME}/.FlyOSVirtualMachinePro_ 2>/dev/null ; then
+	if ! grep -q 'STORAGE' ${HOME}/.飞屎OSVirtualMachinePro_ 2>/dev/null ; then
 		echo -e "\n${RED}创建失败，请重试${RES}\n"
 	else
 		echo -e "\n${GREEN}创建成功，新的镜像目录为${DIRECT}${path_}，请重新登录脚本\n${RES}"
@@ -697,7 +697,7 @@ echo -e "
 	esac
 echo -e "7) 查看日志
 8) 更新内容
-9) 关于FlyOSVirtualMachinePro
+9) 关于飞屎OSVirtualMachinePro
 0) 退出\n"
 	read -r -p "请选择: " input
 	case $input in
@@ -740,10 +740,10 @@ else
 		QEMU_SYSTEM ;;
 		*) QEMU_ETC ;;
 	esac ;;
-	7) if [ -e ${HOME}/.FlyOSVirtualMachinePro_log ]; then
+	7) if [ -e ${HOME}/.飞屎OSVirtualMachinePro_log ]; then
 	echo -e "\n${GREEN}日志已忽略不重要的信息${RES}\n按空格下一页，退出请按q\n"
 	CONFIRM
-	more ${HOME}/.FlyOSVirtualMachinePro_log | egrep "qemu-system-x86_64|qemu-system-i386" | egrep -v "stronger memory|Connection reset by peer|requested feature"
+	more ${HOME}/.飞屎OSVirtualMachinePro_log | egrep "qemu-system-x86_64|qemu-system-i386" | egrep -v "stronger memory|Connection reset by peer|requested feature"
 echo -e "\n${YELLOW}常见错误提示：${RES}
 ${BLUE}开机蓝屏; 通常为机算机类型(pc q35)，磁盘接口(IDE SATA VIRTIO)，运行内存配置过大等原因造成，请尝试修改配置${RES}
 No such file or directory; ${YELLOW}(没有匹配的目录或文件名)${RES}
@@ -752,7 +752,7 @@ Failed to find an available port: Address already in use; ${YELLOW}(视频输出
 	echo -e "\n${GREEN}到底了${RES}"
         read -r -p "是否删除日志 1)是 0)否 " input
 	case $input in
-		1) rm ${HOME}/.FlyOSVirtualMachinePro_log 2>/dev/null ;;
+		1) rm ${HOME}/.飞屎OSVirtualMachinePro_log 2>/dev/null ;;
 		*) ;;
 	esac
 	else
@@ -808,7 +808,7 @@ START_QEMU() {
 	fi
 	printf "%s\n${YELLOW}如启动失败请ctrl+c退回shell，并查阅日志${RES}"
 	sleep 1
-	$script_name >/dev/null 2>>${HOME}/.FlyOSVirtualMachinePro_log
+	$script_name >/dev/null 2>>${HOME}/.飞屎OSVirtualMachinePro_log
 	if [ $? == 1 ]; then
 	FAIL
 	printf "%s${RED}启动意外中止，请查看日志d(ŐдŐ๑)${RES}\n"
@@ -887,7 +887,7 @@ $START
 EOF
 	printf "%s\n${BLUE}启动模拟器\n${GREEN}请打开vncviewer 127.0.0.1:0"
 	printf "%s\n${YELLOW}如启动失败请ctrl+c退回shell，并查阅日志${RES}\n"
-	$START >/dev/null 2>>${HOME}/.FlyOSVirtualMachinePro_log
+	$START >/dev/null 2>>${HOME}/.飞屎OSVirtualMachinePro_log
 	if [ $? == 1 ]; then
 	FAIL
 	printf "%s${RED}启动意外中止，请查看日志d(ŐдŐ๑)${RES}\n"
@@ -1652,7 +1652,7 @@ esac
 	esac
 	printf "%s\n${YELLOW}如启动失败请ctrl+c退回shell，并查阅日志${RES}"
 	sleep 1
-	"${@}" >/dev/null 2>>${HOME}/.FlyOSVirtualMachinePro_log
+	"${@}" >/dev/null 2>>${HOME}/.飞屎OSVirtualMachinePro_log
 	if [ $? == 1 ]; then
 		FAIL
 	printf "%s${RED}启动意外中止，请查看日志d(ŐдŐ๑)${RES}\n"
@@ -1749,7 +1749,7 @@ echo -e "2) 为磁盘接口添加virtio驱动（维基指导模式，需另外�
         read iso_name
 	echo -e "\e[33m即将开机，参数是默认的，开机过程会比较慢，Windows会自动检测fake磁盘，并搜索适配的驱动。如果失败了，前往Device Manager，找到SCSI驱动器（带有感叹号图标，应处于打开状态），点击Update driver并选择虚拟的CD-ROM。不要定位到CD-ROM内的文件夹了，只选择CD-ROM设备就行，Windows会自动找到合适的驱动的。完成后请关机，然后正常启动qemu-system-x86_64(qemu-system-i386)方式并选择磁盘接口virtio。${RES}"
 	CONFIRM
-	qemu-system-x86_64 -m 1g -drive file=${DIRECT}${STORAGE}$hda_name,if=ide -drive file=${DIRECT}${STORAGE}fake.qcow2,if=virtio -cdrom ${DIRECT}${STORAGE}$iso_name -vnc :0 2>>${HOME}/.FlyOSVirtualMachinePro_log
+	qemu-system-x86_64 -m 1g -drive file=${DIRECT}${STORAGE}$hda_name,if=ide -drive file=${DIRECT}${STORAGE}fake.qcow2,if=virtio -cdrom ${DIRECT}${STORAGE}$iso_name -vnc :0 2>>${HOME}/.飞屎OSVirtualMachinePro_log
 	exit 1 ;;
 	esac ;;
 	3) case $SYS in
@@ -1825,9 +1825,9 @@ LOGIN_() {
 	MAIN ;;
 	9) read -r -p "1)开机启动脚本 2)取消开机启动脚本 " input
 	case $input in
-	1) curl https://cdn.jsdelivr.net/gh/chungyuhoi/script/FlyOSVirtualMachinePro.sh -o ${HOME}/FlyOSVirtualMachinePro.sh
-	echo "bash FlyOSVirtualMachinePro.sh" >>${PREFIX}/etc/bash.bashrc ;;
-	*) sed -i "/FlyOSVirtualMachinePro/d" ${PREFIX}/etc/bash.bashrc ;;
+	1) curl https://cdn.jsdelivr.net/gh/chungyuhoi/script/飞屎OSVirtualMachinePro.sh -o ${HOME}/飞屎OSVirtualMachinePro.sh
+	echo "bash 飞屎OSVirtualMachinePro.sh" >>${PREFIX}/etc/bash.bashrc ;;
+	*) sed -i "/飞屎OSVirtualMachinePro/d" ${PREFIX}/etc/bash.bashrc ;;
 	esac
 	MAIN ;;
 	0) exit 1 ;;

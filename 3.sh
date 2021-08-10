@@ -1,1 +1,1 @@
-python $FLYOS/console.py
+python $飞屎OS/console.py

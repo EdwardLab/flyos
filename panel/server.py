@@ -1,4 +1,4 @@
-# FlyOS Panel By:XingYuJie
+# 飞屎OS Panel By:请遵守开源协议
 # Use Under License GPL - V3
 import socket
 
@@ -8,9 +8,9 @@ from pywebio import start_server
 from pywebio.session import set_env
 
 print("______________________________________")
-print("FlyOS Panel")
+print("飞屎OS Panel")
 print("启动中")
-# FlyOS WEB Panel main
+# 飞屎OS WEB Panel main
 
 
 def get_host_ip():
@@ -24,17 +24,17 @@ def get_host_ip():
 
 
 def main():
-    set_env(title="FlyOS Panel",
+    set_env(title="飞屎OS Panel",
             auto_scroll_bottom=True
             )
-    put_html("<h1>FlyOS WEB Panel</h1>")
-    put_text('FlyOS Panel By:XingYuJie',
+    put_html("<h1>飞屎OS WEB Panel</h1>")
+    put_text('飞屎OS Panel By:请遵守开源协议',
              sep=' '
              )
-    popup('欢迎使用FlyOS Panel！',
-          '欢迎使用FlyOS WEB Panel！'
+    popup('欢迎使用飞屎OS Panel！',
+          '欢迎使用飞屎OS WEB Panel！'
           '如果程序有Bug，'
-          '请务必提交到邮箱:xingyujie50@gmail.com谢谢！'
+          '请务必提交到邮箱:110github@gmail.com谢谢！'
           '程序由Python-pywebio强力驱动'
           )
     put_link("web终端",
@@ -79,19 +79,19 @@ def main():
     put_text('_______________________',
              sep=' '
              )
-    put_link("FlyOS桌面环境",
+    put_link("飞屎OS桌面环境",
              url=f'http://{get_host_ip()}:6081/vnc.html'
              )
     put_text('_________系统工具__________',
              sep=' '
              )
-    put_link("FlyOS AM调用 ",
+    put_link("飞屎OS AM调用 ",
              url=f'http://{get_host_ip()}:5000'
              )
     put_text('_______________________',
              sep=' '
              )
-    put_link("FlyOS Termux:API调用 ",
+    put_link("飞屎OS Termux:API调用 ",
              url=f'http://{get_host_ip()}:5002'
              )
 

@@ -2,9 +2,9 @@
 #/data/data/com.termux/files/usr/bin/RECOVERY
 #DEBUG NEEDED sleep view
 #sleep 5
-#python $FLYOS/kernel/recovery/rec.py
-#python $FLYOS/kernel/kernelboot/kernelboot.py
-#Configure the startup items and settings of the kernel, excluding the startup items of the user interface. Please go to $FLYOS/service.sh to configure the user interface.
+#python $飞屎OS/kernel/recovery/rec.py
+#python $飞屎OS/kernel/kernelboot/kernelboot.py
+#Configure the startup items and settings of the kernel, excluding the startup items of the user interface. Please go to $飞屎OS/service.sh to configure the user interface.
 
 
 
@@ -97,5 +97,5 @@
 
 
 
-#python $FLYOS/kernel/boot/active/active.py
-bash $FLYOS/munu.sh
+#python $飞屎OS/kernel/boot/active/active.py
+bash $飞屎OS/munu.sh
