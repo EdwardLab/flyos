@@ -1,6 +1,6 @@
 <div align="center">
    <img width="300" src="img/flyos.png" alt="logo"></br>
-   <strong>FlyOS<sup>4</sup> is an artifact of Android phones, the baby of geeks</strong>
+   <strong>FlyOS<sup>4</sup> is an artifact of Android phones</strong>
 </div>
 
 <!DOCTYPE html>
