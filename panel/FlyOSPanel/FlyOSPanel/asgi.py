@@ -1,5 +1,5 @@
 """
-ASGI config for 飞屎OSPanel project.
+ASGI config for 飞屎OS-batePanel project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', '飞屎OSPanel.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '飞屎OS-batePanel.settings')
 
 application = get_asgi_application()

@@ -1,1 +1,1 @@
-bash $飞屎OS/booting.sh
+bash $飞屎OS-bate/booting.sh

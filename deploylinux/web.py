@@ -1,5 +1,5 @@
 """
-飞屎OS Panel By:请遵守开源协议
+飞屎OS-bate Panel By:请遵守开源协议
 Use Under License GPL - V3
 """
 import os
@@ -15,16 +15,16 @@ from pywebio.session import set_env
 
 
 print("Linux部署程序--中文版")
-print("By:飞屎OS MicroTech 请遵守开源协议(严禁删除版权，不允许修改版权)GPL-V3")
+print("By:飞屎OS-bate MicroTech 请遵守开源协议(严禁删除版权，不允许修改版权)GPL-V3")
 
 
 def main():
     set_env(title="Linux  部署程序--中文版", auto_scroll_bottom=True)
-    put_html("<h1>飞屎OS Linux Deploy</h1>")
-    put_text("By:飞屎OS MicroTech 请遵守开源协议(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
+    put_html("<h1>飞屎OS-bate Linux Deploy</h1>")
+    put_text("By:飞屎OS-bate MicroTech 请遵守开源协议(严禁删除版权，不允许修改版权)GPL-V3", sep=" ")
     popup(
         "欢迎使用Linux部署程序--中文版",
-        "欢迎使用Linux部署程序--中文版。" "开始部署你的Linux吧！" "程序由MicroTech Projects -- 飞屎OS强力驱动",
+        "欢迎使用Linux部署程序--中文版。" "开始部署你的Linux吧！" "程序由MicroTech Projects -- 飞屎OS-bate强力驱动",
     )
     n = pywebio.input.select(
         "请选择你要执行的操作",
@@ -70,7 +70,7 @@ def join():
     for vm_path in dirs:
         options.append((vm_path, vm_path))
     linux = pywebio.input.select("选择创建的Linux名称", options=options)
-    popup("打开Linux", "请在终端输入 `$飞屎OS/deploylinux/cmd/{}` 打开 Linux".format(linux))
+    popup("打开Linux", "请在终端输入 `$飞屎OS-bate/deploylinux/cmd/{}` 打开 Linux".format(linux))
 
 
 def delete():
@@ -170,7 +170,7 @@ def get_rootfs(rootfs_url, name, ext, command):
 
 # Server Port 关于服务器的配置信息
 if __name__ == "__main__":
-    env = os.getenv("飞屎OS")
+    env = os.getenv("飞屎OS-bate")
     if env is None:
         env = "."
     path = os.path.abspath(env + "/deploylinux")

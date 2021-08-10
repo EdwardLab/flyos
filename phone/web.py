@@ -6,7 +6,7 @@ Date: 2021-08-10 19:11:50
 LastEditTime: 2021-08-10 20:34:55
 Description: 
 '''
-# 飞屎OS Panel By:请遵守开源协议
+# 飞屎OS-bate Panel By:请遵守开源协议
 # Use Under License GPL - V3
 import re
 import subprocess
@@ -19,20 +19,20 @@ from pywebio.session import set_env
 import termux_auth
 # Tips
 print("___________________")
-print("飞屎OS Phone Shell")
+print("飞屎OS-bate Phone Shell")
 print("启动中")
-# 飞屎OS WEB Panel main
+# 飞屎OS-bate WEB Panel main
 
 
 def main():
-    set_env(title="飞屎OS Phone Shell",
+    set_env(title="飞屎OS-bate Phone Shell",
             auto_scroll_bottom=True
             )
-    put_html("<h1>飞屎OS WEB Phone Shell</h1>")
-    put_text('飞屎OS Phone Web Shell By:请遵守开源协议',
+    put_html("<h1>飞屎OS-bate WEB Phone Shell</h1>")
+    put_text('飞屎OS-bate Phone Web Shell By:请遵守开源协议',
              sep=' '
              )
-    pwd = pywebio.input.input("输入飞屎OS密码:")
+    pwd = pywebio.input.input("输入飞屎OS-bate密码:")
     if termux_auth.auth(pwd):
         while 1:
             command = pywebio.input.input("请输入AM参数加命令:")
