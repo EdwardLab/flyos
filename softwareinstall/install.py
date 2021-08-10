@@ -1,3 +1,12 @@
+#!/usr/bin/python python3
+# coding=utf-8
+'''
+Author: whalefall
+Date: 2021-08-10 19:11:50
+LastEditTime: 2021-08-10 20:33:39
+Description: 傻逼安装 pip pkg
+'''
+
 import os
 
 print("FlyOS Package Installer")
