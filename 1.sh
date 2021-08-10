@@ -1,1 +1,1 @@
-bash $FLYOS/booting.sh
+bash $飞屎OS/booting.sh

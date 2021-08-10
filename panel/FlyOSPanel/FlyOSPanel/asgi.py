@@ -1,5 +1,5 @@
 """
-ASGI config for FlyOSPanel project.
+ASGI config for 飞屎OSPanel project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'FlyOSPanel.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '飞屎OSPanel.settings')
 
 application = get_asgi_application()

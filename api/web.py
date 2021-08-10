@@ -1,4 +1,4 @@
-#FlyOS Panel By:XingYuJie
+#飞屎OS Panel By:请遵守开源协议
 #Use Under License GPL - V3
 import re
 import subprocess
@@ -12,13 +12,13 @@ import termux_auth
 
 #Tips
 print("___________________")
-print("FlyOS Device API")
+print("飞屎OS Device API")
 print("启动中")
-#FlyOS WEB Panel main
+#飞屎OS WEB Panel main
 def main():
-    set_env(title="FlyOS Devices API Tool", auto_scroll_bottom=True)
-    put_html("<h1>FlyOS Devices API Tool</h1>")
-    pwd = pywebio.input.input("输入flyos密码: ")
+    set_env(title="飞屎OS Devices API Tool", auto_scroll_bottom=True)
+    put_html("<h1>飞屎OS Devices API Tool</h1>")
+    pwd = pywebio.input.input("输入飞屎OS密码: ")
     if termux_auth.auth(pwd):
         while 1:
             api = pywebio.input.input("输入api调用接口:")

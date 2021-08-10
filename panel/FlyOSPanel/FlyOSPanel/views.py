@@ -14,7 +14,7 @@ def panel(request):
     s.connect(('8.8.8.8',80))
     ip=s.getsockname()[0]
     #公告获取
-    RES = urllib.request.urlopen("http://flyosgeek.com/notices.txt")
+    RES = urllib.request.urlopen("http://飞屎OSgeek.com/notices.txt")
     print("\n公告:")
     notice = RES.read().decode('utf-8')
     RES.close()

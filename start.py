@@ -1,15 +1,15 @@
-"""flyos启动入口"""
+"""飞屎OS启动入口"""
 import os
 
 HOME = os.getenv("HOME")
-FLYOS = os.getenv("FLYOS")
+飞屎OS = os.getenv("飞屎OS")
 
 os.system("clear")
 
-if not os.path.exists(HOME+"/.flyos/"): # 检测是否已经初始化
-    os.system(f"python {FLYOS}/.firstuse/register.py")
+if not os.path.exists(HOME+"/.飞屎OS/"): # 检测是否已经初始化
+    os.system(f"python {飞屎OS}/.firstuse/register.py")
 
 os.system('clear')
-os.system("python $FLYOS/update.py")
-os.system("bash $FLYOS/kernel/boot/bootkernel/bootlogo.sh")
-#/data/data/com.termux/files/usr/etc/flyos/kernel/boot/bootkernel/
+os.system("python $飞屎OS/update.py")
+os.system("bash $飞屎OS/kernel/boot/bootkernel/bootlogo.sh")
+#/data/data/com.termux/files/usr/etc/飞屎OS/kernel/boot/bootkernel/
