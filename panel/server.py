@@ -97,5 +97,6 @@ def main():
 
 
 if __name__ == '__main__':
+    # print(get_host_ip())
     start_server(main, debug=True, host='0.0.0.0', port=8888)
     pywebio.session.hold()
