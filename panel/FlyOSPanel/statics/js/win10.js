@@ -860,13 +860,13 @@ window.Win10 = {
             closeBtn: 1, //不显示关闭按钮
             anim: 2,
             skin: 'layui-layer-molv',
-            title: 'FlyOS ',
+            title: '飞屎OS-bate ',
             shadeClose: true, //开启遮罩关闭
             area: ['320px', '200px'], //宽高
             content: '<div style="padding: 10px;font-size: 12px">' +
-            '<p>Powered By FlyOS</p>' +
-            '<p>FlyOS©版权所有</p>' +
-            '<p>http://flyosgeek.com</p>' +
+            '<p>Powered By 飞屎OS-bate</p>' +
+            '<p>飞屎OS-bate©版权所有</p>' +
+            '<p>http://飞屎OS-bategeek.com</p>' +
             '</div>'
         });
     },

@@ -1,6 +1,14 @@
+#!/usr/bin/python python3
+# coding=utf-8
+'''
+Author: whalefall
+Date: 2021-08-10 19:11:50
+LastEditTime: 2021-08-10 21:00:51
+Description: 屎山2
+'''
 import os
-print("FlyOS网站服务器管理中心")
-print("By:FlyOS Group GPL-V3")
+print("飞屎OS-bate网站服务器管理中心")
+print("By:飞屎OS-bate Group GPL-V3")
 print("默认使用:Apache WEB服务器 默认支持PHP+Apache+Mysql")
 print("面板功能列表:")
 print("1.启动Apache服务")
@@ -23,6 +31,7 @@ elif num == '3':
     os.system("apachectl restart")
 elif num == '4':
     print("默认路径在:/data/data/com.termux/files/usr/share/apache2/default-site/")
+    os.chdir("/data/data/com.termux/files/usr/share/apache2/default-site/")
 elif num == '5':
     os.system("nohup mysqld &")
 elif num == '6':

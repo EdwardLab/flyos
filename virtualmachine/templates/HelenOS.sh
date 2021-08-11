@@ -4,7 +4,7 @@ fi
 cd helen
 if [ $h -eq 1 ];then
 if [ ! -f "helen.7z" ]; then
-	wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/helenos.7z
+	wget http://d.ixcmstudio.cn:21188/doc/飞屎OS-bate/VM/helenos.7z
 fi
 7z x  -aos helenos.7z
 echo "镜像来自镜连"
@@ -15,7 +15,7 @@ if [ $? -ne 0 ]; then
 fi
 else
 if [ ! -f "arm32.boot" ]; then
-	wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/arm32Helen.boot
+	wget http://d.ixcmstudio.cn:21188/doc/飞屎OS-bate/VM/arm32Helen.boot
 fi
 echo "虚拟机启动"
 qemu-system-arm -M integratorcp -kernel arm32Helen.boot -vnc :0 

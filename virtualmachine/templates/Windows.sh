@@ -4,7 +4,7 @@ mkdir 95
 fi
 cd 95
 if [ ! -f "win95.7z" ]; then
-wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/win95.7z
+wget http://d.ixcmstudio.cn:21188/doc/飞屎OS-bate/VM/win95.7z
 fi
 7z x -aos win95.7z
 echo "虚拟机启动，镜像来自镜连"
@@ -15,8 +15,8 @@ else
 	fi
 	cd xp
 	if [ ! -f "xp.zip" ];then
-		wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/xp.7z
-		wget http://d.ixcmstudio.cn:21188/doc/FlyOS/VM/xp.zip
+		wget http://d.ixcmstudio.cn:21188/doc/飞屎OS-bate/VM/xp.7z
+		wget http://d.ixcmstudio.cn:21188/doc/飞屎OS-bate/VM/xp.zip
 	fi
 	echo "镜像来自ixcm工作室的阳光XP第八版"
 	unzip -n xp.zip
