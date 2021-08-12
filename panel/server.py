@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 飞屎OS-bate Panel By:请遵守开源协议
 # Use Under License GPL - V3
+=======
+#FlyOS Panel By:XingYuJie
+#Use Under License GPL - V3
+>>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
 =======
 #FlyOS Panel By:XingYuJie
 #Use Under License GPL - V3
@@ -16,9 +21,13 @@ print("______________________________________")
 print("飞屎OS-bate Panel")
 print("启动中")
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 飞屎OS-bate WEB Panel main
 
 
+=======
+#FlyOS WEB Panel main
+>>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
 =======
 #FlyOS WEB Panel main
 >>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
@@ -35,6 +44,7 @@ def main():
     set_env(title="飞屎OS-bate Panel",
             auto_scroll_bottom=True
 <<<<<<< HEAD
+<<<<<<< HEAD
             )
     put_html("<h1>飞屎OS-bate WEB Panel</h1>")
     put_text('飞屎OS-bate Panel By:请遵守开源协议',
@@ -47,6 +57,8 @@ def main():
           '程序由Python-pywebio强力驱动'
           )
 =======
+=======
+>>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
         )
     put_html("<h1>FlyOS WEB Panel</h1>")
     put_text('FlyOS Panel By:XingYuJie',
@@ -58,6 +70,9 @@ def main():
             '请务必提交到邮箱:xingyujie50@gmail.com谢谢！'
             '程序由MicroTech Projects -- FlyOS强力驱动'
         )
+<<<<<<< HEAD
+>>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
+=======
 >>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
     put_link("web终端",
             url=f'http://{get_host_ip()}:7681'
@@ -100,6 +115,7 @@ def main():
         )
     put_text('_______________________',
 <<<<<<< HEAD
+<<<<<<< HEAD
              sep=' '
              )
     put_link("飞屎OS-bate桌面环境",
@@ -131,11 +147,28 @@ def main():
             url=f'http://{get_host_ip()}:5000'
         )
     put_text('_______________________',
+=======
+            sep=' '
+        )
+    put_link("FlyOS桌面环境",
+            url=f'http://{get_host_ip()}:6081/vnc.html'
+        )
+    put_text('_________系统工具__________',
+            sep=' '
+        )
+    put_link("FlyOS AM调用 ",
+            url=f'http://{get_host_ip()}:5000'
+        )
+    put_text('_______________________',
+>>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
             sep=' '
         )
     put_link("FlyOS Termux:API调用 ",
             url=f'http://{get_host_ip()}:5002'
             )
+<<<<<<< HEAD
+>>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
+=======
 >>>>>>> parent of 26fff1b (🌈 style(web首页): 更改版权部分)
 
 if __name__ == '__main__':
