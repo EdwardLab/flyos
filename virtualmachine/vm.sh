@@ -423,11 +423,7 @@ SYSTEM_CHECK() {
 	if [ ! -e ${HOME}/storage ]; then
 		termux-setup-storage
 	fi
-<<<<<<< HEAD
-	grep '^[^#]' ${PREFIX}/etc/apt/sources.list | grep -E -q 'bfsu|tsinghua|ustc|tencent|飞屎OS-bateVirtualMachineProcheck'
-=======
 	grep '^[^#]' ${PREFIX}/etc/apt/sources.list | grep -E -q 'bfsu|tsinghua|ustc|tencent|FlyOSVirtualMachineProcheck'
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 	if [ $? != 0 ]; then  
 		echo -e "${YELLOW}检测到你使用的可能为非国内源，为保证正常使用，建议切换为国内源(0.73版termux勿更换)${RES}\n  
 		1) 换国内源    
@@ -438,11 +434,7 @@ SYSTEM_CHECK() {
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list 
 	sed -i 's@^\(deb.*games stable\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/game-packages-24 games stable@' $PREFIX/etc/apt/sources.list.d/game.list 
 	sed -i 's@^\(deb.*science stable\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/science-packages-24 science stable@' $PREFIX/etc/apt/sources.list.d/science.list && pkg update ;;
-<<<<<<< HEAD
-		*) echo "#飞屎OS-bateVirtualMachineProcheck" >>${PREFIX}/etc/apt/sources.list ;;  
-=======
 		*) echo "#FlyOSVirtualMachineProcheck" >>${PREFIX}/etc/apt/sources.list ;;  
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 	esac                                                    
 		fi
 	if [ ! $(command -v curl) ]; then
@@ -908,11 +900,7 @@ START_QEMU() {
 	fi
 	printf "%s\n${YELLOW}如启动失败请ctrl+c退回shell，并查阅日志${RES}"
 	sleep 1
-<<<<<<< HEAD
-	$script_name >/dev/null 2>>${HOME}/.飞屎OS-bateVirtualMachinePro_log
-=======
 	$script_name >/dev/null 2>>${HOME}/.FlyOSVirtualMachinePro_log
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 	if [ $? == 1 ]; then
 	FAIL
 	printf "%s${RED}启动意外中止，请查看日志d(ŐдŐ๑)${RES}\n"
@@ -991,11 +979,7 @@ $START
 EOF
 	printf "%s\n${BLUE}启动模拟器\n${GREEN}请打开vncviewer 127.0.0.1:0"
 	printf "%s\n${YELLOW}如启动失败请ctrl+c退回shell，并查阅日志${RES}\n"
-<<<<<<< HEAD
-	$START >/dev/null 2>>${HOME}/.飞屎OS-bateVirtualMachinePro_log
-=======
 	$START >/dev/null 2>>${HOME}/.FlyOSVirtualMachinePro_log
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 	if [ $? == 1 ]; then
 	FAIL
 	printf "%s${RED}启动意外中止，请查看日志d(ŐдŐ๑)${RES}\n"

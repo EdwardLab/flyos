@@ -3,19 +3,16 @@
 '''
 Author: whalefall
 Date: 2021-08-10 19:11:50
-LastEditTime: 2021-08-10 20:33:39
+LastEditTime: 2021-08-12 12:13:20
 Description: 傻逼安装 pip pkg
 '''
 
 import os
+from pathlib import Path
 
-<<<<<<< HEAD
+print(f"当前屎山路径:{Path.cwd()}")
 print("飞屎OS-bate Package Installer")
 print("飞屎OS-bate 软件包安装器 By:Microtech Software Group")
-=======
-print("FlyOS Package Installer")
-print("FlyOS 软件包安装器 By:Microtech Software Group")
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 print("请输入您要安装的软件包在哪个管理器(如果不懂，都可以尝试)")
 print("1.PKG(apt) 2.pip")
 num = input("请输入编号:")
@@ -23,6 +20,6 @@ packages = input("请输入要安装的软件包，例如vim(多个软件包直�
 if num == '1':
     os.system(f"pkg in {packages}")
 if num == '2':
-    os.system(f"pip install {packages}")
+    os.system(f"pip3 install {packages}")
 else:
     print("错误的选项!")
