@@ -6,7 +6,11 @@ Date: 2021-08-10 19:11:50
 LastEditTime: 2021-08-10 20:34:55
 Description: 
 '''
+<<<<<<< HEAD
 # 飞屎OS-bate Panel By:请遵守开源协议
+=======
+# FlyOS Panel By:XingYuJie
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 # Use Under License GPL - V3
 import re
 import subprocess
@@ -19,6 +23,7 @@ from pywebio.session import set_env
 import termux_auth
 # Tips
 print("___________________")
+<<<<<<< HEAD
 print("飞屎OS-bate Phone Shell")
 print("启动中")
 # 飞屎OS-bate WEB Panel main
@@ -33,6 +38,22 @@ def main():
              sep=' '
              )
     pwd = pywebio.input.input("输入飞屎OS-bate密码:")
+=======
+print("FlyOS Phone Shell")
+print("启动中")
+# FlyOS WEB Panel main
+
+
+def main():
+    set_env(title="FlyOS Phone Shell",
+            auto_scroll_bottom=True
+            )
+    put_html("<h1>FlyOS WEB Phone Shell</h1>")
+    put_text('FlyOS Phone Web Shell By:XingYuJie',
+             sep=' '
+             )
+    pwd = pywebio.input.input("输入flyos密码:")
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
     if termux_auth.auth(pwd):
         while 1:
             command = pywebio.input.input("请输入AM参数加命令:")

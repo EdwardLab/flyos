@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 飞屎OS-bate Panel By:请遵守开源协议
+=======
+# FlyOS Panel By:XingYuJie
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 # Use Under License GPL - V3
 =======
 #FlyOS Panel By:XingYuJie
@@ -18,11 +22,17 @@ from pywebio import start_server
 from pywebio.session import set_env
 
 print("______________________________________")
+<<<<<<< HEAD
 print("飞屎OS-bate Panel")
 print("启动中")
 <<<<<<< HEAD
 <<<<<<< HEAD
 # 飞屎OS-bate WEB Panel main
+=======
+print("FlyOS Panel")
+print("启动中")
+# FlyOS WEB Panel main
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 
 
 =======
@@ -41,19 +51,32 @@ def get_host_ip():
     return ip
 
 def main():
+<<<<<<< HEAD
     set_env(title="飞屎OS-bate Panel",
+=======
+    set_env(title="FlyOS Panel",
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
             auto_scroll_bottom=True
 <<<<<<< HEAD
 <<<<<<< HEAD
             )
+<<<<<<< HEAD
     put_html("<h1>飞屎OS-bate WEB Panel</h1>")
     put_text('飞屎OS-bate Panel By:请遵守开源协议',
              sep=' '
              )
     popup('欢迎使用飞屎OS-bate Panel！',
           '欢迎使用飞屎OS-bate WEB Panel！'
+=======
+    put_html("<h1>FlyOS WEB Panel</h1>")
+    put_text('FlyOS Panel By:XingYuJie',
+             sep=' '
+             )
+    popup('欢迎使用FlyOS Panel！',
+          '欢迎使用FlyOS WEB Panel！'
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
           '如果程序有Bug，'
-          '请务必提交到邮箱:110github@gmail.com谢谢！'
+          '请务必提交到邮箱:xingyujie50@gmail.com谢谢！'
           '程序由Python-pywebio强力驱动'
           )
 =======
@@ -118,19 +141,31 @@ def main():
 <<<<<<< HEAD
              sep=' '
              )
+<<<<<<< HEAD
     put_link("飞屎OS-bate桌面环境",
+=======
+    put_link("FlyOS桌面环境",
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
              url=f'http://{get_host_ip()}:6081/vnc.html'
              )
     put_text('_________系统工具__________',
              sep=' '
              )
+<<<<<<< HEAD
     put_link("飞屎OS-bate AM调用 ",
+=======
+    put_link("FlyOS AM调用 ",
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
              url=f'http://{get_host_ip()}:5000'
              )
     put_text('_______________________',
              sep=' '
              )
+<<<<<<< HEAD
     put_link("飞屎OS-bate Termux:API调用 ",
+=======
+    put_link("FlyOS Termux:API调用 ",
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
              url=f'http://{get_host_ip()}:5002'
              )
 

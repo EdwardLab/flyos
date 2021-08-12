@@ -7,8 +7,13 @@ LastEditTime: 2021-08-10 21:00:51
 Description: 屎山2
 '''
 import os
+<<<<<<< HEAD
 print("飞屎OS-bate网站服务器管理中心")
 print("By:飞屎OS-bate Group GPL-V3")
+=======
+print("FlyOS网站服务器管理中心")
+print("By:FlyOS Group GPL-V3")
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 print("默认使用:Apache WEB服务器 默认支持PHP+Apache+Mysql")
 print("面板功能列表:")
 print("1.启动Apache服务")

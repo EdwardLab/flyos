@@ -1,5 +1,9 @@
 """
+<<<<<<< HEAD
 飞屎OS-bate Panel By:请遵守开源协议
+=======
+FlyOS Panel By:XingYuJie
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 Use Under License GPL - V3
 """
 import os
@@ -13,19 +17,30 @@ import termux_auth
 import re
 
 print("___________________")
+<<<<<<< HEAD
 print("飞屎OS-bate Virtual Machine")
+=======
+print("FlyOS Virtual Machine")
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 print("启动中")
 
 
 class Main:
+<<<<<<< HEAD
     """飞屎OS-bate WEB Panel main"""
     def __init__(self):
         env = os.getenv('飞屎OS-bate')
+=======
+    """FlyOS WEB Panel main"""
+    def __init__(self):
+        env = os.getenv('FLYOS')
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
         if env is None:
             env = '.'
         self.__path = os.path.abspath(env + '/virtualmachine')
         if not os.path.exists(os.path.abspath(self.__path + "/vms")):
             os.mkdir(os.path.abspath(self.__path + "/vms"))
+<<<<<<< HEAD
         set_env(title="飞屎OS-bate Virtual Machine", auto_scroll_bottom=True)
         put_html("<h1>飞屎OS-bate WEB Virtual Machine</h1>")
         put_text("飞屎OS-bate Virtual Machine By:请遵守开源协议", sep=" ")
@@ -36,6 +51,18 @@ class Main:
             "程序由MicroTech Projects -- 飞屎OS-bate强力驱动",
         )
         pwd = pywebio.input.input("输入飞屎OS-bate密码:")
+=======
+        set_env(title="FlyOS Virtual Machine", auto_scroll_bottom=True)
+        put_html("<h1>FlyOS WEB Virtual Machine</h1>")
+        put_text("FlyOS Virtual Machine By:XingYuJie", sep=" ")
+        popup(
+            "欢迎使用FlyOS FlyOS Virtual Machine！",
+            "欢迎使用FlyOS Virtual Machine。"
+            "开始创建您的虚拟机吧！"
+            "程序由MicroTech Projects -- FlyOS强力驱动",
+        )
+        pwd = pywebio.input.input("输入flyos密码:")
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
         if termux_auth.auth(pwd):
             self.__run()
         else:
@@ -108,7 +135,11 @@ class Main:
                 asyncio.run(
                     self.get_result("sh {}/templates/".format(self.__path) +
                                     sh_name + ".sh"))
+<<<<<<< HEAD
                 # cd $飞屎OS-bate/virtualmachine && sh 2.sh
+=======
+                # cd $FLYOS/virtualmachine && sh 2.sh
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
                 popup(
                     "恭喜，模板成功运行，请在网上或应用市场下载vncviewer，打开+点击右下角，名称随便取，点击列表名称连接即可")
             elif template_num == "2":

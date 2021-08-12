@@ -11,7 +11,11 @@ import os
 
 strr='''
 Linux部署程序--中文版
+<<<<<<< HEAD
 By:飞屎OS-bate MicroTech 抄袭王邢宇杰(严禁删除版权，不允许修改版权)GPL-V3
+=======
+By:FlyOS MicroTech Rainbow(严禁删除版权，不允许修改版权)GPL-V3
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 请选择系统(内置常用的几个系统):
 1.Ubuntu
 2.Debian

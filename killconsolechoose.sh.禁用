@@ -1,5 +1,9 @@
 sleep 4
+<<<<<<< HEAD
 #飞屎OS-bate Boot设置，修改启动倒计时请更改第一行sleep后面的数字即可
+=======
+#FlyOS Boot设置，修改启动倒计时请更改第一行sleep后面的数字即可
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 ##############################
 
 
@@ -12,4 +16,8 @@ sleep 4
 
 #请不要更改以下代码，否则无法运行!
 pkill whiptail
+<<<<<<< HEAD
 python $飞屎OS-bate/console.py
+=======
+python $FLYOS/console.py
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)

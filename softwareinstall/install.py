@@ -9,8 +9,13 @@ Description: 傻逼安装 pip pkg
 
 import os
 
+<<<<<<< HEAD
 print("飞屎OS-bate Package Installer")
 print("飞屎OS-bate 软件包安装器 By:Microtech Software Group")
+=======
+print("FlyOS Package Installer")
+print("FlyOS 软件包安装器 By:Microtech Software Group")
+>>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 print("请输入您要安装的软件包在哪个管理器(如果不懂，都可以尝试)")
 print("1.PKG(apt) 2.pip")
 num = input("请输入编号:")
