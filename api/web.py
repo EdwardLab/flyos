@@ -1,8 +1,12 @@
-<<<<<<< HEAD
+#!/usr/bin/python python3
+# coding=utf-8
+'''
+Author: whalefall
+Date: 2021-08-10 19:11:49
+LastEditTime: 2021-08-12 12:02:19
+Description: 
+'''
 #飞屎OS-bate Panel By:请遵守开源协议
-=======
-#FlyOS Panel By:XingYuJie
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
 #Use Under License GPL - V3
 import re
 import subprocess
@@ -16,7 +20,6 @@ import termux_auth
 
 #Tips
 print("___________________")
-<<<<<<< HEAD
 print("飞屎OS-bate Device API")
 print("启动中")
 #飞屎OS-bate WEB Panel main
@@ -24,7 +27,6 @@ def main():
     set_env(title="飞屎OS-bate Devices API Tool", auto_scroll_bottom=True)
     put_html("<h1>飞屎OS-bate Devices API Tool</h1>")
     pwd = pywebio.input.input("输入飞屎OS-bate密码: ")
-=======
 print("FlyOS Device API")
 print("启动中")
 #FlyOS WEB Panel main
@@ -32,7 +34,6 @@ def main():
     set_env(title="FlyOS Devices API Tool", auto_scroll_bottom=True)
     put_html("<h1>FlyOS Devices API Tool</h1>")
     pwd = pywebio.input.input("输入flyos密码: ")
->>>>>>> parent of aeeb25f (✨ feat(震撼发布): Fly OS -> 惊喜不只是飞)
     if termux_auth.auth(pwd):
         while 1:
             api = pywebio.input.input("输入api调用接口:")
