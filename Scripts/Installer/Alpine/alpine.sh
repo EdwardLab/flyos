@@ -24,7 +24,7 @@ if [ "$first" != 1 ];then
 		*)
 			echo "unknown architecture"; exit 1 ;;
 		esac
-		wget "https://raw.fastgit.org/EXALAB/Scripts/Installer/Alpine/Rootfs.tar.gz" -O $tarball
+		wget "https://raw.fastgit.org/xingyujie/flyos/Scripts/Installer/Alpine/Rootfs.tar.gz" -O $tarball
 	fi
 	cur=`pwd`
 	mkdir -p "$folder"
