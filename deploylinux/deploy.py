@@ -1,6 +1,7 @@
 """Linux部署程序--中文版"""
 import os
-
+if os.path.exists( './linux' ) == False:
+    os.makedirs("linux")
 print("Linux部署程序--中文版")
 print("By:FlyOS MicroTech Rainbow(严禁删除版权，不允许修改版权)GPL-V3")
 print("请选择系统(内置常用的几个系统):")
