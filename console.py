@@ -71,7 +71,6 @@ print("19.虚拟机WEB管理面板(已自动启动，再次启动会出问题)")
 print("20.启动nginx WEB Server")
 print("21.初始化FlyOS")
 print("22.启动Xfce4图形化(端口5902)")
-<<<<<<< HEAD
 print("23.启动pocketmine Minecraft基岩服务器")
 print("24.启动Nukkitx Minecraft基岩服务器")
 print("0.进入终端")

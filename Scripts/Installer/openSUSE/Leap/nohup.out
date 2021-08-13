@@ -1,0 +1,94 @@
+CANNOT LINK EXECUTABLE "node": library "libicui18n.so.67" not found
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/FlyOSPanel/manage.py", line 11, in main
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/FlyOSPanel/manage.py", line 22, in <module>
+    main()
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/FlyOSPanel/manage.py", line 13, in main
+    raise ImportError(
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+(98)Address already in use: AH00072: make_sock: could not bind to address [::]:8080
+(98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:8080
+no listening sockets available, shutting down
+AH00015: Unable to open logs
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+___________________
+FlyOS Phone Shell
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/phone/web.py", line 44, in <module>
+    start_server(main, debug=True, host='0.0.0.0', port=5000)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Virtual Machine
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/virtualmachine/web.py", line 259, in <module>
+    start_server(Main, debug=True, host="0.0.0.0", port=8002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+___________________
+FlyOS Device API
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/api/web.py", line 40, in <module>
+    start_server(main, debug=True, host='0.0.0.0', port=5002)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+Error: Not found; no service started.
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (98: Unknown error)
+______________________________________
+FlyOS Panel
+启动中
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/etc/flyos/panel/server.py", line 96, in <module>
+    start_server(main, debug=True, host='0.0.0.0', port=8888)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 217, in start_server
+    _, port = _setup_server(webio_handler=handler, port=port, host=host, **tornado_app_settings)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/pywebio/platform/tornado.py", line 157, in _setup_server
+    server = app.listen(port, address=host)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/data/data/com.termux/files/usr/lib/python3.9/site-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+nginx: [emerg] still could not bind()
