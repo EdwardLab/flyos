@@ -1,6 +1,6 @@
 <div align="center">
    <img width="300" src="img/flyos.png" alt="logo"></br>
-   <img width="300" src="img/flyoschar.png" alt="AnthropomorphicImage"></br>
+   <img width="300" src="img/flyOS.png" alt="AnthropomorphicImage"></br>
    <strong>FlyOS<sup>4</sup> is an artifact of Android phones</strong>
 </div>
 
