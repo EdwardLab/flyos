@@ -1,5 +1,0 @@
-pywebio
-tornado
-ua-parser
-user-agents
-requests
