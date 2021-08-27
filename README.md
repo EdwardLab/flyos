@@ -9,7 +9,6 @@
   <a href="http://flyosgeek.com/ru.html">русский</a>
    <div class="introduction"> 
     <h2>Introduction</h2> 
-    <img width="300" src="img/FlyOSChar.png" alt="AnthropomorphicImage"></br>
     <p>FlyOS is an artifact of Android phones</p> 
     <p>The original and complete Linux system  </p>
     <p>FlyOS Console:(Main function)</p> 
