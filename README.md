@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head> 
-
+<h2>Suspend the update of the project, and the new pro version will be updated in the future (the subsequent new version is open source and free, not based on termux)</h1>
     
    <h2>Document Language</h2>
    <a href="http://flyosgeek.com/cn.html">简体中文</a>
