@@ -25,4 +25,5 @@ Donate to our foundation DigitalPlat, a 501(c)(3) organization (EIN: 81-2908499)
 
 [Donate link (Stripe)](https://bank.hackclub.com/donations/start/digitalplat)    
 [DigitalPlat Homepage](https://digitalplat.org)  
+
 <img src="https://bank.hackclub.com/brand/hcb-logo-original-light.svg">    
