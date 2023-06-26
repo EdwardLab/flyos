@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Use Bootstrap 5 CSS -->
+    <link href="/static//css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Add a title for the installer -->
+    <title>FlyOS Installer</title>
+</head>
+<body>
+    <!-- Add a navbar for the installer -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">FlyOS Installer</span>
+        </div>
+    </nav>
+
+    <!-- Add a container for the installer -->
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FlyOS Installer</font></font></h1>
+          <p class="col-md-8 fs-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font><font style="vertical-align: inherit;">Deploy the Linux Subsystem for your Android devices</font></font></p>
+          <!-- Add a button for immediate installation -->
+          <a href="/install/check"><button type="button" class="btn btn-primary">Deploy Now</button></a>
+          
+        </div>
+      </div>
+<div class="alert alert-light" role="alert">
+    <!-- Add a container for the steps -->
+    <div class="container-fluid py-5">
+        <h2>What is FlyOS</h2>
+        <ol>
+            <li>FlyOS deploys a Linux container (FlyOS is based on Ubuntu) for your Android device, with a visual control panel to manage your container and devices</li>
+            <li>100% open source and free, immediately deploy subsystems for your Android devices</li>
+        </ol>
+
+    <!-- Add a container for the system requirements -->
+        <h2>System Requirements</h2>
+        <ul>
+            <li>Android 7.0 or later (Linux Kernel 4.9+ recommended)</li>
+            <li>At least 4GB of RAM recommended</li>
+            <li>At least 15GB of free storage space</li>
+            <li>Full Root access (such as Magisk, etc.)</li>
+            <li>AOSP is recommended, full system and data partition read and write (r/w) permissions</li>
+            Please click Deploy Now to check whether the device meets the installation conditions. If the installation is forced, FlyOS may not work properly
+        </ul>
+    </div>
+
+    <!-- Add a container for the FAQ -->
+    <div class="container-fluid py-5">
+        <h2>Frequently Asked Questions</h2>
+        <h3>What is FlyOS?</h3>
+        <p>FlyOS is a Debian-like operating system customized for Android devices, running through chroot containers, with an easy-to-use panel to manage your containers</p>
+        <h3>What is Chroot Linux container?</h3>
+        <p>Deploy the Linux system FlyOS for your device through the unix-like container "chroot"</p>
+        <h3>Is FlyOS free?</h3>
+        <p>Yes, FlyOS is completely free and open source. Same as 2.0, FlyOS 3.0 is released under the GPL-3.0 License</p>
+        <h3>How do I report bugs or suggest new features?</h3>
+        <p>You can report bugs or suggest new features on our <a href="https://github.com/xingyujie/flyos/issues">GitHub issue tracker</a>.</p>
+    </div>
+</div>
+    <!-- Add a footer for the installer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container-fluid">
+            <span class="text-muted">FlyOS Installer</span>
+        </div>
+    </footer>
+
+    <!-- Add Bootstrap 5 JS for the installer -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
