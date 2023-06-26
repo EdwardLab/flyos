@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Executing command: {{ cmd }}</h1>
+<h2>Output:</h2> 
+<pre id="output">{{ output | safe }}</pre>
+<script>
+var ele = document.getElementById('output');
+var out = ele.innerHTML;
+setInterval(function() {
+  ele.innerHTML = out + '{{ output | safe }}';
+  out = ele.innerHTML;
+}, 50);
+</script>
+</body>
+</html> 

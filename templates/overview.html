@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlyOS Dashboard</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/css/adminlte.min.css">
+  <!-- jQuery -->
+  <script src="/static/js/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/js/popper.min.js"></script>
+  <script src="/static/js/bootstrap_4.2/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/js/adminlte.min.js"></script>
+</head>
+<body>
+  <style>
+    #loading-spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+    
+    #loading-spinner i {
+      font-size: 4rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div id="loading-spinner" style="display: none;">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+    <div class="content-header">
+    <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Welcome to FlyOS!</font></font></h1>
+    </div>
+    <div class="content px-2">
+      <h3>Overview</h3>
+    </div>
+    <div class="alert alert-primary" role="alert">
+      {{notice}}
+    </div>
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{storage}} GB</h3>
+        <p>Device available storage</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-mobile"></i>
+      </div>
+    </div>
+    <div class="small-box bg-gradient-success">
+      <div class="inner">
+        <h3>{{ssh}}</h3>
+        <p>SSH Status</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-terminal"></i>
+      </div>
+    </div>
+      <div class="small-box bg-gradient-warning">
+        <div class="inner">
+          <h3>{{vnc}}</h3>
+          <p>FlyOS Desktop (VNC) Status</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-desktop"></i>
+        </div>
+      </div>
+
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{battery_remaining}}</h3>
+            <p>Battery Status</p>
+          </div>
+        <div class="icon">
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title">FlyOS Information:</h3>
+        <br>
+        Device kernel: {{kernel}} <br>
+        FlyOS Framework: {{framework_status}}
+        CPU Information: {{run_system('lshw -class cpu -short')}}
+      </div>
+    </div>
+    <div class="card card-info">
+      <div class="card-header">
+          <h3 class="card-title">Files</h3>
+      </div>
+      <div class="card-header">
+        <h3 class="card-title">My Files:</h3>
+        <br>
+        <form id="directoryForm" onsubmit="submitForm(event)">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="pathInput" placeholder="Enter path" required>
+            <button type="submit" class="btn btn-primary">Get Files</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-body">
+        <pre id="resultArea">{{ result }}</pre>
+      </div>
+    </div>
+  </div>
+    <h4>FlyOS Dashboard Information</h4>
+    <p>FlyOS Dashboard Username: {{username}}</p>
+    <button class="btn btn-primary mb-2" onclick="openNewWindow('/logout');">Logout</button>
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        const pathInput = document.getElementById('pathInput');
+        const resultArea = document.getElementById('resultArea');
+        const path = pathInput.value.trim();
+    
+        // Make an AJAX request to execute the system command
+        fetch('/query_files', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ path: path }),
+        })
+        .then(response => response.text())
+        .then(result => {
+          resultArea.textContent = result;
+        });
+    
+        // Clear the input field
+        pathInput.value = '';
+      }
+    </script>
+    <script>
+          const form = document.getElementById('commandForm');
+          const resultContainer = document.getElementById('resultContainer');
+  
+          form.addEventListener('submit', (e) => {
+              e.preventDefault();
+              const commandInput = document.getElementById('commandInput');
+              const command = encodeURIComponent(commandInput.value);
+  
+              const url = `http://192.168.31.99:5001/system/cmd?command=${command}`;
+  
+              fetch(url)
+                  .then(response => response.text())
+                  .then(data => {
+                      resultContainer.textContent = data;
+                  })
+                  .catch(error => {
+                      console.error('Command execution error:', error);
+                  });
+          });
+      </script>
+      <script>
+        function openNewWindow(url) {
+          window.open(url, '_blank');
+        }
+      </script>
+</body>
+</html>
