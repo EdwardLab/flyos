@@ -126,6 +126,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/dashboard/notebook/view" class="nav-link">
+              <i class="nav-icon fas fa-desktop"></i>
+              <p>
+                Jupyter Notebook
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" onclick="loadPage(this, '/panel/domains'); return false;" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -134,7 +142,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/whois/ui" class="nav-link">
+            <a href="#" onclick="loadPage(this, '/dashboard/androidmgr/view'); return false;" class="nav-link">
               <i class="nav-icon fas fa-mobile"></i>
               <p>
                 Android Manager
@@ -146,6 +154,14 @@
               <i class="nav-icon fas fa-user-times"></i>
               <p>
                 Logout
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" onclick="loadPage(this, '/dashboard/about'); return false;" class="nav-link">
+              <i class="nav-icon fas fa-info"></i>
+              <p>
+                About FlyOS
               </p>
             </a>
           </li>
@@ -176,8 +192,8 @@
         Help
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-        <a class="dropdown-item" href="https://wa.link/wrkjsd">FlyOS Home</a>
-        <a class="dropdown-item" href="https://t.me/edgealpha">Telegram Support</a>
+        <a class="dropdown-item" href="http://flyos.us">FlyOS Home</a>
+        <a class="dropdown-item" href="/dashboard/about">About FlyOS</a>
       </div>
     </li>
     <li class="nav-item">
@@ -202,6 +218,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <div class="content-header">
+        <h5>{{offline_notice | safe}}</h5>
         <div class="container-fluid">
           <div class="row mb-2">
           </div>
@@ -227,7 +244,7 @@
     <!-- Main Footer -->
 <footer class="main-footer">
   <div class="float-right d-none d-sm-block">
-    <b>FlyOS Dashboard</b> Open in <a href="#" onclick="openPageInNewTab()">New Tab</a> <a href="#" onclick="toggleFullscreen()">Fullscreen</a>
+    <b>FlyOS Dashboard {{offline_notice | safe}}</b> Open in <a href="#" onclick="openPageInNewTab()">New Tab</a> <a href="#" onclick="toggleFullscreen()">Fullscreen</a>
   </div>
 </footer>
   </div>

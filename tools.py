@@ -1,6 +1,8 @@
 import subprocess
 import psutil
 import os
+import requests
+from config import *
 def run_system(cmd):
     results = os.popen(cmd).read()
     return results
@@ -64,7 +66,23 @@ def check_codeserver_process():
             return "Stopped"
     except subprocess.CalledProcessError:
         return "Stopped"
-
+def check_ttyd_process():
+    ssh_process_running = False
+    try:
+        for proc in psutil.process_iter():
+            try:
+                process_name = proc.name()
+                if "ttyd" in process_name.lower():
+                    ssh_process_running = True
+                    break
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+    except:
+        return "Stopped"
+    if ssh_process_running:
+        return "Running"
+    else:
+        return "Stopped"
 def flyos_framework_status():
     try:
         result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
@@ -82,5 +100,18 @@ def flyos_framework_status():
 def battery_status():
     battery_capacity = os.popen('cat /sys/class/power_supply/battery/capacity').read()
     battery_status = os.popen('cat /sys/class/power_supply/battery/status').read()
-    status = f"{battery_capacity}, {battery_status}"
+    status = f"{battery_capacity} {battery_status}"
     return status
+
+def check_country():
+    timeout = 10
+    if notavailable_tips == False:
+        result = 'true'
+    else:
+        try:
+            url = 'http://geoip.digitalplat.org/api/check-country'
+            response = requests.get(url, timeout=timeout)
+            result = response.text
+            return result
+        except Exception as e:
+            print("Exception in check_country:", str(e))

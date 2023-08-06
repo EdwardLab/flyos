@@ -47,6 +47,7 @@
     <div class="content px-2">
       <h3>Overview</h3>
     </div>
+    {{not_available | safe}}
     <div class="alert alert-primary" role="alert">
       {{notice}}
     </div>
@@ -93,7 +94,6 @@
         <br>
         Device kernel: {{kernel}} <br>
         FlyOS Framework: {{framework_status}}
-        CPU Information: {{run_system('lshw -class cpu -short')}}
       </div>
     </div>
     <div class="card card-info">
