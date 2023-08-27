@@ -2,7 +2,18 @@ import subprocess
 import psutil
 import os
 import requests
+import netifaces as ni
 from config import *
+from sysconf import *
+from werkzeug.security import generate_password_hash, check_password_hash
+import random
+PASSWORDS_FILE = "/flyos/files/pwd.conf"
+def check_password(password):
+    with open(PASSWORDS_FILE, "r") as file:
+        stored_password_hash = file.read().strip()
+        if check_password_hash(stored_password_hash, password):
+            return True
+    return False
 def run_system(cmd):
     results = os.popen(cmd).read()
     return results
@@ -115,3 +126,22 @@ def check_country():
             return result
         except Exception as e:
             print("Exception in check_country:", str(e))
+def get_local_ip():
+    try:
+        interfaces = ni.interfaces()
+        for interface in interfaces:
+            if interface.startswith('wlan') or interface.startswith('eth'):
+                addresses = ni.ifaddresses(interface)
+                if ni.AF_INET in addresses:
+                    return addresses[ni.AF_INET][0]['addr']
+        return '127.0.0.1'
+    except Exception as e:
+        return '127.0.0.1'
+def get_version():
+    fullver = f"{os_ver}_{os_build_channel}"
+    if cust_build != "":
+        fullver = fullver + "_" + cust_build
+    return fullver
+def send_android_msg(title, msg, msg_id):
+    command = f'adb shell "su -lp 2000 -c \\"cmd notification post -S bigtext -t \'{title}\' \'{msg_id}\' \'{msg}\'\\""'
+    os.system(command)

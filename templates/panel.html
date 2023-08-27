@@ -55,7 +55,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="info">
-        <a href="/auth/user/edit" class="d-block">Welcome: {{username}}</a>
+        <a href="/" class="d-block">{{formatted_date}}<br>{{battery_remaining}}<br>{{ip_addr}}</a>
       </div>
     </div>
 
@@ -134,10 +134,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" onclick="loadPage(this, '/panel/domains'); return false;" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+            <a href="#" onclick="loadPage(this, '/dashboard/settings'); return false;" class="nav-link">
+              <i class="nav-icon fas fa-tools"></i>
               <p>
-                User Manager
+                Settings
               </p>
             </a>
           </li>

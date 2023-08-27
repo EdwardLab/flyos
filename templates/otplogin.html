@@ -63,14 +63,15 @@
         <div class="logo">
             <img src="/static/img/flyos.jpg" alt="FlyOS Dashboard">
         </div>
-        <form action="/auth/login" method="POST">
+        <form action="/auth/login/otplogin" method="POST">
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label"><small>OTP has been sent to your device notification bar, please check your Android system notification bar and enter the OTP here, if not, please log in with your password and check the FlyOS Framework status</small></label>
+                <label for="password" class="form-label">One Time Password</label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
             </div>
             <div class="operation">
                 <button type="submit" class="btn btn-primary">Login</button>
-                <a href="/auth/login/otplogin" class="reset-password">OTP Login</a>
+                <a href="/auth/login" class="reset-password">Back to Password Login</a>
             </div>
         </form>
     </div>

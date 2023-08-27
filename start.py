@@ -1,5 +1,10 @@
 import os
 from config import *
+#basic
+os.system("""
+adb start-server
+""")
+os.system('hostname ' + hostname)
 #clean
 os.system("""
 #!/bin/bash
@@ -27,7 +32,7 @@ if boot_dashboard:
 if boot_ssh:
     os.system("""
     nohup ttyd -p 5002 login >> /flyos/logs/ttyd.log 2>&1 &
-    nohup ttyd -p 5005 adb shell >> /flyos/logs/ttyd_android.log 2>&1 &
+    nohup ttyd -p 5005 android_shell >> /flyos/logs/ttyd_android.log 2>&1 &
     nohup /etc/init.d/ssh start >> /flyos/logs/ssh.log 2>&1 &
     """)
 # VNC service
@@ -40,5 +45,5 @@ if boot_vnc:
 if boot_app:
     os.system("""
     nohup code-server >> /flyos/logs/code_server.log 2>&1 &
-    nohup jupyter notebook --no-browser --allow-root --ip=0.0.0.0 --port=5006 --notebook-dir=/ 2>&1 &
+    nohup jupyter notebook --no-browser --allow-root --ip=0.0.0.0 --port=5006 --notebook-dir=/ >> /flyos/logs/code_server.log 2>&1 &
     """)

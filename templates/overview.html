@@ -35,6 +35,12 @@
       font-size: 4rem;
       color: #fff;
     }
+
+    .full-width-button {
+      width: 100%;
+      margin-right: 0;
+      margin-left: 0;
+    }
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -91,11 +97,45 @@
     <div class="card card-success">
       <div class="card-header">
         <h3 class="card-title">FlyOS Information:</h3>
-        <br>
-        Device kernel: {{kernel}} <br>
-        FlyOS Framework: {{framework_status}}
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <tr>
+            <td>FlyOS Framework</td>
+            <td>{{framework_status}}</td>
+          </tr>
+          <tr>
+            <td>Device Hostname</td>
+            <td>{{run_system("hostname")}}</td>
+          </tr>
+          <tr>
+            <td>Android Version</td>
+            <td>{{run_system("adb shell getprop ro.build.version.release")}}</td>
+          </tr>
+          <tr>
+            <td>SDK Version</td>
+            <td>{{run_system("adb shell getprop ro.build.version.sdk")}}</td>
+          </tr>
+          <tr>
+            <td>Build Kernel Version</td>
+            <td>{{run_system("uname -a")}}</td>
+          </tr>
+          <tr>
+            <td>Device Model</td>
+            <td>{{run_system("adb shell getprop ro.product.model")}}</td>
+          </tr>
+          <tr>
+            <td>Device Manufacturer</td>
+            <td>{{run_system("adb shell getprop ro.product.manufacturer")}}</td>
+          </tr>
+          <tr>
+            <td>Android ID</td>
+            <td>{{run_system("adb shell settings get secure android_id")}}</td>
+          </tr>
+        </table>
       </div>
     </div>
+    
     <div class="card card-info">
       <div class="card-header">
           <h3 class="card-title">Files</h3>
@@ -115,9 +155,7 @@
       </div>
     </div>
   </div>
-    <h4>FlyOS Dashboard Information</h4>
-    <p>FlyOS Dashboard Username: {{username}}</p>
-    <button class="btn btn-primary mb-2" onclick="openNewWindow('/logout');">Logout</button>
+  <button class="btn btn-primary mb-2 full-width-button" onclick="openNewWindow('/logout');">Logout Dashboard</button>
     <script>
       function submitForm(event) {
         event.preventDefault();

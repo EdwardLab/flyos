@@ -10,6 +10,7 @@ import sys
 import os
 sys.path.append('/flyos')
 import config
+import tools
 if config.show_motd == False:
     sys.exit()
 def get_cpu_usage():
@@ -45,20 +46,21 @@ def get_local_ip():
                 addresses = ni.ifaddresses(interface)
                 if ni.AF_INET in addresses:
                     return addresses[ni.AF_INET][0]['addr']
-        return None
+        return '127.0.0.1'
     except Exception:
-        return None
+        return '127.0.0.1'
 
 
 ip_address = get_local_ip()
-if ip_address == None:
-    ip_address = '127.0.0.1'
 console = Console()
 console.print(
 f'''
 The FlyOS Project
-____________________
-Documentation and Help: https://flyos.us/
+Version: {tools.get_version()}
+* Documentation and Help: https://flyos.us/
+* Report bugs and suggestions: https://github.com/xingyujie/flyos/issues/
+
+Network Information:
 LAN IP address: {ip_address}   
 
 Device usage:
@@ -66,9 +68,9 @@ CPU Usage: {get_cpu_usage()}%
 Memory Usage: {get_memory_usage()}%
 Disk Usage: {get_disk_usage()}%
 
-FlyOS Linux subsystem, running on Android System
 ''')
 is_flyos_started = check_port_open(5000)
+print("Dashboard Status:")
 if is_flyos_started:
     console.print('FlyOS Dashboard is started and the status is ok!', style='bold green')
     console.print(f'* FlyOS Web Dashboard: http://{ip_address}:5000', style='bold green')

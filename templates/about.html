@@ -21,10 +21,26 @@
          </div>
        </div>
 </div>
-<b>Our goal:</b>
-<p>Unleash your mobile phone's potential: it's not just a phone, but a pocket-sized computer.</p>
-<p>Experience the power of mobile computing with FlyOS. Access your FlyOS Linux subsystem on any computer, just with a web browser. No extra software required. Enjoy a full Ubuntu-based Linux subsystem with your preferences, data, files, and applications. It's all yours.</p>
-<p>Unlock the possibilities of mobile productivity. Imagine coding on your phone, connecting a keyboard and mouse, and effortlessly accessing your favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more. It's a complete Linux system that fits in your pocket! Wherever you go, your data is always within reach. Experience the freedom of seamless access, empowering you to create and work anywhere, anytime.</p>
+<div class="container mt-5">
+  <h3>Device Information:</h3>
+  <p>Device Hostname: {{run_system("hostname")}}</p>
+  <p>Android Version: {{run_system("adb shell getprop ro.build.version.release")}}, SDK Version:
+      {{run_system("adb shell getprop ro.build.version.sdk")}}</p>
+  <p>Build Kernel Version: {{run_system("uname -a")}}</p>
+  <p>Device model: {{run_system("adb shell getprop ro.product.model")}}</p>
+  <p>Device Manufacturer: {{run_system("adb shell getprop ro.product.manufacturer")}}</p>
+  <p>Android ID: {{run_system("adb shell settings get secure android_id")}}</p>
+  <hr>
+  <h3>Our Goal:</h3>
+  <p>Unleash your mobile phone's potential: it's not just a phone, but a pocket-sized computer.</p>
+  <p>Experience the power of mobile computing with FlyOS. Access your FlyOS Linux subsystem on any computer,
+      just with a web browser. No extra software required. Enjoy a full Ubuntu-based Linux subsystem with your
+      preferences, data, files, and applications. It's all yours.</p>
+  <p>Unlock the possibilities of mobile productivity. Imagine coding on your phone, connecting a keyboard and
+      mouse, and effortlessly accessing your favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more.
+      It's a complete Linux system that fits in your pocket! Wherever you go, your data is always within reach.
+      Experience the freedom of seamless access, empowering you to create and work anywhere, anytime.</p>
+</div>
 <footer>
 <div class="alert alert-light" role="alert">
 Powered by: FlyOS Subsystem

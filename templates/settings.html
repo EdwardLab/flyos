@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+         <meta charset="utf-8">
+         <title>Settings</title>
+     </head>
+     <body>
+       <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
+           <span class="navbar-brand mb-0 h1">Settings</span>
+         </div>
+       </nav>
+
+       <div class="p-5 mb-4 bg-light rounded-3">
+         <div class="container-fluid py-5">
+           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>Edit System Settings</font></h1>
+           </a>
+         </div>
+       </div>
+</div>
+<form method="post" action="/dashboard/settings">
+<div class="container mt-5">
+    <h3>Edit System Settings</h3>
+    <p><b><font color="red">Do not delete configuration options at will, otherwise FlyOS will not be able to start!</font></b></p>
+    <code><textarea type="text" name="conf" class="form-control" id="conf" rows="20" placeholder="Write HTML content or paste HTML code here" required>{{configfile_read}}</textarea></code><br>
+    <button class="btn btn-primary" type="submit">Save (Reboot to apply changes)</button>
+    <br>
+</div>
+</form>
+<form method="post" action="/dashboard/settings/updatepwd">
+  <div class="container mt-5">
+      <h3>Change FlyOS password</h3>
+      <input type="text" name="passwd" id="passwd" class="form-control" placeholder="Enter your new password"><br>
+      <button class="btn btn-primary" type="submit">Save</button>
+      <br><br><br>
+  </div>
+  </form>
+<footer>
+<div class="alert alert-light" role="alert">
+Powered by: FlyOS Subsystem
+<br>
+Deploy Linux subsystem on your Android phone
+<br>
+Home Page: http://flyos.us/
+</div>
+</footer>
+<script src="/static/js/bootstrap.bundle.js"></script>
+</body>
+</html>

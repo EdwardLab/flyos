@@ -12,7 +12,20 @@ import subprocess
 import sqlite3
 import requests
 from config import *
-os.system('hostname ' + hostname)
+from datetime import datetime
+import random
+import shutil
+
+def restore_config():
+    try:
+        import config
+        config.server_port
+        config.hostname
+        config.boot_app
+    except:
+        config_path = '/flyos/config.py'
+        backup_path = '/flyos/files/backup/config.py'
+        shutil.copy(backup_path, config_path)
 class User(UserMixin):
     def __init__(self, user_id):
         self.id = user_id
@@ -24,8 +37,6 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=5)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-# SQLite database file path
-db_path = '/flyos/flyos.db'
 command_thread = None
 app.config['LANGUAGES'] = {
     'en': 'English',
@@ -34,52 +45,39 @@ app.config['LANGUAGES'] = {
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 # load user config
 from config import *
+PASSWORDS_FILE = "/flyos/files/pwd.conf"
+
+# User class for Flask-Login
+class User(UserMixin):
+    def __init__(self, user_id):
+        self.id = user_id
+
+# Required user_loader function for Flask-Login
 @login_manager.user_loader
 def load_user(user_id):
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    cursor.execute("SELECT username FROM user WHERE user_id = ?;", (user_id,))
-    row = cursor.fetchone()
-    cursor.close()
-    conn.close()
+    return User(user_id)
 
-    if row is not None:
-        user = User(user_id)
-        user.username = row[0]
-        return user
-    else:
-        return None
-
-def checkuser(username, password):
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    cursor.execute("SELECT user_id, password FROM user WHERE username = ?;", (username,))
-    row = cursor.fetchone()
-    cursor.close()
-    conn.close()
-
-    if row is not None:
-        user_id, getpassword = row
-        if check_password_hash(getpassword, password):
-            return user_id
-    return None
-
-def userload():
-    username = session.get('username')
-    if username is None:
-        return redirect(url_for('login'))
-    return username
+# Function to check the password
+def check_password(password):
+    with open(PASSWORDS_FILE, "r") as file:
+        stored_password_hash = file.read().strip()
+        if check_password_hash(stored_password_hash, password):
+            return True
+    return False
 
 @app.route('/')
 @login_required
 def redirectmain():
-    return redirect(url_for('domainpanel'))
+    return redirect(url_for('panel'))
 
 @app.route('/dashboard')
 @login_required
-def domainpanel():
-    username = userload()
+def panel():
+    current_date = datetime.now()
+    formatted_date = current_date.strftime('%b %d %Y %H:%M')
+    battery_remaining = battery_status()
     desktop_opt = request.args.get('desktop_mode')
+    ip_addr = get_local_ip()
     if desktop_opt == "true":
         desktop_mode = ''
     else:
@@ -89,7 +87,13 @@ def domainpanel():
         offline_notice = 'Offline mode'
     else:
         offline_notice = ''
-    return render_template('./panel.html', username=username, desktop_mode=desktop_mode, offline_notice=offline_notice)
+    return render_template('./panel.html',
+    desktop_mode=desktop_mode, 
+    offline_notice=offline_notice, 
+    run_system=run_system, 
+    formatted_date=formatted_date,
+    battery_remaining=battery_remaining,
+    ip_addr=ip_addr)
 
 @app.route('/query_files', methods=['POST'])
 @login_required
@@ -104,7 +108,7 @@ def query_files():
 @login_required
 def overview():
     battery_remaining = battery_status()
-    username = userload()
+    
     try:
         url = "https://raw.githubusercontent.com/xingyujie/flyos/master/notices.txt"
         response = requests.get(url)
@@ -136,11 +140,11 @@ def overview():
         print("Exception in overview:", str(e))
         not_available = ''
 
-    return render_template('./overview.html', username=username, notice=notice, storage=storage, ssh=ssh, vnc=vnc, kernel=kernel, framework_status=framework_status, run_system=run_system, battery_remaining=battery_remaining, not_available=not_available)
+    return render_template('./overview.html', notice=notice, storage=storage, ssh=ssh, vnc=vnc, kernel=kernel, framework_status=framework_status, run_system=run_system, battery_remaining=battery_remaining, not_available=not_available)
 @app.route('/dashboard/vnc/view')
 @login_required
 def vnc_page():
-    username = userload()
+    
     vnc = check_vnc_process()
     if vnc == 'Stopped':
         return 'VNC Service not started'
@@ -149,7 +153,7 @@ def vnc_page():
 @app.route('/dashboard/codeserver/view')
 @login_required
 def codeserver_page():
-    username = userload()
+    
     code = check_codeserver_process()
     if code == 'Stopped':
         return 'Code Server Service not started'
@@ -158,7 +162,7 @@ def codeserver_page():
 @app.route('/dashboard/terminal/view')
 @login_required
 def terminal_android_page():
-    username = userload()
+    
     ttyd = check_ttyd_process()
     if ttyd == 'Stopped':
         return 'Web Terminal Service not started'
@@ -167,7 +171,7 @@ def terminal_android_page():
 @app.route('/dashboard/terminal_android/view')
 @login_required
 def terminal_page():
-    username = userload()
+    
     ttyd = check_ttyd_process()
     if ttyd == 'Stopped':
         return 'Web Terminal Service not started'
@@ -176,44 +180,95 @@ def terminal_page():
 @app.route('/dashboard/androidmgr/view')
 @login_required
 def android_mgr():
-    username = userload()
+    
     hostname = request.host.split(':')[0]
     return render_template('androidmgr.html')
 @app.route('/dashboard/notebook/view')
 @login_required
 def jupyter_notebook():
-    username = userload()
+    
     hostname = request.host.split(':')[0]
     return redirect(f'http://{hostname}:{jupyter_notebook_port}/')
 @app.route('/dashboard/about')
 @login_required
 def about():
-    username = userload()
-    hostname = request.host.split(':')[0]
-    return render_template('about.html')
+    return render_template('about.html', run_system=run_system)
+@app.route('/dashboard/settings', methods=['GET', 'POST'])
+@login_required
+def settings_view():
+    if request.method == 'POST':
+        newconf = request.form.get('conf')
+        configfile_write = open('/flyos/config.py', 'w')
+        configfile_write.write(newconf)
+        return '''
+<script>
+    alert('Saved! Please re-login')
+</script>
+<meta http-equiv="refresh" content="0;url=/dashboard/settings"> 
+        '''
+    configfile_read = open('/flyos/config.py')
+    configfile_read = configfile_read.read()
+    return render_template('settings.html', run_system=run_system, configfile_read=configfile_read)
 @app.route('/auth/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
+        if log_message:
+            current_time = datetime.now()
+            formatted_time = current_time.strftime("%b %d %H:%M")
+            alert_command = f'adb shell "su -lp 2000 -c \\"cmd notification post -S bigtext -t \'FlyOS Login Security Alert\' \'{random.randint(10000, 100000)}\' \'A device has successfully logged into the FlyOS dashboard at {formatted_time}, if you are not operating, please change the password (If you want to disable this notification, you can modify the configuration file: /flyos/config.py)\'\\""'
+            os.system(alert_command)
         password = request.form.get('password')
-        if username == '':
-            return render_template('./oops.html', info='Incorrect username or password')
         if password == '':
-            return render_template('./oops.html', info='Incorrect username or password')
-        user_id = checkuser(username, password)
-        if user_id is not None:
+            return render_template('./oops.html', info='Incorrect password')
+        if check_password(password):
+            user_id = 1  # You can set any user ID or use a more complex logic here
             user = User(user_id)
-            user.username = username
             login_user(user)
-            session['username'] = username  # Store username in session
-            return redirect(url_for('domainpanel'))
+            return redirect(url_for('panel'))
         else:
-            return render_template('./oops.html', info='Incorrect username or password')
+            return render_template('./oops.html', info='Incorrect password')
     return render_template('./login.html')
+@app.route('/dashboard/settings/updatepwd', methods=['POST'])
+@login_required
+def settings_updatepwd_view():
+    if request.method == 'POST':
+        passwd = request.form.get('passwd')
+        hashpwd = generate_password_hash(passwd)
+        file_path = '/flyos/files/pwd.conf'
+        try:
+            os.remove(file_path)
+        except:
+            pass
+        try:
+            with open(file_path, 'w') as pwd_file:
+                pwd_file.write(hashpwd)
+            return render_template('info.html', info='Password changed!')
+        except Exception as e:
+            return render_template('info.html', info=f'system error: {e}, please try again')
+@app.route('/auth/login/otplogin', methods=['GET', 'POST'])
+def otpcode_login():
+    if request.method == 'POST':
+        getcode = request.form.get('password')
+        read_otp = open('/flyos/files/temp/otp', 'r')
+        read_otp = read_otp.read()    
+        if getcode == read_otp:
+            user_id = 1
+            user = User(user_id)
+            login_user(user)
+            return redirect(url_for('panel'))
+        else:
+            return render_template('./oops.html', info='Incorrect one-time password, Please regenerate and try again')
+    else:
+        otp_code = random.randint(10000, 100000)
+        save_otp = open('/flyos/files/temp/otp', 'w')
+        save_otp.write(str(otp_code))
+        send_android_msg('FlyOS Login OTP', f'Your one-time login password is: {otp_code}, valid for this page session', 5000)
+        return render_template('otplogin.html')
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=server_port, debug=True)
+    restore_config()
+    app.run(host=dashboard_host_addr, port=server_port, debug=True)
