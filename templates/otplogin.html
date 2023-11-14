@@ -65,7 +65,7 @@
         </div>
         <form action="/auth/login/otplogin" method="POST">
             <div class="mb-3">
-                <label for="password" class="form-label"><small>OTP has been sent to your device notification bar, please check your Android system notification bar and enter the OTP here, if not, please log in with your password and check the FlyOS Framework status</small></label>
+                <label for="password" class="form-label"><small>OTP has been sent to your device notification bar, please check your Android system notification bar and enter the OTP here, if no notification, please log in with your password and check the FlyOS Framework status</small></label>
                 <label for="password" class="form-label">One Time Password</label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
             </div>
@@ -75,8 +75,8 @@
             </div>
         </form>
     </div>
-    <footer>
-        <small>
+    <footer class="bg-light text-dark text-center p-3">
+        <small class="text-muted">
             Click 'Login' to log in to your device Dashboard
             <br>
             Powered by: FlyOS for Android
@@ -84,6 +84,7 @@
             This is the Linux Subsystem panel running on Android
         </small>
     </footer>
+    
 </body>
 
 </html>

@@ -209,6 +209,25 @@ def settings_view():
     configfile_read = open('/flyos/config.py')
     configfile_read = configfile_read.read()
     return render_template('settings.html', run_system=run_system, configfile_read=configfile_read)
+@app.route('/settings/update_timezone')
+@login_required
+def update_timezone_view():
+    timezone = request.args.get("timezone")
+    os.system(f"sudo ln -sf /usr/share/zoneinfo/{timezone} /etc/localtime")
+    os.system("dpkg-reconfigure -f noninteractive tzdata")
+    return render_template('./success.html', info='You have successfully changed the time zone. If it has not changed, please check the "/etc/timezone" file!')
+@app.route('/settings/updateuserpwd')
+@login_required
+def updateuserpwd():
+    username = request.args.get("username")
+    passwd = request.args.get("passwd")
+    command = f'echo {username}:{passwd} | chpasswd'
+    results = subprocess.getoutput(command)
+
+    if results.strip() != '':
+        return render_template('./oops.html', info=f'Update password failed, {results}')
+    else:
+        return render_template('./success.html', info=f'User: {username} password: {passwd} updated successfully! {results}')
 @app.route('/auth/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

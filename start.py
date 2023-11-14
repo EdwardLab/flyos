@@ -45,5 +45,5 @@ if boot_vnc:
 if boot_app:
     os.system("""
     nohup code-server >> /flyos/logs/code_server.log 2>&1 &
-    nohup jupyter notebook --no-browser --allow-root --ip=0.0.0.0 --port=5006 --notebook-dir=/ >> /flyos/logs/code_server.log 2>&1 &
+    nohup jupyter notebook --no-browser --allow-root --ip=0.0.0.0 --port=5006 --notebook-dir=/ >> /flyos/logs/juptyer.log 2>&1 &
     """)

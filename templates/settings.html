@@ -21,32 +21,68 @@
          </div>
        </div>
 </div>
-<form method="post" action="/dashboard/settings">
-<div class="container mt-5">
-    <h3>Edit System Settings</h3>
-    <p><b><font color="red">Do not delete configuration options at will, otherwise FlyOS will not be able to start!</font></b></p>
-    <code><textarea type="text" name="conf" class="form-control" id="conf" rows="20" placeholder="Write HTML content or paste HTML code here" required>{{configfile_read}}</textarea></code><br>
-    <button class="btn btn-primary" type="submit">Save (Reboot to apply changes)</button>
-    <br>
-</div>
-</form>
 <form method="post" action="/dashboard/settings/updatepwd">
   <div class="container mt-5">
       <h3>Change FlyOS password</h3>
-      <input type="text" name="passwd" id="passwd" class="form-control" placeholder="Enter your new password"><br>
-      <button class="btn btn-primary" type="submit">Save</button>
+      <input type="text" name="passwd" id="passwd" class="form-control" placeholder="Enter your new password" required><br>
+      <button class="btn btn-primary" type="submit">Update</button>
       <br><br><br>
   </div>
   </form>
+  <form method="get" action="/settings/updateuserpwd">
+    <div class="container mt-5">
+        <h3>Change Linux User password</h3>
+        <input type="text" name="username" class="form-control" placeholder="Enter Linux username (e.g: root)" required><br>
+        <input type="text" name="passwd" class="form-control" placeholder="Enter new password for this user" required><br>
+        <button class="btn btn-primary" type="submit">Update</button>
+        <br><br><br>
+    </div>
+    </form>
+  <div class="container mt-5">
+    <form action="/settings/update_timezone" method="GET" class="form-inline" id="timezoneForm">
+        <h3>Select a time zone:</h3>
+        <p style="font-size: small;">*FlyOS subsystem will not synchronize or update Android time zone</p>
+        <select name="timezone" id="offset" class="form-control mr-2">
+            <!-- options will be dynamically generated using JavaScript -->
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+  <form method="post" action="/dashboard/settings">
+    <div class="container mt-5">
+        <h3>Advanced System Settings</h3>
+        <p><b><font color="red">If you don't know what this is, please don't modify it or FlyOS will not boot properly. Please do not remove any variables or any part of the configuration!</font></b></p>
+        <code><textarea type="text" name="conf" class="form-control" id="conf" rows="20" placeholder="Write HTML content or paste HTML code here" required>{{configfile_read}}</textarea></code><br>
+        <button class="btn btn-primary" type="submit">Save (Reboot to apply changes)</button>
+        <br>
+    </div>
+    </form>
 <footer>
+<br>
 <div class="alert alert-light" role="alert">
 Powered by: FlyOS Subsystem
 <br>
-Deploy Linux subsystem on your Android phone
-<br>
-Home Page: http://flyos.us/
+Install Linux Subsystem on Android Device
 </div>
 </footer>
 <script src="/static/js/bootstrap.bundle.js"></script>
+<!-- Include moment.js -->
+<script src="/static/js/moment.min.js"></script>
+<!-- Include moment-timezone -->
+<script src="/static/js/moment-timezone-with-data-10-year-range.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var offsetSelect = document.getElementById('offset');
+      var timeZones = moment.tz.names();
+      timeZones.forEach(function(timeZone) {
+          var option = document.createElement('option');
+          option.value = timeZone;
+          option.text = timeZone;
+          offsetSelect.add(option);
+      });
+  });
+  </script>
 </body>
 </html>

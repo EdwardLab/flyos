@@ -10,7 +10,7 @@ notavailable_tips = False   # Enable can use GEOIP to detect whether the FlyOS c
 log_message = True   # If this option is enabled, a notification (message in the notification bar) will be sent every time you successfully log in to the dashboard or perform a security operation on the device. Disabling this option will no longer send notification messages
 
 # Server configuration
-dashboard_host_addr = '0.0.0.0' # 0.0.0.0 allows all devices to access, 127.0.0.1 only allows local access, you can also fill in the specified allowed IP address
+dashboard_host_addr = '0.0.0.0' # 0.0.0.0 allows all devices to access, 127.0.0.1 only allows local access, or fill in the specified allowed IP address
 # port configuration
 server_port = 5000 #Dashboard listening port
 # These option controls the corresponding port of the iframe of the dashboard
