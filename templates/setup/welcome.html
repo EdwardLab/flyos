@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to FlyOS</title>
+  <!-- Bootstrap CSS -->
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styles */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      text-align: center;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+    .welcome-text {
+      font-size: 3rem;
+      white-space: nowrap;
+    }
+    .btn-start {
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      background-color: #444;
+      border: none;
+      color: #fff;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .btn-start:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="welcome-text" id="welcomeMessage"></div>
+</div>
+
+<div style="margin-top: auto;">
+  <button type="button" class="btn btn-primary btn-start" id="startButton">Start the Journey</button>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="/static/js/jquery-3.5.1.slim.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<!-- Your custom script -->
+<script>
+  const messages = [
+    "Welcome to FlyOS",
+    "it's not just a phone, but a pocket-sized computer",
+    "Experience the power of mobile computing with FlyOS"
+  ];
+
+  let index = 0;
+  let textIndex = 0;
+
+  function typeWriter() {
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const currentMessage = messages[index];
+    if (textIndex < currentMessage.length) {
+      welcomeMessage.innerHTML += currentMessage.charAt(textIndex);
+      textIndex++;
+      setTimeout(typeWriter, 100);
+    } else {
+      setTimeout(eraseText, 1500); 
+    }
+  }
+
+  function eraseText() {
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const currentMessage = messages[index];
+    if (textIndex >= 0) {
+      const slicedText = currentMessage.substring(0, textIndex);
+      welcomeMessage.innerHTML = slicedText;
+      textIndex--;
+      setTimeout(eraseText, 50);
+    } else {
+      index = (index + 1) % messages.length;
+      setTimeout(typeWriter, 100);
+    }
+  }
+
+  typeWriter();
+
+  setTimeout(() => {
+    const welcomeText = document.querySelector('.welcome-text');
+    welcomeText.style.display = 'inline-block';
+  }, 0); 
+
+  setTimeout(() => {
+    const startButton = document.getElementById('startButton');
+    startButton.style.display = 'block';
+  }, messages.reduce((acc, val) => acc + val.length, 0) * 100 + 1500);
+
+  document.getElementById('startButton').addEventListener('click', function() {
+    window.location.href = '/setup/welcome/rocket';
+  });
+</script>
+
+</body>
+</html>

@@ -5,18 +5,18 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
          <meta charset="utf-8">
-         <title>Oops!</title>
+         <title>{{ gettext("Oops!") }}</title>
      </head>
      <body>
        <nav class="navbar navbar-light bg-light">
          <div class="container-fluid">
-           <span class="navbar-brand mb-0 h1">Oops!</span>
+           <span class="navbar-brand mb-0 h1">{{ gettext("Oops!") }}</span>
          </div>
        </nav>
 
        <div class="p-5 mb-4 bg-light rounded-3">
          <div class="container-fluid py-5">
-           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>Woha, Seems to be having a problem!</font></h1>
+           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Woha, Seems to be having a problem!") }}</font></font></h1>
            </a>
          </div>
        </div>
@@ -26,11 +26,11 @@
 </div>
 <footer>
 <div class="alert alert-light" role="alert">
-Powered by: FlyOS Subsystem
+{{ gettext("Powered by:") }} FlyOS Subsystem
 <br>
-Deploy Linux subsystem on your Android phone
+{{ gettext("Deploy Linux subsystem on your Android phone") }}
 <br>
-Encounter problems? Go to our community!
+{{ gettext("Encounter problems? Go to our community!") }}
 </div>
 </footer>
 <script src="/static/js/bootstrap.bundle.js"></script>

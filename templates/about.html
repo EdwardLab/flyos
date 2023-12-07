@@ -22,6 +22,9 @@
        </div>
 </div>
 <div class="container mt-5">
+  <h3>FlyOS Information:</h3>
+  <p><b>Current FlyOS Version:</b> {{os_ver}}</p>
+  <p><b>Current FlyOS Build Channel:</b> {{os_build_channel}}</p>
   <h3>Device Information:</h3>
   <p>Device Hostname: {{run_system("hostname")}}</p>
   <p>Android Version: {{run_system("adb shell getprop ro.build.version.release")}}, SDK Version:
@@ -40,6 +43,7 @@
       mouse, and effortlessly accessing your favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more.
       It's a complete Linux system that fits in your pocket! Wherever you go, your data is always within reach.
       Experience the freedom of seamless access, empowering you to create and work anywhere, anytime.</p>
+  <br><h5>This project is based on FlyOS, AGPL 3.0 license (https://github.com/xingyujie/flyos)</h5><br>
 </div>
 <footer>
 <div class="alert alert-light" role="alert">

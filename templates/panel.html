@@ -1,369 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  {{ desktop_mode | safe }}
-  <title>FlyOS Dashboard</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/static/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/static/css/adminlte.min.css">
-  <!-- jQuery -->
-  <script src="/static/js/jquery-3.6.0.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="/static/js/popper.min.js"></script>
-  <script src="/static/js/bootstrap_4.2/bootstrap.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="/static/js/adminlte.min.js"></script>
-</head>
-<body>
-  <style>
-    #loading-spinner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 9999;
-    }
-    
-    #loading-spinner i {
-      font-size: 4rem;
-      color: #fff;
-    }
-  </style>
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-  <div id="loading-spinner" style="display: none;">
-    <i class="fas fa-spinner fa-spin"></i>
-  </div>
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/" class="brand-link">
-      <img src="/static/img/flyos.jpg" alt="FLYOS LOGO" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">FlyOS Dashboard</span>
-    </a>
-  
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="info">
-        <a href="/" class="d-block">{{formatted_date}}<br>{{battery_remaining}}<br>{{ip_addr}}</a>
+   <head>
+      <meta charset="UTF-8">
+      {{ desktop_mode | safe }}
+      <title>{{ gettext('FlyOS Dashboard') }}</title>
+      <link rel="icon" href="./static/img/flyos.jpg" type="image/x-icon">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="./static/css/all.min.css">
+      <!-- Theme style -->
+      <link rel="stylesheet" href="./static/css/adminlte.min.css">
+      <!-- jQuery -->
+      <script src="./static/js/jquery-3.6.0.min.js"></script>
+      <!-- Bootstrap 4 -->
+      <script src="./static/js/popper.min.js"></script>
+      <script src="./static/js/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
+      <!-- AdminLTE App -->
+      <script src="./static/js/adminlte.min.js"></script>
+      <!--WinBox.JS-->
+      <script src="./static/js/winbox.bundle.min.js"></script>
+      <style>
+         #loading-spinner {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         z-index: 9999;
+         }
+         #loading-spinner i {
+         font-size: 4rem;
+         color: #fff;
+         }
+      </style>
+   </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+   <div class="wrapper">
+      <div id="loading-spinner" style="display: none;">
+         <i class="fas fa-spinner fa-spin"></i>
       </div>
-    </div>
-
-      
-  
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <a href="#" data-widget="pushmenu" class="nav-link">
-                  <i class="nav-icon fas fas fa-bars"></i>
-                  <p>
-                    Menu Bar
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item" id="desktop-mode-option">
-                <a href="/dashboard?desktop_mode=true" class="nav-link">
-                  <i class="fas fa-desktop nav-icon"></i>
-                  <p>
-                    Desktop Mode <br>
-                  </p>
-                </a>
-              </li>                       
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                FlyOS System
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" onclick="loadPage(this, '/dashboard/home/view'); return false;" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Overview</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" onclick="loadPage(this, '/dashboard/terminal/view'); return false;" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>FlyOS Terminal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" onclick="loadPage(this, '/dashboard/terminal_android/view'); return false;" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Android Terminal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" onclick="loadPage(this, '/dashboard/vnc/view'); return false;" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>FlyOS Desktop</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" onclick="loadPage(this, '/dashboard/codeserver/view'); return false;" class="nav-link">
-              <i class="nav-icon fas fa-code"></i>
-              <p>
-                Code Server
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/dashboard/notebook/view" class="nav-link">
-              <i class="nav-icon fas fa-desktop"></i>
-              <p>
-                Jupyter Notebook
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" onclick="loadPage(this, '/dashboard/settings'); return false;" class="nav-link">
-              <i class="nav-icon fas fa-tools"></i>
-              <p>
-                Settings
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" onclick="loadPage(this, '/dashboard/androidmgr/view'); return false;" class="nav-link">
-              <i class="nav-icon fas fa-mobile"></i>
-              <p>
-                Android Manager
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/logout" class="nav-link">
-              <i class="nav-icon fas fa-user-times"></i>
-              <p>
-                Logout
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" onclick="loadPage(this, '/dashboard/about'); return false;" class="nav-link">
-              <i class="nav-icon fas fa-info"></i>
-              <p>
-                About FlyOS
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
- <!-- Navbar -->
- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-  <!-- Left navbar links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="/" class="nav-link">FlyOS</a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="" class="nav-link">Dashboard</a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="/dashboard/terminal/view" class="nav-link">Terminal</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Help
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-        <a class="dropdown-item" href="http://flyos.us">FlyOS Home</a>
-        <a class="dropdown-item" href="/dashboard/about">About FlyOS</a>
-      </div>
-    </li>
-    <li class="nav-item">
-      <button id="theme-toggle" class="nav-link btn btn-link">
-        Change Theme
-      </button>
-    </li>
-  </ul>
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#"></a></li></ul></nav>
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-light">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <!-- Content of the sidebar goes here -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <div class="content-header">
-        <h5>{{offline_notice | safe}}</h5>
-        <div class="container-fluid">
-          <div class="row mb-2">
-          </div>
-        </div>
-      </div>
-
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <iframe src="/dashboard/home/view" id="content-frame" frameborder="0" scrolling="auto" style="width: 100%; min-height: 600px;" allowfullscreen></iframe>
-                </div>
-              </div>
+      <!-- Main Sidebar Container -->
+      <aside id="main_sidebar" class="main-sidebar sidebar-dark-primary elevation-4">
+         <!-- Brand Logo -->
+         <a href="/" class="brand-link">
+         <img src="/static/img/flyos.jpg" alt="FLYOS LOGO" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+         <span class="brand-text font-weight-light">{{ gettext('FlyOS Dashboard') }}</span>
+         </a>
+         <!-- Sidebar -->
+         <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+               <div class="info">
+                  <a href="/" class="d-block">{{formatted_date}}<br>{{battery_remaining}}<br>{{ip_addr}}</a>
+               </div>
             </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <!-- /.content-wrapper -->
-
-    <!-- Main Footer -->
-<footer class="main-footer">
-  <div class="float-right d-none d-sm-block">
-    <b>FlyOS Dashboard {{offline_notice | safe}}</b> Open in <a href="#" onclick="openPageInNewTab()">New Tab</a> <a href="#" onclick="toggleFullscreen()">Fullscreen</a>
-  </div>
-</footer>
-  </div>
-  <!-- ./wrapper -->
-  <script>
-    function applyTheme() {
-      var themeToggle = $("#theme-toggle");
-      var currentTheme = localStorage.getItem("theme");
-
-      if (currentTheme === "dark") {
-        $("body").addClass("dark-mode");
-        themeToggle.text("Light theme");
-      } else {
-        $("body").addClass("light-mode");
-        themeToggle.text("Dark theme");
-      }
-    }
-
-    $(document).ready(function() {
-      applyTheme();
-
-      var themeToggle = $("#theme-toggle");
-
-      themeToggle.click(function() {
-        $("body").toggleClass("dark-mode light-mode");
-
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                  <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                  <li class="nav-item">
+                     <a href="#" data-widget="pushmenu" class="nav-link">
+                        <i class="nav-icon fas fas fa-bars"></i>
+                        <p>
+                           {{ gettext('Menu Bar') }}
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item" id="desktop-mode-option">
+                     <a href="/dashboard?desktop_mode=true" class="nav-link">
+                        <i class="fas fa-desktop nav-icon"></i>
+                        <p>
+                           {{ gettext('Desktop Mode') }} <br>
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item menu-open">
+                     <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                           {{ gettext('FlyOS System') }}
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="#" onclick="loadPage(this, '/dashboard/home/view'); return false;" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{ gettext('Overview') }}</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" onclick="loadPage(this, '/dashboard/terminal/view'); return false;" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{ gettext('FlyOS Terminal') }}</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" onclick="loadPage(this, '/dashboard/terminal_android/view'); return false;" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{ gettext('Android Terminal') }}</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" onclick="loadPage(this, '/dashboard/vnc/view'); return false;" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{ gettext('FlyOS Desktop') }}</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item" id="codeserverOption">
+                     <a href="#" onclick="loadPage(this, '/dashboard/codeserver/view'); return false;" class="nav-link">
+                        <i class="nav-icon fas fa-code"></i>
+                        <p>
+                           {{ gettext('Code Server') }}  
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item" id="jupyter-option">
+                     <a href="/dashboard/notebook/view" class="nav-link">
+                        <i class="nav-icon fas fa-desktop"></i>
+                        <p>
+                           {{ gettext('Jupyter Notebook') }}
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" onclick="loadPage(this, '/dashboard/settings'); return false;" class="nav-link">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>
+                           {{ gettext('Settings') }}  
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" onclick="loadPage(this, '/dashboard/androidmgr/view'); return false;" class="nav-link">
+                        <i class="nav-icon fas fa-mobile"></i>
+                        <p>
+                           {{ gettext('Android Manager') }}  
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="/logout" class="nav-link">
+                        <i class="nav-icon fas fa-user-times"></i>
+                        <p>
+                           {{ gettext('Logout') }}  
+                        </p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" onclick="loadPage(this, '/dashboard/about'); return false;" class="nav-link">
+                        <i class="nav-icon fas fa-info"></i>
+                        <p>
+                           {{ gettext('About FlyOS') }}  
+                        </p>
+                     </a>
+                  </li>
+               </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+         </div>
+         <!-- /.sidebar -->
+      </aside>
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+         <!-- Left navbar links -->
+         <ul class="navbar-nav">
+            <li class="nav-item">
+               <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+               <a href="/" class="nav-link">FlyOS</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+               <a href="" class="nav-link">{{ gettext('Dashboard') }}</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+               <a href="" class="nav-link" id="open_float_terminal">Terminal</a>
+            </li>
+            <li class="nav-item dropdown">
+               <button class="nav-link btn btn-link dropdown-toggle" type="button" id="navbarDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                 {{ gettext('Help') }}
+               </button>
+               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+                 <li><a class="dropdown-item" href="http://flyos.us">FlyOS Home</a></li>
+                 <li><a class="dropdown-item" href="/dashboard/about">{{ gettext('About FlyOS') }}</a></li>
+               </ul>
+             </li>
+            <li class="nav-item">
+               <button id="theme-toggle" class="nav-link btn btn-link">
+               {{ gettext('Change Theme') }}
+               </button>
+            </li>
+         </ul>
+         <!-- Right navbar links -->
+         <ul class="navbar-nav ml-auto">
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+               <a class="nav-link" data-toggle="dropdown" href="#"></a>
+            </li>
+         </ul>
+      </nav>
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-light">
+         <!-- Control sidebar content goes here -->
+         <div class="p-3">
+            <!-- Content of the sidebar goes here -->
+         </div>
+      </aside>
+      <!-- /.control-sidebar -->
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <div class="content-header">
+            <h5>{{offline_notice | safe}}</h5>
+            <div class="container-fluid">
+               <div class="row mb-2">
+               </div>
+            </div>
+         </div>
+         <section class="content">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <iframe src="/dashboard/home/view" id="content-frame" frameborder="0" scrolling="auto" style="width: 100%; min-height: 600px;" allowfullscreen></iframe>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
+      <div id="sidebar-overlay"></div>
+      <!-- /.content-wrapper -->
+      <!-- Main Footer -->
+      <footer class="main-footer">
+         <div class="float-right d-none d-sm-block">
+            <b>{{ gettext('FlyOS Dashboard') }} {{offline_notice | safe}}</b> {{ gettext('Open in') }} <a href="#" onclick="openPageInNewTab()">{{ gettext('New Tab') }}</a> <a href="#" onclick="toggleFullscreen()">{{ gettext('Fullscreen') }}</a>
+         </div>
+      </footer>
+   </div>
+   <div id="linux_float_terminal" style="display: none">
+      <div id="linux_float_terminal_iframe">
+         <iframe src="http://{{hostname}}:{{terminal_port}}"></iframe>
+      </div>
+   </div>
+   </div>
+   <!-- ./wrapper -->
+   <script>
+      function applyTheme() {
+        var themeToggle = $("#theme-toggle");
         var currentTheme = localStorage.getItem("theme");
-        var newTheme = currentTheme === "dark" ? "light" : "dark";
-        localStorage.setItem("theme", newTheme);
-
-        if (newTheme === "dark") {
-          themeToggle.text("Light theme");
+      
+        if (currentTheme === "dark") {
+          $("body").addClass("dark-mode");
+          themeToggle.text("{{ gettext('Light theme') }}");
         } else {
-          themeToggle.text("Dark theme");
+          $("body").addClass("light-mode");
+          themeToggle.text("{{ gettext('Dark theme') }}");
         }
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      function showLoadingSpinner() {
-        $('#loading-spinner').show();
       }
-
-      function hideLoadingSpinner() {
-        $('#loading-spinner').hide();
-      }
-
-      $('#frame_full').on('load', function() {
-        hideLoadingSpinner();
+      
+      $(document).ready(function() {
+        applyTheme();
+      
+        var themeToggle = $("#theme-toggle");
+      
+        themeToggle.click(function() {
+          $("body").toggleClass("dark-mode light-mode");
+      
+          var currentTheme = localStorage.getItem("theme");
+          var newTheme = currentTheme === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", newTheme);
+      
+          if (newTheme === "dark") {
+            themeToggle.text("{{ gettext('Light theme') }}");
+          } else {
+            themeToggle.text("{{ gettext('Dark theme') }}");
+          }
+        });
       });
-
-      $('#frame_full').on('beforeunload', function() {
-        showLoadingSpinner();
+   </script>
+   <script>
+      $(document).ready(function() {
+        function showLoadingSpinner() {
+          $('#loading-spinner').show();
+        }
+      
+        function hideLoadingSpinner() {
+          $('#loading-spinner').hide();
+        }
+      
+        $('#frame_full').on('load', function() {
+          hideLoadingSpinner();
+        });
+      
+        $('#frame_full').on('beforeunload', function() {
+          showLoadingSpinner();
+        });
       });
-    });
-  </script>
-  <script>
-    function loadPage(link, url) {
-      var navLinks = document.getElementsByClassName('nav-link');
-      for (var i = 0; i < navLinks.length; i++) {
-        navLinks[i].classList.remove('active');
+   </script>
+   <script>
+      function loadPage(link, url) {
+        var navLinks = document.getElementsByClassName('nav-link');
+        for (var i = 0; i < navLinks.length; i++) {
+          navLinks[i].classList.remove('active');
+        }
+        link.classList.add('active');
+        document.getElementById('content-frame').src = url;
       }
-      link.classList.add('active');
-      document.getElementById('content-frame').src = url;
-    }
-  </script>
-  <script>
-    function openPageInNewTab() {
-      var iframeUrl = document.getElementById('content-frame').src;
-      window.open(iframeUrl);
-    }
-  </script>
-  <script>
-    function toggleFullscreen() {
-  var iframe = document.getElementById('content-frame');
-
-  if (iframe.requestFullscreen) {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      iframe.requestFullscreen();
-    }
-  } else if (iframe.mozRequestFullScreen) { // Firefox
-    if (document.mozFullScreenElement) {
-      document.mozCancelFullScreen();
-    } else {
-      iframe.mozRequestFullScreen();
-    }
-  } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
-    if (document.webkitFullscreenElement) {
-      document.webkitExitFullscreen();
-    } else {
-      iframe.webkitRequestFullscreen();
-    }
-  } else if (iframe.msRequestFullscreen) { // IE/Edge
-    if (document.msFullscreenElement) {
-      document.msExitFullscreen();
-    } else {
-      iframe.msRequestFullscreen();
-    }
-  }
-}
-
-  </script>
-  <script>
-    function toggleDesktopModeOption() {
-      var desktopModeOption = document.getElementById('desktop-mode-option');
-      var screenWidth = window.innerWidth;
-  
-      if (screenWidth >= 768) {
-        desktopModeOption.style.display = 'none';
+   </script>
+   <script>
+      function openPageInNewTab() {
+        var iframeUrl = document.getElementById('content-frame').src;
+        window.open(iframeUrl);
+      }
+   </script>
+   <script>
+      function toggleFullscreen() {
+      var iframe = document.getElementById('content-frame');
+      
+      if (iframe.requestFullscreen) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
       } else {
-        desktopModeOption.style.display = 'block';
+        iframe.requestFullscreen();
       }
-    }
-  
-    window.addEventListener('DOMContentLoaded', toggleDesktopModeOption);
-    window.addEventListener('resize', toggleDesktopModeOption);
-  </script>  
-</body>
+      } else if (iframe.mozRequestFullScreen) { // Firefox
+      if (document.mozFullScreenElement) {
+        document.mozCancelFullScreen();
+      } else {
+        iframe.mozRequestFullScreen();
+      }
+      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+      if (document.webkitFullscreenElement) {
+        document.webkitExitFullscreen();
+      } else {
+        iframe.webkitRequestFullscreen();
+      }
+      } else if (iframe.msRequestFullscreen) { // IE/Edge
+      if (document.msFullscreenElement) {
+        document.msExitFullscreen();
+      } else {
+        iframe.msRequestFullscreen();
+      }
+      }
+      }
+      
+   </script>
+   <script>
+      function toggleDesktopModeOption() {
+        var desktopModeOption = document.getElementById('desktop-mode-option');
+        var screenWidth = window.innerWidth;
+      
+        if (screenWidth >= 768) {
+          desktopModeOption.style.display = 'none';
+        } else {
+          desktopModeOption.style.display = 'block';
+        }
+      }
+      
+      window.addEventListener('DOMContentLoaded', toggleDesktopModeOption);
+      window.addEventListener('resize', toggleDesktopModeOption);
+   </script>  
+   <script> 
+      function setIframeHeight() {
+        var windowHeight = window.innerHeight;
+        var navbarHeight = document.querySelector('.main-header').offsetHeight;
+        var footerHeight = document.querySelector('.main-footer').offsetHeight;
+        var newIframeHeight = windowHeight - navbarHeight - footerHeight;
+      
+        document.getElementById('content-frame').style.height = newIframeHeight + 'px';
+      }
+      
+      window.addEventListener('resize', function() {
+        setIframeHeight();
+      });
+      
+      
+      window.addEventListener('load', function() {
+        setIframeHeight();
+      });
+      
+        
+   </script>
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/get_service_jupyter')
+          .then(response => response.text())
+          .then(data => {
+            if (data.trim() === 'Stopped') {
+              var jupyterOption = document.querySelector('a[href="/dashboard/notebook/view"]');
+              if (jupyterOption) {
+                var parentListItem = jupyterOption.closest('.nav-item');
+                if (parentListItem) {
+                  parentListItem.remove();
+                }
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      });
+      
+        
+   </script>
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('/api/get_service_code_server')
+          .then(response => response.text())
+          .then(data => {
+            if (data.trim() === 'Stopped') {
+              var codeserverOption = document.getElementById('codeserverOption');
+              if (codeserverOption) {
+                codeserverOption.style.display = 'none';
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      });
+   </script>
+   <script>
+      document.getElementById("open_float_terminal").addEventListener("click", function(event) {
+          event.preventDefault();
+      
+          new WinBox("FlyOS Terminal", {
+              url: "http://{{hostname}}:{{terminal_port}}",
+              x: "center",
+              y: "center",
+              background: "#000000",
+              width: 650,
+              height: 400,
+              minheight: 80,
+              minwidth: 100,
+              maxheight: 800,
+              maxwidth: 1000,
+              top: 80,
+              right: 70,
+              bottom: 0,
+              left: 80,
+      
+          });
+      });
+      
+   </script>
+   <script>
+      var isMenuCollapsed = true;
+      var timeout = "{{dashboard_menu_timeout}}";
+      function checkLargeScreenDevice() {
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+        if (screenWidth >= 992 && screenHeight >= 600) {
+          setTimeout(autoCollapseSidebar, timeout);
+        }
+      }
+      
+      function autoCollapseSidebar() {
+        var pushMenuButton = document.querySelector('[data-widget="pushmenu"]');
+        if (pushMenuButton && !isMenuCollapsed) {
+          pushMenuButton.click();
+        }
+      }
+      window.addEventListener('resize', checkLargeScreenDevice);
+      window.addEventListener('DOMContentLoaded', checkLargeScreenDevice);
+   </script>
+   <script>
+      $(".content-wrapper").click(function() {
+      if ($("#main_sidebar").hasClass("control-sidebar-open")) {
+         $("#main_sidebar").removeClass("control-sidebar-open");
+      }
+      });
+      $("#sidebar-overlay").click(function() {
+              // Check if body has the class 'sidebar-open'
+              if ($("body").hasClass("sidebar-open")) {
+                  // Remove 'sidebar-open' from body
+                  $("body").removeClass("sidebar-open");
+                  // Add 'sidebar-closed' to body
+                  $("body").addClass("sidebar-closed");
+                  $("body").addClass("sidebar-collapse");
+              }
+          });
+   </script>
+   <script>
+      var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+      var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+        return new bootstrap.Dropdown(dropdownToggleEl)
+      })  
+    </script>
+   </body>
 </html>

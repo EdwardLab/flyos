@@ -59,6 +59,25 @@
         <br>
     </div>
     </form>
+    <div class="container mt-5">
+      <h3>API Token</h3>
+      <p><b><font color="red">API Token is as important as your password!</font></b></p>
+      <p>API Token: {{readtoken}}</p>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <a href="/api/token/reset" class="btn btn-primary btn-lg rounded-pill w-100">Reset Token</a>
+    </div>
+
+    <div class="container mt-5">
+      <h3>System Update</h3>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <a href="/dashboard/settings/sysupdate/main" class="btn btn-primary btn-lg rounded-pill w-100">System Update</a>
+    </div>
+    </div>
+    </div>
+    <a href="{{ url_for('set_language', lang_code='en') }}">English</a>
+    <a href="{{ url_for('set_language', lang_code='es') }}">Spanish</a>
 <footer>
 <br>
 <div class="alert alert-light" role="alert">

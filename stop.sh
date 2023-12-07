@@ -18,3 +18,4 @@ pids=$(pgrep -f "code-server")
 for pid in $pids; do
     kill "$pid"
 done
+service ssh stop

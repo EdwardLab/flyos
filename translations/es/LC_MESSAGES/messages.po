@@ -1,0 +1,252 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-12-03 01:36+0800\n"
+"PO-Revision-Date: 2023-11-18 00:41+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: templates/login.html:7 templates/overview.html:6 templates/panel.html:6
+#: templates/panel.html:50 templates/panel.html:246
+msgid "FlyOS Dashboard"
+msgstr "Panel de FlyOS"
+
+#: templates/login.html:68 templates/login.html:69
+msgid "Password"
+msgstr ""
+
+#: templates/login.html:72
+msgid "Login"
+msgstr ""
+
+#: templates/login.html:73
+#, fuzzy
+msgid "OTP Login"
+msgstr "Abrir en"
+
+#: templates/login.html:75
+msgid ""
+"Forget password? Please log in via OTP and go to settings -> Change FlyOS"
+" password"
+msgstr ""
+
+#: templates/login.html:80
+msgid "Click 'Login' to log in to your device Dashboard"
+msgstr ""
+
+#: templates/login.html:82
+msgid "Powered by: FlyOS for Android"
+msgstr ""
+
+#: templates/login.html:84
+msgid "This is the Linux Subsystem panel running on Android"
+msgstr ""
+
+#: templates/oops.html:8 templates/oops.html:13
+msgid "Oops!"
+msgstr ""
+
+#: templates/oops.html:19
+msgid "Woha, Seems to be having a problem!"
+msgstr ""
+
+#: templates/oops.html:29 templates/success.html:29
+msgid "Powered by:"
+msgstr ""
+
+#: templates/oops.html:31 templates/success.html:31
+msgid "Deploy Linux subsystem on your Android phone"
+msgstr ""
+
+#: templates/oops.html:33
+msgid "Encounter problems? Go to our community!"
+msgstr ""
+
+#: templates/overview.html:50
+msgid "Welcome to FlyOS!"
+msgstr "¡Bienvenido a FlyOS!"
+
+#: templates/overview.html:53 templates/panel.html:96
+msgid "Overview"
+msgstr "Descripción general"
+
+#: templates/overview.html:62
+msgid "Device available storage"
+msgstr "Almacenamiento disponible del dispositivo"
+
+#: templates/overview.html:71
+msgid "SSH Status"
+msgstr "Estado de SSH"
+
+#: templates/overview.html:80
+msgid "FlyOS Desktop (VNC) Status"
+msgstr "Estado del escritorio FlyOS (VNC)"
+
+#: templates/overview.html:89
+msgid "Battery Status"
+msgstr "Estado de la batería"
+
+#: templates/overview.html:97
+msgid "FlyOS Information:"
+msgstr "Información de FlyOS:"
+
+#: templates/overview.html:102
+msgid "FlyOS Framework"
+msgstr "Marco de FlyOS"
+
+#: templates/overview.html:106
+msgid "Device Hostname"
+msgstr "Nombre de host del dispositivo"
+
+#: templates/overview.html:110
+msgid "Android Version"
+msgstr "Versión de Android"
+
+#: templates/overview.html:114
+msgid "SDK Version"
+msgstr "Versión del SDK"
+
+#: templates/overview.html:118
+msgid "Build Kernel Version"
+msgstr "Versión del núcleo de compilación"
+
+#: templates/overview.html:122
+msgid "Device Model"
+msgstr "Modelo de dispositivo"
+
+#: templates/overview.html:126
+msgid "Device Manufacturer"
+msgstr "Fabricante del dispositivo"
+
+#: templates/overview.html:130
+msgid "Android ID"
+msgstr "ID de Android"
+
+#: templates/overview.html:138
+msgid "Files"
+msgstr "Archivos"
+
+#: templates/overview.html:141
+msgid "My Files:"
+msgstr "Mis archivos:"
+
+#: templates/overview.html:145
+msgid "Enter path"
+msgstr "Introducir ruta"
+
+#: templates/overview.html:146
+msgid "Get Files"
+msgstr "Obtener archivos"
+
+#: templates/overview.html:154
+msgid "Logout Dashboard"
+msgstr "Cerrar sesión en el panel de control"
+
+#: templates/panel.html:72
+msgid "Menu Bar"
+msgstr "Barra de menú"
+
+#: templates/panel.html:80
+msgid "Desktop Mode"
+msgstr "Modo de escritorio"
+
+#: templates/panel.html:88
+msgid "FlyOS System"
+msgstr "Sistema FlyOS"
+
+#: templates/panel.html:102
+msgid "FlyOS Terminal"
+msgstr "Terminal FlyOS"
+
+#: templates/panel.html:108
+msgid "Android Terminal"
+msgstr "Terminal de Android"
+
+#: templates/panel.html:114
+msgid "FlyOS Desktop"
+msgstr "Escritorio FlyOS"
+
+#: templates/panel.html:123
+msgid "Code Server"
+msgstr "Servidor de código"
+
+#: templates/panel.html:131
+msgid "Jupyter Notebook"
+msgstr "Jupyter Notebook"
+
+#: templates/panel.html:139
+msgid "Settings"
+msgstr "Configuración"
+
+#: templates/panel.html:147
+msgid "Android Manager"
+msgstr "Administrador de Android"
+
+#: templates/panel.html:155
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: templates/panel.html:163 templates/panel.html:195
+msgid "About FlyOS"
+msgstr "Acerca de FlyOS"
+
+#: templates/panel.html:184
+msgid "Dashboard"
+msgstr "Panel de control"
+
+#: templates/panel.html:187
+msgid "Terminal"
+msgstr "Terminal"
+
+#: templates/panel.html:191
+msgid "Help"
+msgstr "Ayuda"
+
+#: templates/panel.html:200
+msgid "Change Theme"
+msgstr "Cambiar tema"
+
+#: templates/panel.html:246
+msgid "Open in"
+msgstr "Abrir en"
+
+#: templates/panel.html:246
+msgid "New Tab"
+msgstr "Nueva pestaña"
+
+#: templates/panel.html:246
+msgid "Fullscreen"
+msgstr "Pantalla completa"
+
+#: templates/panel.html:258 templates/panel.html:278
+msgid "Light theme"
+msgstr "Tema claro"
+
+#: templates/panel.html:261 templates/panel.html:280
+msgid "Dark theme"
+msgstr "Tema oscuro"
+
+#: templates/success.html:8 templates/success.html:13
+msgid "Successful!"
+msgstr ""
+
+#: templates/success.html:19
+msgid "Successfully!"
+msgstr ""
+
+#: templates/success.html:33
+msgid "Have a nice day :)"
+msgstr ""
+

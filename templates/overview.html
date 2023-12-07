@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FlyOS Dashboard</title>
+  <title>{{ gettext('FlyOS Dashboard') }}</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/static/css/all.min.css">
   <!-- Theme style -->
@@ -42,25 +42,24 @@
       margin-left: 0;
     }
   </style>
-</head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div id="loading-spinner" style="display: none;">
     <i class="fas fa-spinner fa-spin"></i>
   </div>
     <div class="content-header">
-    <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Welcome to FlyOS!</font></font></h1>
+      <h1>{{ gettext('Welcome to FlyOS!') }}</h1>
     </div>
     <div class="content px-2">
-      <h3>Overview</h3>
+      <h3>{{ gettext('Overview') }}</h3>
     </div>
-    {{not_available | safe}}
+    {{ not_available | safe }}
     <div class="alert alert-primary" role="alert">
-      {{notice}}
+      {{ notice }}
     </div>
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>{{storage}} GB</h3>
-        <p>Device available storage</p>
+        <h3>{{ storage }} GB</h3>
+        <p>{{ gettext('Device available storage') }}</p>
       </div>
       <div class="icon">
         <i class="fas fa-mobile"></i>
@@ -68,85 +67,83 @@
     </div>
     <div class="small-box bg-gradient-success">
       <div class="inner">
-        <h3>{{ssh}}</h3>
-        <p>SSH Status</p>
+        <h3>{{ ssh }}</h3>
+        <p>{{ gettext('SSH Status') }}</p>
       </div>
       <div class="icon">
         <i class="fas fa-terminal"></i>
       </div>
     </div>
-      <div class="small-box bg-gradient-warning">
-        <div class="inner">
-          <h3>{{vnc}}</h3>
-          <p>FlyOS Desktop (VNC) Status</p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-desktop"></i>
-        </div>
+    <div class="small-box bg-gradient-warning">
+      <div class="inner">
+        <h3>{{ vnc }}</h3>
+        <p>{{ gettext('FlyOS Desktop (VNC) Status') }}</p>
       </div>
-
-        <div class="small-box bg-info">
-          <div class="inner">
-            <h3>{{battery_remaining}}</h3>
-            <p>Battery Status</p>
-          </div>
-        <div class="icon">
-            <i class="fas fa-battery-full"></i>
-        </div>
+      <div class="icon">
+        <i class="fas fa-desktop"></i>
+      </div>
+    </div>
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{ battery_remaining }}</h3>
+        <p>{{ gettext('Battery Status') }}</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-battery-full"></i>
+      </div>
     </div>
     <div class="card card-success">
       <div class="card-header">
-        <h3 class="card-title">FlyOS Information:</h3>
+        <h3 class="card-title">{{ gettext('FlyOS Information:') }}</h3>
       </div>
       <div class="card-body">
         <table class="table table-bordered">
           <tr>
-            <td>FlyOS Framework</td>
-            <td>{{framework_status}}</td>
+            <td>{{ gettext('FlyOS Framework') }}</td>
+            <td>{{ framework_status }}</td>
           </tr>
           <tr>
-            <td>Device Hostname</td>
-            <td>{{run_system("hostname")}}</td>
+            <td>{{ gettext('Device Hostname') }}</td>
+            <td>{{ run_system("hostname") }}</td>
           </tr>
           <tr>
-            <td>Android Version</td>
-            <td>{{run_system("adb shell getprop ro.build.version.release")}}</td>
+            <td>{{ gettext('Android Version') }}</td>
+            <td>{{ run_system("adb shell getprop ro.build.version.release") }}</td>
           </tr>
           <tr>
-            <td>SDK Version</td>
-            <td>{{run_system("adb shell getprop ro.build.version.sdk")}}</td>
+            <td>{{ gettext('SDK Version') }}</td>
+            <td>{{ run_system("adb shell getprop ro.build.version.sdk") }}</td>
           </tr>
           <tr>
-            <td>Build Kernel Version</td>
-            <td>{{run_system("uname -a")}}</td>
+            <td>{{ gettext('Build Kernel Version') }}</td>
+            <td>{{ run_system("uname -a") }}</td>
           </tr>
           <tr>
-            <td>Device Model</td>
-            <td>{{run_system("adb shell getprop ro.product.model")}}</td>
+            <td>{{ gettext('Device Model') }}</td>
+            <td>{{ run_system("adb shell getprop ro.product.model") }}</td>
           </tr>
           <tr>
-            <td>Device Manufacturer</td>
-            <td>{{run_system("adb shell getprop ro.product.manufacturer")}}</td>
+            <td>{{ gettext('Device Manufacturer') }}</td>
+            <td>{{ run_system("adb shell getprop ro.product.manufacturer") }}</td>
           </tr>
           <tr>
-            <td>Android ID</td>
-            <td>{{run_system("adb shell settings get secure android_id")}}</td>
+            <td>{{ gettext('Android ID') }}</td>
+            <td>{{ run_system("adb shell settings get secure android_id") }}</td>
           </tr>
         </table>
       </div>
     </div>
-    
     <div class="card card-info">
       <div class="card-header">
-          <h3 class="card-title">Files</h3>
+        <h3 class="card-title">{{ gettext('Files') }}</h3>
       </div>
       <div class="card-header">
-        <h3 class="card-title">My Files:</h3>
+        <h3 class="card-title">{{ gettext('My Files:') }}</h3>
         <br>
         <form id="directoryForm" onsubmit="submitForm(event)">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="pathInput" placeholder="Enter path" required>
-            <button type="submit" class="btn btn-primary">Get Files</button>
+            <input type="text" class="form-control" id="pathInput" placeholder="{{ gettext('Enter path') }}" required>
+            <button type="submit" class="btn btn-primary">{{ gettext('Get Files') }}</button>
           </div>
         </form>
       </div>
@@ -154,8 +151,7 @@
         <pre id="resultArea">{{ result }}</pre>
       </div>
     </div>
-  </div>
-  <button class="btn btn-primary mb-2 full-width-button" onclick="openNewWindow('/logout');">Logout Dashboard</button>
+    <button class="btn btn-primary mb-2 full-width-button" onclick="openNewWindow('/logout');">{{ gettext('Logout Dashboard') }}</button>
     <script>
       function submitForm(event) {
         event.preventDefault();
@@ -181,30 +177,9 @@
       }
     </script>
     <script>
-          const form = document.getElementById('commandForm');
-          const resultContainer = document.getElementById('resultContainer');
-  
-          form.addEventListener('submit', (e) => {
-              e.preventDefault();
-              const commandInput = document.getElementById('commandInput');
-              const command = encodeURIComponent(commandInput.value);
-  
-              const url = `http://192.168.31.99:5001/system/cmd?command=${command}`;
-  
-              fetch(url)
-                  .then(response => response.text())
-                  .then(data => {
-                      resultContainer.textContent = data;
-                  })
-                  .catch(error => {
-                      console.error('Command execution error:', error);
-                  });
-          });
-      </script>
-      <script>
-        function openNewWindow(url) {
-          window.open(url, '_blank');
-        }
-      </script>
-</body>
+      function openNewWindow(url) {
+        window.open(url, '_blank');
+      }
+    </script>
+  </body>
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FlyOS Dashboard</title>
+    <title>{{ gettext("FlyOS Dashboard") }}</title>
     
     <!-- Minified CSS and JS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +16,7 @@
         }
         .login-container {
             max-width: 400px;
-            margin: 5% auto;
+            margin: 5% auto; 
             padding: 30px;
             background-color: #ffffff;
             border-radius: 5px;
@@ -31,7 +31,7 @@
             max-width: 200px;
         }
         .form-label {
-            font-weight: 500;
+            font-weight: 500; 
         }
         .operation {
             display: flex;
@@ -41,7 +41,7 @@
         }
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 50px; 
         }
         .google-button {
             display: inline-flex;
@@ -49,10 +49,10 @@
         }
         .google-button img {
             margin-bottom: 3px;
-            margin-right: 5px;
+            margin-right: 5px;  
         }
         .reset-password {
-            color: #007bff; /* Blue color for links */
+            color: #007bff; /* Blue color for links */  
             text-decoration: none; /* Remove underline */
         }
     </style>
@@ -61,27 +61,27 @@
 <body>
     <div class="login-container">
         <div class="logo">
-            <img src="/static/img/flyos.jpg" alt="FlyOS Dashboard">
+            <img src="/static/img/flyos.jpg" alt="FlyOS Dashboard"> 
         </div>
         <form action="/auth/login" method="POST">
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
+                <label for="password" class="form-label">{{ gettext("Password") }}</label> 
+                <input type="password" name="password" class="form-control" id="password" placeholder="{{ gettext("Password") }}" autocomplete="off" required>
             </div>
             <div class="operation">
-                <button type="submit" class="btn btn-primary">Login</button>
-                <a href="/auth/login/otplogin" class="reset-password">OTP Login</a>
+                <button type="submit" class="btn btn-primary">{{ gettext("Login") }}</button>
+                <a href="/auth/login/otplogin" class="reset-password">{{ gettext("OTP Login") }}</a> 
             </div>
-            <br><p style="font-size: small; color: gray;">Forget password? Please log in via OTP and go to settings -> Change FlyOS password</p>
+            <br><p style="font-size: small; color: gray;">{{ gettext("Forget password? Please log in via OTP and go to settings -> Change FlyOS password") }}</p>
         </form>
     </div>
     <footer class="bg-light text-dark text-center p-3">
-        <small class="text-muted">
-            Click 'Login' to log in to your device Dashboard
+        <small class="text-muted"> 
+            {{ gettext("Click 'Login' to log in to your device Dashboard") }}
             <br>
-            Powered by: FlyOS for Android
-            <br>
-            This is the Linux Subsystem panel running on Android
+            {{ gettext("Powered by: FlyOS for Android") }}
+            <br>  
+            {{ gettext("This is the Linux Subsystem panel running on Android") }}
         </small>
     </footer>
     

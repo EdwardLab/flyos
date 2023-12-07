@@ -5,34 +5,34 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
          <meta charset="utf-8">
-         <title>Oops!</title>
+         <title>{{ gettext("Successful!") }}</title>
      </head>
      <body>
        <nav class="navbar navbar-light bg-light">
          <div class="container-fluid">
-           <span class="navbar-brand mb-0 h1">Successful!</span>
+           <span class="navbar-brand mb-0 h1">{{ gettext("Successful!") }}</span>
          </div>
        </nav>
 
        <div class="p-5 mb-4 bg-light rounded-3">
          <div class="container-fluid py-5">
-           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>Successfully!</font></h1>
+           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Successfully!") }}</font></font></h1>
            </a>
          </div>
        </div>
 </div>
 <div class="alert alert-success" role="alert">
-  <h4><p>{{info}}</p></h4>
+  <h4><p>{{info}}</p></h4> 
 </div>
-<footer>
+<footer>  
 <div class="alert alert-light" role="alert">
-Powered by: FlyOS Subsystem
+{{ gettext("Powered by:") }} FlyOS Subsystem  
+<br>  
+{{ gettext("Deploy Linux subsystem on your Android phone")}}
 <br>
-Deploy Linux subsystem on your Android phone
-<br>
-Have a nice day :)
+{{ gettext("Have a nice day :)") }}
 </div>
 </footer>
 <script src="/static/js/bootstrap.bundle.js"></script>
-</body>
+</body>  
 </html>

@@ -7,6 +7,7 @@ from config import *
 from sysconf import *
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
+import time
 PASSWORDS_FILE = "/flyos/files/pwd.conf"
 def check_password(password):
     with open(PASSWORDS_FILE, "r") as file:
@@ -35,24 +36,17 @@ def get_kernel_version():
     return result.stdout.strip()
 
 
+import subprocess
+
 def check_ssh_process():
-    ssh_process_running = False
     try:
-        for proc in psutil.process_iter():
-            try:
-                process_name = proc.name()
-                if "ssh" in process_name.lower():
-                    ssh_process_running = True
-                    break
-            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                pass
-    except:
-        return "Stopped"
-    if ssh_process_running:
-        return "Running"
-    else:
-        return "Stopped"
-    
+        if os.path.exists('/var/run/sshd.pid'):
+            return "Running"
+        else:
+            return "Stopped"
+    except Exception as e:
+        return f"Error: {e}"
+
 def check_vnc_process():
     vnc_process_running = False
     for proc in psutil.process_iter():
@@ -94,6 +88,30 @@ def check_ttyd_process():
         return "Running"
     else:
         return "Stopped"
+
+def check_jupyter_process():
+    import psutil
+
+def check_jupyter_process():
+    try:
+        jupyter_process_running = False
+        for proc in psutil.process_iter(['pid', 'name']):
+            try:
+                process_name = proc.name()
+                
+                if "jupyter" in process_name.lower():
+                    jupyter_process_running = True
+                    break
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        
+        if jupyter_process_running:
+            return "Running"
+        else:
+            return "Stopped"
+    except Exception as e:
+        return f"Error: {e}"
+
 def flyos_framework_status():
     try:
         result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
@@ -109,10 +127,13 @@ def flyos_framework_status():
         return 'Error: ' + e
 
 def battery_status():
-    battery_capacity = os.popen('cat /sys/class/power_supply/battery/capacity').read()
-    battery_status = os.popen('cat /sys/class/power_supply/battery/status').read()
-    status = f"{battery_capacity} {battery_status}"
-    return status
+    try:
+        battery_capacity = os.popen('cat /sys/class/power_supply/battery/capacity').read()
+        battery_status = os.popen('cat /sys/class/power_supply/battery/status').read()
+        status = f"{battery_capacity} {battery_status}"
+        return status
+    except:
+        return 'Unknown'
 
 def check_country():
     timeout = 10
@@ -145,3 +166,24 @@ def get_version():
 def send_android_msg(title, msg, msg_id):
     command = f'adb shell "su -lp 2000 -c \\"cmd notification post -S bigtext -t \'{title}\' \'{msg_id}\' \'{msg}\'\\""'
     os.system(command)
+def setup_check():
+    lock_file = '/flyos/files/setup/setup_lock'
+    try:
+        check_lock = open(lock_file)
+        return True
+    except:
+        return False
+def launch_linux_mode():
+    os.system('rm -rf /flyos/logs/launch_linux.log && touch /flyos/logs/launch_linux.log')
+    os.popen("nohup adb shell input keyevent KEYCODE_HOME >> /flyos/logs/launch_linux.log 2>&1 &").read()
+    time.sleep(1)
+    os.popen("nohup adb shell am start -n x.org.server/x.org.server.MainActivity >> /flyos/logs/launch_linux.log 2>&1 &").read()
+    time.sleep(10)
+    command = ""
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    time.sleep(1)
+    os.popen("nohup bash -c 'export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713 && startxfce4 >> /flyos/logs/launch_linux.log 2>&1 &'").read()
+    logs_open = open('/flyos/logs/launch_linux.log')
+    logs_open_read = logs_open.read()
+    logs_open.close()
+    return logs_open_read
