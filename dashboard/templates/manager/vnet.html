@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{ gettext('Virtual Network Adapter') }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext('Virtual Network Adapter') }}</span>
+        </div>
+    </nav>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ gettext('Virtual Network Adapter') }}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h4>{{ gettext('Create a loopback virtual network adapter') }}</h4>
+        <p>{{ gettext('* This app will create a script under /boot/scripts directory and start the service with FlyOS boot') }}</p>
+        <p><strong><em>{{ gettext('This feature enables the creation of a loopback virtual network adapter on your device. For instance, in scenarios requiring fixed IP addresses such as Zero Trust networks or VPN network, this feature allows the creation of a fixed virtual IP address. This ensures immunity against network IP changes. It can be seamlessly paired with Cloudflare Zero Trust functionality, Access to your device at any time through a fixed virtual network adapter, regardless of the network environment (be it Wi-Fi or cellular data)') }}</em></strong></p>
+        <h5>{{ gettext('Create a new virtual network adapter:') }}</h5>
+        
+        <div class="container mt-5">
+            <form action="/dashboard/network/vnet" method="POST">
+                <div class="form-group">
+                    <label for="cidrInput">CIDR:</label>
+                    <input type="text" class="form-control" id="cidrInput" name="cidr" placeholder="{{ gettext('Enter CIDR (e.g., 10.10.0.1/24)') }}">
+                </div>
+                <div class="form-group">
+                    <label for="adapterInput">{{ gettext('Adapter Name:') }}</label>
+                    <input type="text" class="form-control" id="adapterInput" name="adapter" placeholder="{{ gettext('Enter Adapter Name (e.g., veth0)') }}">
+                    <small class="form-text text-muted">{{ gettext('Any Name') }}</small>
+                </div>
+                <button type="submit" class="btn btn-primary">{{ gettext('Create!') }}</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="mt-4">
+        <div class="alert alert-light" role="alert">
+            {{ gettext('Powered by: FlyOS Subsystem') }}
+            <br>
+            {{ gettext('Deploy Linux subsystem on your Android phone') }}
+        </div>
+    </footer>
+
+    <script src="/static/js/bootstrap.bundle.js"></script>
+</body>
+</html>

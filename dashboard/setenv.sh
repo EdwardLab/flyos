@@ -1,0 +1,1 @@
+alias flyos="sh /data/flyos/bin/flyos"

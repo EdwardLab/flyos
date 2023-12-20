@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>{{ gettext('About FlyOS') }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext('About FlyOS') }}</span>
+        </div>
+    </nav>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ gettext('About FlyOS') }}</h1>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h3>{{ gettext('FlyOS Information:') }}</h3>
+        <p><b>{{ gettext('FlyOS Version:') }}</b> {{ os_ver }}</p>
+        <p><b>{{ gettext('FlyOS Build Channel:') }}</b> {{ os_build_channel }}</p>
+        <h3>{{ gettext('Device Information:') }}</h3>
+        <p>{{ gettext('Device Hostname:') }} {{ run_system("hostname") }}</p>
+        <p>{{ gettext('Android Version:') }} {{ run_system("adb shell getprop ro.build.version.release") }}, SDK Version:
+            {{ run_system("adb shell getprop ro.build.version.sdk") }}</p>
+        <p>{{ gettext('Build Kernel Version:') }} {{ run_system("uname -a") }}</p>
+        <p>{{ gettext('Device model:') }} {{ run_system("adb shell getprop ro.product.model") }}</p>
+        <p>{{ gettext('Device Manufacturer:') }} {{ run_system("adb shell getprop ro.product.manufacturer") }}</p>
+        <p>{{ gettext('Android ID:') }} {{ run_system("adb shell settings get secure android_id") }}</p>
+        <hr>
+        <h3>{{ gettext('Our Goal:') }}</h3>
+        <p>{{ gettext("Unleash your mobile phone's potential: it's not just a phone, but a pocket-sized computer.") }}</p>
+        <p>{{ gettext('Experience the power of mobile computing with FlyOS. Access your FlyOS Linux subsystem on any computer, just with a web browser. No extra software required. Enjoy a full Ubuntu-based Linux subsystem with your preferences, data, files, and applications. It\'s all yours.') }}</p>
+        <p>{{ gettext('Unlock the possibilities of mobile productivity. Imagine coding on your phone, connecting a keyboard and mouse, and effortlessly accessing your favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more. It\'s a complete Linux system that fits in your pocket! Wherever you go, your data is always within reach. Experience the freedom of seamless access, empowering you to create and work anywhere, anytime.') }}</p>
+        <div class="container mt-5">
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <a href="/dashboard/about/license" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext('Open Source License') }}</a>
+                </div>
+            </div>
+            <br><h5>{{ gettext('This project is based on FlyOS, AGPL 3.0 license (https://github.com/xingyujie/flyos)') }}</h5><br>
+        </div>
+        <footer>
+            <div class="alert alert-light" role="alert">
+                {{ gettext('Powered by: FlyOS Subsystem') }}
+                <br>
+                {{ gettext('Deploy Linux subsystem on your Android phone') }}
+                <br>
+                {{ gettext('Home Page: http://flyos.us/') }}
+            </div>
+        </footer>
+    </div>
+    <script src="/static/js/bootstrap.bundle.js"></script>
+</body>
+</html>

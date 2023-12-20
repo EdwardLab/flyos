@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{ gettext("Set Linux and FlyOS system passwords") }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext("Set Password") }}</span>
+        </div>
+    </nav>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ gettext("Set Linux and FlyOS system passwords") }}</h1>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="container mt-5">
+            <h3>{{ gettext("Set Linux and FlyOS system passwords") }}</h3>
+            <form method="post" action="/dashboard/settings/updatepwd">
+                <div class="container mt-5">
+                    <h3>{{ gettext("Set the FlyOS password") }}</h3>
+                    <input type="text" name="passwd" id="passwd" class="form-control" placeholder="{{ gettext("Enter your new password") }}" required><br>
+                    <button class="btn btn-primary" type="submit">{{ gettext("Set the Password") }}</button>
+                    <br><br><br>
+                </div>
+                </form>
+                <form method="get" action="/settings/updateuserpwd">
+                  <div class="container mt-5">
+                      <h3>{{ gettext("Set the Root password") }}</h3>
+                      <input type="hidden" name="username" class="form-control" value="root" required><br>
+                      <input type="text" name="passwd" class="form-control" placeholder="{{ gettext("Enter new password for this user") }}" required><br>
+                      <button class="btn btn-primary" type="submit">{{ gettext("Set the Password") }}</button>
+                      <br><br><br>
+                  </div>
+                  </form>
+          <div class="row mt-4">
+            <div class="col-md-4">
+              <a href="/setup/done" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("Next") }}</a>
+            </div>
+    </div>
+    <br>
+
+    <script src="/static/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/bootstrap.bundle.js"></script>
+</body>  
+</html>

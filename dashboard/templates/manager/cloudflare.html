@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{ gettext('Cloudflare Zero Trust (Cloudflared)') }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext('Cloudflare Zero Trust (Cloudflared)') }}</span>
+        </div>
+    </nav>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ gettext('Cloudflare Zero Trust') }}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h4>{{ gettext('Cloudflare Zero Trust (Cloudflared) Network') }}</h4>
+        <p>{{ gettext('* This app will create a script under /boot/scripts directory and start the service with FlyOS boot') }}</p>
+        <p><strong><em>{{ gettext('This functionality within FlyOS facilitates the configuration of a Cloudflared Tunnel. You can set up a virtual network adapter through the network manager, enabling the creation of a virtual network adapter and assigning a fixed IP. Subsequently, within the Zero Trust dashboard, you can create a new tunnel by pasting the token provided by Cloudflare. Additionally, in the virtual network adapter, you can set a virtual CIDR and input this CIDR into the CIDR field in Cloudflare\'s control console (ensuring alignment between the CIDR in the virtual network adapter and the Cloudflared console settings). Customize the CIDR within the virtual network adapter to suit your preferences.') }}
+            <br><br>
+            {{ gettext(' In case you are utilizing the VPN (WARP) within Zero Trust, further configuration within Cloudflare settings is required. You\'ll need to configure the CIDR within the WARP client\'s configuration file (allowing or excluding CIDR) to access the fixed virtual network card address on FlyOS through any connected WARP client.') }}
+            <br><br>
+            {{ gettext(' Moreover, you have the flexibility to expose your ports to the public internet via Cloudflare without requiring a public IP, leveraging any standard internet connection. You also have the option to configure Zero Trust on your existing network setup instead of using the virtual network adapter. For a more comprehensive guide, refer to the documentation provided by Cloudflare and FlyOS.') }}
+            <br><br>
+            {{ gettext(' Cloudflared only allows one configuration file. Creating multiple configuration files may cause all startups to fail!') }}
+        </em></strong></p>
+        <h5>{{ gettext('Create a new Cloudflare Configuration File:') }}</h5>
+        
+<div class="container mt-5">
+    <form action="/dashboard/network/cloudflare" method="POST">
+      <div class="form-group">
+        <label for="Input">{{ gettext('Token:') }}</label>
+        <input type="text" class="form-control" id="Input" name="token" placeholder="{{ gettext('Enter Cloudflared Token') }}">
+        <small class="form-text text-muted">{{ gettext('On your Cloudflare Dashboard (Zero Trust -> Tunnel -> Create Tunnel)') }}</small>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ gettext('Create Configuration File & Start') }}</button>
+    </form>
+  </div>
+
+    <footer class="mt-4">
+        <div class="alert alert-light" role="alert">
+            {{ gettext('Powered by: FlyOS Subsystem') }}
+            <br>
+            {{ gettext('Deploy Linux subsystem on your Android phone') }}
+        </div>
+    </footer>
+
+    <script src="/static/js/bootstrap.bundle.js"></script>
+</body>
+</html>

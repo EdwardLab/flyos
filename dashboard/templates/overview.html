@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ gettext('FlyOS Dashboard') }}</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/css/all.min.css">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="/static/css/font.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/css/adminlte.min.css">
+  <!-- jQuery -->
+  <script src="/static/js/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/js/popper.min.js"></script>
+  <script src="/static/js/bootstrap_4.2/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/js/adminlte.min.js"></script>
+</head>
+<body>
+  <style>
+    #loading-spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+    
+    #loading-spinner i {
+      font-size: 4rem;
+      color: #fff;
+    }
+
+    .full-width-button {
+      width: 100%;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  </style>
+  <style>
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f5f5f5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 10px;
+            border: 3px solid #f5f5f5;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #aaa;
+        }
+  </style>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div id="loading-spinner" style="display: none;">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+    <div class="content-header">
+      <h1>{{ gettext('Welcome to FlyOS!') }}</h1>
+    </div>
+    <div class="content px-2">
+      <h3>{{ gettext('Overview') }}</h3>
+    </div>
+    {{ not_available | safe }}
+    <div class="alert alert-primary" role="alert">
+      {{ notice }}
+    </div>
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{ storage }} GB</h3>
+        <p>{{ gettext('Device available storage') }}</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-mobile"></i>
+      </div>
+    </div>
+    <div class="small-box bg-gradient-success">
+      <div class="inner">
+        <h3>{{ ssh }}</h3>
+        <p>{{ gettext('SSH Status') }}</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-terminal"></i>
+      </div>
+    </div>
+    <div class="small-box bg-gradient-warning">
+      <div class="inner">
+        <h3>{{ vnc }}</h3>
+        <p>{{ gettext('FlyOS Desktop (VNC) Status') }}</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-desktop"></i>
+      </div>
+    </div>
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{ battery_remaining }}</h3>
+        <p>{{ gettext('Battery Status') }}</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title">{{ gettext('FlyOS Information:') }}</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <tr>
+            <td>{{ gettext('FlyOS Framework') }}</td>
+            <td>{{ framework_status }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('Device Hostname') }}</td>
+            <td>{{ run_system("hostname") }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('Android Version') }}</td>
+            <td>{{ run_system("adb shell getprop ro.build.version.release") }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('SDK Version') }}</td>
+            <td>{{ run_system("adb shell getprop ro.build.version.sdk") }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('Build Kernel Version') }}</td>
+            <td>{{ run_system("uname -a") }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('Device Model') }}</td>
+            <td>{{ run_system("adb shell getprop ro.product.model") }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('Device Manufacturer') }}</td>
+            <td>{{ run_system("adb shell getprop ro.product.manufacturer") }}</td>
+          </tr>
+          <tr>
+            <td>{{ gettext('Android ID') }}</td>
+            <td>{{ run_system("adb shell settings get secure android_id") }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card card-info">
+      <div class="card-header">
+        <h3 class="card-title">{{ gettext('Files') }}</h3>
+      </div>
+      <div class="card-header">
+        <h3 class="card-title">{{ gettext('My Files:') }}</h3>
+        <br>
+        <form id="directoryForm" onsubmit="submitForm(event)">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="pathInput" placeholder="{{ gettext('Enter path') }}" required>
+            <button type="submit" class="btn btn-primary">{{ gettext('Get Files') }}</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-body">
+        <pre id="resultArea">{{ result }}</pre>
+      </div>
+    </div>
+    <button class="btn btn-primary mb-2 full-width-button" onclick="openNewWindow('/logout');">{{ gettext('Logout Dashboard') }}</button>
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        const pathInput = document.getElementById('pathInput');
+        const resultArea = document.getElementById('resultArea');
+        const path = pathInput.value.trim();
+    
+        // Make an AJAX request to execute the system command
+        fetch('/query_files', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ path: path }),
+        })
+        .then(response => response.text())
+        .then(result => {
+          resultArea.textContent = result;
+        });
+    
+        // Clear the input field
+        pathInput.value = '';
+      }
+    </script>
+    <script>
+      function openNewWindow(url) {
+        window.open(url, '_blank');
+      }
+    </script>
+  </body>
+</html>

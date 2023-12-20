@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{ gettext("Languages") }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext("Choose your Languages") }}</span>
+        </div>
+    </nav>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ gettext("Choose your Languages:") }}</h1>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="container mt-5">
+            <h3>{{ gettext("Languages") }}</h3>
+            <div class="row mt-4">
+              <a href="/change_language/en">English</a>
+              <a href="/change_language/es">Spanish</a>
+              <a href="/change_language/zh">Traditional Chinese</a>
+              <a href="/change_language/ja">Japanese</a>
+              <a href="/change_language/fr">French</a>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-4">
+              <a href="/setup/timezone" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("Next") }}</a>
+            </div>
+    </div>
+    <br>
+
+    <script src="/static/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/bootstrap.bundle.js"></script>
+</body>  
+</html>

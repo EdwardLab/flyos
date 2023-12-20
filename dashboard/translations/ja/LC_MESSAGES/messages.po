@@ -1,0 +1,978 @@
+# Japanese translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-12-19 13:51+0800\n"
+"PO-Revision-Date: 2023-12-19 01:03+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: templates/about.html:8 templates/about.html:13 templates/about.html:19
+#: templates/panel.html:239 templates/panel.html:279
+msgid "About FlyOS"
+msgstr "FlyOSについて"
+
+#: templates/about.html:24 templates/overview.html:118
+msgid "FlyOS Information:"
+msgstr "FlyOS情報："
+
+#: templates/about.html:25
+#, fuzzy
+msgid "FlyOS Version:"
+msgstr "SDKバージョン"
+
+#: templates/about.html:26
+msgid "FlyOS Build Channel:"
+msgstr ""
+
+#: templates/about.html:27
+#, fuzzy
+msgid "Device Information:"
+msgstr "FlyOS情報："
+
+#: templates/about.html:28
+#, fuzzy
+msgid "Device Hostname:"
+msgstr "デバイスのホスト名"
+
+#: templates/about.html:29
+#, fuzzy
+msgid "Android Version:"
+msgstr "Androidバージョン"
+
+#: templates/about.html:31
+#, fuzzy
+msgid "Build Kernel Version:"
+msgstr "ビルドカーネルバージョン"
+
+#: templates/about.html:32
+#, fuzzy
+msgid "Device model:"
+msgstr "デバイスモデル"
+
+#: templates/about.html:33
+#, fuzzy
+msgid "Device Manufacturer:"
+msgstr "デバイスメーカー"
+
+#: templates/about.html:34
+#, fuzzy
+msgid "Android ID:"
+msgstr "Android ID"
+
+#: templates/about.html:36
+msgid "Our Goal:"
+msgstr ""
+
+#: templates/about.html:37
+msgid ""
+"Unleash your mobile phone's potential: it's not just a phone, but a "
+"pocket-sized computer."
+msgstr ""
+
+#: templates/about.html:38
+msgid ""
+"Experience the power of mobile computing with FlyOS. Access your FlyOS "
+"Linux subsystem on any computer, just with a web browser. No extra "
+"software required. Enjoy a full Ubuntu-based Linux subsystem with your "
+"preferences, data, files, and applications. It's all yours."
+msgstr ""
+
+#: templates/about.html:39
+msgid ""
+"Unlock the possibilities of mobile productivity. Imagine coding on your "
+"phone, connecting a keyboard and mouse, and effortlessly accessing your "
+"favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more. It's a "
+"complete Linux system that fits in your pocket! Wherever you go, your "
+"data is always within reach. Experience the freedom of seamless access, "
+"empowering you to create and work anywhere, anytime."
+msgstr ""
+
+#: templates/about.html:43 templates/about_license.html:8
+#: templates/about_license.html:13 templates/about_license.html:19
+msgid "Open Source License"
+msgstr ""
+
+#: templates/about.html:46
+msgid ""
+"This project is based on FlyOS, AGPL 3.0 license "
+"(https://github.com/xingyujie/flyos)"
+msgstr ""
+
+#: templates/about.html:50 templates/manager/android_screen.html:48
+#: templates/manager/cloudflare.html:48 templates/manager/linuxmode.html:39
+#: templates/manager/linuxmode_launch.html:28
+#: templates/manager/usb_tethering.html:40 templates/manager/vnet.html:46
+#: templates/settings.html:113
+#, fuzzy
+msgid "Powered by: FlyOS Subsystem"
+msgstr "提供：FlyOS for Android"
+
+#: templates/about.html:52 templates/info.html:31
+#: templates/manager/android_screen.html:50
+#: templates/manager/cloudflare.html:50 templates/manager/linuxmode.html:41
+#: templates/manager/linuxmode_launch.html:30
+#: templates/manager/usb_tethering.html:42 templates/manager/vnet.html:48
+#: templates/oops.html:43 templates/success.html:43
+msgid "Deploy Linux subsystem on your Android phone"
+msgstr "Android フォンにLinuxサブシステムを展開する"
+
+#: templates/about.html:54
+msgid "Home Page: http://flyos.us/"
+msgstr ""
+
+#: templates/about_license.html:25
+msgid "FlyOS-Dashboard Open Source License"
+msgstr ""
+
+#: templates/about_license.html:27
+msgid ""
+"This software and its related documentation are open source and are "
+"governed by the terms and conditions of the GNU Affero General Public "
+"License (AGPL-V3) as published by the Free Software Foundation. You may "
+"obtain a copy of the license at"
+msgstr ""
+
+#: templates/about_license.html:29
+msgid "Project Authors:"
+msgstr ""
+
+#: templates/about_license.html:34
+msgid "Library"
+msgstr ""
+
+#: templates/about_license.html:35
+msgid "License"
+msgstr ""
+
+#: templates/about_license.html:36
+msgid "Author"
+msgstr ""
+
+#: templates/about_license.html:41
+msgid "Bootstrap CSS and JavaScript library"
+msgstr ""
+
+#: templates/about_license.html:42 templates/about_license.html:47
+#: templates/about_license.html:57 templates/about_license.html:72
+msgid "MIT License"
+msgstr ""
+
+#: templates/about_license.html:43
+msgid "The Bootstrap Authors"
+msgstr ""
+
+#: templates/about_license.html:46
+msgid "AdminLTE"
+msgstr ""
+
+#: templates/about_license.html:48
+msgid "ColorlibHQ"
+msgstr ""
+
+#: templates/about_license.html:51
+#, fuzzy
+msgid "Flask"
+msgstr "ファイル"
+
+#: templates/about_license.html:52
+msgid "BSD 3-Clause \"New\" or \"Revised\" License"
+msgstr ""
+
+#: templates/about_license.html:53
+msgid "Pallets"
+msgstr ""
+
+#: templates/about_license.html:56
+msgid "jQuery"
+msgstr ""
+
+#: templates/about_license.html:58
+msgid "OpenJS Foundation"
+msgstr ""
+
+#: templates/about_license.html:61
+msgid "noVNC"
+msgstr ""
+
+#: templates/about_license.html:62
+msgid "MPL 2.0 License"
+msgstr ""
+
+#: templates/about_license.html:63
+msgid "The noVNC Authors"
+msgstr ""
+
+#: templates/about_license.html:66
+msgid "Python 3"
+msgstr ""
+
+#: templates/about_license.html:67
+msgid "Python Software Foundation License"
+msgstr ""
+
+#: templates/about_license.html:68
+msgid "The Python Foundation"
+msgstr ""
+
+#: templates/about_license.html:71
+msgid "ttyd"
+msgstr ""
+
+#: templates/about_license.html:73
+msgid "Shuanglei Tao"
+msgstr ""
+
+#: templates/about_license.html:76
+msgid "Winbox.js"
+msgstr ""
+
+#: templates/about_license.html:77 templates/about_license.html:82
+msgid "Apache License 2.0"
+msgstr ""
+
+#: templates/about_license.html:78
+msgid "ts-thomas"
+msgstr ""
+
+#: templates/about_license.html:81 templates/panel.html:134
+msgid "File Browser"
+msgstr "ファイルブラウザ"
+
+#: templates/about_license.html:83
+#, fuzzy
+msgid "filebrowser"
+msgstr "ファイルブラウザ"
+
+#: templates/about_license.html:89
+msgid ""
+"This project, named FlyOS-Dashboard, incorporates various open-source "
+"components as listed above. Additionally, if any other open-source "
+"project has been used but not explicitly mentioned, please contact us at"
+msgstr ""
+
+#: templates/about_license.html:89
+msgid "for further clarification."
+msgstr ""
+
+#: templates/about_license.html:91
+msgid "Additional Offering:"
+msgstr ""
+
+#: templates/about_license.html:92
+msgid ""
+"We provide the source code of this software along with its documentation "
+"and ensure compliance with the AGPL-V3 license. The complete and "
+"corresponding source code for any covered work is available upon request."
+msgstr ""
+
+#: templates/info.html:8 templates/info.html:13
+msgid "Info"
+msgstr ""
+
+#: templates/info.html:29 templates/oops.html:41 templates/success.html:41
+msgid "Powered by:"
+msgstr "提供："
+
+#: templates/login.html:7 templates/otplogin.html:7 templates/overview.html:6
+#: templates/panel.html:6 templates/panel.html:67 templates/panel.html:332
+msgid "FlyOS Dashboard"
+msgstr ""
+
+#: templates/login.html:68 templates/login.html:69 templates/otplogin.html:70
+msgid "Password"
+msgstr "パスワード"
+
+#: templates/login.html:72 templates/otplogin.html:73
+msgid "Login"
+msgstr "ログイン"
+
+#: templates/login.html:73
+msgid "OTP Login"
+msgstr "OTP ログイン"
+
+#: templates/login.html:75
+msgid ""
+"Forget password? Please log in via OTP and go to settings -> Change FlyOS"
+" password"
+msgstr "パスワードを忘れましたか？ OTP でログインして、「設定」->「FlyOSのパスワード変更」に移動してください。"
+
+#: templates/login.html:80 templates/otplogin.html:80
+msgid "Click 'Login' to log in to your device Dashboard"
+msgstr "「ログイン」をクリックしてデバイスのダッシュボードにログインしてください"
+
+#: templates/login.html:82 templates/otplogin.html:82
+msgid "Powered by: FlyOS for Android"
+msgstr "提供：FlyOS for Android"
+
+#: templates/login.html:84 templates/otplogin.html:84
+msgid "This is the Linux Subsystem panel running on Android"
+msgstr "これはAndroidで実行されているLinuxサブシステムパネルです"
+
+#: templates/oops.html:8 templates/oops.html:13
+msgid "Oops!"
+msgstr "おっと！"
+
+#: templates/oops.html:19
+msgid "Woha, Seems to be having a problem!"
+msgstr "おっと、問題が発生しているようです！"
+
+#: templates/oops.html:45
+msgid "Encounter problems? Go to our community!"
+msgstr "問題に遭遇しましたか？ 当社のコミュニティにアクセスしてください！"
+
+#: templates/otplogin.html:68
+msgid ""
+"OTP has been sent to your device notification bar, please check your "
+"Android system notification bar and enter the OTP here, if no "
+"notification, please log in with your password and check the FlyOS "
+"Framework status"
+msgstr ""
+
+#: templates/otplogin.html:69
+#, fuzzy
+msgid "One Time Password"
+msgstr "パスワード"
+
+#: templates/otplogin.html:74
+msgid "Back to Password Login"
+msgstr ""
+
+#: templates/overview.html:71
+msgid "Welcome to FlyOS!"
+msgstr "FlyOSへようこそ！"
+
+#: templates/overview.html:74 templates/panel.html:93
+msgid "Overview"
+msgstr "概要"
+
+#: templates/overview.html:83
+msgid "Device available storage"
+msgstr "デバイスの利用可能なストレージ"
+
+#: templates/overview.html:92
+msgid "SSH Status"
+msgstr "SSHステータス"
+
+#: templates/overview.html:101
+msgid "FlyOS Desktop (VNC) Status"
+msgstr "FlyOS デスクトップ（VNC）ステータス"
+
+#: templates/overview.html:110
+msgid "Battery Status"
+msgstr "バッテリーステータス"
+
+#: templates/overview.html:123
+msgid "FlyOS Framework"
+msgstr "FlyOSフレームワーク"
+
+#: templates/overview.html:127
+msgid "Device Hostname"
+msgstr "デバイスのホスト名"
+
+#: templates/overview.html:131
+msgid "Android Version"
+msgstr "Androidバージョン"
+
+#: templates/overview.html:135
+msgid "SDK Version"
+msgstr "SDKバージョン"
+
+#: templates/overview.html:139
+msgid "Build Kernel Version"
+msgstr "ビルドカーネルバージョン"
+
+#: templates/overview.html:143
+msgid "Device Model"
+msgstr "デバイスモデル"
+
+#: templates/overview.html:147
+msgid "Device Manufacturer"
+msgstr "デバイスメーカー"
+
+#: templates/overview.html:151
+msgid "Android ID"
+msgstr "Android ID"
+
+#: templates/overview.html:159
+msgid "Files"
+msgstr "ファイル"
+
+#: templates/overview.html:162
+msgid "My Files:"
+msgstr "マイファイル："
+
+#: templates/overview.html:166
+msgid "Enter path"
+msgstr "パスを入力"
+
+#: templates/overview.html:167
+msgid "Get Files"
+msgstr "ファイルを取得"
+
+#: templates/overview.html:175
+msgid "Logout Dashboard"
+msgstr "ダッシュボードからログアウト"
+
+#: templates/panel.html:86
+msgid "Menu Bar"
+msgstr "メニューバー"
+
+#: templates/panel.html:100
+msgid "Desktop Mode"
+msgstr "デスクトップモード"
+
+#: templates/panel.html:108
+msgid "FlyOS System"
+msgstr "FlyOS システム"
+
+#: templates/panel.html:116
+msgid "FlyOS Terminal"
+msgstr "FlyOS ターミナル"
+
+#: templates/panel.html:122
+msgid "Android Terminal"
+msgstr "Androidターミナル"
+
+#: templates/panel.html:128
+msgid "FlyOS Desktop"
+msgstr "FlyOSデスクトップ"
+
+#: templates/panel.html:143
+msgid "Applications"
+msgstr "アプリケーション"
+
+#: templates/panel.html:152
+msgid "Code Server"
+msgstr "コードサーバー"
+
+#: templates/panel.html:160
+msgid "Jupyter Notebook"
+msgstr "Jupyterノートブック"
+
+#: templates/panel.html:169
+msgid "Network Manager"
+msgstr "ネットワークマネージャー"
+
+#: templates/panel.html:178
+msgid "USB Tethering"
+msgstr "USBテザリング"
+
+#: templates/manager/vnet.html:7 templates/manager/vnet.html:12
+#: templates/manager/vnet.html:18 templates/panel.html:186
+msgid "Virtual Network Adapter"
+msgstr "仮想ネットワークアダプター"
+
+#: templates/manager/cloudflare.html:18 templates/panel.html:194
+msgid "Cloudflare Zero Trust"
+msgstr "Cloudflare Zero Trust"
+
+#: templates/panel.html:203
+msgid "Android Manager"
+msgstr "Androidマネージャー"
+
+#: templates/panel.html:212
+msgid "Launch FlyOS Desktop"
+msgstr "FlyOSデスクトップを起動"
+
+#: templates/manager/android_screen.html:7
+#: templates/manager/android_screen.html:12
+#: templates/manager/android_screen.html:18
+#: templates/manager/android_screen.html:23 templates/panel.html:221
+msgid "Android Screen Mirroring"
+msgstr "Android画面ミラーリング"
+
+#: templates/panel.html:231 templates/settings.html:29
+#: templates/settings.html:34
+msgid "Settings"
+msgstr "設定"
+
+#: templates/panel.html:247
+msgid "Logout"
+msgstr "ログアウト"
+
+#: templates/panel.html:268
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: templates/panel.html:275
+msgid "Help"
+msgstr "ヘルプ"
+
+#: templates/panel.html:284
+msgid "Change Theme"
+msgstr "テーマを変更"
+
+#: templates/panel.html:332
+msgid "Open in"
+msgstr "で開く"
+
+#: templates/panel.html:332
+msgid "New Tab"
+msgstr "新しいタブ"
+
+#: templates/panel.html:332
+msgid "Fullscreen"
+msgstr "フルスクリーン"
+
+#: templates/panel.html:350 templates/panel.html:370
+msgid "Light theme"
+msgstr "ライトテーマ"
+
+#: templates/panel.html:353 templates/panel.html:372
+msgid "Dark theme"
+msgstr "ダークテーマ"
+
+#: templates/settings.html:40
+msgid "Edit System Settings"
+msgstr ""
+
+#: templates/settings.html:47
+msgid "Change FlyOS password"
+msgstr ""
+
+#: templates/settings.html:48 templates/setup/setpwd.html:28
+msgid "Enter your new password"
+msgstr ""
+
+#: templates/settings.html:49 templates/settings.html:58
+#: templates/settings.html:70
+msgid "Update"
+msgstr ""
+
+#: templates/settings.html:55
+msgid "Change Linux User password"
+msgstr ""
+
+#: templates/settings.html:56
+msgid "Enter Linux username (e.g: root)"
+msgstr ""
+
+#: templates/settings.html:57 templates/setup/setpwd.html:37
+msgid "Enter new password for this user"
+msgstr ""
+
+#: templates/settings.html:64 templates/setup/timezone.html:24
+msgid "Select a time zone:"
+msgstr ""
+
+#: templates/settings.html:65 templates/setup/timezone.html:25
+msgid "*FlyOS subsystem will not synchronize or update Android time zone"
+msgstr ""
+
+#: templates/settings.html:76
+msgid "Advanced System Settings"
+msgstr ""
+
+#: templates/settings.html:77
+msgid ""
+"If you don't know what this is, please don't modify it or FlyOS will not "
+"boot properly. Please do not remove any variables or any part of the "
+"configuration!"
+msgstr ""
+
+#: templates/settings.html:78
+msgid "Write HTML content or paste HTML code here"
+msgstr ""
+
+#: templates/settings.html:79
+msgid "Save (Reboot to apply changes)"
+msgstr ""
+
+#: templates/settings.html:84
+msgid "API Token"
+msgstr ""
+
+#: templates/settings.html:85
+msgid "API Token is as important as your password!"
+msgstr ""
+
+#: templates/settings.html:86
+msgid "API Token:"
+msgstr ""
+
+#: templates/settings.html:89
+msgid "Reset Token"
+msgstr ""
+
+#: templates/settings.html:93 templates/settings.html:96
+#: templates/settings/system_update.html:7
+#: templates/settings/system_update.html:12
+#: templates/settings/system_update.html:18
+#: templates/settings/system_update.html:23
+msgid "System Update"
+msgstr ""
+
+#: templates/settings.html:101
+msgid "Languages:"
+msgstr ""
+
+#: templates/settings.html:115
+#, fuzzy
+msgid "Install Linux Subsystem on Android Device"
+msgstr "Android フォンにLinuxサブシステムを展開する"
+
+#: templates/success.html:8 templates/success.html:13
+msgid "Successful!"
+msgstr "成功しました！"
+
+#: templates/success.html:19
+msgid "Successfully!"
+msgstr "成功しました！"
+
+#: templates/manager/android_screen.html:52 templates/manager/linuxmode.html:43
+#: templates/manager/linuxmode_launch.html:32
+#: templates/manager/usb_tethering.html:44 templates/success.html:45
+msgid "Have a nice day :)"
+msgstr "良い一日を :)"
+
+#: templates/manager/android_screen.html:24
+msgid ""
+"This mode will mirror the Android device screen on your PC. This mode is "
+"only available for remote."
+msgstr ""
+
+#: templates/manager/android_screen.html:25 templates/manager/linuxmode.html:25
+#: templates/manager/usb_tethering.html:25
+msgid "Before launching this mode, make sure:"
+msgstr ""
+
+#: templates/manager/android_screen.html:27
+#: templates/manager/usb_tethering.html:27
+#, fuzzy
+msgid "FlyOS framework is running"
+msgstr "FlyOSフレームワーク"
+
+#: templates/manager/android_screen.html:28
+msgid "Access this page from another device (not the Android device itself)"
+msgstr ""
+
+#: templates/manager/android_screen.html:29
+msgid ""
+"Recommended to use USB cable + tethering for faster and low latency "
+"connection"
+msgstr ""
+
+#: templates/manager/android_screen.html:31
+msgid "* Enabling this mode may reduce refresh rate"
+msgstr ""
+
+#: templates/manager/android_screen.html:34
+#, fuzzy
+msgid "Android Screen Mirroring (Start Service)"
+msgstr "Android画面ミラーリング"
+
+#: templates/manager/android_screen.html:37
+msgid "If service already started, click here to redirect view page"
+msgstr ""
+
+#: templates/manager/android_screen.html:40
+#, fuzzy
+msgid "Stop Service"
+msgstr "コードサーバー"
+
+#: templates/manager/cloudflare.html:7 templates/manager/cloudflare.html:12
+#, fuzzy
+msgid "Cloudflare Zero Trust (Cloudflared)"
+msgstr "Cloudflare Zero Trust"
+
+#: templates/manager/cloudflare.html:23
+#, fuzzy
+msgid "Cloudflare Zero Trust (Cloudflared) Network"
+msgstr "Cloudflare Zero Trust"
+
+#: templates/manager/cloudflare.html:24 templates/manager/vnet.html:24
+msgid ""
+"* This app will create a script under /boot/scripts directory and start "
+"the service with FlyOS boot"
+msgstr ""
+
+#: templates/manager/cloudflare.html:25
+msgid ""
+"This functionality within FlyOS facilitates the configuration of a "
+"Cloudflared Tunnel. You can set up a virtual network adapter through the "
+"network manager, enabling the creation of a virtual network adapter and "
+"assigning a fixed IP. Subsequently, within the Zero Trust dashboard, you "
+"can create a new tunnel by pasting the token provided by Cloudflare. "
+"Additionally, in the virtual network adapter, you can set a virtual CIDR "
+"and input this CIDR into the CIDR field in Cloudflare's control console "
+"(ensuring alignment between the CIDR in the virtual network adapter and "
+"the Cloudflared console settings). Customize the CIDR within the virtual "
+"network adapter to suit your preferences."
+msgstr ""
+
+#: templates/manager/cloudflare.html:27
+msgid ""
+" In case you are utilizing the VPN (WARP) within Zero Trust, further "
+"configuration within Cloudflare settings is required. You'll need to "
+"configure the CIDR within the WARP client's configuration file (allowing "
+"or excluding CIDR) to access the fixed virtual network card address on "
+"FlyOS through any connected WARP client."
+msgstr ""
+
+#: templates/manager/cloudflare.html:29
+msgid ""
+" Moreover, you have the flexibility to expose your ports to the public "
+"internet via Cloudflare without requiring a public IP, leveraging any "
+"standard internet connection. You also have the option to configure Zero "
+"Trust on your existing network setup instead of using the virtual network"
+" adapter. For a more comprehensive guide, refer to the documentation "
+"provided by Cloudflare and FlyOS."
+msgstr ""
+
+#: templates/manager/cloudflare.html:31
+msgid ""
+" Cloudflared only allows one configuration file. Creating multiple "
+"configuration files may cause all startups to fail!"
+msgstr ""
+
+#: templates/manager/cloudflare.html:33
+msgid "Create a new Cloudflare Configuration File:"
+msgstr ""
+
+#: templates/manager/cloudflare.html:38
+msgid "Token:"
+msgstr ""
+
+#: templates/manager/cloudflare.html:39
+msgid "Enter Cloudflared Token"
+msgstr ""
+
+#: templates/manager/cloudflare.html:40
+msgid "On your Cloudflare Dashboard (Zero Trust -> Tunnel -> Create Tunnel)"
+msgstr ""
+
+#: templates/manager/cloudflare.html:42
+msgid "Create Configuration File & Start"
+msgstr ""
+
+#: templates/manager/linuxmode.html:7 templates/manager/linuxmode.html:12
+#: templates/manager/linuxmode.html:18
+#: templates/manager/linuxmode_launch.html:7
+msgid "Launch Linux Mode"
+msgstr ""
+
+#: templates/manager/linuxmode.html:23
+msgid "Launch Linux Desktop Mode on your device"
+msgstr ""
+
+#: templates/manager/linuxmode.html:24
+msgid ""
+"This mode allows displaying the FlyOS Desktop using X11 on your device "
+"via SDL. Compared to VNC, this mode supports GPU and sound, enhancing "
+"compatibility for games and similar applications, providing a more "
+"realistic computer experience. However, it might not be very user-"
+"friendly on a pure touchscreen, so it's recommended to connect a mouse "
+"and keyboard for a better and easier experience."
+msgstr ""
+
+#: templates/manager/linuxmode.html:27
+msgid "Unlock your device (Password, PIN, fingerprint...)"
+msgstr ""
+
+#: templates/manager/linuxmode.html:28
+msgid "Suggestion: Go to the phone launcher"
+msgstr ""
+
+#: templates/manager/linuxmode.html:32
+msgid "I'm ready! Launch Linux"
+msgstr ""
+
+#: templates/manager/linuxmode_launch.html:12
+msgid "Launch Linux Mode - Process stopped"
+msgstr ""
+
+#: templates/manager/linuxmode_launch.html:18
+#, fuzzy
+msgid "Launch Linux Mode - Stopped"
+msgstr "FlyOSデスクトップを起動"
+
+#: templates/manager/linuxmode_launch.html:22
+msgid "Linux desktop mode process has stopped, Logs:"
+msgstr ""
+
+#: templates/manager/usb_tethering.html:7
+#: templates/manager/usb_tethering.html:12
+#: templates/manager/usb_tethering.html:18
+#: templates/manager/usb_tethering.html:23
+#, fuzzy
+msgid "USB Tethering Mode"
+msgstr "USBテザリング"
+
+#: templates/manager/usb_tethering.html:24
+msgid ""
+"This mode allows you to share the Internet and access the FlyOS system "
+"dashboard and resources to your computer via USB"
+msgstr ""
+
+#: templates/manager/usb_tethering.html:28
+msgid "Device is connected to PC via USB"
+msgstr ""
+
+#: templates/manager/usb_tethering.html:30
+msgid "* Recommended download FlyOS Client, a bridge for PC to manage FlyOS"
+msgstr ""
+
+#: templates/manager/usb_tethering.html:33
+#, fuzzy
+msgid "Enable USB Tethering"
+msgstr "USBテザリング"
+
+#: templates/manager/vnet.html:23
+#, fuzzy
+msgid "Create a loopback virtual network adapter"
+msgstr "仮想ネットワークアダプター"
+
+#: templates/manager/vnet.html:25
+msgid ""
+"This feature enables the creation of a loopback virtual network adapter "
+"on your device. For instance, in scenarios requiring fixed IP addresses "
+"such as Zero Trust networks or VPN network, this feature allows the "
+"creation of a fixed virtual IP address. This ensures immunity against "
+"network IP changes. It can be seamlessly paired with Cloudflare Zero "
+"Trust functionality, Access to your device at any time through a fixed "
+"virtual network adapter, regardless of the network environment (be it Wi-"
+"Fi or cellular data)"
+msgstr ""
+
+#: templates/manager/vnet.html:26
+#, fuzzy
+msgid "Create a new virtual network adapter:"
+msgstr "仮想ネットワークアダプター"
+
+#: templates/manager/vnet.html:32
+msgid "Enter CIDR (e.g., 10.10.0.1/24)"
+msgstr ""
+
+#: templates/manager/vnet.html:35
+msgid "Adapter Name:"
+msgstr ""
+
+#: templates/manager/vnet.html:36
+msgid "Enter Adapter Name (e.g., veth0)"
+msgstr ""
+
+#: templates/manager/vnet.html:37
+msgid "Any Name"
+msgstr ""
+
+#: templates/manager/vnet.html:39
+msgid "Create!"
+msgstr ""
+
+#: templates/settings/system_update.html:25
+msgid "Current FlyOS Version:"
+msgstr ""
+
+#: templates/settings/system_update.html:26
+msgid "Current FlyOS Build Channel:"
+msgstr ""
+
+#: templates/settings/system_update.html:27
+msgid "Latest FlyOS Build Version:"
+msgstr ""
+
+#: templates/settings/system_update.html:29
+msgid "How to Update FlyOS"
+msgstr ""
+
+#: templates/settings/system_update.html:30
+msgid ""
+"Currently, we only support connecting FlyOS to a PC and using \"FlyOS "
+"Installer\" to complete the update. This is for safety and to prevent "
+"system damage."
+msgstr ""
+
+#: templates/setup/done.html:47
+msgid "Congratulations!"
+msgstr ""
+
+#: templates/setup/done.html:52
+msgid "Congratulations"
+msgstr ""
+
+#: templates/setup/done.html:58
+msgid "Congratulations on completing all the setup!"
+msgstr ""
+
+#: templates/setup/done.html:64
+msgid "🚀Congratulations!"
+msgstr ""
+
+#: templates/setup/done.html:65
+msgid "You've successfully completed all the setup."
+msgstr ""
+
+#: templates/setup/done.html:68
+#, fuzzy
+msgid "Unlock your dashboard now!"
+msgstr "ダッシュボードからログアウト"
+
+#: templates/setup/done.html:71
+#, fuzzy
+msgid "Take me to the dashboard"
+msgstr "ダッシュボードからログアウト"
+
+#: templates/setup/languages.html:7 templates/setup/languages.html:24
+msgid "Languages"
+msgstr ""
+
+#: templates/setup/languages.html:12
+msgid "Choose your Languages"
+msgstr ""
+
+#: templates/setup/languages.html:18
+msgid "Choose your Languages:"
+msgstr ""
+
+#: templates/setup/languages.html:34 templates/setup/setpwd.html:44
+#: templates/setup/timezone.html:33
+msgid "Next"
+msgstr ""
+
+#: templates/setup/setpwd.html:7 templates/setup/setpwd.html:18
+#: templates/setup/setpwd.html:24
+msgid "Set Linux and FlyOS system passwords"
+msgstr ""
+
+#: templates/setup/setpwd.html:12
+#, fuzzy
+msgid "Set Password"
+msgstr "パスワード"
+
+#: templates/setup/setpwd.html:27
+msgid "Set the FlyOS password"
+msgstr ""
+
+#: templates/setup/setpwd.html:29 templates/setup/setpwd.html:38
+#, fuzzy
+msgid "Set the Password"
+msgstr "パスワード"
+
+#: templates/setup/setpwd.html:35
+msgid "Set the Root password"
+msgstr ""
+
+#: templates/setup/timezone.html:7
+msgid "Timezone"
+msgstr ""
+
+#: templates/setup/timezone.html:12
+msgid "Setting Timezone"
+msgstr ""
+
+#: templates/setup/timezone.html:18
+msgid "Let's start the setup with Timezone:"
+msgstr ""
+
