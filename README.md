@@ -1,6 +1,6 @@
 # The FlyOS Project
 <p align="center">
-  <img src="flyos.jpg" alt="flyos_logo" width="30%" height="30%">
+  <img src="./dashboard/static/img/flyos.jpg" alt="flyos_logo" width="30%" height="30%">
 </p>
 
 # Preview screenshots under development
