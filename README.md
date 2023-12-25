@@ -29,7 +29,7 @@ Unlock the possibilities of mobile productivity. Imagine coding on your phone, c
 
 Sponsor this project author Edward Hsing, 100% sponsored to Edward Hsing, PayPal: https://www.paypal.com/paypalme/xingyujieph/
 
-[Donate link PayPal](https://bank.hackclub.com/donations/start/digitalplat)    
+[Donate link PayPal](https://www.paypal.com/paypalme/xingyujieph/)    
 
 Donate to our foundation DigitalPlat, a 501(c)(3) fiscally sponsored organization (EIN: 81-2908499), (Support non-profit open source projects)    
 
