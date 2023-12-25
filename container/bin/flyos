@@ -1,0 +1,182 @@
+#!/bin/sh
+
+# FlyOS Manager
+# FlyOS Open Source Project AGPL-3.0 LICENSE
+# flyos Created by: Edward Hsing
+
+# Container rootfs path
+rootfs_path="/data/local/flyos/rootfs"
+bin_path="/data/flyos/bin"
+logs_check() {
+    files=("/data/flyos/logs/boot.log" "/data/flyos/logs/kill.log" "/data/flyos/logs/umount.log")
+    threshold=1000
+
+    for file in "${files[@]}"; do
+        size=$(du -k "$file" > /dev/null 2>&1 | cut -f1)
+        if [[ $size -gt $threshold ]]; then
+            rm -f "$file"
+        fi
+    done
+}
+
+mount_fs() {
+    logs_check
+    # Clear environment variables
+    unset TMP TEMP TMPDIR LD_PRELOAD LD_DEBUG
+
+    # Set PATH
+    path="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+    # Container rootfs path 
+    rootfs_path="/data/local/flyos/rootfs"
+    
+    # Function to check if a filesystem is already mounted
+    is_mounted() {
+        if mountpoint -q "$1"; then
+            return 0 
+        else
+            return 1
+        fi
+    }
+
+    # Mount bind dev filesystem 
+    if mountpoint -q "${rootfs_path}/dev"
+    then
+        echo "/dev is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount -o bind /dev "${rootfs_path}/dev"
+    fi
+
+    # Mount devpts filesystem
+    if mountpoint -q "${rootfs_path}/dev/pts"
+    then
+        echo "/dev/pts is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount -o rw,gid=5,mode=777,ptmxmode=777 -t devpts devpts "${rootfs_path}/dev/pts"
+    fi
+    # Mount proc filesystem
+    if mountpoint -q "${rootfs_path}/proc"
+    then
+        echo "/proc is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount -t proc /proc "${rootfs_path}/proc"
+    fi
+    # Mount bind sdcard
+    if mountpoint -q "${rootfs_path}/sdcard"
+    then
+        echo "/sdcard is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount -o bind /sdcard "${rootfs_path}/sdcard"
+    fi
+    # Mount bind sys filesystem
+    if mountpoint -q "${rootfs_path}/sys"
+    then
+        echo "/sys is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount -o bind /sys "${rootfs_path}/sys"
+    fi
+    # Mount bind system filesystem
+    if mountpoint -q "${rootfs_path}/system"
+    then
+        echo "/system is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount -o bind /system "${rootfs_path}/system"
+    fi
+    # Mount bind sdcard filesystem
+    if mountpoint -q "${rootfs_path}/sdcard"
+    then
+        echo "/sdcard is already mounted, skipping..." >> /data/flyos/logs/boot.log
+    else
+        mount --bind /sdcard "${rootfs_path}/sdcard"
+    fi
+    # remount data (fix sudo)
+    mount -o remount,suid /data >> /data/flyos/logs/boot.log 2>&1
+}
+start_adbd() {
+    su -c "setprop service.adb.tcp.port 5555"
+    su -c "stop adbd"
+    su -c "start adbd"
+}
+start_container() {
+    mount_fs
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; /etc/init.d/ssh start" > /dev/null
+    "${bin_path}/busybox" chroot "${rootfs_path}" /usr/bin/login
+}
+
+boot_container() {
+    start_adbd
+    mount_fs
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; export HOME=/root; export SHELL=/bin/bash; python3 /flyos/start.py" >> /data/flyos/logs/start.log
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; /etc/init.d/ssh start" >> /data/flyos/logs/start.log
+}
+
+
+umount_fs() {
+    umount "${rootfs_path}/dev" >> /data/flyos/logs/umount.log 2>&1
+    umount "${rootfs_path}/dev/shm" >> /data/flyos/logs/umount.log 2>&1
+    umount "${rootfs_path}/dev/pts" >> /data/flyos/logs/umount.log 2>&1
+    umount "${rootfs_path}/sys" >> /data/flyos/logs/umount.log 2>&1
+    umount "${rootfs_path}/system" >> /data/flyos/logs/umount.log 2>&1
+    umount "${rootfs_path}/proc" >> /data/flyos/logs/umount.log 2>&1
+    umount "${rootfs_path}/sdcard" >> /data/flyos/logs/umount.log 2>&1
+}
+
+
+stop_container() {
+    umount_fs
+    stop adbd
+    pkill python3
+    killall -9 sshd >> /data/flyos/logs/kill.log 2>&1
+    killall -9 tightvncserver >> /data/flyos/logs/kill.log 2>&1
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; python3 /flyos/stop.py" >> /data/flyos/logs/stop.log
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; pkill bash" >> /data/flyos/logs/stop.log 2>&1
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; /etc/init.d/ssh stop" >> /data/flyos/logs/stop.log 2>&1
+    #"${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "unset TMP TEMP TMPDIR LD_PRELOAD LD_DEBUG"
+}
+
+runshell_container() {
+    mount_fs
+    command=$@
+    "${bin_path}/busybox" chroot "${rootfs_path}" /bin/bash -c "source /etc/profile; $command"
+}
+
+print_help() {
+    echo "FlyOS Container Manager"
+    echo "Usage: flyos [options] arguments"
+    echo "Options:"
+    echo "-h, --help                Show this help"
+    echo "-c, --command <command>   Run command in FlyOS container"
+    echo "-s, --start               Start the FlyOS container and login"
+    echo "-t, --stop                Stop the FlyOS container (kill all processes in the container)"
+    echo "-b, --boot                Boot FlyOS Container (running in the background, can be connected via SSH)"
+}
+
+main() {
+    while getopts ":sthc:b" opt; do
+        case $opt in
+            h | -h)
+                print_help
+                exit
+                ;;
+            c | -c)
+                command=$OPTARG
+                runshell_container "$command"
+                ;;
+            s | -s)
+                start_container
+                ;;
+            t | -t)
+                stop_container
+                ;;
+            b | -b)
+                boot_container
+                ;;
+            *)
+                print_help
+                exit 2
+                ;;
+        esac
+    done
+}
+
+main "$@"

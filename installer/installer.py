@@ -1,13 +1,18 @@
 # FlyOS Installer
 # FlyOS Open Source Project AGPL-3.0 LICENSE
 # install.py Created by: Edward Hsing
-from adb.adb import runsys, popen_sys, adb_list, device_check, get_android_version, check_root, check_data_rw, check_system_rw, get_device_architecture, get_device_storage, get_total_ram, check_internet_connection, get_kernel_version, shell, runsys_root
+from adb import *
 from rich import print
 from rich.text import Text
 from rich.console import Console
 from rich.markdown import Markdown
 import sys
 import os
+from files.tools import *
+import gdown
+import webbrowser
+import time
+import wget
 console = Console()
 # CONFIG
 ignore_error = False
@@ -45,12 +50,12 @@ To enable Developer Options and activate USB debugging, follow these simple step
     print("Check your device")
     print(adb_list())
     if device_check() == False:
-        console.print('Sorry, your device is not detected, please reconnect the USB cable, or replace the data cable',style='red')
+        console.print('Sorry, your device is not detected, please reconnect the USB cable, replace the data cable, Or check if USB debugging is enabled',style='red')
         exit_installer()
     if int(get_android_version()) < 7:
         console.print(f"Your Android version is not supported, current version: " + get_android_version() + ', Minimum requirement: Android 7.0+', style='bold red')
     else:
-        console.print(f'[green][*] Pass[/green], your Android version: {get_android_version()} meets the requirements')
+        console.print(f'[green][*] Pass[/green], your Android version: {get_android_version()}')
     if check_root() == False:
         console.print(f'Your device does not have root permission, please root the device and try again (such as Magisk)', style='bold red')
         exit_installer()
@@ -65,10 +70,8 @@ To enable Developer Options and activate USB debugging, follow these simple step
         exit_installer()
     else:
         console.print('[green][*] Pass[/green], Your device Data partition is writable')
-
     if check_system_rw() == False:
-        console.print('Your device System partition is not writable', style='bold red')
-        exit_installer()
+        console.print('Your device System partition maybe not writable, You can still install FlyOS, but some features may not be available, it is recommended that the system partition be writable', style='bold yellow')
     else:
         console.print('[green][*] Pass[/green], Your device System partition is writable')
     if get_device_architecture() == 'arm64-v8a':
@@ -76,10 +79,12 @@ To enable Developer Options and activate USB debugging, follow these simple step
     else:
         console.print('Currently only arm64-v8a is supported. Welcome to join the development, support and maintain more architectures', style='bold red')
         exit_installer()
-    if int(get_device_storage()) < 10:
-        console.print('[yellow][*] Warning[/yellow], The device space is less than 10GB, there may be problems continuing to install')
+    if int(get_device_storage()) < 20:
+        console.print('[yellow][*] Warning[/yellow], The device space is less than 20GB, there may be problems continuing to install')
+    elif int(get_device_storage()) < 18:
+        console.print('The device space is less than 18GB, Unable to continue installing FlyOS', style='bold red')
     else:
-        console.print('[green][*] Pass[/green], Available storage > 10GB')
+        console.print('[green][*] Pass[/green], Available storage > 20GB')
     if int(get_total_ram()) < 3:
         console.print('[yellow][*] Warning[/yellow], Your device memory is less than 3GB, there may be problems continuing to install')
     else:
@@ -121,13 +126,147 @@ def install():
     console.print('Before installation, [bold]you [red]must[/red] check the device requirements[/bold], and you must meet the minimum device installation requirements before you can install FlyOS')
     input("Press enter to check device requirements")
     device_test()
-    console.print('[green]You passed the test![/green] Now we deploy the FlyOS subsystem for you!')
-    input("Press enter to continue")
+    console.print('[green]You passed the test![/green] Now start installing FlyOS')
+    input("Press enter to continue install, or press Ctrl+C to exit")
+    print("Initialize and mount file system")
+    init_install()
+    time.sleep(8)
+    console.print('[*] Done Initialize!', style='green')
     console.print('FlyOS Installer starts deploying subsystems for this device', style='green')
-    # create dirs
-    print("[START] STEP-1 Create FlyOS file system")
+    console.print('[bold] Just answer a few simple questions and the installer will start working automatically! [/bold]')
+    console.print('Which server do you want to download FlyOS rootfs from?')
+    console.print('''
+
+1. Google Server (Recommended & Fast)
+2. FlyOS Server (Unstable, In development)
+3. Custom Server (Input URL)
+4. Download rootfs from Google Drive in Browser (Open in Browser & Download)
+5. Choose rootfs file from local (Type rootfs path)
+    ''')
+    ask = input('Enter an option: ')
+    if ask == '1':
+        if os.path.exists("rootfs.tar.gz"):
+            response = input("rootfs.tar.gz already exists. Do you want to skip downloading it? (y/n) (y = skip): ")
+            if response.lower() == 'n':
+                down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/gd_latest')
+                print('Downloading from Google Server...')
+                output = "rootfs.tar.gz"
+                gdown.download(down_url, output, quiet=False, fuzzy=True)
+                rootfs_filename = output
+                rootfs_path = output
+            if response.lower() == 'y':
+                rootfs_filename = "rootfs.tar.gz"
+                rootfs_path = "rootfs.tar.gz"
+
+    elif ask == '2':
+        if os.path.exists("rootfs.tar.gz"):
+            response = input("rootfs.tar.gz already exists. Do you want to skip downloading it? (y/n) (y = skip): ")
+            if response.lower() == 'n':
+                down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/flyos_server_latest')
+                wget.download(down_url, 'rootfs.tar.gz')
+                rootfs_path = 'rootfs.tar.gz'
+            else:
+                rootfs_filename = "rootfs.tar.gz"
+                rootfs_path = "rootfs.tar.gz"
+
+    elif ask == '3':
+        if os.path.exists("rootfs.tar.gz"):
+            response = input("rootfs.tar.gz already exists. Do you want to skip downloading it? (y/n) (y = skip): ")
+            if response.lower() == 'n':
+                down_url = input('Enter the URL: ')
+                wget.download(down_url, 'rootfs.tar.gz')
+                rootfs_path = 'rootfs.tar.gz'
+            elif response.lower() == 'y':
+                rootfs_filename = "rootfs.tar.gz"
+                rootfs_path = "rootfs.tar.gz"
+            else:
+                console.print('[red]Invalid option[/red]')
+                exit_installer()
+        else:
+            down_url = input('Enter the URL: ')
+            wget.download(down_url, 'rootfs.tar.gz')
+            rootfs_path = 'rootfs.tar.gz'
+
+    elif ask == '4':
+        webbrowser.open('https://drive.google.com/drive/folders/1JGg0Vxcdtu6fIN6oMFCbQu-AUOjzw3LE?usp=sharing')
+        rootfs_path = input('Enter the rootfs file path: ')
+        rootfs_filename = os.path.basename(rootfs_path)
+    elif ask == '5':
+        rootfs_path = input('Enter the rootfs file path: ')
+        rootfs_filename = os.path.basename(rootfs_path)
+    else:
+        console.print('[red]Invalid option[/red]')
+        exit_installer()
+    console.print('Which server do you want to download FlyOS Container Tools from?')
+    console.print('''
+1. SourceForge Server (Recommended & Fast)       
+2. Choose rootfs file from local (Type tar.gz file path)
+    ''')
+    ask = input('Enter an option: ')
+    if ask == '1':
+        down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/tools_sf_latest')
+        wget.download(down_url, 'tools.tar.gz')
+        tools_path = 'tools.tar.gz'
+        tools_filename = 'tools.tar.gz'
+    elif ask == '2':
+        tools_path = input('Enter the tools file path: ')
+        tools_filename = os.path.basename(tools_path)
+    else:
+        console.print('[red]Invalid option[/red]')
+        exit_installer()
+    console.print('Which server do you want to download FlyOS Manager from?')
+    console.print('''
+1. SourceForge Server (Recommended & Fast)
+2. Choose rootfs file from local (Type apk file path)
+    ''')  
+    ask = input('Enter an option: ')
+    if ask == '1':
+        down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/manager_sf_latest')
+        wget.download(down_url, 'manager.apk')
+        manager_path = 'manager.apk'
+        manager_filename = 'manager.apk'
+    elif ask == '2':
+        manager_path = input('Enter the manager file path: ')
+        manager_filename = os.path.basename(manager_path)
+    else:
+        console.print('[red]Invalid option[/red]')
+        exit_installer()
+    if input('Do you want to Install FlyOS Manager to System Partition? (System partition must be writeable) (y/n)') == 'y':
+        install_manager_system = True
+    else:
+        install_manager_system = False
+
+    print("[START] STEP-1 Create and copy basic FlyOS files and Install Container Tools")
     runsys_root('mkdir /data/flyos')
-    runsys_root('mkdir /data/local/flyos')
-    console.print('[*] Done!', style='green')
+    runsys_root('mkdir -p /data/local/flyos/rootfs')
+    os.system('adb push ' + tools_path + ' /data/flyos')
+    runsys_root(f'tar -zxvf /data/flyos/{tools_filename} -C /data/flyos')
+    runsys_root('chmod +x /data/flyos/bin/*')
+    runsys_root('chmod +x /data/flyos/*')
+    runsys_root(f'rm -rf /data/flyos/{tools_filename}')
+    console.print('[*] Done STEP-1!', style='green')
+    print("[START] STEP-2 Copy and Install rootfs")
+    os.system('adb push ' + rootfs_path + ' /data/local/flyos/rootfs')
+    runsys_root(f'tar -zxvf /data/local/flyos/rootfs/{rootfs_filename} -C /data/local/flyos/rootfs/')
+    runsys_root(f'rm -rf /data/local/flyos/rootfs/{rootfs_filename}')
+    console.print('[*] Done STEP-2!', style='green')
+    print("[START] STEP-3 Copy and Install FlyOS Manager")
+    adb_install(manager_path)
+    if install_manager_system == True:
+        runsys_root('mkdir /system/app/FlyOSManager')
+        os.system('adb push ' + manager_path + ' /system/app/FlyOSManager')
+    console.print('[*] Done STEP-3!', style='green')
+    console.print('[*] STEP-4 Set up system environment and update FlyOS software', style='green')
+    os.system("adb shell sh /data/flyos/bin/flyos -c 'apt update'")
+    os.system("adb shell sh /data/flyos/bin/flyos -c 'apt upgrade -y'")
+    console.print('[*] Done STEP-4!', style='green')
+    clear_env()
+    console.print('Almost Done! Do you want to reboot your device before start FlyOS? for final installation (Recommended), If not, please manually restart your device before start FlyOS for the first time (y/n)')
+    if input('Enter an option: ') == 'y':
+        runsys_root('reboot')
+        console.print('You can start FlyOS after reboot!', style='green')
+    else:
+        console.print('Please manually restart your device before start FlyOS for the first time', style='green')
+    console.print('Installation completed! Enjoy FlyOS! A Linux Subsystem for your Android device! Visit: http://127.0.0.1:5000 on your device after started', style='green')
 if __name__ == '__main__':
     ui()

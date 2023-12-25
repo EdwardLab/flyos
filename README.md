@@ -4,8 +4,13 @@
 </p>
 
 # Preview screenshots under development
-<img src="flyos_preview.png" alt="flyos_preview" width="50%" height="50%">
-<img src="admin_preview.png" alt="flyos_admin_preview" width="50%" height="50%">
+<img src="./imgs/dashboard1.png" alt="flyos_preview" width="50%" height="50%">
+<img src="./imgs/dashboard2.png" alt="flyos_admin_preview" width="50%" height="50%">
+<img src="./imgs/dashboard3.png" alt="flyos_admin_preview" width="50%" height="50%">
+<img src="./imgs/dashboard4.png" alt="flyos_admin_preview" width="50%" height="50%">
+<img src="./imgs/login1.png" alt="flyos_admin_preview" width="50%" height="50%">
+<img src="./imgs/manager1.png" alt="flyos_admin_preview" width="50%" height="50%">
+<img src="./imgs/manager2.png" alt="flyos_admin_preview" width="50%" height="50%">
 <sub>(*) This screenshot is only the effect of the current development and does not represent the final effect. We are working hard to develop more functions</sub><br>
 This repository contains only the most essential files and source code, excluding third-party code and binary applications
 
@@ -21,9 +26,14 @@ Unlock the possibilities of mobile productivity. Imagine coding on your phone, c
 #### Since FlyOS is still under development, we will release a more complete introduction and documentation in the future, so stay tuned!
 
 # Donate  
-Donate to our foundation DigitalPlat, a 501(c)(3) organization (EIN: 81-2908499)    
 
-[Donate link (Stripe)](https://bank.hackclub.com/donations/start/digitalplat)    
+Sponsor this project author Edward Hsing, 100% sponsored to Edward Hsing, PayPal: https://www.paypal.com/paypalme/xingyujieph/
+
+[Donate link PayPal](https://bank.hackclub.com/donations/start/digitalplat)    
+
+Donate to our foundation DigitalPlat, a 501(c)(3) fiscally sponsored organization (EIN: 81-2908499), (Support non-profit open source projects)    
+
+[Donate link (HCB)](https://bank.hackclub.com/donations/start/digitalplat)    
 [DigitalPlat Homepage](https://digitalplat.org)  
 
 <img src="https://bank.hackclub.com/brand/hcb-logo-original-light.svg">    
