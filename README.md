@@ -19,6 +19,11 @@
   <img src="./imgs/manager1.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
   <img src="./imgs/manager2.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
 </div>
+
+<p align="center">
+  <img src="./imgs/langugage.png" alt="flyos_admin_preview" width="50%" height="50%" style="margin: 10px;">
+</p>
+
 <sub>(*) These screenshots represent the current development stage and may not reflect the final product. We are continuously enhancing the functionalities.</sub><br>
 
 This repository contains essential files and source code, excluding third-party code and binary applications.
