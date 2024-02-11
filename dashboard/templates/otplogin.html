@@ -1,90 +1,84 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ gettext("FlyOS Dashboard") }}</title>
-    
-    <!-- Minified CSS and JS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;  
-        }
-        .login-container {
-            max-width: 400px;
-            margin: 5% auto;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;  
-        }
-        .logo img {
-            max-width: 200px;
-        }
-        .form-label {
-            font-weight: 500;    
-        }
-        .operation {
-            display: flex;
-            justify-content: space-between; /* Adjust alignment */
-            align-items: center; /* Align items vertically */
-            margin-top: 20px;  
-        }
-        footer {
-            text-align: center;
-            margin-top: 50px; 
-        }
-        .google-button {
-            display: inline-flex;
-            align-items: center;
-        }
-        .google-button img {
-            margin-bottom: 3px;
-            margin-right: 5px;   
-        }
-        .reset-password {
-            color: #007bff; /* Blue color for links */   
-            text-decoration: none; /* Remove underline */
-        }
-    </style>
-</head>
-
-<body>
-    <div class="login-container">
-        <div class="logo">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{{ gettext("FlyOS Dashboard") }}</title>
+      <!-- Minified CSS and JS -->
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+         body {
+         font-family: 'Roboto', sans-serif;
+         background-color: #f8f9fa;  
+         }
+         .login-container {
+         max-width: 400px;
+         margin: 5% auto;
+         padding: 30px;
+         background-color: #ffffff;
+         border-radius: 5px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+         .logo {
+         display: flex;
+         justify-content: center;
+         margin-bottom: 30px;  
+         }
+         .logo img {
+         max-width: 200px;
+         }
+         .form-label {
+         font-weight: 500;    
+         }
+         .operation {
+         display: flex;
+         justify-content: space-between; /* Adjust alignment */
+         align-items: center; /* Align items vertically */
+         margin-top: 20px;  
+         }
+         footer {
+         text-align: center;
+         margin-top: 50px; 
+         }
+         .google-button {
+         display: inline-flex;
+         align-items: center;
+         }
+         .google-button img {
+         margin-bottom: 3px;
+         margin-right: 5px;   
+         }
+         .reset-password {
+         color: #007bff; /* Blue color for links */   
+         text-decoration: none; /* Remove underline */
+         }
+      </style>
+   </head>
+   <body>
+      <div class="login-container">
+         <div class="logo">
             <img src="/static/img/flyos.jpg" alt="FlyOS Dashboard"> 
-        </div>
-        <form action="/auth/login/otplogin" method="POST">
+         </div>
+         <form action="/auth/login/otplogin" method="POST">
             <div class="mb-3">
-                <label for="password" class="form-label"><small>{{ gettext("OTP has been sent to your device notification bar, please check your Android system notification bar and enter the OTP here, if no notification, please log in with your password and check the FlyOS Framework status") }}</small></label>
-                <label for="password" class="form-label">{{ gettext("One Time Password") }}</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="{{ gettext("Password") }}" autocomplete="off" required>
+               <label for="password" class="form-label"><small>{{ gettext("OTP has been sent to your device notification bar, please check your Android system notification bar and enter the OTP here, if no notification, please log in with your password and check the FlyOS Framework status") }}</small></label>
+               <label for="password" class="form-label">{{ gettext("One Time Password") }}</label>
+               <input type="password" name="password" class="form-control" id="password" placeholder="{{ gettext("Password") }}" autocomplete="off" required>
             </div>
             <div class="operation">
-                <button type="submit" class="btn btn-primary">{{ gettext("Login") }}</button>
-                <a href="/auth/login" class="reset-password">{{ gettext("Back to Password Login") }}</a>
+               <button type="submit" class="btn btn-primary">{{ gettext("Login") }}</button>
+               <a href="/auth/login" class="reset-password">{{ gettext("Back to Password Login") }}</a>
             </div>
-        </form>
-    </div>
-    <footer class="bg-light text-dark text-center p-3">
-        <small class="text-muted">  
-            {{ gettext("Click 'Login' to log in to your device Dashboard") }}
-            <br>
-            {{ gettext("Powered by: FlyOS for Android") }}
-            <br>
-            {{ gettext("This is the Linux Subsystem panel running on Android") }} 
-        </small>
-    </footer>
-    
-</body>
-
+         </form>
+      </div>
+      <footer class="bg-light text-dark text-center p-3">
+         <small class="text-muted">  
+         {{ gettext("Click 'Login' to log in to your device Dashboard") }}
+         <br>
+         {{ gettext("Powered by: FlyOS for Android") }}
+         <br>
+         {{ gettext("This is the Linux Subsystem panel running on Android") }} 
+         </small>
+      </footer>
+   </body>
 </html>

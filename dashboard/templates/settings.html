@@ -1,136 +1,129 @@
 <!doctype html>
 <html>
-<head>
-  <style>
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: #f5f5f5;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #ccc;
-        border-radius: 10px;
-        border: 3px solid #f5f5f5;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background-color: #aaa;
-    }
-</style>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-       <!-- Fonts -->
+   <head>
+      <style>
+         ::-webkit-scrollbar {
+         width: 12px;
+         }
+         ::-webkit-scrollbar-track {
+         background-color: #f5f5f5;
+         }
+         ::-webkit-scrollbar-thumb {
+         background-color: #ccc;
+         border-radius: 10px;
+         border: 3px solid #f5f5f5;
+         }
+         ::-webkit-scrollbar-thumb:hover {
+         background-color: #aaa;
+         }
+      </style>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Fonts -->
       <link rel="stylesheet" href="/static/css/font.css">
-         <meta charset="utf-8">
-         <title>{{ gettext("Settings") }}</title>
-     </head>
-     <body>
-       <nav class="navbar navbar-light bg-light">
+      <meta charset="utf-8">
+      <title>{{ gettext("Settings") }}</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
          <div class="container-fluid">
-           <span class="navbar-brand mb-0 h1">{{ gettext("Settings") }}</span>
+            <span class="navbar-brand mb-0 h1">{{ gettext("Settings") }}</span>
          </div>
-       </nav>
-
-       <div class="p-5 mb-4 bg-light rounded-3">
+      </nav>
+      <div class="p-5 mb-4 bg-light rounded-3">
          <div class="container-fluid py-5">
-           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Edit System Settings") }}</font></font></h1>
-           </a>
+            <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Edit System Settings") }}</font></font></h1>
+            </a>
          </div>
-       </div>
-</div>
-<form method="post" action="/dashboard/settings/updatepwd">
-  <div class="container mt-5">
-      <h3>{{ gettext("Change FlyOS password") }}</h3>
-      <input type="text" name="passwd" id="passwd" class="form-control" placeholder="{{ gettext("Enter your new password") }}" required><br>
-      <button class="btn btn-primary" type="submit">{{ gettext("Update") }}</button>
-      <br><br><br>
-  </div>
-  </form>
-  <form method="get" action="/settings/updateuserpwd">
-    <div class="container mt-5">
-        <h3>{{ gettext("Change Linux User password") }}</h3>
-        <input type="text" name="username" class="form-control" placeholder="{{ gettext("Enter Linux username (e.g: root)") }}" required><br>
-        <input type="text" name="passwd" class="form-control" placeholder="{{ gettext("Enter new password for this user") }}" required><br>
-        <button class="btn btn-primary" type="submit">{{ gettext("Update") }}</button>
-        <br><br><br>
-    </div>
-    </form>
-  <div class="container mt-5">
-    <form action="/settings/update_timezone" method="GET" class="form-inline" id="timezoneForm">
-        <h3>{{ gettext("Select a time zone:") }}</h3>
-        <p style="font-size: small;">{{ gettext("*FlyOS subsystem will not synchronize or update Android time zone") }}</p> 
-        <select name="timezone" id="offset" class="form-control mr-2">
-            <!-- options will be dynamically generated using JavaScript -->
-        </select>
-        <br>
-        <button type="submit" class="btn btn-primary">{{ gettext("Update") }}</button>
-    </form>
-</div>
-
-  <form method="post" action="/dashboard/settings">
-    <div class="container mt-5">
-        <h3>{{ gettext("Advanced System Settings") }}</h3>
-        <p><b><font color="red">{{ gettext("If you don't know what this is, please don't modify it or FlyOS will not boot properly. Please do not remove any variables or any part of the configuration!") }}</font></b></p>
-        <code><textarea type="text" name="conf" class="form-control" id="conf" rows="20" placeholder="{{ gettext("Write HTML content or paste HTML code here") }}" required>{{configfile_read}}</textarea></code><br>
-        <button class="btn btn-primary" type="submit">{{ gettext("Save (Reboot to apply changes)") }}</button>
-        <br>
-    </div>
-    </form>
-    <div class="container mt-5">
+      </div>
+      </div>
+      <form method="post" action="/dashboard/settings/updatepwd">
+         <div class="container mt-5">
+            <h3>{{ gettext("Change FlyOS password") }}</h3>
+            <input type="text" name="passwd" id="passwd" class="form-control" placeholder="{{ gettext("Enter your new password") }}" required><br>
+            <button class="btn btn-primary" type="submit">{{ gettext("Update") }}</button>
+            <br><br><br>
+         </div>
+      </form>
+      <form method="get" action="/settings/updateuserpwd">
+         <div class="container mt-5">
+            <h3>{{ gettext("Change Linux User password") }}</h3>
+            <input type="text" name="username" class="form-control" placeholder="{{ gettext("Enter Linux username (e.g: root)") }}" required><br>
+            <input type="text" name="passwd" class="form-control" placeholder="{{ gettext("Enter new password for this user") }}" required><br>
+            <button class="btn btn-primary" type="submit">{{ gettext("Update") }}</button>
+            <br><br><br>
+         </div>
+      </form>
+      <div class="container mt-5">
+         <form action="/settings/update_timezone" method="GET" class="form-inline" id="timezoneForm">
+            <h3>{{ gettext("Select a time zone:") }}</h3>
+            <p style="font-size: small;">{{ gettext("*FlyOS subsystem will not synchronize or update Android time zone") }}</p>
+            <select name="timezone" id="offset" class="form-control mr-2">
+               <!-- options will be dynamically generated using JavaScript -->
+            </select>
+            <br>
+            <button type="submit" class="btn btn-primary">{{ gettext("Update") }}</button>
+         </form>
+      </div>
+      <form method="post" action="/dashboard/settings">
+         <div class="container mt-5">
+            <h3>{{ gettext("Advanced System Settings") }}</h3>
+            <p><b><font color="red">{{ gettext("If you don't know what this is, please don't modify it or FlyOS will not boot properly. Please do not remove any variables or any part of the configuration!") }}</font></b></p>
+            <code><textarea type="text" name="conf" class="form-control" id="conf" rows="20" placeholder="{{ gettext("Write HTML content or paste HTML code here") }}" required>{{configfile_read}}</textarea></code><br>
+            <button class="btn btn-primary" type="submit">{{ gettext("Save (Reboot to apply changes)") }}</button>
+            <br>
+         </div>
+      </form>
+      <div class="container mt-5">
       <h3>{{ gettext("API Token") }}</h3>
       <p><b><font color="red">{{ gettext("API Token is as important as your password!") }}</font></b></p>
       <p>{{ gettext("API Token:") }} {{readtoken}}</p>
       <div class="row mt-4">
-        <div class="col-md-4">
-          <a href="/api/token/reset" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("Reset Token") }}</a>
-    </div>
-
-    <div class="container mt-5">
-      <h3>{{ gettext("System Update") }}</h3>
-      <div class="row mt-4">
-        <div class="col-md-4">
-          <a href="/dashboard/settings/sysupdate/main" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("System Update") }}</a>
-    </div>
-    </div>
-    </div>
-    <div class="container mt-5">
+      <div class="col-md-4">
+         <a href="/api/token/reset" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("Reset Token") }}</a>
+      </div>
+      <div class="container mt-5">
+         <h3>{{ gettext("System Update") }}</h3>
+         <div class="row mt-4">
+            <div class="col-md-4">
+               <a href="/dashboard/settings/sysupdate/main" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("System Update") }}</a>
+            </div>
+         </div>
+      </div>
+      <div class="container mt-5">
       <h3>{{ gettext("Languages:") }}</h3>
       <div class="row mt-4">
-        <a href="/change_language/en">English</a>
-        <a href="/change_language/es">Spanish</a>
-        <a href="/change_language/zh">Traditional Chinese</a>
-        <a href="/change_language/ja">Japanese</a>
-        <a href="/change_language/fr">French</a>
-    </div>
-
-<footer>
-<br>  
-<div class="alert alert-light" role="alert">
-{{ gettext("Powered by: FlyOS Subsystem") }}
-<br>  
-{{ gettext("Install Linux Subsystem on Android Device") }} 
-</div>
-</footer>
-<script src="/static/js/bootstrap.bundle.js"></script>
-<!-- Include moment.js -->
-<script src="/static/js/moment.min.js"></script>
-<!-- Include moment-timezone -->
-<script src="/static/js/moment-timezone-with-data-10-year-range.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var offsetSelect = document.getElementById('offset');
-      var timeZones = moment.tz.names();
-      timeZones.forEach(function(timeZone) {
-          var option = document.createElement('option');
-          option.value = timeZone;
-          option.text = timeZone;
-          offsetSelect.add(option); 
-      });
-  });
-  </script>  
-</body>
+         <a href="/change_language/en">English</a>
+         <a href="/change_language/es">Spanish</a>
+         <a href="/change_language/zh">Traditional Chinese</a>
+         <a href="/change_language/ja">Japanese</a>
+         <a href="/change_language/fr">French</a>
+      </div>
+      <footer>
+         <br>  
+         <div class="alert alert-light" role="alert">
+            {{ gettext("Powered by: FlyOS Subsystem") }}
+            <br>  
+            {{ gettext("Install Linux Subsystem on Android Device") }} 
+         </div>
+      </footer>
+      <script src="/static/js/bootstrap.bundle.js"></script>
+      <!-- Include moment.js -->
+      <script src="/static/js/moment.min.js"></script>
+      <!-- Include moment-timezone -->
+      <script src="/static/js/moment-timezone-with-data-10-year-range.min.js"></script>
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             var offsetSelect = document.getElementById('offset');
+             var timeZones = moment.tz.names();
+             timeZones.forEach(function(timeZone) {
+                 var option = document.createElement('option');
+                 option.value = timeZone;
+                 option.text = timeZone;
+                 offsetSelect.add(option); 
+             });
+         });
+      </script>  
+   </body>
 </html>

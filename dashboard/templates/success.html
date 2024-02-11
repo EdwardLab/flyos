@@ -1,50 +1,50 @@
 <!doctype html>
 <html>
-<head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-         <meta charset="utf-8">
-         <title>{{ gettext("Successful!") }}</title>
-     </head>
-     <body>
-       <nav class="navbar navbar-light bg-light">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <meta charset="utf-8">
+      <title>{{ gettext("Successful!") }}</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
          <div class="container-fluid">
-           <span class="navbar-brand mb-0 h1">{{ gettext("Successful!") }}</span>
+            <span class="navbar-brand mb-0 h1">{{ gettext("Successful!") }}</span>
          </div>
-       </nav>
-
-       <div class="p-5 mb-4 bg-light rounded-3">
+      </nav>
+      <div class="p-5 mb-4 bg-light rounded-3">
          <div class="container-fluid py-5">
-           <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Successfully!") }}</font></font></h1>
-           </a>
+            <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Successfully!") }}</font></font></h1>
+            </a>
          </div>
-       </div>
-</div>
-<div class="alert alert-success" role="alert">
-  <h4><p>{{info}}</p></h4> 
-</div>
-<div class="row mt-4">
-  <div class="col-md-4">
-    <button type="button" class="btn btn-primary btn-lg rounded-pill w-100" onclick="goBack()">Back</button>
-  </div>
-</div>
-<br>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
-
-<footer>  
-<div class="alert alert-light" role="alert">
-{{ gettext("Powered by:") }} FlyOS Subsystem  
-<br>  
-{{ gettext("Deploy Linux subsystem on your Android phone")}}
-<br>
-{{ gettext("Have a nice day :)") }}
-</div>
-</footer>
-<script src="/static/js/bootstrap.bundle.js"></script>
-</body>  
+      </div>
+      </div>
+      <div class="alert alert-success" role="alert">
+         <h4>
+            <p>{{info}}</p>
+         </h4>
+      </div>
+      <div class="row mt-4">
+         <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-lg rounded-pill w-100" onclick="goBack()">Back</button>
+         </div>
+      </div>
+      <br>
+      <script>
+         function goBack() {
+           window.history.back();
+         }
+      </script>
+      <footer>
+         <div class="alert alert-light" role="alert">
+            {{ gettext("Powered by:") }} FlyOS Subsystem  
+            <br>  
+            {{ gettext("Deploy Linux subsystem on your Android phone")}}
+            <br>
+            {{ gettext("Have a nice day :)") }}
+         </div>
+      </footer>
+      <script src="/static/js/bootstrap.bundle.js"></script>
+   </body>
 </html>

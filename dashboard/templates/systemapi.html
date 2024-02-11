@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>System API</title>
-  <script>
-    var source = null;
-
-    function startCommand() {
-      if (source !== null) {
-        source.close();
-      }
-      var command = document.getElementById('command').value;
-      var outputElement = document.getElementById('output');
-      outputElement.textContent = '';
-
-      source = new EventSource('/?command=' + encodeURIComponent(command));
-
-      source.onmessage = function(event) {
-        console.log(event.data);
-        outputElement.textContent += event.data + '\n';
-      };
-    }
-
-    function stopCommand() {
-      if (source !== null) {
-        source.close();
-        source = null;
-      }
-    }
-  </script>
-</head>
-<body>
-  <h1>System API</h1>
-  <div>
-    <input type="text" id="command" placeholder="Enter command">
-    <button onclick="startCommand()">Start</button>
-    <button onclick="stopCommand()">Stop</button>
-  </div>
-  <pre id="output">{{ command_output }}</pre>
-</body>
+   <head>
+      <title>System API</title>
+      <script>
+         var source = null;
+         
+         function startCommand() {
+           if (source !== null) {
+             source.close();
+           }
+           var command = document.getElementById('command').value;
+           var outputElement = document.getElementById('output');
+           outputElement.textContent = '';
+         
+           source = new EventSource('/?command=' + encodeURIComponent(command));
+         
+           source.onmessage = function(event) {
+             console.log(event.data);
+             outputElement.textContent += event.data + '\n';
+           };
+         }
+         
+         function stopCommand() {
+           if (source !== null) {
+             source.close();
+             source = null;
+           }
+         }
+      </script>
+   </head>
+   <body>
+      <h1>System API</h1>
+      <div>
+         <input type="text" id="command" placeholder="Enter command">
+         <button onclick="startCommand()">Start</button>
+         <button onclick="stopCommand()">Stop</button>
+      </div>
+      <pre id="output">{{ command_output }}</pre>
+   </body>
 </html>

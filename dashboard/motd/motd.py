@@ -59,7 +59,6 @@ f'''
 The FlyOS Project
 Version: {tools.get_version()}
 * Documentation and Help: https://flyos.us/
-* Report bugs and suggestions: https://github.com/xingyujie/flyos/issues/
 
 Network Information:
 LAN IP address: {ip_address}   

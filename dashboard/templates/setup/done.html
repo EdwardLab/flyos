@@ -1,102 +1,92 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        @keyframes firework {
-            0% {
-                transform: scale(1) translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0.1) translateY(-1000px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: firework 3s ease-out;
-        }
-
-        .red {
-            background-color: #FF4136;
-        }
-
-        .orange {
-            background-color: #FF851B;
-        }
-
-        .yellow {
-            background-color: #FFDC00;
-        }
-
-        .pink {
-            background-color: #FF1493;
-        }
-
-        .purple {
-            background-color: #9B30FF;
-        }
-    </style>
-    <title>{{ gettext("Congratulations!") }}</title>
-</head>
-<body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+         @keyframes firework {
+         0% {
+         transform: scale(1) translateY(0) rotate(0deg);
+         opacity: 1;
+         }
+         100% {
+         transform: scale(0.1) translateY(-1000px) rotate(720deg);
+         opacity: 0;
+         }
+         }
+         .firework {
+         position: absolute;
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         animation: firework 3s ease-out;
+         }
+         .red {
+         background-color: #FF4136;
+         }
+         .orange {
+         background-color: #FF851B;
+         }
+         .yellow {
+         background-color: #FFDC00;
+         }
+         .pink {
+         background-color: #FF1493;
+         }
+         .purple {
+         background-color: #9B30FF;
+         }
+      </style>
+      <title>{{ gettext("Congratulations!") }}</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">{{ gettext("Congratulations") }}</span>
-        </div>
-    </nav>
-
-    <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5">
+         </div>
+      </nav>
+      <div class="p-5 mb-4 bg-light rounded-3">
+         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">{{ gettext("Congratulations on completing all the setup!") }}</h1>
-        </div>
-    </div>
-
-    <div class="container mt-5">
-        <div class="alert alert-success" role="alert">
+         </div>
+      </div>
+      <div class="container mt-5">
+         <div class="alert alert-success" role="alert">
             <h2>{{ gettext("🚀Congratulations!") }}</h2>
             <p>{{ gettext("You've successfully completed all the setup.") }}</p>
-        </div>
-        
-        <h3>{{ gettext("Unlock your dashboard now!") }}</h3>
-        <div class="row mt-4">
+         </div>
+         <h3>{{ gettext("Unlock your dashboard now!") }}</h3>
+         <div class="row mt-4">
             <div class="col-md-4">
-                <a href="/" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("Take me to the dashboard") }}</a>
+               <a href="/" class="btn btn-primary btn-lg rounded-pill w-100">{{ gettext("Take me to the dashboard") }}</a>
             </div>
-        </div>
-    </div>
-
-    <script src="/static/js/bootstrap.bundle.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const container = document.querySelector('body');
-
-            function createFirework() {
-                const firework = document.createElement('div');
-                firework.classList.add('firework');
-
-                const colors = ['red', 'orange', 'yellow', 'pink', 'purple'];
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-                firework.classList.add(randomColor);
-                firework.style.left = Math.random() * window.innerWidth + 'px';
-                firework.style.animationDuration = Math.random() * 2 + 1 + 's';
-                container.appendChild(firework);
-
-                setTimeout(() => {
-                    firework.remove();
-                }, 3000);
-            }
-
-            setInterval(createFirework, 300);
-        });
-    </script>
-</body>  
+         </div>
+      </div>
+      <script src="/static/js/bootstrap.bundle.js"></script>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             const container = document.querySelector('body');
+         
+             function createFirework() {
+                 const firework = document.createElement('div');
+                 firework.classList.add('firework');
+         
+                 const colors = ['red', 'orange', 'yellow', 'pink', 'purple'];
+                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
+         
+                 firework.classList.add(randomColor);
+                 firework.style.left = Math.random() * window.innerWidth + 'px';
+                 firework.style.animationDuration = Math.random() * 2 + 1 + 's';
+                 container.appendChild(firework);
+         
+                 setTimeout(() => {
+                     firework.remove();
+                 }, 3000);
+             }
+         
+             setInterval(createFirework, 300);
+         });
+      </script>
+   </body>
 </html>

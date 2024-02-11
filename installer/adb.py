@@ -9,8 +9,8 @@ def runsys(shell):
 def runsys_root(shell):
     os.system("adb shell su -c " + shell)
 def popen_sys(shell):
-    result = subprocess.run(["adb", "shell"] + shell.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    return result.stdout
+    result = os.popen("adb shell " + shell).read()
+    return result
 def adb_list():
     devices = os.popen("adb devices").read()
     return devices
@@ -64,10 +64,10 @@ def check_data_rw():
         return False
 
 def check_system_rw():
-    popen_sys('su -c "mount -o rw,remount /data"')
-    popen_sys('mount -o rw,remount /')
-    popen_sys('mount -o rw,remount /system')
-    popen_sys('adb shell su -c "mount -o rw /dev/block/bootdevice/by-name/system /system"')
+    popen_sys('su -c "mount -o rw,remount /data > /dev/null 2>&1 &"')
+    popen_sys('su -c "mount -o rw,remount / > /dev/null 2>&1 &"')
+    popen_sys('su -c "mount -o rw,remount /system > /dev/null 2>&1 &"')
+    popen_sys('su -c "mount -o rw /dev/block/bootdevice/by-name/system /system > /dev/null 2>&1 &"')
     try:
         result = subprocess.run(['adb', 'shell', 'su', '-c', 'touch', '/system/app/test'], capture_output=True, text=True, check=True)
         subprocess.run(['adb', 'shell', 'rm', '/system/app/test'], capture_output=True, text=True)
@@ -115,7 +115,7 @@ def get_kernel_version():
     return result.stdout.strip()
 def init_install():
     os.system('adb root')
-    popen_sys('su -c "mount -o rw,remount /data"')
+    popen_sys('mount -o rw,remount /data')
     popen_sys('mount -o rw,remount /')
 def clear_env():
     current_directory = os.getcwd()
@@ -123,7 +123,7 @@ def clear_env():
     files = os.listdir(current_directory)
     # Filter files with .tar.gz or .apk extensions and delete them
     for file in files:
-        if file.endswith('.tar.gz') or file.endswith('.apk'):
+        if file.endswith('.tar.gz') or file.endswith('.apk') or file.endswith('.gz'):
             file_path = os.path.join(current_directory, file)
             os.remove(file_path)
             print(f"Deleted: {file_path}")

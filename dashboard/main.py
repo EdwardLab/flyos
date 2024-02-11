@@ -18,9 +18,31 @@ from datetime import datetime
 import random
 import shutil
 from flask_login.config import USE_SESSION_FOR_NEXT
+from queue import Queue
+from threading import Thread
+output_queue = Queue()
+
+
+def execute_command(command):
+    process = subprocess.Popen(
+        command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True
+    )
+    for line in iter(process.stdout.readline, ''):
+        output_queue.put(line.rstrip())
+    process.stdout.close()
+    process.wait()
+
+    output_queue.put(None)
+
+
+def generate_output():
+    for output in iter(output_queue.get, None):
+        yield "{}\n".format(output)
+        output_queue.task_done()
+
 def get_server_ip():
     if server_ip_get_method == 'url_root':
-        return request.url_root.rstrip(':').rsplit('//', 1)[-1]
+        return request.url_root.split('//', 1)[-1].split(':')[0]
     elif server_ip_get_method == 'host_spilt':
         return request.host.split(':')[0]
     else:
@@ -75,7 +97,8 @@ app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/flyos/translations'
 @app.route('/change_language/<language>', methods=['GET'])
 def change_language(language):
     if language in ['en', 'es', 'zh', 'ja', 'fr']: 
-        response = make_response("Language set to: " + language)
+        response_msg = "Language set to: " + language
+        response = make_response(render_template('success.html', info=response_msg))
         response.set_cookie('locale', language)
         return response
     else:
@@ -136,14 +159,9 @@ def panel():
     else:
         desktop_mode = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">'
     
-    if check_country() == 'false':
-        offline_notice = 'Offline mode'
-    else:
-        offline_notice = ''
     hostname = get_server_ip()
     return render_template('./panel.html',
     desktop_mode=desktop_mode, 
-    offline_notice=offline_notice, 
     run_system=run_system, 
     formatted_date=formatted_date,
     battery_remaining=battery_remaining,
@@ -182,22 +200,7 @@ def overview():
     else:
         framework_status = 'Stopped'
 
-    try:
-        if check_country() == 'false':
-            not_available = '''
-<div class="alert alert-danger" role="alert">
-    WARNING! FlyOS Cloud service is currently not available in your country or region. As a result, offline mode will be enabled, which means you will not have access to system updates, networking services, or FlyOS framework services, etc.<br>
-    However, FlyOS is an open source software distributed under the GPL-3.0 LICENSE. This means you are free to use, modify, and distribute the software according to the terms of the license.<br>
-    Please note that the availability of FlyOS Cloud service and offline mode may vary based on your location and future updates. For the most accurate and up-to-date information, refer to our official documentation or contact our support team.<br>
-</div>
-            '''
-        else:
-            not_available = ''
-    except Exception as e:
-        print("Exception in overview:", str(e))
-        not_available = ''
-
-    return render_template('./overview.html', notice=notice, storage=storage, ssh=ssh, vnc=vnc, kernel=kernel, framework_status=framework_status, run_system=run_system, battery_remaining=battery_remaining, not_available=not_available)
+    return render_template('./overview.html', notice=notice, storage=storage, ssh=ssh, vnc=vnc, kernel=kernel, framework_status=framework_status, run_system=run_system, battery_remaining=battery_remaining)
 @app.route('/dashboard/vnc/view')
 @login_required
 def vnc_page():
@@ -409,7 +412,7 @@ def login():
         if log_message:
             current_time = datetime.now()
             formatted_time = current_time.strftime("%b %d %H:%M")
-            alert_command = f'adb shell "su -lp 2000 -c \\"cmd notification post -S bigtext -t \'FlyOS Login Security Alert\' \'{random.randint(10000, 100000)}\' \'A device has successfully logged into the FlyOS dashboard at {formatted_time}, if you are not operating, please change the password in settings, (This message can be disabled in advanced settings)\'\\""'
+            alert_command = f'adb shell "su -lp 2000 -c \\"cmd notification post -S bigtext -t \'FlyOS Login Security Alert\' \'{random.randint(10000, 100000)}\' \'A device has successfully logged into the FlyOS dashboard at {formatted_time}, if you are not logged in, please change the password in settings ASAP, (This message can be disabled in advanced settings)\'\\""'
             os.system(alert_command)
         password = request.form.get('password')
         if password == '':
@@ -626,6 +629,17 @@ def api_send_android_msg():
     }
 
     return jsonify(response_data), 200
+
+@app.route('/api/system/cmd', endpoint='api_sys_cmd_endpoint')
+@require_token
+def api_sys_cmd():
+    command = request.args.get('command')
+    if command:
+        command_thread = Thread(target=execute_command, args=(command,))
+        command_thread.start()
+
+    return Response(generate_output(), mimetype='text/event-stream')
+
 # reset token
 def generate_random_token(length=16):
     alphabet = string.ascii_letters + string.digits

@@ -7,7 +7,6 @@
 # Basic configuration
 hostname = "flyos"   # Linux hostname
 show_motd = True   # Display device information on FlyOS bash login
-notavailable_tips = False   # Enable GEOIP to detect FlyOS cloud service availability; disable to reduce dashboard loading time
 log_message = True   # Send notification messages on dashboard login or security operations; disable to stop notifications
 
 # SSL conf (for gunicorn)
@@ -21,9 +20,8 @@ dashboard_server = 'dev'
 server_ip_get_method = 'host_spilt' # iframe gets server IP, Options: host_spilt, url_root. url_root is recommended, especially reverse proxy
 jupyter_host_addr = '0.0.0.0'
 novnc_proxy_addr = '0.0.0.0'
-
-# dashboard configuration
-dashboard_menu_timeout = 10000
+file_browser_addr = '0.0.0.0'
+file_browser_listen_dir = '/'
 
 # Port configuration
 server_port = 5000  # Dashboard listening port
@@ -33,6 +31,7 @@ code_server_port = 5004
 android_terminal_port = 5005
 jupyter_notebook_port = 5996
 android_screen_port_web = 5007
+file_browser_port = 5008
 
 # VNC
 android_screen_port_vnc = 3
@@ -50,7 +49,8 @@ boot_ssh = True   # SSH and WebSSH Service
 boot_vnc = True   # VNC and WebVNC Service
 boot_code_server = True   # Application service (e.g., VSCode and Jupyter Notebook)
 boot_jupyter = True   # Jupyter service
+boot_file_browser = True # File Browser Service
+boot_runscripts = True # Execute the script under /boot/scripts directory at boot startup
 
 # Developer options
 dev_server_debug = True
-#, ssl_context=("/flyosext/ssl/default.crt", "/flyosext/ssl/default.key")'

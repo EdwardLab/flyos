@@ -1,4 +1,6 @@
 #!/bin/bash
+apt update
+apt upgrade -y
 apt clean
 apt autoremove -y
 rm -rf logs/*
@@ -15,3 +17,8 @@ rm -rf /root/.vnc/*.pid
 rm -rf /var/log/*
 rm -rf /var/tmp/*
 rm -rf /tmp/*
+rm -rf /flyos/nohup.out
+rm -rf /boot/scripts/*
+rm -rf /flyos/.ipynb_checkpoints
+rm -rf /root/.local/share/code-server
+rm -rf /root/.local/share/jupyter

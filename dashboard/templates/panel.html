@@ -162,40 +162,40 @@
                               </a>
                            </li>
                         </ul>
-                        <li class="nav-item">
-                           <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-wifi"></i>
-                              <p>
-                                 {{ gettext('Network Manager') }}
-                                 <i class="right fas fa-angle-left"></i>
-                              </p>
-                           </a>
-                           <ul class="nav nav-treeview">
-                              <li class="nav-item" id="usbTetheringOption">
-                                 <a href="#" onclick="loadPage(this, '/dashboard/androidmgr/usb_tethering'); return false;" class="nav-link">
-                                    <i class="nav-icon fas fa-plug"></i>
-                                    <p>
-                                       {{ gettext('USB Tethering') }}
-                                    </p>
-                                 </a>
-                              </li>
-                              <li class="nav-item">
-                                 <a href="#" onclick="loadPage(this, '/dashboard/network/vnet'); return false;" class="nav-link">
-                                    <i class="nav-icon fas fa-ethernet"></i>
-                                    <p>
-                                       {{ gettext('Virtual Network Adapter') }}
-                                    </p>
-                                 </a>
-                              </li>
-                              <li class="nav-item">
-                                 <a href="#" onclick="loadPage(this, '/dashboard/network/cloudflare'); return false;" class="nav-link">
-                                    <i class="nav-icon fas fa-cloud"></i>
-                                    <p>
-                                       {{ gettext('Cloudflare Zero Trust') }}
-                                    </p>
-                                 </a>
-                              </li>
-                           </ul>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                           <i class="nav-icon fas fa-wifi"></i>
+                           <p>
+                              {{ gettext('Network Manager') }}
+                              <i class="right fas fa-angle-left"></i>
+                           </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                           <li class="nav-item" id="usbTetheringOption">
+                              <a href="#" onclick="loadPage(this, '/dashboard/androidmgr/usb_tethering'); return false;" class="nav-link">
+                                 <i class="nav-icon fas fa-plug"></i>
+                                 <p>
+                                    {{ gettext('USB Tethering') }}
+                                 </p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a href="#" onclick="loadPage(this, '/dashboard/network/vnet'); return false;" class="nav-link">
+                                 <i class="nav-icon fas fa-ethernet"></i>
+                                 <p>
+                                    {{ gettext('Virtual Network Adapter') }}
+                                 </p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a href="#" onclick="loadPage(this, '/dashboard/network/cloudflare'); return false;" class="nav-link">
+                                 <i class="nav-icon fas fa-cloud"></i>
+                                 <p>
+                                    {{ gettext('Cloudflare Zero Trust') }}
+                                 </p>
+                              </a>
+                           </li>
+                        </ul>
                      <li class="nav-item">
                         <a href="#" class="nav-link">
                            <i class="nav-icon fas fa-tablet"></i>
@@ -213,7 +213,6 @@
                                  </p>
                               </a>
                            </li>
-
                            <li class="nav-item" id="screenMirroringOption">
                               <a href="#" onclick="loadPage(this, '/dashboard/androidmgr/android_screen'); return false;" class="nav-link">
                                  <i class="nav-icon fas fa-desktop"></i>
@@ -304,7 +303,6 @@
          <!-- Content Wrapper. Contains page content -->
          <div class="content-wrapper">
             <div class="content-header">
-               <h5>{{offline_notice | safe}}</h5>
                <div class="container-fluid">
                   <div class="row mb-2">
                   </div>
@@ -329,7 +327,7 @@
          <!-- Main Footer -->
          <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-               <b>{{ gettext('FlyOS Dashboard') }} {{offline_notice | safe}}</b> {{ gettext('Open in') }} <a href="#" onclick="openPageInNewTab()">{{ gettext('New Tab') }}</a> <a href="#" onclick="toggleFullscreen()">{{ gettext('Fullscreen') }}</a>
+               <b>{{ gettext('FlyOS Dashboard') }}</b> {{ gettext('Open in') }} <a href="#" onclick="openPageInNewTab()">{{ gettext('New Tab') }}</a> <a href="#" onclick="toggleFullscreen()">{{ gettext('Fullscreen') }}</a>
             </div>
          </footer>
       </div>

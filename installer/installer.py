@@ -28,7 +28,7 @@ def ui():
 VER 3.1 Preview
 1. Run the Device Requirements Test
 2. Deploy and install the FlyOS subsystem
-3. View EULA
+3. LICENSE
 4. Device Shell
     """)
     ask = input('Enter an option: ')
@@ -148,6 +148,7 @@ def install():
         if os.path.exists("rootfs.tar.gz"):
             response = input("rootfs.tar.gz already exists. Do you want to skip downloading it? (y/n) (y = skip): ")
             if response.lower() == 'n':
+                clear_env()
                 down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/gd_latest')
                 print('Downloading from Google Server...')
                 output = "rootfs.tar.gz"
@@ -157,6 +158,14 @@ def install():
             if response.lower() == 'y':
                 rootfs_filename = "rootfs.tar.gz"
                 rootfs_path = "rootfs.tar.gz"
+        else:
+            rootfs_path = "rootfs.tar.gz"
+            down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/gd_latest')
+            print('Downloading from Google Server...')
+            output = "rootfs.tar.gz"
+            gdown.download(down_url, output, quiet=False, fuzzy=True)
+            rootfs_filename = output
+            rootfs_path = output
 
     elif ask == '2':
         if os.path.exists("rootfs.tar.gz"):
@@ -175,6 +184,7 @@ def install():
             if response.lower() == 'n':
                 down_url = input('Enter the URL: ')
                 wget.download(down_url, 'rootfs.tar.gz')
+                rootfs_filename = "rootfs.tar.gz"
                 rootfs_path = 'rootfs.tar.gz'
             elif response.lower() == 'y':
                 rootfs_filename = "rootfs.tar.gz"
@@ -185,6 +195,7 @@ def install():
         else:
             down_url = input('Enter the URL: ')
             wget.download(down_url, 'rootfs.tar.gz')
+            rootfs_filename = "rootfs.tar.gz"
             rootfs_path = 'rootfs.tar.gz'
 
     elif ask == '4':
@@ -239,22 +250,23 @@ def install():
     print("[START] STEP-1 Create and copy basic FlyOS files and Install Container Tools")
     runsys_root('mkdir /data/flyos')
     runsys_root('mkdir -p /data/local/flyos/rootfs')
-    os.system('adb push ' + tools_path + ' /data/flyos')
-    runsys_root(f'tar -zxvf /data/flyos/{tools_filename} -C /data/flyos')
+    os.system('adb push ' + tools_path + ' /sdcard')
+    runsys_root(f'tar -zxvf /sdcard/{tools_filename} -C /data/flyos')
     runsys_root('chmod +x /data/flyos/bin/*')
     runsys_root('chmod +x /data/flyos/*')
-    runsys_root(f'rm -rf /data/flyos/{tools_filename}')
+    runsys_root(f'rm -rf /sdcard/{tools_filename}')
     console.print('[*] Done STEP-1!', style='green')
     print("[START] STEP-2 Copy and Install rootfs")
-    os.system('adb push ' + rootfs_path + ' /data/local/flyos/rootfs')
-    runsys_root(f'tar -zxvf /data/local/flyos/rootfs/{rootfs_filename} -C /data/local/flyos/rootfs/')
-    runsys_root(f'rm -rf /data/local/flyos/rootfs/{rootfs_filename}')
+    os.system('adb push ' + rootfs_path + ' /sdcard')
+    runsys_root(f'tar -zxvf /sdcard/{rootfs_filename} -C /data/local/flyos/rootfs/')
+    runsys_root(f'rm -rf /sdcard/{rootfs_filename}')
     console.print('[*] Done STEP-2!', style='green')
     print("[START] STEP-3 Copy and Install FlyOS Manager")
     adb_install(manager_path)
     if install_manager_system == True:
         runsys_root('mkdir /system/app/FlyOSManager')
-        os.system('adb push ' + manager_path + ' /system/app/FlyOSManager')
+        os.system('adb push ' + manager_path + ' /sdcard')
+        runsys_root(f'mv /sdcard/{manager_filename} /system/app/FlyOSManager/FlyOSManager.apk')
     console.print('[*] Done STEP-3!', style='green')
     console.print('[*] STEP-4 Set up system environment and update FlyOS software', style='green')
     os.system("adb shell sh /data/flyos/bin/flyos -c 'apt update'")

@@ -5,7 +5,6 @@ os.system("pkill python3")
 
 # Terminate specific Python scripts
 os.system("pkill -f 'python3 /flyos/main.py'")
-os.system("pkill -f 'python3 /flyos/systemapi.py'")
 
 # Terminate processes running ttyd and stopvnc_1080
 os.system("pkill -f 'ttyd -p 5002 login'")

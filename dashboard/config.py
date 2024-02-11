@@ -7,7 +7,6 @@
 # Basic configuration
 hostname = "flyos"   # Linux hostname
 show_motd = True   # Display device information on FlyOS bash login
-notavailable_tips = False   # Enable GEOIP to detect FlyOS cloud service availability; disable to reduce dashboard loading time
 log_message = True   # Send notification messages on dashboard login or security operations; disable to stop notifications
 
 # SSL conf (for gunicorn)
@@ -18,7 +17,7 @@ ssl_key_path = '/flyosext/ssl/default.key'
 # Server configuration
 dashboard_host_addr = '0.0.0.0' # Allows all devices (0.0.0.0), local only (127.0.0.1), or specify allowed IP address
 dashboard_server = 'dev'
-server_ip_get_method = 'host_spilt' # iframe gets server IP, Options: host_spilt, url_root. url_root is recommended, especially reverse proxy
+server_ip_get_method = 'url_root' # iframe gets server IP, Options: host_spilt, url_root. url_root is recommended, especially reverse proxy
 jupyter_host_addr = '0.0.0.0'
 novnc_proxy_addr = '0.0.0.0'
 file_browser_addr = '0.0.0.0'
@@ -55,4 +54,3 @@ boot_runscripts = True # Execute the script under /boot/scripts directory at boo
 
 # Developer options
 dev_server_debug = True
-#, ssl_context=("/flyosext/ssl/default.crt", "/flyosext/ssl/default.key")'

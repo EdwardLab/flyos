@@ -1,2 +1,0 @@
-command=$@
-/data/flyos/bin/busybox chroot "/data/local/flyos/rootfs" /bin/bash -c "export PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH; $command"

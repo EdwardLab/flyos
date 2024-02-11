@@ -135,18 +135,6 @@ def battery_status():
     except:
         return 'Unknown'
 
-def check_country():
-    timeout = 10
-    if notavailable_tips == False:
-        result = 'true'
-    else:
-        try:
-            url = 'http://geoip.digitalplat.org/api/check-country'
-            response = requests.get(url, timeout=timeout)
-            result = response.text
-            return result
-        except Exception as e:
-            print("Exception in check_country:", str(e))
 def get_local_ip():
     try:
         interfaces = ni.interfaces()

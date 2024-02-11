@@ -29,7 +29,6 @@ if boot_dashboard:
     if dashboard_server == 'dev':
         os.system("""
         nohup python3 /flyos/main.py >> /flyos/logs/flyos_main.log 2>&1 &
-        nohup python3 /flyos/systemapi.py >> /flyos/logs/flyos_systemapi.log 2>&1 &
         """)
     if dashboard_server == 'gunicorn':
         if server_enable_ssl:
