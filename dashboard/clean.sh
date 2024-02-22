@@ -24,5 +24,5 @@ rm -rf /root/.local/share/code-server
 rm -rf /root/.local/share/jupyter
 echo > /flyos/files/token/token
 echo root:flyospwd | chpasswd
-echo flyos:flyospwd | chpasswd
+echo flyos:userpassword | chpasswd
 cp /flyos/config.py /flyos/files/backup/config.py
