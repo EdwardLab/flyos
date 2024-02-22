@@ -9,15 +9,15 @@ hostname = "flyos"   # Linux hostname
 show_motd = True   # Display device information on FlyOS bash login
 log_message = True   # Send notification messages on dashboard login or security operations; disable to stop notifications
 
-# SSL conf (for gunicorn)
-server_enable_ssl = True
+# SSL conf (for gunicorn only)
+server_enable_ssl = False
 ssl_cert_path = '/flyosext/ssl/default.crt'
 ssl_key_path = '/flyosext/ssl/default.key'
 
 # Server configuration
 dashboard_host_addr = '0.0.0.0' # Allows all devices (0.0.0.0), local only (127.0.0.1), or specify allowed IP address
-dashboard_server = 'dev'
-server_ip_get_method = 'host_spilt' # iframe gets server IP, Options: host_spilt, url_root. url_root is recommended, especially reverse proxy
+dashboard_server = 'dev' # dev or gunicorn, only gunicorn support SSL
+server_ip_get_method = 'url_root' # iframe gets server IP, Options: host_spilt, url_root. url_root is recommended, especially reverse proxy
 jupyter_host_addr = '0.0.0.0'
 novnc_proxy_addr = '0.0.0.0'
 file_browser_addr = '0.0.0.0'

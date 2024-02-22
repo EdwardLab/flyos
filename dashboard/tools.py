@@ -8,6 +8,8 @@ from sysconf import *
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import time
+import secrets
+import string
 PASSWORDS_FILE = "/flyos/files/pwd.conf"
 def check_password(password):
     with open(PASSWORDS_FILE, "r") as file:
@@ -175,3 +177,12 @@ def launch_linux_mode():
     logs_open_read = logs_open.read()
     logs_open.close()
     return logs_open_read
+def gen_newtoken():
+    def generate_random_token(length=16):
+        alphabet = string.ascii_letters + string.digits
+        token = ''.join(secrets.choice(alphabet) for _ in range(length))
+        return token
+
+    random_token = generate_random_token(20)
+    with open('/flyos/files/token/token', 'w') as tokenfile:
+        tokenfile.write(random_token)

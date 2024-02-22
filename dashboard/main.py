@@ -579,6 +579,7 @@ def setup_syspwd():
 @login_required
 @check_setup
 def setup_done():
+    gen_newtoken()
     os.system('touch /flyos/files/setup/setup_lock')
     return render_template('./setup/done.html')
 
