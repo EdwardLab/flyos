@@ -28,7 +28,7 @@ def ui():
 VER 3.1 Preview
 1. Run the Device Requirements Test
 2. Deploy and install the FlyOS subsystem
-3. LICENSE
+3. Uninstall and remove FlyOS
 4. Device Shell
     """)
     ask = input('Enter an option: ')
@@ -36,6 +36,8 @@ VER 3.1 Preview
         device_test()
     if ask == '2':
         install()
+    if ask == '3':
+        uninstall()
     if ask == '4':
         device_shell()
     
@@ -275,10 +277,41 @@ def install():
     clear_env()
     console.print('Almost Done! Do you want to reboot your device before start FlyOS? for final installation (Recommended), If not, please manually restart your device before start FlyOS for the first time (y/n)')
     if input('Enter an option: ') == 'y':
-        runsys_root('reboot')
+        runsys_root('svc power reboot')
         console.print('You can start FlyOS after reboot!', style='green')
     else:
         console.print('Please manually restart your device before start FlyOS for the first time', style='green')
-    console.print('Installation completed! Enjoy FlyOS! A Linux Subsystem for your Android device! Visit: http://127.0.0.1:5000 on your device after started', style='green')
+    console.print('Installation completed! Enjoy FlyOS! A Linux Subsystem for your Android device! Visit: http://127.0.0.1:5000 on your device after started FlyOS on FlyOS Manager', style='green')
+def uninstall():
+    print("Checking Device")
+    print(adb_list())
+    if device_check() == False:
+        console.print('Sorry, your device is not detected, please reconnect the USB cable, replace the data cable, Or check if USB debugging is enabled',style='red')
+        exit_installer()
+    if popen_sys('[ -d /data/flyos ] && echo "True" || echo "False"') == "False":
+        console.print('FlyOS is not installed on your device, Exiting', style='red')
+        exit_installer()
+    console.print('Do you really want to uninstall and remove FlyOS from your device? This action CAN NOT undone', style='yellow')
+    input('Enter to continue')
+    console.print('All data in FlyOS will be removed and lost, including applications, files, user data, and configurations. Please back up your data before uninstalling and removing.', style='yellow')
+    input('Enter to continue')
+    console.print('WARNING: Please DO NOT use your device during uninstalling, and DO NOT disconnect the USB cable during the uninstall process, otherwise it may cause damage to your device, Even damage the Android system·', style='yellow')
+    input('Enter to continue')
+    console.print('Again, do you really want to uninstall and remove FlyOS from your device? This action CAN NOT undone(y/n)', style='yellow')
+    if input('Enter an option: ') == 'y':
+        console.print('Please make sure FlyOS has compeltely stopped and exited before uninstall, If you are not sure, Please reboot your device before uninsall', style='yellow')
+        if input('Enter "yes" to reboot device (make sure FlyOS subsystem has compeltely stopped), Enter "no" to continue without reboot: ') == 'yes':
+            runsys_root('svc power reboot')
+            console.print('Please wait for the device to restart, once device restarted, then press Enter', style='yellow')
+            input('Enter to continue uninstall')
+    # Uninstall part
+        console.print('Uninstalling FlyOS subsystem... Please wait', style='yellow')
+        runsys_root('rm -rf /data/flyos')
+        runsys_root('rm -rf /data/local/flyos')
+        runsys_root('pm uninstall org.flyos.manager')
+        runsys_root('rm -rf /system/app/FlyOSManager')
+        console.print('FlyOS has been uninstalled and removed from your device', style='green')
+    else:
+        sys.exit()
 if __name__ == '__main__':
     ui()
