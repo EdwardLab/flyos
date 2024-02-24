@@ -219,6 +219,7 @@ def install():
     if ask == '1':
         down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/tools_sf_latest')
         wget.download(down_url, 'tools.tar.gz')
+        print()
         tools_path = 'tools.tar.gz'
         tools_filename = 'tools.tar.gz'
     elif ask == '2':
@@ -236,6 +237,7 @@ def install():
     if ask == '1':
         down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/manager_sf_latest')
         wget.download(down_url, 'manager.apk')
+        print()
         manager_path = 'manager.apk'
         manager_filename = 'manager.apk'
     elif ask == '2':
