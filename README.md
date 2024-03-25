@@ -4,7 +4,7 @@
   <img src="./dashboard/static/img/flyos.jpg" alt="flyos_logo" width="20%" height="20%">
 </p>
 
-## Preview Screenshots Under Development
+## Preview Screenshots (Now ready to install!)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="./imgs/dashboard1.png" alt="flyos_preview" width="40%" height="40%" style="margin: 5px;">
