@@ -25,24 +25,20 @@
             <p>{{info}}</p>
          </h4>
       </div>
+      <button type="button" class="btn btn-primary rounded-pill w-100" onclick="goBack()">Back</button>
       <footer>
          <div class="alert alert-light" role="alert">
             {{ gettext("Powered by:") }} FlyOS Subsystem
             <br>
             {{ gettext("Deploy Linux subsystem on your Android phone") }}
          </div>
-         <div class="row mt-4">
-            <div class="col-md-4">
-               <button type="button" class="btn btn-primary btn-lg rounded-pill w-100" onclick="goBack()">Back</button>
-            </div>
-         </div>
-         <script>
-            function goBack() {
-              window.history.back();
-            }
-         </script>
          <br>
       </footer>
+      <script>
+         function goBack() {
+           window.history.back();
+         }
+      </script>
       <script src="/static/js/bootstrap.bundle.js"></script>
    </body>
 </html>

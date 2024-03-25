@@ -32,14 +32,16 @@ android_terminal_port = 5005
 jupyter_notebook_port = 5996
 android_screen_port_web = 5007
 file_browser_port = 5008
+wine_port_web = 5009
 
 # VNC
 android_screen_port_vnc = 3
 android_screen_vnc_conf = '-geometry 1280x720 -xstartup /flyosext/android/scrcpy.sh -localhost no'
 vnc_default_port = 1
 vnc_1920x1080_port = 2
-vnc_default_geometry = '1920x1080'
+vnc_default_geometry = '1280x720'
 vnc_default_localhost = 'no'
+wine_port_vnc = 4
 
 # Boot configuration (services on FlyOS boot)
 boot_default_vnc = True

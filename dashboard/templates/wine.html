@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+   <head>
+    <link rel="stylesheet" href="/static/css/font.css">
+      <style>
+         ::-webkit-scrollbar {
+         width: 12px;
+         }
+         ::-webkit-scrollbar-track {
+         background-color: #f5f5f5;
+         }
+         ::-webkit-scrollbar-thumb {
+         background-color: #ccc;
+         border-radius: 10px;
+         border: 3px solid #f5f5f5;
+         }
+         ::-webkit-scrollbar-thumb:hover {
+         background-color: #aaa;
+         }
+      </style>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <title>{{ gettext("Windows Apps (Wine)") }}</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext("Windows Apps (Wine)") }}</span>
+         </div>
+      </nav>
+      <div class="container-main p-5 mb-4 bg-light rounded-3">
+         <div class="container py-5">
+            <h1 class="display-5 fw-bold">{{ gettext("Windows Apps (Wine)") }}</h1>
+            <form method="POST" action="/dashboard/apps/wine">
+               <div class="mb-3">
+                  <label for="bits" class="form-label">{{ gettext("WINE Bits") }}</label>
+                  <select class="form-select" id="bits" name="bits">
+                     <option value="86" selected>{{ gettext("WINE 86 (32 Bits)") }}</option>
+                     <option value="64">{{ gettext("WINE 64 (64 Bits)") }}</option>
+                  </select>
+               </div>
+               <div class="mb-3">
+                  <label for="exepath" class="form-label">{{ gettext("Enter program path (*.exe) or built-in program (e.g., explorer)") }}</label>
+                  <input type="text" class="form-control" id="exepath" name="exepath" required>
+               </div>
+               <div class="mb-3">
+                  <label for="geometry" class="form-label">{{ gettext("Screen Resolution (Geometry)") }}</label>
+                  <select class="form-select" id="geometry" name="geometry">
+                    <option value="1280x720">{{ gettext("1280x720 (Recommended)") }}</option>
+                    <option value="720x1280">{{ gettext("720x1280 (Vertical)") }}</option>
+                    <option value="1920x1080">{{ gettext("1920x1080") }}</option>
+                    <option value="1080x1920">{{ gettext("1080x1920 (Vertical)") }}</option>
+                    <option value="1024x768">{{ gettext("1024x768") }}</option>
+                    <option value="1280x800">{{ gettext("1280x800") }}</option>
+                    <option value="1366x768">{{ gettext("1366x768") }}</option>
+                    <option value="1440x900">{{ gettext("1440x900") }}</option>
+                    <option value="1600x900">{{ gettext("1600x900") }}</option>
+                    <option value="768x1024">{{ gettext("768x1024 (Vertical)") }}</option>
+                    <option value="800x1280">{{ gettext("800x1280 (Vertical)") }}</option>
+                    <option value="900x1440">{{ gettext("900x1440 (Vertical)") }}</option>                    
+                     <option value="other">{{ gettext("Other") }}</option>
+                  </select>
+               </div>
+               <div id="custom_resolution" class="mb-3" style="display: none;">
+                  <label for="custom_resolution_input" class="form-label">{{ gettext("Custom Resolution") }}</label>
+                  <input type="text" class="form-control" id="custom_resolution_input" name="custom_resolution">
+               </div>
+               <button type="submit" class="btn btn-primary">{{ gettext("Run") }}</button>
+            </form>
+         </div>
+         <div class="mt-3">
+            <a href="/dashboard/apps/wine/kill" class="btn btn-danger">{{ gettext("Stop Wine") }}</a>
+            <a href="http://{{hostname | safe}}:5009/vnc.html" class="btn btn-primary">{{ gettext("Go to Wine Desktop (If already started)") }}</a>
+        </div>
+      </div>
+      <script>
+         document.getElementById("geometry").addEventListener("change", function() {
+            var selectedValue = this.value;
+            if (selectedValue === "other") {
+               document.getElementById("custom_resolution").style.display = "block";
+            } else {
+               document.getElementById("custom_resolution").style.display = "none";
+            }
+         });
+      </script>
+      <script src="/static/js/bootstrap.bundle.js"></script>
+   </body>
+</html>

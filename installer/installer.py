@@ -16,16 +16,39 @@ import wget
 console = Console()
 # CONFIG
 ignore_error = False
-
+version = '1.00.00'
 
 # END CONFIG
+def check_version():
+    try:
+        response = requests.get('https://info.flyos.us/installer_ver')
+        if response.status_code == 200:
+            online_version = response.text.strip()
+            print("FlyOS Installer version:", online_version)
+            if online_version > version:
+                print("Your FlyOS Installer is not the latest version, please update to the latest version and try again.")
+                sys.exit()
+        else:
+            print("Failed to retrieve online version information. Please check your internet connection and try again.")
+    except Exception as e:
+        print("An error occurred:", e)
+check_version()
+
 def exit_installer():
     if ignore_error == False:
         sys.exit()
 def ui():
+    try:
+        flyos_ver = requests.get('https://info.flyos.us/latest_ver')
+        if flyos_ver.status_code == 200:
+            flyos_ver = flyos_ver.text.strip()
+        else:
+            print("Failed to retrieve online version information. Please check your internet connection and try again.")
+    except Exception as e:
+        print("An error occurred:", e)
     print("Welcome to the FlyOS Installer")
-    print("""
-VER 3.1 Preview
+    print(f"""
+Latest FlyOS Version: {flyos_ver}
 1. Run the Device Requirements Test
 2. Deploy and install the FlyOS subsystem
 3. Uninstall and remove FlyOS
@@ -246,7 +269,7 @@ def install():
     else:
         console.print('[red]Invalid option[/red]')
         exit_installer()
-    if input('Do you want to Install FlyOS Manager to System Partition? (System partition must be writeable) (y/n)') == 'y':
+    if input('Do you want to Install FlyOS Manager to System Partition? (System partition must be writeable) (y/n) ') == 'y':
         install_manager_system = True
     else:
         install_manager_system = False

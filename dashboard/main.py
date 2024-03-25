@@ -250,7 +250,27 @@ def file_browser_view():
 def android_mgr():
     hostname = get_server_ip()
     return render_template('androidmgr.html')
-
+@app.route('/dashboard/apps/wine', methods=['POST','GET'])
+@login_required
+def apps_wine():
+    hostname = get_server_ip()
+    if request.method == 'POST':
+        hostname = get_server_ip()
+        bits = request.form['bits']
+        exepath = request.form['exepath']
+        geometry = request.form['geometry']
+        os.system(f"rm -rf /tmp/.X11-unix/X{wine_port_vnc}")
+        os.system(f"rm -rf /tmp/.X{wine_port_vnc}-lock")
+        os.system(f"echo '/flyosext/wine/webvnc.sh {bits} {geometry} {exepath}' > /tmp/wine_webvnc_temp.sh && chmod 755 /tmp/wine_webvnc_temp.sh && nohup vncserver :{wine_port_vnc} -geometry {geometry} -localhost no -xstartup '/tmp/wine_webvnc_temp.sh' >> /flyos/logs/wine_vnc.log 2>&1 &")
+        os.system(f'nohup /flyosext/novnc/utils/novnc_proxy --vnc localhost:590{wine_port_vnc} --listen 0.0.0.0:{wine_port_web} >> /flyos/logs/wine_novnc.log 2>&1 &')
+        time.sleep(2)
+        return redirect(f'http://{hostname}:{wine_port_web}/vnc.html')
+    return render_template('wine.html', hostname=hostname)
+@app.route('/dashboard/apps/wine/kill')
+@login_required
+def apps_wine_kill():
+    os.system(f"vncserver -kill :{wine_port_vnc}")
+    return redirect('/dashboard/apps/wine')
 @app.route('/dashboard/androidmgr/usb_tethering')
 @login_required
 def androidmgr_usb_tethering():
@@ -271,11 +291,17 @@ def androidmgr_android_screen():
 @login_required
 def androidmgr_android_screen_launch():
     hostname = get_server_ip()
+    os.system(f"rm -rf /tmp/.X11-unix/X{android_screen_port_vnc}")
+    os.system(f"rm -rf /tmp/.X{android_screen_port_vnc}-lock")
     os.system(f'nohup vncserver :{android_screen_port_vnc} {android_screen_vnc_conf} >> /flyos/logs/android_screen_vnc.log 2>&1 &')
     os.system(f'nohup /flyosext/novnc/utils/novnc_proxy --vnc localhost:590{android_screen_port_vnc} --listen 0.0.0.0:{android_screen_port_web} >> /flyos/logs/android_screen_novnc.log 2>&1 &')
     time.sleep(3)
     return redirect(f'http://{hostname}:{android_screen_port_web}/vnc.html')
-
+@app.route('/dashboard/androidmgr/android_screen/stop')
+@login_required
+def ndroidmgr_android_screen_stop():
+    os.system(f"vncserver -kill :{android_screen_port_vnc}")
+    return redirect('/dashboard/androidmgr/android_screen')
 @app.route('/dashboard/androidmgr/android_screen/redirect')
 @login_required
 def androidmgr_android_screen_launch_redirect():

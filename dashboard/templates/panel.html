@@ -146,6 +146,14 @@
                         </a>
                         <ul class="nav nav-treeview">
                            <li class="nav-item" id="codeserverOption">
+                              <a href="#" onclick="loadPage(this, '/dashboard/apps/wine'); return false;" class="nav-link">
+                                 <i class="nav-icon fas fa-desktop"></i>
+                                 <p>
+                                    {{ gettext('Windows Apps (WINE)') }}
+                                 </p>
+                              </a>
+                           </li>
+                           <li class="nav-item" id="codeserverOption">
                               <a href="#" onclick="loadPage(this, '/dashboard/codeserver/view'); return false;" class="nav-link">
                                  <i class="nav-icon fas fa-code"></i>
                                  <p>
