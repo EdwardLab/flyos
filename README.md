@@ -48,11 +48,7 @@ Unlock the possibilities of mobile productivity. Imagine coding on your phone, c
 
 Donate this project author Edward Hsing, 100% to Edward Hsing, PayPal: [PayPal Donation](https://www.paypal.com/paypalme/xingyujieph/)
 
-Donate to our foundation DigitalPlat, a 501(c)(3) fiscally sponsored organization (EIN: 81-2908499), (Support non-profit open source projects):
+Donate to our foundation DigitalPlat, DigitalPlat is fiscally sponsored by Hack Club, a 501(c)(3) nonprofit. Our registered EIN is 81-2908499. (Support non-profit open source projects):
 
-- [Donate via Hack Club Bank](https://bank.hackclub.com/donations/start/digitalplat)
-- [DigitalPlat Homepage](https://digitalplat.org)
-
-<p align="center">
-  <img src="https://bank.hackclub.com/brand/hcb-logo-original-light.svg" alt="Hack Club Bank Logo" width="100" height="auto">
-</p>
+- [Donate via HCB](https://bank.hackclub.com/donations/start/digitalplat)
+- [DigitalPlat](https://digitalplat.org)
