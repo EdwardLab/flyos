@@ -28,7 +28,7 @@
 
 This repository contains essential files and source code, excluding third-party code and binary applications.
 
-## FlyOS 3.0 is Under Development! Stay Tuned!
+## FlyOS 3.0 is Under Development! Stay Tuned! (Now you can experience it in beta preview, Install via FlyOS Installer)
 
 ### The FlyOS Project by DigitalPlat.org
 
