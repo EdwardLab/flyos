@@ -43,7 +43,8 @@ Experience the power of mobile computing with FlyOS. Access your FlyOS Linux sub
 Unlock the possibilities of mobile productivity. Imagine coding on your phone, connecting a keyboard and mouse, and effortlessly accessing your favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more. It's a complete Linux system that fits in your pocket! Wherever you go, your data is always within reach. Experience the freedom of seamless access, empowering you to create and work anywhere, anytime.
 
 #### Note: Since FlyOS is still under development, we will release a more comprehensive introduction and documentation in the future, so stay tuned!
-
+# Community
+[Discord](https://discord.com/invite/2GcRdwxP)
 # Donate
 
 Donate this project author Edward Hsing, 100% to Edward Hsing, PayPal: [PayPal Donation](https://www.paypal.com/paypalme/xingyujieph/)
