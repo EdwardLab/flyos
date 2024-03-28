@@ -4,7 +4,7 @@
   <img src="./dashboard/static/img/flyos.jpg" alt="flyos_logo" width="20%" height="20%">
 </p>
 
-## Preview Screenshots Under Development
+## Preview Screenshots (Now ready to install!)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="./imgs/dashboard1.png" alt="flyos_preview" width="40%" height="40%" style="margin: 5px;">
@@ -28,7 +28,7 @@
 
 This repository contains essential files and source code, excluding third-party code and binary applications.
 
-## FlyOS 3.0 is Under Development! Stay Tuned!
+## FlyOS 3.0 is Under Development! Stay Tuned! (Now you can experience it in beta preview, Install via FlyOS Installer)
 
 ### The FlyOS Project by DigitalPlat.org
 
@@ -43,7 +43,9 @@ Experience the power of mobile computing with FlyOS. Access your FlyOS Linux sub
 Unlock the possibilities of mobile productivity. Imagine coding on your phone, connecting a keyboard and mouse, and effortlessly accessing your favorite tools like LibreOffice, VSCode, GIMP, Jupyter, and more. It's a complete Linux system that fits in your pocket! Wherever you go, your data is always within reach. Experience the freedom of seamless access, empowering you to create and work anywhere, anytime.
 
 #### Note: Since FlyOS is still under development, we will release a more comprehensive introduction and documentation in the future, so stay tuned!
-
+# Community
+[Discord](https://discord.com/invite/2GcRdwxP)
+[Telegram](https://t.me/FlyOS_Official)
 # Donate
 
 Donate this project author Edward Hsing, 100% to Edward Hsing, PayPal: [PayPal Donation](https://www.paypal.com/paypalme/xingyujieph/)
