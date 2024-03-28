@@ -106,7 +106,7 @@ def get_total_ram():
     return None
 def check_internet_connection():
     try:
-        result = subprocess.run(['adb', 'shell', 'curl', 'google.com'], capture_output=True, text=True)
+        result = subprocess.run(['adb', 'shell', 'ping', '-c', '1', 'google.com'], capture_output=True, text=True)
         return result.returncode == 0
     except subprocess.CalledProcessError:
         return False

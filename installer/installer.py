@@ -16,15 +16,22 @@ import wget
 console = Console()
 # CONFIG
 ignore_error = False
-version = '1.00.00'
+version = '1.00.10'
 
 # END CONFIG
+try:
+    if open('ignore_error', 'r'):
+        ignore_error = True
+        print("[*] Ignore error enabled")
+except:
+    pass
+
 def check_version():
     try:
         response = requests.get('https://info.flyos.us/installer_ver')
         if response.status_code == 200:
             online_version = response.text.strip()
-            print("FlyOS Installer version:", online_version)
+            print("Latest FlyOS Installer version:", online_version)
             if online_version > version:
                 print("Your FlyOS Installer is not the latest version, please update to the latest version and try again.")
                 sys.exit()
@@ -49,6 +56,7 @@ def ui():
     print("Welcome to the FlyOS Installer")
     print(f"""
 Latest FlyOS Version: {flyos_ver}
+Installer Version: {version}
 1. Run the Device Requirements Test
 2. Deploy and install the FlyOS subsystem
 3. Uninstall and remove FlyOS
@@ -74,6 +82,7 @@ To enable Developer Options and activate USB debugging, follow these simple step
     input('Enter to continue')
     print("Check your device")
     print(adb_list())
+    console.print("If you want to force-ignore warnings or errors, please create an empty file named 'ignore_error' in the Installer directory and restart the Installer.")
     if device_check() == False:
         console.print('Sorry, your device is not detected, please reconnect the USB cable, replace the data cable, Or check if USB debugging is enabled',style='red')
         exit_installer()
@@ -224,7 +233,8 @@ def install():
             rootfs_path = 'rootfs.tar.gz'
 
     elif ask == '4':
-        webbrowser.open('https://drive.google.com/drive/folders/1JGg0Vxcdtu6fIN6oMFCbQu-AUOjzw3LE?usp=sharing')
+        down_url = get_server_data('https://raw.githubusercontent.com/xingyujie/flyos_info/main/gd_latest')
+        webbrowser.open(down_url)
         rootfs_path = input('Enter the rootfs file path: ')
         rootfs_filename = os.path.basename(rootfs_path)
     elif ask == '5':
