@@ -10,6 +10,7 @@ import random
 import time
 import secrets
 import string
+import re
 PASSWORDS_FILE = "/flyos/files/pwd.conf"
 def check_password(password):
     with open(PASSWORDS_FILE, "r") as file:
@@ -36,9 +37,6 @@ def get_device_storage():
 def get_kernel_version():
     result = subprocess.run(['uname', '-a'], capture_output=True, text=True)
     return result.stdout.strip()
-
-
-import subprocess
 
 def check_ssh_process():
     try:
@@ -186,3 +184,21 @@ def gen_newtoken():
     random_token = generate_random_token(20)
     with open('/flyos/files/token/token', 'w') as tokenfile:
         tokenfile.write(random_token)
+def get_token():
+    with open('/flyos/files/token/token') as file:
+        token = file.read()
+    return token
+
+def get_available_ram():
+    try:
+        output = os.popen("free -h | awk 'NR==2 {print $7}'").read()
+        ram_value = re.search(r'\d+\.*\d*', output)
+        if ram_value:
+            return ram_value.group() + " GB"
+        else:
+            return "Failed"
+    except Exception as e:
+        traceback.print_exc()
+        return "Failed"
+def get_cpu_usage():
+    return psutil.cpu_percent(interval=1)

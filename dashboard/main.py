@@ -13,6 +13,7 @@ import os
 import subprocess
 import sqlite3
 import requests
+from requests.exceptions import Timeout, ConnectionError
 from config import *
 from datetime import datetime
 import random
@@ -20,8 +21,19 @@ import shutil
 from flask_login.config import USE_SESSION_FOR_NEXT
 from queue import Queue
 from threading import Thread
+from urllib.parse import quote
 output_queue = Queue()
 
+def container_info(flycontainer_dir='/container', list_dir='/container/list'):
+    container_list = os.listdir(list_dir)
+    container_info = []
+    for container_name in container_list:
+        file_path = os.path.join(list_dir, container_name)
+        mtime = os.path.getmtime(file_path)
+        mtime_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(mtime))
+        container_info.append((container_name, mtime_str))
+    
+    return list_dir, container_info
 
 def execute_command(command):
     process = subprocess.Popen(
@@ -143,7 +155,13 @@ def redirectmain():
         os.system(no_pwd_login_alert_command)
         return redirect(url_for('panel'))
     return redirect(url_for('panel'))
-
+@app.route('/dashboard/float/panel')
+@login_required
+def float_monitoring_panel():
+    battery_remaining = battery_status()
+    available_ram=get_available_ram()
+    cpu_usage = get_cpu_usage()
+    return render_template('float_panel.html', available_ram=available_ram, cpu_usage=cpu_usage, dashboard_float_monitoring_refresh_time=dashboard_float_monitoring_refresh_time)
 @app.route('/dashboard')
 @login_required
 def panel():
@@ -158,7 +176,7 @@ def panel():
         desktop_mode = ''
     else:
         desktop_mode = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">'
-    
+    get_list_dir, get_container_info = container_info()
     hostname = get_server_ip()
     return render_template('./panel.html',
     desktop_mode=desktop_mode, 
@@ -167,7 +185,10 @@ def panel():
     battery_remaining=battery_remaining,
     ip_addr=ip_addr,
     hostname=hostname,
-    terminal_port=terminal_port
+    terminal_port=terminal_port,
+    container_info=get_container_info,
+    list_dir=get_list_dir,
+    server_ip=get_server_ip
     )
 
 @app.route('/query_files', methods=['POST'])
@@ -183,24 +204,29 @@ def query_files():
 @login_required
 def overview():
     battery_remaining = battery_status()
-    
     try:
         url = "https://raw.githubusercontent.com/xingyujie/flyos/master/notices.txt"
         response = requests.get(url, timeout=3)
+        response.raise_for_status()
         notice = response.text
-    except:
-        notice = 'Failed to load notice: No network connection or System Error'
+    except Timeout:
+        notice = 'Failed to load notice: Connection timed out'
+    except ConnectionError:
+        notice = 'Failed to load notice: No internet connection or Server not found'
+    except Exception as e:
+        notice = f'Failed to load notice: {str(e)}'
     storage = get_device_storage()
     ssh = check_ssh_process()
     vnc = check_vnc_process()
     kernel = get_kernel_version()
+    available_ram=get_available_ram()
     framework_status = flyos_framework_status()
+    cpu_usage = get_cpu_usage()
     if framework_status:
         framework_status =  'Running'
     else:
         framework_status = 'Stopped'
-
-    return render_template('./overview.html', notice=notice, storage=storage, ssh=ssh, vnc=vnc, kernel=kernel, framework_status=framework_status, run_system=run_system, battery_remaining=battery_remaining)
+    return render_template('./overview.html', notice=notice, storage=storage, ssh=ssh, vnc=vnc, kernel=kernel, framework_status=framework_status, run_system=run_system, battery_remaining=battery_remaining, available_ram=available_ram, cpu_usage=cpu_usage)
 @app.route('/dashboard/vnc/view')
 @login_required
 def vnc_page():
@@ -271,6 +297,101 @@ def apps_wine():
 def apps_wine_kill():
     os.system(f"vncserver -kill :{wine_port_vnc}")
     return redirect('/dashboard/apps/wine')
+
+@app.route('/dashboard/apps/flycontainer')
+@login_required
+def flycontainer_main():
+    get_list_dir, get_container_info = container_info()
+    return render_template('flycontainer.html', hostname=hostname, list_dir=get_list_dir, container_info=get_container_info)
+@app.route('/dashboard/apps/flycontainer/login_terminal/<container_name>')
+@login_required
+def flyoscontainer_login(container_name):
+    hostname = get_server_ip()
+    ttyd_port = random.randint(container_ttyd_port_gen_range_min, container_ttyd_port_gen_range_max)
+    try:
+        shellrc = open(f'/container/list/{container_name}/etc/flyos/shellrc.conf').read()
+    except:
+        return render_template('./oops.html', info=f'This container does not contain /etc/flyos/shellrc.conf and unable be start')
+    if container_ttyd_auth_enable:
+        auth_opts = f'-c {container_ttyd_auth_user}:{container_ttyd_auth_password}'
+    else:
+        auth_opts = ''
+    if container_ttyd_one_client:
+        close_opts = '-o'
+    else:
+        close_opts = ''
+    os.system(f'''
+export CONTAINERROOT="/container/list/{container_name}"
+chmod 755 $CONTAINERROOT/etc/flyos/*
+nohup bash $CONTAINERROOT/etc/flyos/start.sh >> /flyos/logs/flycontainer_startservice_{container_name}.log 2>&1 &
+nohup chroot $CONTAINERROOT /etc/flyos/init.sh >> /flyos/logs/flycontainer_init_{container_name}.log 2>&1 &
+nohup ttyd {close_opts} -q {auth_opts} -p {ttyd_port} chroot $CONTAINERROOT {shellrc} >> /flyos/logs/flycontainer_terminal_{container_name}.log 2>&1 &
+''')
+    return redirect(f'http://{hostname}:{ttyd_port}/')
+@app.route('/dashboard/apps/flycontainer/start/<container_name>')
+@login_required
+def flyoscontainer_start(container_name):
+    hostname = get_server_ip()
+    try:
+        shellrc = open(f'/container/list/{container_name}/etc/flyos/shellrc.conf').read()
+    except:
+        return render_template('./oops.html', info=f'This container does not contain /etc/flyos/shellrc.conf and unable be start')
+    os.system(f'''
+export CONTAINERROOT="/container/list/{container_name}"
+chmod 755 $CONTAINERROOT/etc/flyos/*
+nohup bash $CONTAINERROOT/etc/flyos/start.sh >> /flyos/logs/flycontainer_startservice_{container_name}.log 2>&1 &
+nohup chroot $CONTAINERROOT /etc/flyos/init.sh >> /flyos/logs/flycontainer_init_{container_name}.log 2>&1 &
+''')
+    return f'''
+<script>
+alert("The selected container has been started");
+window.location.href = "/dashboard/apps/flycontainer";
+</script>
+    '''
+@app.route('/dashboard/apps/flycontainer/stop/<container_name>')
+@login_required
+def flyoscontainer_stop(container_name):
+    hostname = get_server_ip()
+    shellrc = open(f'/container/list/{container_name}/etc/flyos/shellrc.conf').read()
+    os.system(f'''
+export CONTAINERROOT="/container/list/{container_name}"
+chmod 755 $CONTAINERROOT/etc/flyos/*
+nohup bash $CONTAINERROOT/etc/flyos/stop.sh >> /flyos/logs/flycontainer_stopservice_{container_name}.log 2>&1 &
+''')
+    return f'''
+<script>
+alert("The selected container has been stopped");
+window.location.href = "/dashboard/apps/flycontainer";
+</script>
+    '''
+@app.route('/dashboard/apps/flycontainer/delete/<container_name>')
+@login_required
+def flyoscontainer_delete(container_name):
+    return render_template('flycontainer_delete.html', container_name=container_name)
+@app.route('/dashboard/apps/flycontainer/delete/confirm')
+@login_required
+def flyoscontainer_delete_confirm():
+    name = request.args.get("name")
+    os.system(f'''
+export CONTAINERROOT="/container/list/{name}"
+chmod 755 $CONTAINERROOT/etc/flyos/*
+nohup bash $CONTAINERROOT/etc/flyos/stop.sh >> /flyos/logs/flycontainer_stopservice_{name}.log 2>&1 &
+''')
+    os.system(f"rm -rf /container/list/{name}")
+    return render_template('./success.html', info=f'Container deleted successfully')
+@app.route('/dashboard/apps/flycontainer/createnew', methods=['POST','GET'])
+@login_required
+def flycontainer_createnew():
+    if request.method == 'POST':
+        name = request.form['name']
+        path = request.form['path']
+        if os.path.exists(f'/container/list/{name}'):
+            return render_template('./oops.html', info=f'This container name already exist')
+        if '.flycontainer' not in path:
+            return render_template('./oops.html', info=f'Please enter a valid FlyContainer file system image path (*.flycontainer)')
+        os.mkdir(f'/container/list/{name}')
+        return redirect(f'/api/system/cmd?token={get_token()}&command=tar%20-zxvf%20{path}%20-C%20/container/list/{name}')
+    return render_template('flycontainer_create.html')
 @app.route('/dashboard/androidmgr/usb_tethering')
 @login_required
 def androidmgr_usb_tethering():

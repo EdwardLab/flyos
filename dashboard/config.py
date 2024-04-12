@@ -56,3 +56,16 @@ boot_runscripts = True # Execute the script under /boot/scripts directory at boo
 
 # Developer options
 dev_server_debug = True
+
+# Dashboard plugin
+dashboard_float_monitoring_refresh_time = '2000' # 2000 ms refresh
+
+# FlyOS Container Config
+container_ttyd_port_gen_range_min = 55000
+container_ttyd_port_gen_range_max = 56000
+# Web Terminal Auth (recommended)
+container_ttyd_auth_enable = False # When logging into the container web terminal, ask for credentials
+container_ttyd_auth_user = 'admin'
+container_ttyd_auth_password = 'admin'
+container_ttyd_one_client = True # Only allow one connection, disconnecting when close terminal or exit shell (recommended, for safety)
+

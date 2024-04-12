@@ -134,8 +134,36 @@
                                  <p>{{ gettext('File Browser') }}</p>
                               </a>
                            </li>
+                           <li class="nav-item">
+                              <a href="#" onclick="loadPage(this, '/dashboard/apps/flycontainer'); return false;" class="nav-link">
+                                 <i class="nav-icon fas fa-ethernet"></i>
+                                 <p>{{ gettext('FlyContainer') }}</p>
+                              </a>
+                           </li>
                         </ul>
                      </li>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-link"></i>
+                            <p>
+                                {{ gettext('Your Container') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {% for container in container_info %}
+                            <li class="nav-item" id="containerOption">
+                                <a href="#" onclick="loadPage(this, '/dashboard/apps/flycontainer/login_terminal/{{ container[0] }}'); return false;" class="nav-link">
+                                    <i class="nav-icon fas fa-laptop"></i>
+                                    <p>
+                                        {{ container[0] }}
+                                    </p>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    
                      <li class="nav-item">
                         <a href="#" class="nav-link">
                            <i class="nav-icon fas fa-cogs"></i>
@@ -276,6 +304,9 @@
                </li>
                <li class="nav-item d-none d-sm-inline-block">
                   <a href="" class="nav-link" id="open_float_terminal">Terminal</a>
+               </li>
+               <li class="nav-item d-none d-sm-inline-block">
+                  <a href="" class="nav-link" id="open_float_status">Monitoring</a>
                </li>
                <li class="nav-item dropdown">
                   <button class="nav-link btn btn-link dropdown-toggle" type="button" id="navbarDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -533,6 +564,30 @@
                  background: "#000000",
                  width: 650,
                  height: 400,
+                 minheight: 80,
+                 minwidth: 100,
+                 maxheight: 800,
+                 maxwidth: 1000,
+                 top: 80,
+                 right: 70,
+                 bottom: 0,
+                 left: 80,
+         
+             });
+         });
+         
+      </script>
+      <script>
+         document.getElementById("open_float_status").addEventListener("click", function(event) {
+             event.preventDefault();
+         
+             new WinBox("Status monitoring", {
+                 url: "/dashboard/float/panel",
+                 x: "right",
+                 y: "60",
+                 background: "#000000",
+                 width: 300,
+                 height: 230,
                  minheight: 80,
                  minwidth: 100,
                  maxheight: 800,

@@ -23,6 +23,7 @@ rm -rf /flyos/.ipynb_checkpoints
 rm -rf /root/.local/share/code-server
 rm -rf /root/.local/share/jupyter
 echo > /flyos/files/token/token
+echo > /flyos/files/temp/otp
 echo root:flyospwd | chpasswd
 echo flyos:userpassword | chpasswd
 cp /flyos/config.py /flyos/files/backup/config.py

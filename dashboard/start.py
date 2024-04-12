@@ -56,8 +56,8 @@ if boot_default_vnc:
     """)
 if boot_vnc_1920x1080:
     os.system("""
-    rm -rf /tmp/.X1-lock
-    rm -rf /tmp/.X11-unix/X1
+    rm -rf /tmp/.X2-lock
+    rm -rf /tmp/.X11-unix/X2
     nohup vncserver :2 -geometry 1920x1080 -localhost no >> /flyos/logs/vnc_1920x1080.log 2>&1 &
     """)
 if boot_vnc:
