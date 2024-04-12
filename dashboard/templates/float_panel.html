@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitoring Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #222;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .container {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        text-align: center;
+        color: #fff;
+    }
+    .data {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="data">Available RAM: <span id="availableRam">{{available_ram}}</span></div>
+    <div class="data">CPU Usage: <span id="cpuUsage">{{cpu_usage}}</span></div>
+</div>
+
+<script>
+function refreshData() {
+    // You can add AJAX request here to fetch actual data from the server if needed.
+    // For simplicity, let's assume data is already present in the template.
+    // You can replace this with actual data fetching logic.
+    var availableRam = document.getElementById('availableRam').textContent;
+    var cpuUsage = document.getElementById('cpuUsage').textContent;
+
+    // Trigger page refresh after 2 seconds
+    setTimeout(function() {
+        location.reload();
+    }, {{dashboard_float_monitoring_refresh_time}});
+}
+
+// Call refreshData function when page loads
+refreshData();
+</script>
+
+</body>
+</html>

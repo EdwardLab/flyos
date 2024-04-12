@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/css/font.css">
+      <meta charset="utf-8">
+      <title>{{ gettext("Delete a container:") }} {{container_name}}</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext("Delete a container:") }} {{container_name}}</span>
+         </div>
+      </nav>
+      <div class="p-5 mb-4 bg-light rounded-3">
+         <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Delete a container: ") }} {{container_name}}</font></font></h1>
+         </div>
+      </div>
+      <div class="container mt-4">
+         <form action="/dashboard/apps/flycontainer/delete/confirm" method="get">
+            <div class="mb-3">
+               <input type="hidden" class="form-control" name="name" value="{{container_name}}">
+            </div>
+            <p><b>{{ gettext("Please make sure the container is completely stopped! Failure to fully unmount mount points when removing the container can result in damage to Android, FlyOS, or the Linux Kernel. Therefore, we recommend restarting the device before performing the container deletion operation (it is strongly recommended to restart the device before deleting the container, as direct deletion may easily lead to incomplete stopped container, even if you have already clicked to stop the container).") }}</b></p>
+            <button type="submit" class="btn btn-danger">{{ gettext("I understand and delete (Please ignore if you have already restarted or have not started the container, and the data in the container will be permanently lost)") }}</button>
+         </form>
+      </div>
+      <br>
+      <script src="/static/js/bootstrap.bundle.js"></script>
+   </body>
+</html>

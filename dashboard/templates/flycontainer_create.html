@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/css/font.css">
+      <meta charset="utf-8">
+      <title>{{ gettext("Create a new container instances") }}</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">{{ gettext("Create a new container instances") }}</span>
+         </div>
+      </nav>
+      <div class="p-5 mb-4 bg-light rounded-3">
+         <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gettext("Create a new container instances") }}</font></font></h1>
+         </div>
+      </div>
+      <div class="container mt-4">
+         <form action="/dashboard/apps/flycontainer/createnew" method="post">
+            <div class="mb-3">
+               <label for="name" class="form-label">{{ gettext("Please enter container name:") }}</label>
+               <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+               <label for="path" class="form-label">{{ gettext("Please enter container rootfs package path (*.flycontainer):") }}</label>
+               <input type="text" class="form-control" id="path" name="path" required>
+            </div>
+            <p>{{ gettext("After submission, system start unzip rootfs. After completion, please enter FlyContainer again to manage the new container.") }}</p>
+            <button type="submit" class="btn btn-primary">{{ gettext("Submit") }}</button>
+         </form>
+      </div>
+      <br>
+      <script src="/static/js/bootstrap.bundle.js"></script>
+   </body>
+</html>
