@@ -12,7 +12,9 @@
 - New FlyContainer (If your device kernel supports, you can deploy LXC or Docker!)    
 - WINE WEB Desktop    
 - UI Upgrade    
-- Data partition isolation
+- Data partition isolation    
+- New X11 and sound support (Based on Termux:X11)    
+
 ## Preview Screenshots (Now ready to install!)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
