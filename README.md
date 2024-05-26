@@ -3,6 +3,7 @@
 <p align="center">
   <img src="./dashboard/static/img/flyos.jpg" alt="flyos_logo" width="20%" height="20%">
 </p>
+
 ## New FlyOS 3.2 In development
 
 - New FlyOS Manager    
