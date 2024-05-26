@@ -4,13 +4,13 @@
   <img src="./dashboard/static/img/flyos.jpg" alt="flyos_logo" width="20%" height="20%">
 </p>
 ## New FlyOS 3.2 In development
-- New FlyOS Manager
-- Update to Ubuntu 24.04
-- Add Userspace (Userdata Partition)
-- New FlyContainer (If your device kernel supports, you can deploy LXC or Docker!)
-- WINE WEB Desktop
-- UI Upgrade
-- Data partition isolation
+- New FlyOS Manager    
+- Update to Ubuntu 24.04    
+- Add Userspace (Userdata Partition)    
+- New FlyContainer (If your device kernel supports, you can deploy LXC or Docker!)    
+- WINE WEB Desktop    
+- UI Upgrade    
+- Data partition isolation    
 ## Preview Screenshots (Now ready to install!)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
