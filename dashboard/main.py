@@ -247,18 +247,25 @@ def codeserver_page():
     return redirect(f'http://{hostname}:{code_server_port}/')
 @app.route('/dashboard/terminal/view')
 @login_required
-def terminal_android_page():
+def terminal_page():
     
     ttyd = check_ttyd_process()
     if ttyd == 'Stopped':
         return 'Web Terminal Service not started'
     hostname = get_server_ip()
     return redirect(f'http://{hostname}:{terminal_port}/')
+@app.route('/dashboard/terminal_userspace/view')
+@login_required
+def terminal_userspace_page():
+    ttyd = check_ttyd_process()
+    if ttyd == 'Stopped':
+        return 'Web Terminal Service not started'
+    hostname = get_server_ip()
+    return redirect(f'http://{hostname}:{userspace_ttyd_port}/')
 
 @app.route('/dashboard/terminal_android/view')
 @login_required
-def terminal_page():
-    
+def terminal_android_page():
     ttyd = check_ttyd_process()
     if ttyd == 'Stopped':
         return 'Web Terminal Service not started'
@@ -287,7 +294,7 @@ def apps_wine():
         geometry = request.form['geometry']
         os.system(f"rm -rf /tmp/.X11-unix/X{wine_port_vnc}")
         os.system(f"rm -rf /tmp/.X{wine_port_vnc}-lock")
-        os.system(f"echo '/flyosext/wine/webvnc.sh {bits} {geometry} {exepath}' > /tmp/wine_webvnc_temp.sh && chmod 755 /tmp/wine_webvnc_temp.sh && nohup vncserver :{wine_port_vnc} -geometry {geometry} -localhost no -xstartup '/tmp/wine_webvnc_temp.sh' >> /flyos/logs/wine_vnc.log 2>&1 &")
+        os.system(f"echo '/flyosext/wine/webvnc.sh {bits} {geometry} {exepath}' > /tmp/wine_webvnc_temp.sh && chmod 755 /tmp/wine_webvnc_temp.sh && nohup vncserver :{wine_port_vnc} -geometry {geometry} -xstartup '/tmp/wine_webvnc_temp.sh' -localhost {vnc_default_localhost} >> /flyos/logs/wine_vnc.log 2>&1 &")
         os.system(f'nohup /flyosext/novnc/utils/novnc_proxy --vnc localhost:590{wine_port_vnc} --listen 0.0.0.0:{wine_port_web} >> /flyos/logs/wine_novnc.log 2>&1 &')
         time.sleep(2)
         return redirect(f'http://{hostname}:{wine_port_web}/vnc.html')
@@ -325,8 +332,9 @@ export CONTAINERROOT="/container/list/{container_name}"
 chmod 755 $CONTAINERROOT/etc/flyos/*
 nohup bash $CONTAINERROOT/etc/flyos/start.sh >> /flyos/logs/flycontainer_startservice_{container_name}.log 2>&1 &
 nohup chroot $CONTAINERROOT /etc/flyos/init.sh >> /flyos/logs/flycontainer_init_{container_name}.log 2>&1 &
-nohup ttyd {close_opts} -q {auth_opts} -p {ttyd_port} chroot $CONTAINERROOT {shellrc} >> /flyos/logs/flycontainer_terminal_{container_name}.log 2>&1 &
+nohup ttyd {close_opts} -q {auth_opts} -p {ttyd_port} --writable chroot $CONTAINERROOT {shellrc} >> /flyos/logs/flycontainer_terminal_{container_name}.log 2>&1 &
 ''')
+    time.sleep(1.3)
     return redirect(f'http://{hostname}:{ttyd_port}/')
 @app.route('/dashboard/apps/flycontainer/start/<container_name>')
 @login_required
@@ -414,7 +422,7 @@ def androidmgr_android_screen_launch():
     hostname = get_server_ip()
     os.system(f"rm -rf /tmp/.X11-unix/X{android_screen_port_vnc}")
     os.system(f"rm -rf /tmp/.X{android_screen_port_vnc}-lock")
-    os.system(f'nohup vncserver :{android_screen_port_vnc} {android_screen_vnc_conf} >> /flyos/logs/android_screen_vnc.log 2>&1 &')
+    os.system(f'nohup vncserver :{android_screen_port_vnc} {android_screen_vnc_conf} -localhost {vnc_default_localhost} >> /flyos/logs/android_screen_vnc.log 2>&1 &')
     os.system(f'nohup /flyosext/novnc/utils/novnc_proxy --vnc localhost:590{android_screen_port_vnc} --listen 0.0.0.0:{android_screen_port_web} >> /flyos/logs/android_screen_novnc.log 2>&1 &')
     time.sleep(3)
     return redirect(f'http://{hostname}:{android_screen_port_web}/vnc.html')
@@ -489,11 +497,7 @@ def androidmgr_linuxmode_launch_viewlog():
 
     return text_response
     
-@app.route('/dashboard/notebook/view')
-@login_required
-def jupyter_notebook():
-    hostname = get_server_ip()
-    return redirect(f'http://{hostname}:{jupyter_notebook_port}/')
+
 @app.route('/dashboard/about')
 @login_required
 def about():
@@ -742,9 +746,10 @@ def require_token(func):
 
     def wrapper(*args, **kwargs):
         token = request.args.get('token')
-        if token != valid_token:
+        if not token or token != valid_token:
             return jsonify({"status": 401, "error": "Unauthorized", "message": "Invalid token"}), 401
         return func(*args, **kwargs)
+    wrapper.__name__ = func.__name__ + '_wrapped'
 
     return wrapper
 
@@ -756,9 +761,6 @@ def api_get_service_code_server():
 def api_get_service_ssh():
     return check_ssh_process()
 
-@app.route("/api/get_service_jupyter")
-def api_get_service_jupyter():
-    return check_jupyter_process()
 
 @app.route("/api/send_msg")
 @require_token
@@ -778,9 +780,9 @@ def api_send_android_msg():
 
     return jsonify(response_data), 200
 
-@app.route('/api/system/cmd', endpoint='api_sys_cmd_endpoint')
+@app.route('/api/system/cmd')
 @require_token
-def api_sys_cmd():
+def api_system_cmd():
     command = request.args.get('command')
     if command:
         command_thread = Thread(target=execute_command, args=(command,))
