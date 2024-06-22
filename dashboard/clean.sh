@@ -27,3 +27,4 @@ echo > /flyos/files/temp/otp
 echo root:flyospwd | chpasswd
 echo flyos:userpassword | chpasswd
 cp /flyos/config.py /flyos/files/backup/config.py
+rm -rf /var/cache/apt/*.bin

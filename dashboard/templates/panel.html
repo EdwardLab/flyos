@@ -117,6 +117,12 @@
                               </a>
                            </li>
                            <li class="nav-item">
+                              <a href="#" onclick="loadPage(this, '/dashboard/terminal_userspace/view'); return false;" class="nav-link">
+                                 <i class="nav-icon fas fa-terminal"></i>
+                                 <p>{{ gettext('Userspace Terminal') }}</p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
                               <a href="#" onclick="loadPage(this, '/dashboard/terminal_android/view'); return false;" class="nav-link">
                                  <i class="nav-icon fas fa-terminal"></i>
                                  <p>{{ gettext('Android Terminal') }}</p>
@@ -186,14 +192,6 @@
                                  <i class="nav-icon fas fa-code"></i>
                                  <p>
                                     {{ gettext('Code Server') }}
-                                 </p>
-                              </a>
-                           </li>
-                           <li class="nav-item" id="jupyter-option">
-                              <a href="/dashboard/notebook/view" class="nav-link">
-                                 <i class="nav-icon fas fa-book"></i>
-                                 <p>
-                                    {{ gettext('Jupyter Notebook') }}
                                  </p>
                               </a>
                            </li>
@@ -510,28 +508,6 @@
          
          window.addEventListener('load', function() {
            setIframeHeight();
-         });
-         
-           
-      </script>
-      <script>
-         document.addEventListener('DOMContentLoaded', () => {
-           fetch('/api/get_service_jupyter')
-             .then(response => response.text())
-             .then(data => {
-               if (data.trim() === 'Stopped') {
-                 var jupyterOption = document.querySelector('a[href="/dashboard/notebook/view"]');
-                 if (jupyterOption) {
-                   var parentListItem = jupyterOption.closest('.nav-item');
-                   if (parentListItem) {
-                     parentListItem.remove();
-                   }
-                 }
-               }
-             })
-             .catch(error => {
-               console.error('Error fetching data:', error);
-             });
          });
          
            
