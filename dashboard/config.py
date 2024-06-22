@@ -43,7 +43,7 @@ vnc_default_localhost = 'no'
 wine_port_vnc = 4
 
 # Userspace config
-userspace_vnc_login_user = 'root' # Default: user 'flyos' in userspace
+userspace_vnc_login_user = 'flyos' # Default: user 'flyos' in userspace
 userspace_ttyd = True
 
 
