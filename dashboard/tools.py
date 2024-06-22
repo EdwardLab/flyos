@@ -11,6 +11,7 @@ import time
 import secrets
 import string
 import re
+from files.userspace.cli import *
 PASSWORDS_FILE = "/flyos/files/pwd.conf"
 def check_password(password):
     with open(PASSWORDS_FILE, "r") as file:
@@ -202,3 +203,8 @@ def get_available_ram():
         return "Failed"
 def get_cpu_usage():
     return psutil.cpu_percent(interval=1)
+
+def exec_userspace(cmd):
+    userspace_execute(cmd)
+def exec_userspace_user(cmd, user):
+    userspace_execute(f'su - {user} -c """{cmd}"""')
