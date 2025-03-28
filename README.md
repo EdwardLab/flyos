@@ -22,14 +22,19 @@
   <img src="./imgs/dashboard2.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
   <img src="./imgs/dashboard3.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
   <img src="./imgs/dashboard4.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
+  <img src="./imgs/dashboard5.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
+  <img src="./imgs/dashboard6.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
+  <img src="./imgs/dashboard7.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
   <img src="./imgs/login1.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
   <img src="./imgs/mirror1.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="./imgs/manager1.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
-  <img src="./imgs/manager2.png" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
+  <img src="./imgs/manager1.jpg" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
+  <img src="./imgs/manager2.jpg" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
+  <img src="./imgs/manager3.jpg" alt="flyos_admin_preview" width="40%" height="40%" style="margin: 5px;">
 </div>
+
 
 <p align="center">
   <img src="./imgs/langugage.png" alt="flyos_admin_preview" width="50%" height="50%" style="margin: 10px;">
